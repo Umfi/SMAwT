@@ -4,7 +4,6 @@
 
 
     <div v-if="step == 2">
-
         <p class="lead">That's how a password should look like</p>
         <ul class="list-group">
             <li class="list-group-item">Use at least eight characters. The longer the better (as long as you can remember it!).</li>
@@ -21,102 +20,13 @@
     </div>
 
     <div v-if="step == 3">
-
-        <div class="alert alert-primary" role="alert">
-          Drag each term and move it to the "Good" and "Bad" section
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <h3>All</h3>
-            <draggable class="list-group" :list="allList" group="people">
-              <div
-                class="list-group-item"
-                v-for="(element) in allList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-
-          <div class="col">
-            <h3>Good</h3>
-            <draggable class="list-group good" :list="goodList" group="people">
-          <div
-                class="list-group-item"
-                v-for="(element) in goodList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-          <div class="col">
-            <h3>Bad</h3>
-            <draggable class="list-group bad" :list="badList" group="people">
-              <div
-                class="list-group-item"
-                v-for="(element) in badList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-        </div>
+      <container-game ref="game1" :items="firstGame"></container-game>
     </div>
 
-  <div v-if="step == 4">
-  </div>
   
-  <div v-if="step == 5">
-
-        <div class="alert alert-primary" role="alert">
-          Drag each term and move it to the "Good" and "Bad" section
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <h3>All</h3>
-            <draggable class="list-group" :list="allPasswordList" group="people">
-              <div
-                class="list-group-item"
-                v-for="(element) in allPasswordList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-
-          <div class="col">
-            <h3>Good</h3>
-            <draggable class="list-group good" :list="goodPasswordList" group="people">
-          <div
-                class="list-group-item"
-                v-for="(element) in goodPasswordList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-          <div class="col">
-            <h3>Bad</h3>
-            <draggable class="list-group bad" :list="badPasswordList" group="people">
-              <div
-                class="list-group-item"
-                v-for="(element) in badPasswordList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-        </div>
+    <div v-if="step == 4">
+      <container-game ref="game2" :items="secondGame"></container-game>
     </div>
-
 
     <user-guide
     ref="assistant"
@@ -130,30 +40,28 @@
 
 <script>
 import UserGuide from './UserGuide.vue';
- import draggable from 'vuedraggable'
 import {mapGetters} from 'vuex';
+import ContainerGame from './Games/ContainerGame.vue';
 
 export default {
-  components: { UserGuide, draggable },
+  components: { UserGuide, ContainerGame },
   name: 'PasswordPage',
   data() {
     return {
       step: 1,
-      allList: [
-         { name: "Use at least eight characters.", id: 1, type: 'good'},
-         { name: "Make it memorable, but avoid using personal information like names or birthdays.", id: 2, type: 'good' },
-         { name: "Use a mix of uppercase letters, lowercase letters, symbols and numbers.", id: 3, type: 'good' },
-         { name: "R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.", id: 4, type: 'good' },
-         { name: "Use the same password on multiple sites.", id: 5, type: 'bad' },
-         { name: "Use personal information (name, address, birth dates etc.) in your password.", id: 6, type: 'bad'},
-         { name: "Use a password that is easy to guess.", id: 7, type: 'bad' },
-         { name: "Use a password that can be found in a dictionary.", id: 8, type: 'bad'},
-         { name: "Share your password with a close friend in case you forget it.", id: 9, type: 'bad' },
-         { name: "Write your password down if it is hard to remember.", id: 10, type: 'bad' },
+      firstGame: [
+         { name: "Use at least eight characters.", type: 'good'},
+         { name: "Make it memorable, but avoid using personal information like names or birthdays.", type: 'good' },
+         { name: "Use a mix of uppercase letters, lowercase letters, symbols and numbers.", type: 'good' },
+         { name: "R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.", type: 'good' },
+         { name: "Use the same password on multiple sites.", type: 'bad' },
+         { name: "Use personal information (name, address, birth dates etc.) in your password.", type: 'bad'},
+         { name: "Use a password that is easy to guess.", type: 'bad' },
+         { name: "Use a password that can be found in a dictionary.", type: 'bad'},
+         { name: "Share your password with a close friend in case you forget it.", type: 'bad' },
+         { name: "Write your password down if it is hard to remember.", type: 'bad' },
       ],
-      goodList: [],
-      badList: [],
-      allPasswordList: [
+      secondGame: [
          { name: "L3t$_Pl@y", type: 'good'},
          { name: "Rucksack", type: 'bad'},
          { name: "rose2002", type: 'bad'},
@@ -165,8 +73,6 @@ export default {
          { name: "G3#3Im!1", type: 'good'},
          { name: "sportistmord", type: 'bad'},
       ],
-      goodPasswordList: [],
-      badPasswordList: []
     }
   },
   computed: {
@@ -181,42 +87,21 @@ export default {
       this.$refs.assistant.updateActions('Yeah, good idea.', this.showTask1);
     },
     showTask1() {
-      this.allList.sort(() => Math.random() - 0.5);
       this.step = 3;
       this.$refs.assistant.updateMessage("Just tell me, when every i should check your work.");
       this.$refs.assistant.updateActions('I think I am done.', this.task1Check);
     },
     task1Check() {
+      const result = this.$refs.game1.check();
 
-      if ( this.allList.length > 0) {
+      if (result == -1) {
         this.$refs.assistant.updateMessage("There are still some items in the 'all' column. Move all items to the according colum and i will check it again.");
         return;
-      }
-
-      let newAll = [];
-
-      this.goodList.forEach((item, index, arr) => {
-        if (item.type === "bad") {
-          newAll.push(item);
-          arr.splice(index, 1);
-        }
-      });
-
-
-      this.badList.forEach((item, index, arr) => {
-        if (item.type === "good") {
-          newAll.push(item);
-          arr.splice(index, 1);
-        }
-      });
-
-      this.allList = newAll;
-
-      if ( this.allList.length > 0) {
+      } else if (result == 0) {
         this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
         return;
       } else {
-        this.step = 4;
+        this.step = -1;
         this.$refs.assistant.updateMessage('You are right. Everything was correct.');
         this.$refs.assistant.updateActions('Continue', this.showTask2);
       }
@@ -246,42 +131,21 @@ export default {
       this.$refs.assistant.updateActions('Continue', this.showTask4);
     },
     showTask4() {
-      this.allPasswordList.sort(() => Math.random() - 0.5);
-      this.step = 5;
+      this.step = 4;
       this.$refs.assistant.updateMessage("I have found a list of passwords. Can you tell me which of that is a good and which is a bad password? Tell me again when i should check your result.");
       this.$refs.assistant.updateActions('I think I am done.', this.task4Check);
     },
     task4Check() {
+      const result = this.$refs.game2.check();
 
-      if ( this.allPasswordList.length > 0) {
+      if (result == -1) {
         this.$refs.assistant.updateMessage("There are still some items in the 'all' column. Move all items to the according colum and i will check it again.");
         return;
-      }
-
-      let newAll = [];
-
-      this.goodPasswordList.forEach((item, index, arr) => {
-        if (item.type === "bad") {
-          newAll.push(item);
-          arr.splice(index, 1);
-        }
-      });
-
-
-      this.badPasswordList.forEach((item, index, arr) => {
-        if (item.type === "good") {
-          newAll.push(item);
-          arr.splice(index, 1);
-        }
-      });
-
-      this.allPasswordList = newAll;
-
-      if ( this.allPasswordList.length > 0) {
+      } else if (result == 0) {
         this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
         return;
       } else {
-        this.$refs.assistant.updateMessage('You are right. Everything was correct.');
+        this.$refs.assistant.updateMessage('You are right. Everything was correct. Lets continue with the next topic.');
         this.$refs.assistant.updateActions('Continue', this.next);
       }
     },
@@ -291,16 +155,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.list-group.good {
-  background-color: #8cd69d;
-  min-height: 500px;
-  padding: 5px;
-}
-
-.list-group.bad {
-  background-color: #e1505c;
-  min-height: 500px;
-  padding: 5px;
-}
-</style>

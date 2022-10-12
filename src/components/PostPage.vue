@@ -20,50 +20,7 @@
     </div>
 
     <div v-if="step == 2">
-
-        <div class="alert alert-primary" role="alert">
-          Drag each term and move it to the "Good" and "Bad" section
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <h3>All</h3>
-            <draggable class="list-group" :list="allList" group="people">
-              <div
-                class="list-group-item"
-                v-for="(element) in allList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-
-          <div class="col">
-            <h3>Good</h3>
-            <draggable class="list-group good" :list="goodList" group="people">
-          <div
-                class="list-group-item"
-                v-for="(element) in goodList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-          <div class="col">
-            <h3>Bad</h3>
-            <draggable class="list-group bad" :list="badList" group="people">
-              <div
-                class="list-group-item"
-                v-for="(element) in badList"
-                :key="element.name"
-              >
-                {{ element.name }}
-              </div>
-            </draggable>
-          </div>
-        </div>
+        <container-game ref="game1" :items="firstGame"></container-game>
     </div>
 
     <div v-if="step == 3">
@@ -82,19 +39,16 @@
 <script>
 
 import UserGuide from './UserGuide.vue';
-import draggable from 'vuedraggable'
 import SimplePost from './SimplePost.vue';
 import {mapGetters} from 'vuex';
 
 export default {
   name: "PostPage",
-  components: {UserGuide, draggable, SimplePost},
+  components: {UserGuide, SimplePost},
   data() {
     return {
-      name: "",
       step: 0,
-      failCount: 0,
-      allList: [
+      firstGame: [
          { name: "Think before posting.", type: 'good'},
          { name: "Consider choice of words.", type: 'good' },
          { name: "Be respectful of differences.", type: 'good' },
@@ -107,8 +61,6 @@ export default {
          { name: "Check grammar of the post.", type: 'good' },
          { name: "Share secrets with others.", type: 'bad' },
       ],
-      goodList: [],
-      badList: [],
     };
   },
   computed: {
@@ -129,31 +81,12 @@ export default {
       this.$refs.assistant.updateActions('I think I am done.', this.task1Check);
     },
     task1Check() {
+      const result = this.$refs.game1.check();
 
-      if ( this.allList.length > 0) {
+      if (result == -1) {
         this.$refs.assistant.updateMessage("There are still some items in the 'all' column. Move all items to the according colum and i will check it again.");
         return;
-      }
-
-      let newAll = [];
-
-      this.goodList.forEach((item, index, arr) => {
-        if (item.type === "bad") {
-          newAll.push(item);
-          arr.splice(index, 1);
-        }
-      });
-
-      this.badList.forEach((item, index, arr) => {
-        if (item.type === "good") {
-          newAll.push(item);
-          arr.splice(index, 1);
-        }
-      });
-
-      this.allList = newAll;
-
-      if ( this.allList.length > 0) {
+      } else if (result == 0) {
         this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
         return;
       } else {
@@ -181,17 +114,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.list-group.good {
-  background-color: #8cd69d;
-  min-height: 300px;
-  padding: 5px;
-}
-
-.list-group.bad {
-  background-color: #e1505c;
-  min-height: 300px;
-  padding: 5px;
-}
-
-</style>

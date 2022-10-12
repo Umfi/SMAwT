@@ -14,7 +14,7 @@
               somethingʼs out there, it’s hard to take it back, and people can copy, screenshot it and
               share it. 
               <br><br>
-              <b>This tool is designed to help you learn how to use social media.</b>
+              <b>This tool is designed to help you learn how to use social media safely.</b>
             </p>
       </div>
     </div>
