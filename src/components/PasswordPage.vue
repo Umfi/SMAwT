@@ -30,7 +30,7 @@
 
     <user-guide
     ref="assistant"
-    :msg="'Hello ' + user + '. Nice to meet you. <br><br> Now we need to choose a password for your account. In the next step we will show you how to create a secure password.'"
+    :msg="'Hello ' + user + '. Nice to meet you.\n\nNow we need to choose a password for your account. In the next step we will show you how to create a secure password.'"
     actionA="Continue"
     :actionAFunc="showTask1Pre"
     ></user-guide>
@@ -107,7 +107,7 @@ export default {
       }
     },
     showTask2() {
-      this.$refs.assistant.updateMessage('What do you think about the password <b>' + this.user +'1</b>?');
+      this.$refs.assistant.updateMessage('What do you think about the password "' + this.user +'1"?');
       this.$refs.assistant.updateActions('This password is strong!', this.task2Fail, 'This is too weak', this.task2Pass);
     },
     task2Fail() {
@@ -119,7 +119,7 @@ export default {
       this.$refs.assistant.updateActions('Continue', this.showTask3);
     },
     showTask3() {
-      this.$refs.assistant.updateMessage('What do you think about the password <b>01.12.2000</b>?');
+      this.$refs.assistant.updateMessage('What do you think about the password "01.12.2000"?');
       this.$refs.assistant.updateActions('This password is strong!', this.task3Fail, 'This is too weak', this.task3Pass);
     },
     task3Fail() {

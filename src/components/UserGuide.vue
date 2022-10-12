@@ -5,7 +5,15 @@
             <img src="../assets/assistant.png" class="img-fluid rounded-circle" alt="User Image">
         </div>
         <div class="col-10 align-self-center">
-            <p v-html="message"></p>
+            <vue-typer
+  :text="message"
+  :repeat='0'
+  :type-delay='20'
+  :pre-erase-delay='0'
+  :erase-delay='0'
+  erase-style='clear'
+  caret-animation='blink'
+></vue-typer>
         </div>
     </div>
     <div class="row border-top">
@@ -20,8 +28,11 @@
 </template>
 
 <script>
+import { VueTyper } from 'vue-typer'
+
 export default {
   name: 'UserGuide',
+  components: { VueTyper },
   props: {
     msg: {
         default: '',

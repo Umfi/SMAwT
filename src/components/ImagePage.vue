@@ -19,7 +19,7 @@
 
     <user-guide
       ref="assistant"
-      msg="Great. Now you know what you can post and what not. But watch out this also count for photos.<br>I will show you what I mean."
+      msg="Great. Now you know what you can post and what not. But watch out this also count for photos.\nI will show you what I mean."
       actionA="Yes, tell me more about it!"
       :actionAFunc="showTask1"
     ></user-guide>

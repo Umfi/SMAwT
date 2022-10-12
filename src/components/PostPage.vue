@@ -29,7 +29,7 @@
 
     <user-guide
       ref="assistant"
-      msg="Great. Now you know how to set a secure password and what data is personal information and should kept private.<br>But before you post something, lets learn what we can and post and what we better do not post."
+      msg="Great. Now you know how to set a secure password and what data is personal information and should kept private.\nBut before you post something, lets learn what we can and post and what we better do not post."
       actionA="Continue"
       :actionAFunc="showTask1Pre"
     ></user-guide>
@@ -71,7 +71,7 @@ export default {
   methods: {
     showTask1Pre() {
       this.step = 1;
-      this.$refs.assistant.updateMessage("All this should be common sense anyway, right? <br><br> But it doesn't hurt to learn about it.");
+      this.$refs.assistant.updateMessage("All this should be common sense anyway, right?\n\nBut it doesn't hurt to learn about it.");
       this.$refs.assistant.updateActions('Sure, good idea.', this.showTask1);
     },
     showTask1() {

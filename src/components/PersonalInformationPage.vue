@@ -30,7 +30,7 @@
 
     <user-guide
       ref="assistant"
-      msg="We have now often talked about personal information.<br>We know that we should not share this information and tread it like secrets.<br><br>Lets have a look what personal information actually is."
+      msg="We have now often talked about personal information.\nWe know that we should not share this information and tread it like secrets.\n\nLets have a look what personal information actually is."
       actionA="Sure, tell me more about it."
       :actionAFunc="showTask1Pre"
     ></user-guide>
@@ -74,7 +74,7 @@ export default {
   methods: {
     showTask1Pre() {
       this.step = 1;
-      this.$refs.assistant.updateMessage("Make sense, right? <br><br> Let's practice it a bit with a fun game.");
+      this.$refs.assistant.updateMessage("Make sense, right?\n\nLet's practice it a bit with a fun game.");
       this.$refs.assistant.updateActions('Yes, lets play.', this.showTask1);
     },
     showTask1() {
@@ -84,7 +84,7 @@ export default {
     },
     finishTask1(points) {
       if (points > 10) {
-        this.$refs.assistant.updateMessage("You did a great job. You are now an expert in personal information. <br><br> Let's continue with the next topic.");
+        this.$refs.assistant.updateMessage("You did a great job. You are now an expert in personal information.\n\nLet's continue with the next topic.");
         this.$refs.assistant.updateActions('Continue', this.next);
       } else {
         this.$refs.assistant.updateMessage("Hm, better try one more time. This time you will manage it.");
