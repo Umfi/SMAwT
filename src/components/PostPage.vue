@@ -29,7 +29,7 @@
 
     <user-guide
       ref="assistant"
-      msg="Great. Now you know how to set a secure password and what data is personal information and should kept private.\nBut before you post something, lets learn what we can and post and what we better do not post."
+      :msg="'Great. Now you know how to set a secure password and what data is personal information and should kept private.\nBut before you post something, lets learn what we can and post and what we better do not post.'"
       actionA="Continue"
       :actionAFunc="showTask1Pre"
     ></user-guide>
@@ -39,12 +39,13 @@
 <script>
 
 import UserGuide from './UserGuide.vue';
+import ContainerGame from './Games/ContainerGame.vue';
 import SimplePost from './SimplePost.vue';
 import {mapGetters} from 'vuex';
 
 export default {
   name: "PostPage",
-  components: {UserGuide, SimplePost},
+  components: {UserGuide, SimplePost, ContainerGame},
   data() {
     return {
       step: 0,
