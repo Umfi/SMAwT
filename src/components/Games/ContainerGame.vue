@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="alert alert-primary" role="alert">
-          Drag each term and move it to the "Good" and "Bad" section
+          Drag each item and move it into the "Good" or "Bad" box.
         </div>
         
         <div class="row">

@@ -2,18 +2,18 @@
   <div id="assistant" class="border container fixed-bottom mb-3 shadow">
     <div class="row p-2">
         <div class="col-2">
-            <img src="../assets/assistant.png" class="img-fluid rounded-circle" alt="User Image">
+            <img src="../assets/assistant.png" class="img-fluid rounded-circle assistant" alt="User Image">
         </div>
-        <div class="col-10 align-self-center">
+        <div class="col-10 align-self-center" v-if="this.message.length > 0">
             <vue-typer
-  :text="message"
-  :repeat='0'
-  :type-delay='20'
-  :pre-erase-delay='0'
-  :erase-delay='0'
-  erase-style='clear'
-  caret-animation='blink'
-></vue-typer>
+            :text="message"
+            :repeat='0'
+            :type-delay='20'
+            :pre-erase-delay='0'
+            :erase-delay='0'
+            erase-style='clear'
+            caret-animation='blink'
+          ></vue-typer>
         </div>
     </div>
     <div class="row border-top">
@@ -84,3 +84,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.assistant {
+  user-select: none;
+}
+</style>

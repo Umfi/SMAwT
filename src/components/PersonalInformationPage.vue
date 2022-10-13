@@ -30,7 +30,7 @@
 
     <user-guide
       ref="assistant"
-      msg="We have now often talked about personal information.\nWe know that we should not share this information and tread it like secrets.\n\nLets have a look what personal information actually is."
+      :msg="'We have now often talked about personal information.\n We know that we should not share this information and tread it like secrets.\n\nLets have a look what personal information actually is.'"
       actionA="Sure, tell me more about it."
       :actionAFunc="showTask1Pre"
     ></user-guide>

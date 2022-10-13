@@ -14,11 +14,15 @@ export default {
   data() {
     return {
       points: 0,
-      elements: 50
+      elements: 50,
+      winSound: null,
+      loseSound: null,
     };
   },
   mounted() {
     this.startGame();
+    this.winSound = new Audio('/sounds/correct.wav');
+    this.loseSound = new Audio('/sounds/error.wav');
   },
   methods: {
     startGame() {
@@ -95,8 +99,10 @@ export default {
       // Add click listener for fruits
       fruitElement.addEventListener("click", () => {
         if (fruitElement.getAttribute('data-result') == "1") {
+          this.winSound.play();
           this.points++;
         } else {
+          this.loseSound.play();
           this.points--;
         }
 

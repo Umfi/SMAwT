@@ -7,15 +7,15 @@
         <p class="lead">That's how a password should look like</p>
         <ul class="list-group">
             <li class="list-group-item">Use at least eight characters. The longer the better (as long as you can remember it!).</li>
-            <li class="list-group-item">Make it memorable, but avoid using personal information like names or birthdays</li>
-            <li class="list-group-item">Use a mix of uppercase letters, lowercase letters, symbols and numbers</li>
-            <li class="list-group-item">R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$</li>
-            <li class="list-group-item">Do not use the same password on multiple sites</li>
-            <li class="list-group-item">Do not use personal information (name, address, birth dates or even a pet's name, etc.) in your password</li>
-            <li class="list-group-item">Do not use a password that is easy to guess (like "password", "123456", "qwerty", etc.)</li>
-            <li class="list-group-item">Do not use a password that can be found in a dictionary</li>
-            <li class="list-group-item">Do not share your password with anyone</li>
-            <li class="list-group-item" >Do not write your password down</li>
+            <li class="list-group-item">Make it memorable, but avoid using personal information like names or birthdays.</li>
+            <li class="list-group-item">Use a mix of uppercase letters, lowercase letters, symbols and numbers.</li>
+            <li class="list-group-item">R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.</li>
+            <li class="list-group-item">Do not use the same password on multiple sites.</li>
+            <li class="list-group-item">Do not use personal information (name, address, birth dates or even a pet's name, etc.) in your password.</li>
+            <li class="list-group-item">Do not use a password that is easy to guess (like "password", "123456", "qwerty", etc.).</li>
+            <li class="list-group-item">Do not use a password that can be found in a dictionary.</li>
+            <li class="list-group-item">Do not share your password with anyone.</li>
+            <li class="list-group-item" >Do not write your password down.</li>
         </ul>
     </div>
 
@@ -30,7 +30,7 @@
 
     <user-guide
     ref="assistant"
-    :msg="'Hello ' + user + '. Nice to meet you.\n\nNow we need to choose a password for your account. In the next step we will show you how to create a secure password.'"
+    :msg="'Hello ' + user + '. Nice to meet you.\n\nNow we need to choose a password for your account. \nIn the next step we will show you how to create a secure password.'"
     actionA="Continue"
     :actionAFunc="showTask1Pre"
     ></user-guide>
