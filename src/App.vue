@@ -5,7 +5,7 @@
             <a class="navbar-brand" href="/">Social Media Training</a>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" id="container">
         <div class="text-center mt-5">
             <LandingPage v-if="step == 0" @next="nextStep"/>
             <SetupPage v-if="step == 1" @next="nextStep"/>
