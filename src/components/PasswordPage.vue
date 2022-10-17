@@ -60,6 +60,7 @@ export default {
          { name: "Use a password that can be found in a dictionary.", type: 'bad'},
          { name: "Share your password with a close friend in case you forget it.", type: 'bad' },
          { name: "Write your password down if it is hard to remember.", type: 'bad' },
+         { name: "Change your password if you think someone else knows it.", type: 'good' }
       ],
       secondGame: [
          { name: "L3t$_Pl@y", type: 'good'},

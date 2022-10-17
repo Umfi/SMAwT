@@ -14,6 +14,7 @@
             <PostPage v-if="step == 4" @next="nextStep"/>
             <ImagePage v-if="step == 5" @next="nextStep"/>
             <PrivacyPage v-if="step == 6" @next="nextStep"/>
+            <FriendRequestsPage v-if="step == 7" @next="nextStep"/>
         </div>
     </div>
   </div>
@@ -27,6 +28,7 @@ import PersonalInformationPage from './components/PersonalInformationPage.vue'
 import PostPage from './components/PostPage.vue'
 import ImagePage from './components/ImagePage.vue'
 import PrivacyPage from './components/PrivacyPage.vue'
+import FriendRequestsPage from './components/FriendRequestsPage.vue'
 
 export default {
   name: 'App',
@@ -42,7 +44,8 @@ export default {
     PersonalInformationPage,
     PostPage,
     ImagePage,
-    PrivacyPage
+    PrivacyPage,
+    FriendRequestsPage
   },
   methods: {
     nextStep() {
