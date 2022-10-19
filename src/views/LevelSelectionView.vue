@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-4 mb-4" v-for="level in levels" :key="level.id">
-            <div class="btn btn-primary level shadow-lg w-100 d-flex h-100 justify-content-center" @click="openLevel(level.url)">
+            <div class="btn btn-primary level shadow-lg w-100 d-flex h-100 justify-content-center" @click="openLevel(level)">
                 <div v-if="!level.locked">
                     <h2>{{ level.id }}</h2>
                     <h3>{{ level.name }}</h3>
@@ -41,8 +41,11 @@ export default {
     ])
  },
  methods: {
-    openLevel(url) {
-        this.$router.push(url);
+    openLevel(level) {
+        if (level.locked) {
+            return;
+        }
+        this.$router.push(level.url);
     }
  }
 }

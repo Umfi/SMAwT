@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <h1>Personal information</h1>
-
-
+  <div class="container mt-5">
+    
     <div v-if="step == 1">
       
+        <h1>Personal information</h1>
+
         <p class="lead">You should tread personal information like secrets. Don't tell them anybody in the internet.</p>
         <p class="lead">Following personal information is information that can be used to identify you.</p>
         
@@ -27,6 +27,9 @@
         <falling-text-game :items="gameItems" @game-over="finishTask1"></falling-text-game>
     </div>
 
+    <div v-if="step == 3">
+        <level-complete :level="'Personal Information'" :score="12" :stars="1" @play-again="playAgain" @finish="next"></level-complete>
+    </div>
 
     <user-guide
       ref="assistant"
@@ -39,13 +42,14 @@
 
 <script>
 
-import UserGuide from './UserGuide.vue';
+import UserGuide from '../../components/UserGuide.vue';
 import {mapGetters} from 'vuex';
-import FallingTextGame from './Games/FallingTextGame.vue';
+import FallingTextGame from '../../components/Games/FallingTextGame.vue';
+import LevelComplete from '../../components/LevelComplete.vue';
 
 export default {
-  name: "PersonalInformationPage",
-  components: {UserGuide, FallingTextGame},
+  name: "PersonalInformationView",
+  components: {UserGuide, FallingTextGame, LevelComplete},
   data() {
     return {
       step: 0,
@@ -85,15 +89,28 @@ export default {
     finishTask1(points) {
       if (points > 10) {
         this.$refs.assistant.updateMessage("You did a great job. You are now an expert in personal information.\n\nLet's continue with the next topic.");
-        this.$refs.assistant.updateActions('Continue', this.next);
+        this.$refs.assistant.updateActions('Continue', this.finishLevel);
       } else {
         this.$refs.assistant.updateMessage("Hm, better try one more time. This time you will manage it.");
         this.$refs.assistant.updateActions('Let me try again', this.showTask1Pre);
       }
     },
-    next() {
-      this.$emit('next')
+    finishLevel() {
+      this.$refs.assistant.hide();
+
+      //calculate score and stars
+      const points = 1;
+      this.$store.dispatch('updateLevel', { id: 2, stars: points });
+
+      //show level finished dialog
+      this.step = 3;
     },
+    playAgain() {
+      this.$router.go();
+    },
+    next() {
+      this.$router.replace('/levels');
+    }
   },
 };
 </script>

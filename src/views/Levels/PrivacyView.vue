@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <h1>Privacy</h1>
-
-
+  <div class="container mt-5">
     <div v-if="step == 1">
+
+        <h1>Privacy</h1>
+
+
         <p class="lead">
           When you post something online you often have the posibility to limit who actually can see your posts.
           <br>
@@ -68,6 +69,11 @@
       ></post-privacy-game>
     </div>
 
+
+    <div v-if="step == 3">
+        <level-complete :level="'Privacy'" :score="5353" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
+    </div>
+
     <user-guide
       ref="assistant"
       :msg="'Wow you have already learned alot today. You know what you can post and what you better do not post.\nBut there is still one thing we need to talk about. And that is your privacy.'"
@@ -79,13 +85,14 @@
 
 <script>
 
-import UserGuide from './UserGuide.vue';
-import PostPrivacyGame from './Games/PostPrivacyGame.vue';
+import UserGuide from '../../components/UserGuide.vue';
+import PostPrivacyGame from '../../components/Games/PostPrivacyGame.vue';
 import {mapGetters} from 'vuex';
+import LevelComplete from '../../components/LevelComplete.vue';
 
 export default {
-  name: "PrivacyPage",
-  components: {UserGuide, PostPrivacyGame},
+  name: "PrivacyView",
+  components: {UserGuide, PostPrivacyGame, LevelComplete},
   data() {
     return {
       step: 0,
@@ -114,15 +121,28 @@ export default {
         this.$refs.assistant.updateMessage("Please choose an answer.");
       } else if (answer == 1) {
         this.$refs.assistant.updateMessage("You are right. There is nothing harmful in this post and it could be posted publicly.");
-        this.$refs.assistant.updateActions('Continue', this.next);
+        this.$refs.assistant.updateActions('Continue', this.finishLevel);
       } else {
         this.$refs.assistant.updateMessage("You are wrong. There is nothing harmful in this post and it could be posted publicly.");
-        this.$refs.assistant.updateActions('Continue', this.next);
+        this.$refs.assistant.updateActions('Continue', this.finishLevel);
       }
     },
-    next() {
-      this.$emit('next')
+    finishLevel() {
+      this.$refs.assistant.hide();
+
+      //calculate score and stars
+      const points = 3;
+      this.$store.dispatch('updateLevel', { id: 5, stars: points });
+
+      //show level finished dialog
+      this.step = 3;
     },
+    playAgain() {
+      this.$router.go();
+    },
+    next() {
+      this.$router.replace('/levels');
+    }
   },
 };
 </script>

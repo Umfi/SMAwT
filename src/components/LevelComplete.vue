@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="card-footer">
-        <button type="button" class="btn btn-secondary btn-lg mt-4" @click="playAgain">Play Again</button>
+        <button type="button" class="btn btn-secondary btn-lg mt-4 float-start" @click="playAgain">Play Again</button>
         <button type="button" class="btn btn-primary btn-lg mt-4 float-end" @click="finish">Continue</button>
     </div>
 </div>
@@ -98,7 +98,7 @@ export default {
 
     .game-done-card .card-header {
         background-color: rgba(29,119,147,1) 100%;
-        border-bottom: 0;
+        border: 0;
     }
 
     .game-done-card {

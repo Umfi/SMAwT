@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <h1>Posts</h1>
-
-
-
-
+  <div class="container mt-5">
     <div v-if="step == 1">
       
+        <h1>Posts</h1>
+
         <h3>Keep does rules in mind!</h3>
         <ul class="list-group">
             <li class="list-group-item">Think before you post.</li>
@@ -27,6 +24,11 @@
       <simple-post :author="user" message="I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm."></simple-post>
     </div>
 
+    <div v-if="step == 4">
+        <level-complete :level="'Posts'" :score="5353" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
+    </div>
+
+
     <user-guide
       ref="assistant"
       :msg="'Great. Now you know how to set a secure password and what data is personal information and should kept private.\nBut before you post something, lets learn what we can and post and what we better do not post.'"
@@ -38,14 +40,15 @@
 
 <script>
 
-import UserGuide from './UserGuide.vue';
-import ContainerGame from './Games/ContainerGame.vue';
-import SimplePost from './SimplePost.vue';
+import UserGuide from '../../components/UserGuide.vue';
+import ContainerGame from '../../components/Games/ContainerGame.vue';
+import SimplePost from '../../components/SimplePost.vue';
+import LevelComplete from '../../components/LevelComplete.vue';
 import {mapGetters} from 'vuex';
 
 export default {
-  name: "PostPage",
-  components: {UserGuide, SimplePost, ContainerGame},
+  name: "PostView",
+  components: {UserGuide, SimplePost, ContainerGame, LevelComplete},
   data() {
     return {
       step: 0,
@@ -102,15 +105,28 @@ export default {
     },
     task2Fail() {
       this.$refs.assistant.updateMessage('Nope. You should never post your adress online.');
-      this.$refs.assistant.updateActions('Continue', this.next);
+      this.$refs.assistant.updateActions('Continue', this.finishLevel);
     },
     task2Pass() {
       this.$refs.assistant.updateMessage('You are right. The adress is private information and should not be shared online.');
-      this.$refs.assistant.updateActions('Continue', this.next);
+      this.$refs.assistant.updateActions('Continue', this.finishLevel);
+    },
+    finishLevel() {
+      this.$refs.assistant.hide();
+
+      //calculate score and stars
+      const points = 3;
+      this.$store.dispatch('updateLevel', { id: 3, stars: points });
+
+      //show level finished dialog
+      this.step = 4;
+    },
+    playAgain() {
+      this.$router.go();
     },
     next() {
-      this.$emit('next')
-    },
+      this.$router.replace('/levels');
+    }
   },
 };
 </script>

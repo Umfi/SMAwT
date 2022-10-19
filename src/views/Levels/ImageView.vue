@@ -1,13 +1,18 @@
 <template>
-  <div>
-    <h1>Images</h1>
+  <div id="container" class="container mt-5 text-center">
 
     <div v-if="step == 1">
+      <h1>Images</h1>
       <image-game key="game1" ref="game1" image="1.png" :bb="{ x: 160, y: 215, width: 25, height: 20 }" @game-over="task1ImageResult"/>
     </div>
 
     <div v-if="step == 2">
+        <h1>Images</h1>
        <image-game key="game2" ref="game2" image="2.png" :bb="{ x: 328, y: 118, width: 30, height: 20 }" @game-over="task2ImageResult"/>
+    </div>
+
+    <div v-if="step == 3">
+        <level-complete :level="'Images'" :score="122" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
     </div>
 
     <user-guide
@@ -21,12 +26,13 @@
 
 <script>
 
-import UserGuide from './UserGuide.vue';
-import ImageGame from './Games/ImageGame.vue';
+import UserGuide from '../../components/UserGuide.vue';
+import ImageGame from '../../components/Games/ImageGame.vue';
+import LevelComplete from '../../components/LevelComplete.vue';
 
 export default {
-  name: "ImagePage",
-  components: {UserGuide, ImageGame},
+  name: "ImageView",
+  components: {UserGuide, ImageGame, LevelComplete},
   data() {
     return {
       name: "",
@@ -75,15 +81,28 @@ export default {
     task2Fail() {
       this.$refs.game2.showHint();
       this.$refs.assistant.updateMessage('Watch out. On this picture personal information like a password is leaked.');
-      this.$refs.assistant.updateActions('Continue', this.next);
+      this.$refs.assistant.updateActions('Continue', this.finishLevel);
     },
     task2Pass() {
       this.$refs.assistant.updateMessage('You are right. On this picture we leak a password. We do not want this information on the internet.');
-      this.$refs.assistant.updateActions('Continue', this.next);
+      this.$refs.assistant.updateActions('Continue', this.finishLevel);
+    },
+    finishLevel() {
+      this.$refs.assistant.hide();
+
+      //calculate score and stars
+      const points = 2;
+      this.$store.dispatch('updateLevel', { id: 4, stars: points });
+
+      //show level finished dialog
+      this.step = 3;
+    },
+    playAgain() {
+      this.$router.go();
     },
     next() {
-      this.$emit('next')
-    },
+      this.$router.replace('/levels');
+    }
   },
 };
 </script>

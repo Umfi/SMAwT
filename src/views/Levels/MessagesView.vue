@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <h1>Messages</h1>
+  <div class="container mt-5">
 
     <div v-if="step == 1">
+      <h1>Messages</h1>
+
       <p class="lead">
         On social media everyone can send you messages. It could happen that you get a message from a stranger who wants to harm you or who wants to steal your personal data.
-
       </p>
 
       <br />
@@ -37,7 +37,9 @@
       <simple-chat :messages="chatOne"></simple-chat>
     </div>
 
-
+    <div v-if="step == 4">
+        <level-complete :level="'Messages'" :score="122" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
+    </div>
 
     <user-guide
       ref="assistant"
@@ -49,14 +51,15 @@
 </template>
 
 <script>
-import UserGuide from "./UserGuide.vue";
+import UserGuide from "../../components/UserGuide.vue";
 import { mapGetters } from "vuex";
-import ContainerGame from './Games/ContainerGame.vue';
-import SimpleChat from './SimpleChat.vue';
+import ContainerGame from '../../components/Games/ContainerGame.vue';
+import SimpleChat from '../../components/SimpleChat.vue';
+import LevelComplete from '../../components/LevelComplete.vue';
 
 export default {
-  name: "MessagesPage",
-  components: { UserGuide, ContainerGame, SimpleChat },
+  name: "MessagesView",
+  components: { UserGuide, ContainerGame, SimpleChat, LevelComplete },
   data() {
     return {
       step: 0,
@@ -109,11 +112,24 @@ export default {
     showTask2() {
       this.step = 3;
       this.$refs.assistant.updateMessage("What do you think about this message. What should we do?");
-      this.$refs.assistant.updateActions('Continue', this.next);
+      this.$refs.assistant.updateActions('Continue', this.finishLevel);
+    },
+    finishLevel() {
+      this.$refs.assistant.hide();
+
+      //calculate score and stars
+      const points = 3;
+      this.$store.dispatch('updateLevel', { id: 7, stars: points });
+
+      //show level finished dialog
+      this.step = 4;
+    },
+    playAgain() {
+      this.$router.go();
     },
     next() {
-      this.$emit("next");
-    },
+      this.$router.replace('/levels');
+    }
   },
 };
 </script>

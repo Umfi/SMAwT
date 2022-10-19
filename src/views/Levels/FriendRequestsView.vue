@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1>Friend Requests</h1>
+  <div class="container mt-5">
 
     <div v-if="step == 1">
+      <h1>Friend Requests</h1>
       <p class="lead">
         Today more and more people use the internet. Not all of themn really
         want to be your friend. Some of them are just trying to get your
@@ -44,6 +44,10 @@
       <friend-request :image="'https://www.bravo.de/assets/field/image/pikachu_bts.jpg'" :name="'Markus Rabein'" :mutalFriends="1"></friend-request>
     </div>
 
+    <div v-if="step == 5">
+        <level-complete :level="'Friends'" :score="122" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
+    </div>
+
     <user-guide
       ref="assistant"
       :msg="'Social media would not be social if there would not been any other humans.\nIn many social media platttforms you can connect with other people and become friends.\n\nBut be careful, not everybody is your friend. Some people just want to get your personal information.'"
@@ -54,13 +58,14 @@
 </template>
 
 <script>
-import UserGuide from "./UserGuide.vue";
+import UserGuide from "../../components/UserGuide.vue";
 import { mapGetters } from "vuex";
-import FriendRequest from './FriendRequest.vue';
+import FriendRequest from '../../components/FriendRequest.vue';
+import LevelComplete from '../../components/LevelComplete.vue';
 
 export default {
-  name: "FriendRequestsPage",
-  components: { UserGuide, FriendRequest },
+  name: "FriendRequestsView",
+  components: { UserGuide, FriendRequest, LevelComplete },
   data() {
     return {
       step: 0,
@@ -110,15 +115,28 @@ export default {
     },
     task3Pass() {
       this.$refs.assistant.updateMessage("You are right. You only have one common friend, but the fact that he is using a photo of a cartoon is strage. Before accepting this friend requests, you should check the profile of the person in detail.");
-      this.$refs.assistant.updateActions("Continue", this.next);
+      this.$refs.assistant.updateActions("Continue", this.finishLevel);
     },
     task3Fail() {
       this.$refs.assistant.updateMessage("You are wrong. You only have one common friend, but the fact that he is using a photo of a cartoon is strage. Before accepting this friend requests, you should check the profile of the person in detail.");
-      this.$refs.assistant.updateActions("Continue", this.next);
+      this.$refs.assistant.updateActions("Continue", this.finishLevel);
+    },
+    finishLevel() {
+      this.$refs.assistant.hide();
+
+      //calculate score and stars
+      const points = 3;
+      this.$store.dispatch('updateLevel', { id: 6, stars: points });
+
+      //show level finished dialog
+      this.step = 5;
+    },
+    playAgain() {
+      this.$router.go();
     },
     next() {
-      this.$emit("next");
-    },
+      this.$router.replace('/levels');
+    }
   },
 };
 </script>

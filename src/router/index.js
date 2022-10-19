@@ -5,6 +5,12 @@ import LandingView from '../views/LandingView.vue'
 import SetupView from '../views/SetupView.vue'
 import LevelSelectionView from '../views/LevelSelectionView.vue'
 import PasswordSecurityView from '../views/Levels/PasswordSecurityView.vue'
+import PersonalInformationView from '../views/Levels/PersonalInformationView.vue'
+import PostView from '../views/Levels/PostView.vue'
+import ImageView from '../views/Levels/ImageView.vue'
+import PrivacyView from '../views/Levels/PrivacyView.vue'
+import FriendRequestsView from '../views/Levels/FriendRequestsView.vue'
+import MessagesView from '../views/Levels/MessagesView.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +34,36 @@ const routes = [
     path: '/levels/password-security',
     name: 'level-password-security',
     component: PasswordSecurityView
+  },
+  {
+    path: '/levels/personal-information',
+    name: 'level-personal-information',
+    component: PersonalInformationView
+  },
+  {
+    path: '/levels/posts',
+    name: 'level-posts',
+    component: PostView
+  },
+  {
+    path: '/levels/images',
+    name: 'level-images',
+    component: ImageView
+  },
+  {
+    path: '/levels/privacy',
+    name: 'level-privacy',
+    component: PrivacyView
+  },
+  {
+    path: '/levels/friends',
+    name: 'level-friends',
+    component: FriendRequestsView
+  },
+  {
+    path: '/levels/messages',
+    name: 'level-messages',
+    component: MessagesView
   }
 ]
 
