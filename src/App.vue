@@ -1,56 +1,53 @@
 <template>
-  <div id="app">
+  <div id="app" :class="currentRoute">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">Social Media Training</a>
+            <router-link to="/" class="navbar-brand">Social Media Training</router-link> 
         </div>
     </nav>
-    <div class="container" id="container">
-        <div class="text-center mt-5">
-            <LandingPage v-if="step == 0" @next="nextStep"/>
-            <SetupPage v-if="step == 1" @next="nextStep"/>
-            <PasswordPage v-if="step == 2" @next="nextStep"/>
-            <PersonalInformationPage v-if="step == 3" @next="nextStep"/>
-            <PostPage v-if="step == 4" @next="nextStep"/>
-            <ImagePage v-if="step == 5" @next="nextStep"/>
-            <PrivacyPage v-if="step == 6" @next="nextStep"/>
-            <FriendRequestsPage v-if="step == 7" @next="nextStep"/>
-        </div>
-    </div>
+
+    <transition name="fade" mode="out-in">
+        <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
-import LandingPage from './components/LandingPage.vue'
-import SetupPage from './components/SetupPage.vue'
-import PasswordPage from './components/PasswordPage.vue'
-import PersonalInformationPage from './components/PersonalInformationPage.vue'
-import PostPage from './components/PostPage.vue'
-import ImagePage from './components/ImagePage.vue'
-import PrivacyPage from './components/PrivacyPage.vue'
-import FriendRequestsPage from './components/FriendRequestsPage.vue'
 
 export default {
   name: 'App',
   data() {
     return {
-      step: 0
+      currentRoute: ''
     }
   },
-  components: {
-    LandingPage,
-    SetupPage,
-    PasswordPage,
-    PersonalInformationPage,
-    PostPage,
-    ImagePage,
-    PrivacyPage,
-    FriendRequestsPage
-  },
-  methods: {
-    nextStep() {
-      this.step++;
+  watch:{
+    $route (to){
+        this.currentRoute = to.name;
     }
   }
 }
 </script>
+<style>
+
+#app {
+  min-height: 100vh;
+}
+
+#app.level {
+    background: url('~@/assets/bg.jpg') no-repeat center center fixed; 
+    min-height: 100vh;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+</style>

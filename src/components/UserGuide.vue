@@ -1,5 +1,5 @@
 <template>
-  <div id="assistant" class="border container fixed-bottom mb-3 shadow">
+  <div id="assistant" class="border container fixed-bottom mb-3 shadow" v-show="visible">
     <div class="row p-2">
         <div class="col-2">
             <img src="../assets/assistant.png" class="img-fluid rounded-circle assistant" alt="User Image">
@@ -57,6 +57,7 @@ export default {
   },
   data() {
     return {
+      visible: true,
       message: '',
       actionAText: '',
       actionBText: '',
@@ -81,6 +82,12 @@ export default {
       this.actionBText = actionB;
       this.actionBFunction = actionBFunc;
     },
+    hide() {
+      this.visible = false;
+    },
+    show() {
+      this.visible = true;
+    }
   }
 }
 </script>

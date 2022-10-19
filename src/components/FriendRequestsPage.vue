@@ -96,11 +96,11 @@ export default {
       this.$refs.assistant.updateActions('Yes, add her!', this.task2Fail, 'No, better not!', this.task2Pass);
     },
     task2Pass() {
-      this.$refs.assistant.updateMessage("You are right. This is very strange. You don't have any common friends and she looks very asian. You probably don't know her. We should delete this friend request.");
+      this.$refs.assistant.updateMessage("You are right. This is very strange. You don't have any common friends. You probably don't know her. We should delete this friend request.");
       this.$refs.assistant.updateActions("Continue", this.showTask3);
     },
     task2Fail() {
-      this.$refs.assistant.updateMessage("You are wrong. This is very strange. You don't have any common friends and she looks very asian. You probably don't know her. We should delete this friend request.");
+      this.$refs.assistant.updateMessage("You are wrong. This is very strange. You don't have any common friends. You probably don't know her. We should delete this friend request.");
       this.$refs.assistant.updateActions("Continue", this.showTask2);
     },
     showTask3() {

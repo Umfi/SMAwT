@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <h1>Password</h1>
-
+  <div class="container mt-5">
+    
 
     <div v-if="step == 2">
+        <h1 class="text-center">Password Security</h1>
+
         <p class="lead">That's how a password should look like</p>
         <ul class="list-group">
             <li class="list-group-item">Use at least eight characters. The longer the better (as long as you can remember it!).</li>
@@ -28,9 +29,13 @@
       <container-game ref="game2" :items="secondGame"></container-game>
     </div>
 
+    <div v-if="step == 5">
+        <level-complete :level="'Password Security'" :score="123" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
+    </div>
+
     <user-guide
     ref="assistant"
-    :msg="'Hello ' + user + '. Nice to meet you.\n\nNow we need to choose a password for your account. \nIn the next step we will show you how to create a secure password.'"
+    :msg="'Hello ' + user.name + '. Nice to meet you.\n\nNow we need to choose a password for your account. \nIn the next step we will show you how to create a secure password.'"
     actionA="Continue"
     :actionAFunc="showTask1Pre"
     ></user-guide>
@@ -39,13 +44,14 @@
 </template>
 
 <script>
-import UserGuide from './UserGuide.vue';
+import UserGuide from '../../components/UserGuide.vue';
 import {mapGetters} from 'vuex';
-import ContainerGame from './Games/ContainerGame.vue';
+import ContainerGame from '../../components/Games/ContainerGame.vue';
+import LevelComplete from '../../components/LevelComplete.vue';
 
 export default {
-  components: { UserGuide, ContainerGame },
-  name: 'PasswordPage',
+  components: { UserGuide, ContainerGame, LevelComplete },
+  name: 'PasswordSecurityView',
   data() {
     return {
       step: 1,
@@ -108,7 +114,7 @@ export default {
       }
     },
     showTask2() {
-      this.$refs.assistant.updateMessage('What do you think about the password "' + this.user +'1"?');
+      this.$refs.assistant.updateMessage('What do you think about the password "' + this.user.name +'1"?');
       this.$refs.assistant.updateActions('This password is strong!', this.task2Fail, 'This is too weak', this.task2Pass);
     },
     task2Fail() {
@@ -147,11 +153,24 @@ export default {
         return;
       } else {
         this.$refs.assistant.updateMessage('You are right. Everything was correct. Lets continue with the next topic.');
-        this.$refs.assistant.updateActions('Continue', this.next);
+        this.$refs.assistant.updateActions('Continue', this.finishLevel);
       }
     },
+    finishLevel() {
+      this.$refs.assistant.hide();
+
+      //calculate score and stars
+      const points = 3;
+      this.$store.dispatch('updateLevel', { id: 1, stars: points });
+
+      //show level finished dialog
+      this.step = 5;
+    },
+    playAgain() {
+      this.$router.go();
+    },
     next() {
-      this.$emit('next')
+      this.$router.replace('/levels');
     }
   }
 }

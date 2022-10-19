@@ -76,7 +76,6 @@ export default {
       this.$refs.assistant.updateActions('Sure, good idea.', this.showTask1);
     },
     showTask1() {
-      this.allList.sort(() => Math.random() - 0.5);
       this.step = 2;
       this.$refs.assistant.updateMessage("Just tell me, when every i should check your work.");
       this.$refs.assistant.updateActions('I think I am done.', this.task1Check);
