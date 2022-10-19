@@ -3,63 +3,66 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+
+const initalLevels = [
+  {
+    id: 1,
+    name: 'Password Security',
+    url: '/levels/password-security',
+    stars: 0,
+    locked: false
+  },
+  {
+      id: 2,
+      name: 'Personal Information',
+      url: '/levels/personal-information',
+      stars: 0,
+      locked: true
+  },
+  {
+      id: 3,
+      name: 'Posts',
+      url: '/levels/posts',
+      stars: 0,
+      locked: true
+  },
+  {
+      id: 4,
+      name: 'Images',
+      url: '/levels/images',
+      stars: 0,
+      locked: true
+  },
+  {
+      id: 5,
+      name: 'Privacy',
+      url: '/levels/privacy',
+      stars: 0,
+      locked: true
+  },
+  {
+      id: 6,
+      name: 'Friends',
+      url: '/levels/friends',
+      stars: 0,
+      locked: true
+  },
+  {
+      id: 7,
+      name: 'Messages',
+      url: '/levels/messages',
+      stars: 0,
+      locked: true
+  }
+];
+
 export default new Vuex.Store({
   state: {
     user: {
       name: '',
       avatar: ''
     },
-    levels: [
-      {
-        id: 1,
-        name: 'Password Security',
-        url: '/levels/password-security',
-        stars: 0,
-        locked: false
-      },
-      {
-          id: 2,
-          name: 'Personal Information',
-          url: '/levels/personal-information',
-          stars: 0,
-          locked: true
-      },
-      {
-          id: 3,
-          name: 'Posts',
-          url: '/levels/posts',
-          stars: 0,
-          locked: true
-      },
-      {
-          id: 4,
-          name: 'Images',
-          url: '/levels/images',
-          stars: 0,
-          locked: true
-      },
-      {
-          id: 5,
-          name: 'Privacy',
-          url: '/levels/privacy',
-          stars: 0,
-          locked: true
-      },
-      {
-          id: 6,
-          name: 'Friends',
-          url: '/levels/friends',
-          stars: 0,
-          locked: true
-      },
-      {
-          id: 7,
-          name: 'Messages',
-          url: '/levels/messages',
-          stars: 0,
-          locked: true
-      }
-    ]
+    levels: []
   },
   getters: {
     user: state => {
@@ -75,9 +78,12 @@ export default new Vuex.Store({
         state.user = JSON.parse(localStorage.getItem('sometra_user'));
       }
 
-      return state.levels
+      return state.user
     },
-    SET_USER(state, user) {
+    START_GAME(state, user) {
+      state.levels = [...initalLevels];
+      localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
+
       localStorage.setItem('sometra_user', JSON.stringify(user));
       return state.user = user
     },
@@ -100,10 +106,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setUser({commit}, user) {
-      commit("SET_USER", user);
+    startGame({commit}, user) {
+      commit("START_GAME", user);
     },
-    //this.$store.dispatch('updateLevel', { id: 1, stars: 1 });
     updateLevel({commit}, level) {
       commit("UPDATE_LEVEL", level);
     }

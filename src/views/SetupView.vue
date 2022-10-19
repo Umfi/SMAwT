@@ -53,7 +53,7 @@ export default {
         name: this.username,
         avatar: `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(this.$refs.avatar.$el.outerHTML)))}`
       }
-      this.$store.dispatch('setUser', user).then(() => {
+      this.$store.dispatch('startGame', user).then(() => {
         this.$router.push('/levels')
       })
     }

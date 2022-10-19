@@ -21,9 +21,10 @@
 
 
     <user-guide 
+    ref="assistant"
     msg="Hey. I am Mike your social media expert. I will help you to become an expert too." 
     actionA="Sounds good!" 
-    :actionAFunc="start"></user-guide>
+    :actionAFunc="restart"></user-guide>
 
   </div>
 </template>
@@ -41,7 +42,16 @@ export default {
         'user'
     ])
   },
+  mounted() {
+    if (this.user && this.user.name.length > 0) {
+      this.$refs.assistant.updateMessage("Hey " + this.user.name + ". Do you want to continue your training?");
+      this.$refs.assistant.updateActions('I want to start from the beginning!', this.restart, 'Yeah, lets continue!', this.start);
+    }
+  },
   methods: {
+    restart() {
+      this.$router.push('/setup');
+    },
     start() {
       if (this.user && this.user.name.length > 0) {
         this.$router.push('/levels');
