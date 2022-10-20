@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-4 mb-4" v-for="level in levels" :key="level.id">
-            <div class="btn btn-primary level shadow-lg w-100 d-flex h-100 justify-content-center" @click="openLevel(level)">
+            <div :class="level.locked ? 'btn btn-secondary level shadow-lg w-100 d-flex h-100 justify-content-center' : 'btn btn-primary level shadow-lg w-100 d-flex h-100 justify-content-center'" @click="openLevel(level)">
                 <div v-if="!level.locked">
                     <h2>{{ level.id }}</h2>
                     <h3>{{ level.name }}</h3>

@@ -6,8 +6,8 @@
         
         <div class="row">
           <div class="col">
-            <h3>All</h3>
-            <draggable class="list-group shadow" :list="allList" group="items">
+            <h3 class="text-center">All</h3>
+            <draggable class="list-group all shadow" :list="allList" group="items">
               <div
                 class="list-group-item"
                 v-for="(element) in allList"
@@ -19,9 +19,9 @@
           </div>
 
           <div class="col">
-            <h3>Good</h3>
-            <draggable class="list-group good shadow" :list="goodList" group="items">
-          <div
+            <h3 class="text-center">Good</h3>
+            <draggable class="list-group good shadow" :list="goodList" group="items" @add="sound.play()">
+              <div
                 class="list-group-item"
                 v-for="(element) in goodList"
                 :key="element.name"
@@ -31,8 +31,8 @@
             </draggable>
           </div>
           <div class="col">
-            <h3>Bad</h3>
-            <draggable class="list-group bad shadow" :list="badList" group="items">
+            <h3 class="text-center">Bad</h3>
+            <draggable class="list-group bad shadow" :list="badList" group="items" @add="sound.play()">
               <div
                 class="list-group-item"
                 v-for="(element) in badList"
@@ -58,12 +58,14 @@ export default {
   },
   data() {
     return {
+      sound: null,
       allList: [],
       goodList: [],
       badList: [],
     };
   },
   mounted() {
+    this.sound = new Audio('/sounds/stick.wav');
     this.allList = this.$props.items;
     this.allList.sort(() => Math.random() - 0.5);
   },
@@ -110,6 +112,12 @@ export default {
 
 .list-group.bad {
   background-color: #e1505c;
+  min-height: 500px;
+  padding: 5px;
+}
+
+.list-group.all {
+  background-color: #969393;
   min-height: 500px;
   padding: 5px;
 }
