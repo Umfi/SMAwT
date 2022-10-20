@@ -6,24 +6,23 @@
         
         <div class="row">
           <div class="col">
-            <h3 class="text-center">All</h3>
-            <draggable class="list-group all shadow" :list="allList" group="items">
+            <h3 class="text-center">Good</h3>
+            <draggable class="list-group good shadow" :list="goodList" group="items" @add="sound.play()">
               <div
                 class="list-group-item"
-                v-for="(element) in allList"
+                v-for="(element) in goodList"
                 :key="element.name"
               >
                 {{ element.name }}
               </div>
             </draggable>
           </div>
-
           <div class="col">
-            <h3 class="text-center">Good</h3>
-            <draggable class="list-group good shadow" :list="goodList" group="items" @add="sound.play()">
+            <h3 class="text-center">All</h3>
+            <draggable class="list-group all shadow" :list="allList" group="items">
               <div
                 class="list-group-item"
-                v-for="(element) in goodList"
+                v-for="(element) in allList"
                 :key="element.name"
               >
                 {{ element.name }}

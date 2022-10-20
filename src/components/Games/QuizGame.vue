@@ -6,13 +6,13 @@
 
     <div class="card">
         <div class="card-header">
-            <h2>{{ question }}</h2>
+            <h2 class="text-center">{{ question }}</h2>
         </div>
         <div class="card-body">
-            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                <div v-for="answer in answers" :key="answer.id" class="me-3"> 
+            <div class="row">
+                <div class="col-6 mb-3" v-for="answer in mixedAnswers" :key="answer.id">
                     <input type="checkbox" class="btn-check" :id="answer.id" :value="answer.id" autocomplete="off" v-model="checkedItems">
-                    <label class="btn btn-outline-primary" :for="answer.id">{{ answer.text }}</label>
+                    <label class="btn btn-outline-primary w-100" :for="answer.id">{{ answer.text }}</label>
                 </div>
             </div>
         </div>
@@ -35,8 +35,12 @@ export default {
     },
     data() {
         return {
+            mixedAnswers: [],
             checkedItems: []
         };
+    },
+    mounted() {
+        this.mixedAnswers = this.$props.answers.sort(() => Math.random() - 0.5);
     },
     methods: {
         check() {
