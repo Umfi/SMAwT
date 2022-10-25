@@ -46,7 +46,7 @@
       </div>
 
       <div v-if="step == 7">
-          <level-complete :level="'Password Security'" :score="123" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
+          <level-complete :level_id="1" :level_name="'Password Security'" :score="points" :max_score="max_points" @play-again="playAgain" @finish="next"></level-complete>
       </div>
 
       <user-guide
@@ -74,6 +74,8 @@ export default {
   data() {
     return {
       step: 0,
+      points: 0,
+      max_points: 14,
       firstGame: [
          { name: "Use at least eight characters.", type: 'good'},
          { name: "Make it memorable, but avoid using personal information like names or birthdays.", type: 'good' },
@@ -140,11 +142,11 @@ export default {
 
       if (result == -1) {
         this.$refs.assistant.updateMessage("There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.");
-        return;
       } else if (result == 0) {
+        this.points--;
         this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
-        return;
       } else {
+        this.points += 5;
         this.$refs.assistant.updateMessage('You are right. Everything was correct.');
         this.$refs.assistant.updateActions('Continue', this.showTask2);
       }
@@ -156,9 +158,11 @@ export default {
     },
     task2Check() {
        if (this.$refs.quiz1.check() == 1) {
+        this.points += 2;
         this.$refs.assistant.updateMessage('You are right. That is a really bad password because it contains your name.');
         this.$refs.assistant.updateActions('Continue', this.showTask3);
       } else {
+        this.points--;
         this.$refs.assistant.updateMessage('Nope. Your password should never include your name.');
         this.$refs.assistant.updateActions('Continue', this.showTask3);
       }
@@ -170,9 +174,11 @@ export default {
     },
     task3Check() {
        if (this.$refs.quiz2.check() == 1) {
+        this.points += 2;
         this.$refs.assistant.updateMessage('You are right. That is a really bad password because its just a date. Never use your birthday or any other date that is related to you as a password.');
         this.$refs.assistant.updateActions('Continue', this.showTask4);
       } else {
+        this.points--;
         this.$refs.assistant.updateMessage('Nope. Your password should never be date.');
         this.$refs.assistant.updateActions('Continue', this.showTask4);
       }
@@ -187,23 +193,17 @@ export default {
 
       if (result == -1) {
         this.$refs.assistant.updateMessage("There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.");
-        return;
       } else if (result == 0) {
+        this.points--;
         this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
-        return;
       } else {
+        this.points += 5;
         this.$refs.assistant.updateMessage('You are right. Everything was correct. Lets continue with the next topic.');
         this.$refs.assistant.updateActions('Continue', this.finishLevel);
       }
     },
     finishLevel() {
       this.$refs.assistant.hide();
-
-      //calculate score and stars
-      const points = 3;
-      this.$store.dispatch('updateLevel', { id: 1, stars: points });
-
-      //show level finished dialog
       this.step = 7;
     },
     playAgain() {

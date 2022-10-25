@@ -1,12 +1,12 @@
 <template>
   <div class="game-done-card shadow card w-50 m-auto">
     <div class="card-header">
-        <h1 class="text-center text-uppercase text-white">Complete</h1>
+        <h1 class="text-center text-uppercase text-white">{{ (stars == 0) ? 'Failed' : 'Complete' }}</h1>
     </div>
     <div class="card-body">
                 <div class="row">
             <div class="col-12 text-center">
-                <h2>{{ level }}</h2>
+                <h2>{{ level_name }}</h2>
             </div>
         </div>
         <div class="row">
@@ -28,7 +28,7 @@
     </div>
     <div class="card-footer">
         <button type="button" class="btn btn-secondary btn-lg mt-4 float-start" @click="playAgain">Play Again</button>
-        <button type="button" class="btn btn-primary btn-lg mt-4 float-end" @click="finish">Continue</button>
+        <button v-if="stars > 0" type="button" class="btn btn-primary btn-lg mt-4 float-end" @click="finish">Continue</button>
     </div>
 </div>
 </template>
@@ -42,7 +42,11 @@ Vue.use(VueConfetti)
 export default {
     name: "LevelComplete",
     props: {
-        level: {
+        level_id: {
+            type: Number,
+            required: true
+        },
+        level_name: {
             type: String,
             required: true
         },
@@ -50,10 +54,10 @@ export default {
             type: Number,
             required: true
         },
-        stars: {
+        max_score: {
             type: Number,
             required: true
-        }
+        },
     },
     methods: {
         playAgain() {
@@ -61,22 +65,51 @@ export default {
         },
         finish() {
             this.$emit('finish');
-        }
+        },
+        calculateStars() {
+            
+            let stars = 0;
+            if (this.$props.score <= 0) {
+                stars = 0;
+            }
+            if (this.$props.score < this.$props.max_score / 2) {
+                stars = 1;
+            }
+            if (this.$props.score >= this.$props.max_score / 2) {
+                stars = 2;
+            }
+            if (this.$props.score >= this.$props.max_score) {
+                stars = 3;
+            }
+            return stars;
+        },
     },
      data() {
         return {
             sound: null,
+            stars: 0
         };
     },
     mounted() {
-        this.$confetti.start({
-            particles: [
-                {
-                dropRate: 5,
-                }
-            ],
-        });
-        this.sound = new Audio('/sounds/win.mp3'); 
+        
+        this.stars = this.calculateStars();
+        
+        this.$store.dispatch('updateLevel', { id: this.$props.level_id, stars: this.stars });
+
+        
+        if (this.stars > 0) {
+            this.sound = new Audio('/sounds/win.mp3'); 
+            this.$confetti.start({
+                particles: [
+                    {
+                        dropRate: 5,
+                    }
+                ],
+            });
+        } else {
+            this.sound = new Audio('/sounds/lose.wav'); 
+        }
+
         this.sound.play();
 
         window.setTimeout(() => {

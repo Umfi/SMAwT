@@ -17,42 +17,56 @@ const initalLevels = [
       name: 'Personal Information',
       url: '/levels/personal-information',
       stars: 0,
-      locked: true
+      locked: false
   },
   {
       id: 3,
       name: 'Posts',
       url: '/levels/posts',
       stars: 0,
-      locked: true
+      locked: false
   },
   {
       id: 4,
       name: 'Images',
       url: '/levels/images',
       stars: 0,
-      locked: true
+      locked: false
   },
   {
       id: 5,
       name: 'Privacy',
       url: '/levels/privacy',
       stars: 0,
-      locked: true
+      locked: false
   },
   {
       id: 6,
       name: 'Friends',
       url: '/levels/friends',
       stars: 0,
-      locked: true
+      locked: false
   },
   {
       id: 7,
       name: 'Messages',
       url: '/levels/messages',
       stars: 0,
-      locked: true
+      locked: false
+  },
+  { 
+      id: 8,
+      name: 'Cyberbullying',
+      url: '/levels/cyberbullying',
+      stars: 0,
+      locked: false
+  },
+  {
+      id: 9,
+      name: 'Story',
+      url: '/levels/story',
+      stars: 0,
+      locked: false
   }
 ];
 
@@ -60,7 +74,8 @@ export default new Vuex.Store({
   state: {
     user: {
       name: '',
-      avatar: ''
+      avatar: '',
+      image: ''
     },
     levels: []
   },

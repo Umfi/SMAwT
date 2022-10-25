@@ -1,5 +1,5 @@
 <template>
-  <div id="assistant" class="border container fixed-bottom mb-3 shadow" v-show="visible">
+  <div id="assistant" class="border container fixed-bottom mb-3 shadow bg-white" v-show="visible">
     <div class="row p-2">
         <div class="col-2">
             <img src="../assets/assistant.png" class="img-fluid rounded-circle assistant" alt="User Image">

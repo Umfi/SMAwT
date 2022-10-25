@@ -21,7 +21,7 @@
     </div>
 
     <div v-if="step == 3">
-      <simple-post :author="user" message="I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm."></simple-post>
+      <simple-post id="1" :author="user" message="I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm."></simple-post>
     </div>
 
     <div v-if="step == 4">

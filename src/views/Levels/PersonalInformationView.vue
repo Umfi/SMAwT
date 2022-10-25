@@ -28,7 +28,7 @@
     </div>
 
     <div v-if="step == 3">
-        <level-complete :level="'Personal Information'" :score="12" :stars="1" @play-again="playAgain" @finish="next"></level-complete>
+        <level-complete :level_id="2" :level_name="'Personal Information'" :score="points" :max_score="max_points" @play-again="playAgain" @finish="next"></level-complete>
     </div>
 
     <user-guide
@@ -53,6 +53,8 @@ export default {
   data() {
     return {
       step: 0,
+      points: 0,
+      max_points: 25,
       gameItems: [
         {text: "Name", value: 1},
         {text: "Address", value: 1},
@@ -88,6 +90,7 @@ export default {
     },
     finishTask1(points) {
       if (points > 10) {
+        this.points = points;
         this.$refs.assistant.updateMessage("You did a great job. You are now an expert in personal information.\n\nLet's continue with the next topic.");
         this.$refs.assistant.updateActions('Continue', this.finishLevel);
       } else {
@@ -97,12 +100,6 @@ export default {
     },
     finishLevel() {
       this.$refs.assistant.hide();
-
-      //calculate score and stars
-      const points = 1;
-      this.$store.dispatch('updateLevel', { id: 2, stars: points });
-
-      //show level finished dialog
       this.step = 3;
     },
     playAgain() {

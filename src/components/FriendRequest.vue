@@ -5,14 +5,14 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <dic class="col-4">
+        <div class="col-4">
           <img
             :src="image"
             class="rounded-circle"
             width="100"
             height="100"
           />
-        </dic>
+        </div>
         <div class="col text-start">
           <div class="row">
             <div class="col">

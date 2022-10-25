@@ -10,7 +10,7 @@
               </div>
               <div class="card-body">
                 <div class="avatar">
-                  <avataaars :facialHairType="'blank'" v-if="refreshAvatar" ref="avatar"></avataaars>
+                  <avataaars :isCircle="isCircle" :facialHairType="'blank'" v-if="refreshAvatar" ref="avatar"></avataaars>
                   <button type="button" class="btn btn-secondary" @click="changeAvatar">
                     <i class="fas fa-random"></i>
                   </button>
@@ -38,6 +38,7 @@ export default {
   data() {
     return {
       refreshAvatar: true,
+      isCircle: true,
       username: ''
     }
   },
@@ -53,9 +54,19 @@ export default {
         name: this.username,
         avatar: `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(this.$refs.avatar.$el.outerHTML)))}`
       }
-      this.$store.dispatch('startGame', user).then(() => {
-        this.$router.push('/levels')
-      })
+
+      this.isCircle = false;
+
+      this.$nextTick(() => {
+        user.image = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(this.$refs.avatar.$el.outerHTML)))}`;
+      
+        this.$store.dispatch('startGame', user).then(() => {
+          this.$router.push('/levels')
+        });
+      });
+      
+
+      
     }
   }
 }

@@ -17,15 +17,15 @@
 
       <div class="post__options">
         <div class="post__option public" @click="changePrivacy('public')">
-          <span class="material-symbols-outlined me-2"> public</span> Public
+          <i class="fas fa-earth-europe me-2"></i> Public
         </div>
 
         <div class="post__option friends" @click="changePrivacy('friends')">
-          <span class="material-symbols-outlined me-2"> group</span> Friends
+          <i class="fas fa-user-group me-2"></i> Friends
         </div>
 
         <div class="post__option selected-friends" @click="changePrivacy('selected-friends')">
-          <span class="material-symbols-outlined me-2"> person </span> Selected Friends
+          <i class="fas fa-user me-2"></i> Selected Friends
         </div>
       </div>
     </div>
@@ -78,13 +78,6 @@ export default {
 }
 </script>
 <style scoped>
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
 
 .post {
     width: 100%;
@@ -142,7 +135,6 @@ export default {
 
 .post__option:hover {
     background-color: #eff2f5;
-    border-radius: 10px;
 }
 
 .post__option {
