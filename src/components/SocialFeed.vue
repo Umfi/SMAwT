@@ -12,7 +12,7 @@
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" :disabled="!interactive">
                 </li>
                 <li class="nav-item dropdown ms-4">
-                <button type="button" :class="interactive ? 'btn btn-light dropdown-toggle position-relative' : 'disabled btn btn-light dropdown-toggle position-relative'" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" :class="interactive ? 'btn btn-light dropdown-toggle position-relative fr-btn' : 'disabled btn btn-light dropdown-toggle position-relative fr-btn'" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user-plus"></i>
                     <span v-show="friendRequests.length > 0" class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger">
                         {{friendRequests.length }}
@@ -39,9 +39,9 @@
                 <div class="col-8 m-auto">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <textarea class="form-control" rows="3" placeholder="What's on your mind?" v-model="text" :disabled="!interactive"></textarea>
+                            <textarea class="form-control create-post-content" rows="3" placeholder="What's on your mind?" v-model="text" :disabled="!interactive"></textarea>
                             
-                            <button :class="interactive ? 'btn btn-outline border-0 dropdown-toggle float-start' : 'disabled btn btn-outline border-0 dropdown-toggle float-start'" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button :class="interactive ? 'btn btn-outline border-0 dropdown-toggle float-start create-post-visibility' : 'disabled create-post-visibility btn btn-outline border-0 dropdown-toggle float-start'" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i :class="'fas ' + visibilityOfPostStyle"></i>
                             </button>
                             <ul class="dropdown-menu">
@@ -50,7 +50,7 @@
                                 <li><a class="dropdown-item" href="#" @click="changeVisibility('selected_friends')"><i class="fas fas fa-user me-1"></i> Ausgewählte Freunde</a></li>
                             </ul>
 
-                            <button type="button" class="btn btn-primary mt-2 float-end" @click="createPost" :disabled="!interactive">Post</button>
+                            <button type="button" class="btn btn-primary mt-2 float-end create-post-btn" @click="createPost" :disabled="!interactive">Post</button>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
 
             <div class="row">
                 <div class="col-8 m-auto" v-for="post in posts.slice().reverse()" :key="post.message">
-                <simple-post :ref="'posts'" :id="post.id" :author="post.author" :message="post.message" :image="post.image" :interactive="interactive" @reported="report(post.id)" @comment-reported="reportComment" @liked="like" @commented="comment"></simple-post>
+                <simple-post :ref="'posts'" :class="'post-' + post.id" :id="post.id" :author="post.author" :message="post.message" :image="post.image" :interactive="interactive" @reported="report(post.id)" @comment-reported="reportComment" @liked="like" @commented="comment"></simple-post>
                 </div>
             </div>
         </div>

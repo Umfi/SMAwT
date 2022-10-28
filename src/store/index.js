@@ -21,7 +21,7 @@ const initalLevels = [
   },
   {
       id: 3,
-      name: 'Posts',
+      name: 'Digital Footprint',
       url: '/levels/posts',
       stars: 0,
       locked: false
@@ -56,8 +56,8 @@ const initalLevels = [
   },
   { 
       id: 8,
-      name: 'Cyberbullying',
-      url: '/levels/cyberbullying',
+      name: 'Fake or Real?',
+      url: '/levels/fake-or-real',
       stars: 0,
       locked: false
   },

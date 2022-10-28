@@ -95,4 +95,9 @@ export default {
 .assistant {
   user-select: none;
 }
+
+#assistant {
+  user-select: none;
+  z-index: 9999;
+}
 </style>

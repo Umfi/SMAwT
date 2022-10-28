@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="alert alert-primary" role="alert">
-          Drag each item and move it into the "Good" or "Bad" box.
+          Drag each item and move it into the "{{ titleLeft }}" or "{{ titleRight }}" box.
         </div>
         
         <div class="row">
           <div class="col">
-            <h3 class="text-center">Good</h3>
+            <h3 class="text-center">{{ titleLeft }}</h3>
             <draggable class="list-group good shadow" :list="goodList" group="items" @add="sound.play()">
               <div
                 class="list-group-item"
@@ -30,7 +30,7 @@
             </draggable>
           </div>
           <div class="col">
-            <h3 class="text-center">Bad</h3>
+            <h3 class="text-center">{{ titleRight }}</h3>
             <draggable class="list-group bad shadow" :list="badList" group="items" @add="sound.play()">
               <div
                 class="list-group-item"
@@ -53,6 +53,14 @@ export default {
   name: "ContainerGame",
   components: { draggable },
   props: {
+    titleLeft: {
+      type: String,
+      default: "Good"
+    },
+    titleRight: {
+      type: String,
+      default: "Bad"
+    },
     items: [],
   },
   data() {

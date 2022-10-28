@@ -20,9 +20,14 @@
       </div>
 
       <div class="post__bottom">
-        <img v-if="image.length > 0" :src="image" class="img-fluid pb-2 w-100" />
-        <p class="m-0">{{ message }}</p>
+        <p class="m-0 px-3 pb-2">{{ message }}</p>
+        <img v-if="image.length > 0" :src="image" class="img-fluid pb-2 w-100 post_img" />
       </div>
+    <div class="px-3 py-1 news-container" v-if="link.length > 0 && headline.length > 0">
+      <span class="news-url">{{ link }}</span>
+      <br>
+      <b class="news-titel">{{ headline}}</b>
+    </div>
 
       <div class="row mb-2">
         <div class="col-6 text-black-50" v-show="likes > 0 || comments.length > 0 || shares > 0">
@@ -34,15 +39,15 @@
         </div>
       </div>
       <div class="post__options">
-        <div :class="isLiked ? 'post__option active' : 'post__option'" @click="like">
+        <div :class="isLiked ? 'post__option like active' : 'post__option like'" @click="like">
           <i class="far fa-thumbs-up me-2"></i> Gefällt mir
         </div>
 
-        <div class="post__option" @click="showCommentBox">
+        <div class="post__option comment" @click="showCommentBox">
           <i class="far fa-comment me-2"></i> Kommentieren
         </div>
 
-        <div class="post__option">
+        <div class="post__option share">
           <i class="far fa-paper-plane me-2"></i> Teilen
         </div>
       </div>
@@ -100,6 +105,14 @@ export default {
         type: String
     },
     image: {
+        default: '',
+        type: String
+    },
+    link: {
+        default: '',
+        type: String
+    },
+    headline: {
         default: '',
         type: String
     },
@@ -189,6 +202,18 @@ export default {
 </script>
 <style scoped>
 
+.news-container {
+    margin-bottom: -0.5rem!important;
+    margin-top: -0.5rem !important;
+    background-color: #F0F2F5;
+}
+
+.news-url {
+  font-size: .8125rem;
+  font-weight: 400;
+  color: #65676B;
+}
+
 .dropdown-toggle::after {
   display: none;
 }
@@ -223,15 +248,19 @@ export default {
 }
 
 .post__bottom {
-    margin-top: 0px;
-    margin-bottom: 10px;
-    padding: 15px 25px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0;
 }
+
 
 .post__image > img {
     width: 100%;
 }
 
+.post_img {
+  max-height: 400px;
+}
 .post__options {
     padding-top: 10px;
     border-top: 1px solid lightgrey;

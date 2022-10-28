@@ -60,11 +60,17 @@ import LevelProgress from '../../components/LevelProgress.vue';
 import SocialFeed from '../../components/SocialFeed.vue';
 import mergeImages from 'merge-images';
 
+import Vue from 'vue';
+import VueShepherd from 'vue-shepherd';
+
+Vue.use(VueShepherd);
+
 export default {
   components: { UserGuide, LevelComplete, LevelProgress, SocialFeed },
   name: 'StoryView',
   data() {
     return {
+      tour: null,
       step: 0,
       storyStep: 0,
       points: 1,
@@ -104,6 +110,14 @@ export default {
     ...mapGetters([
         'user'
     ]),
+  },
+  mounted() {
+    this.tour = this.$shepherd({
+      useModalOverlay: true,
+      defaultStepOptions: {
+        scrollTo: true
+      }
+    });
   },
   methods: {
     likePostCallback(data) {
@@ -223,12 +237,62 @@ export default {
       this.$refs.assistant.updateMessage("Look there is a nice picture of you and Simon. In social media you can show that you like something by clicking the like button.\nYou can find the like button below the post. Try it out.");
       this.$refs.assistant.updateActions('Okay, I will try it out.', () => {});
 
+        this.tour.addStep({
+          id: 'step1',
+          attachTo: { element: document.querySelector('.post-4'), on: 'top' },
+          text: 'Look, here is a post with a picture of you.',
+          buttons: [
+            {
+              text: 'Next',
+              action: this.tour.next
+            }
+          ]
+        });
+
+        this.tour.addStep({
+          id: 'step2',
+          attachTo: { element: document.querySelector('.post-4 .post__option.like'), on: 'top' },
+          text: 'Click here to like the post.',
+          scrollTo: false,
+          buttons: [
+            {
+              text: 'Next',
+              action: this.tour.complete
+            }
+          ]
+        });
+
+        setTimeout(() => {
+          this.tour.start();
+        }, 1000);
+
+
       this.$refs.feed.setInteractive(true);
     },
     storyStep4() {
       this.storyStep = 4;
       this.$refs.assistant.updateMessage('Great! You have liked this post. Simon will be happy that you liked his post.\n\nYou can also write a nice comment to the post.\nJust click on the comment button next to the like button and write your comment.');
       this.$refs.assistant.updateActions('Yes, I will do that.', () => {});
+
+        this.tour.removeStep('step1');
+        this.tour.removeStep('step2');
+
+        this.tour.addStep({
+          id: 'step3',
+          attachTo: { element: document.querySelector('.post-4 .post__option.comment'), on: 'top' },
+          text: 'Click here to add a comment to the post.',
+          scrollTo: false,
+          buttons: [
+            {
+              text: 'Next',
+              action: this.tour.complete
+            }
+          ]
+        });
+
+        setTimeout(() => {
+          this.tour.start();
+        }, 1000);
     },
     storyStep5() {
       this.storyStep = 5;
@@ -242,6 +306,25 @@ export default {
 
       this.$refs.assistant.updateMessage('Looks like you have got a friend request. You should deal with them. Decide if you want to accept or decline them.\nYou can find the friend request in the top right corner of the screen.');
       this.$refs.assistant.updateActions('Ok, I will have a look.', () => {});
+
+      this.tour.removeStep('step3');
+
+      this.tour.addStep({
+        id: 'step4',
+        attachTo: { element: document.querySelector('.fr-btn'), on: 'bottom' },
+        text: 'Click here to see all pending friend requests.',
+        scrollTo: false,
+        buttons: [
+          {
+            text: 'Next',
+            action: this.tour.complete
+          }
+        ]
+      });
+
+      setTimeout(() => {
+        this.tour.start();
+      }, 1000);
     },
     storyStep7(state) {
       this.storyStep = 7;
@@ -259,6 +342,51 @@ export default {
 
       this.$refs.assistant.updateMessage('Good idea. You can post something about your day.\n\nOn the top of the page there is a box where you can type whatever you want.\nBut before you post make sure that you choose the right privacy setting.');
       this.$refs.assistant.updateActions('Great, I will post something.', () => {});
+
+      this.tour.removeStep('step4');
+
+      this.tour.addStep({
+        id: 'step5',
+        attachTo: { element: document.querySelector('.create-post-content'), on: 'bottom' },
+        text: 'Here you can write your post.',
+        scrollTo: true,
+        buttons: [
+          {
+            text: 'Next',
+            action: this.tour.next
+          }
+        ]
+      });
+
+      this.tour.addStep({
+        id: 'step6',
+        attachTo: { element: document.querySelector('.create-post-visibility'), on: 'bottom' },
+        text: 'Here you can change the visibility of you post.',
+        scrollTo: false,
+        buttons: [
+          {
+            text: 'Next',
+            action: this.tour.next
+          }
+        ]
+      });
+
+      this.tour.addStep({
+        id: 'step7',
+        attachTo: { element: document.querySelector('.create-post-btn'), on: 'bottom' },
+        text: 'CLick here to submit your post, when you are done.',
+        scrollTo: false,
+        buttons: [
+          {
+            text: 'Next',
+            action: this.tour.complete
+          }
+        ]
+      });
+
+      setTimeout(() => {
+        this.tour.start();
+      }, 1000);
     },
     storyStep9(data) {
       this.storyStep = 9;

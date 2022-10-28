@@ -16,6 +16,7 @@
     "vue": "^2.6.14",
     "vue-confetti": "^2.3.0",
     "vue-router": "^3.6.5",
+    "vue-shepherd": "^0.3.0",
     "vue-typer": "^1.2.0",
     "vuedraggable": "^2.24.3",
     "vuejs-avataaars": "^4.0.1",

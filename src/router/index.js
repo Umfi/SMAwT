@@ -11,6 +11,7 @@ import ImageView from '../views/Levels/ImageView.vue'
 import PrivacyView from '../views/Levels/PrivacyView.vue'
 import FriendRequestsView from '../views/Levels/FriendRequestsView.vue'
 import MessagesView from '../views/Levels/MessagesView.vue'
+import FakeView from '../views/Levels/FakeView.vue'
 import StoryView from '../views/Levels/StoryView.vue'
 
 Vue.use(VueRouter)
@@ -65,6 +66,11 @@ const routes = [
     path: '/levels/messages',
     name: 'level-messages',
     component: MessagesView
+  },
+  {
+    path: '/levels/fake-or-real',
+    name: 'level-fake-or-real',
+    component: FakeView
   },
   {
     path: '/levels/story',

@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-6 mb-3" v-for="answer in mixedAnswers" :key="answer.id">
                     <input type="checkbox" class="btn-check" :id="answer.id" :value="answer.id" autocomplete="off" v-model="checkedItems">
-                    <label class="btn btn-outline-primary w-100" :for="answer.id">{{ answer.text }}</label>
+                    <label :class="answer.correct ? 'btn btn-outline-primary w-100 h-100 answer c' : 'btn btn-outline-primary w-100 h-100 answer w'" :for="answer.id">{{ answer.text }}</label>
                 </div>
             </div>
         </div>
@@ -54,13 +54,27 @@ export default {
             if (is_same) {
                 return 1;
             } else {
+                
+                const answers = document.querySelectorAll(".answer");
+                for (const answer of answers) {
+                    answer.classList.add('show');
+                }
+
                 return 0;
             }
-        }
+        },
     }
 }
 </script>
 
-<style>
+<style  scoped>
+.answer.c.show {
+    background-color: #28a745;
+    color: white;
+}
 
+.answer.w.show{
+    background-color: #dc3545;
+    color: white;
+}
 </style>

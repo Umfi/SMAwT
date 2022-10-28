@@ -91,7 +91,7 @@ export default {
       var speed = this.getRandomInt(5000, 10000);
 
       // Start animation
-      fruitElement.animate(
+      const animation = fruitElement.animate(
         { top: ["-100px", "430px"] },
         { duration: speed, iterations: 1, easing: "linear" }
       );
@@ -105,9 +105,16 @@ export default {
           this.loseSound.play();
           this.points--;
         }
-
+        animation.cancel();
         fruitElement.remove();
       });
+
+      animation.onfinish = () => {
+        if (fruitElement.getAttribute('data-result') == "1") {
+          this.loseSound.play();
+          this.points--;
+        }
+      };
     },
     getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -122,12 +129,13 @@ export default {
     margin: 0 auto;
     border: 1px solid rgb(109, 107, 107);
     position: relative;
+    background-color: rgb(128, 169, 169);
     overflow: hidden;
 }
 .falling-text-game-item {
     position: absolute;
     cursor: crosshair;
-    padding: 5px;
+    padding: 15px;
     border-radius: 5px;
     user-select: none;
 }
