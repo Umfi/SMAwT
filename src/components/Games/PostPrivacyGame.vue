@@ -37,7 +37,6 @@ export default {
   props: {
     author: {
         default: '',
-        type: String
     },
     message: {
         default: '',

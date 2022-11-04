@@ -1,5 +1,6 @@
 <template>
-  <div class="container mt-5">
+  <base-level :level_id="level_id" :level_name="level_name" :max_points="max_points" :max_steps="max_steps" ref="base">
+    <template v-slot="{step}">
     
     <div v-if="step == 1">
       
@@ -55,30 +56,26 @@
         <level-complete :level_id="2" :level_name="'Personal Information'" :score="points" :max_score="max_points" @play-again="playAgain" @finish="next"></level-complete>
     </div>
 
-    <user-guide
-      ref="assistant"
-      :msg="'We have now often talked about private information.\nWe know that we should not share this information and tread it like secrets.\n\nLets have a look what the difference between personal and private information actually is.'"
-      actionA="Sure, tell me more about it."
-      :actionAFunc="showTask1Pre"
-    ></user-guide>
-  </div>
+    </template>
+  </base-level>
 </template>
 
 <script>
 
-import UserGuide from '../../components/UserGuide.vue';
+import BaseLevel from "../../components/BaseLevel.vue";
 import {mapGetters} from 'vuex';
 import FallingTextGame from '../../components/Games/FallingTextGame.vue';
-import LevelComplete from '../../components/LevelComplete.vue';
 
 export default {
   name: "PersonalInformationView",
-  components: {UserGuide, FallingTextGame, LevelComplete},
+  components: {BaseLevel, FallingTextGame},
   data() {
     return {
-      step: 0,
-      points: 0,
+      level_id: 2,
+      level_name: "Personal Information",
       max_points: 25,
+      max_steps: 3,
+      //----------------
       gameItems: [
         {text: "Full Name", value: 1},
         {text: "Address", value: 1},
@@ -105,37 +102,31 @@ export default {
         'user'
     ]),
   },
+  mounted() { 
+    this.$refs.base.$refs.assistant.updateMessage("We have now often talked about private information.\nWe know that we should not share this information and tread it like secrets.\n\nLets have a look what the difference between personal and private information actually is.");
+    this.$refs.base.$refs.assistant.updateActions('Sure, tell me about it!', this.showTask1Pre);
+  },
   methods: {
     showTask1Pre() {
-      this.step = 1;
-      this.$refs.assistant.updateMessage("Make sense, right?\n\nLet's practice it a bit with a fun game.");
-      this.$refs.assistant.updateActions('Yes, lets play.', this.showTask1);
+      this.$refs.base.step = 1;
+      this.$refs.base.$refs.assistant.updateMessage("Make sense, right?\n\nLet's practice it a bit with a fun game.");
+      this.$refs.base.$refs.assistant.updateActions('Yes, lets play.', this.showTask1);
     },
     showTask1() {
-      this.step = 2;
-      this.$refs.assistant.updateMessage("Have fun, playing the game. Click on all personal information items. Ignore the rest.");
-      this.$refs.assistant.updateActions('Thank you.', () => {});
+      this.$refs.base.step = 2;
+      this.$refs.base.$refs.assistant.updateMessage("Have fun, playing the game. Click on all personal information items. Ignore the rest.");
+      this.$refs.base.$refs.assistant.updateActions('Thank you.', () => {});
     },
     finishTask1(points) {
       if (points > 10) {
-        this.points = points;
-        this.$refs.assistant.updateMessage("You did a great job. You are now an expert in personal information.\n\nLet's continue with the next topic.");
-        this.$refs.assistant.updateActions('Continue', this.finishLevel);
+        this.$refs.base.points = points;
+        this.$refs.base.$refs.assistant.updateMessage("You did a great job. You are now an expert in personal information.\n\nLet's continue with the next topic.");
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.$refs.base.finishLevel);
       } else {
-        this.$refs.assistant.updateMessage("Hm, better try one more time. This time you will manage it.");
-        this.$refs.assistant.updateActions('Let me try again', this.showTask1Pre);
+        this.$refs.base.$refs.assistant.updateMessage("Hm, better try one more time. This time you will manage it.");
+        this.$refs.base.$refs.assistant.updateActions('Let me try again', this.showTask1Pre);
       }
     },
-    finishLevel() {
-      this.$refs.assistant.hide();
-      this.step = 3;
-    },
-    playAgain() {
-      this.$router.go();
-    },
-    next() {
-      this.$router.replace('/levels');
-    }
   },
 };
 </script>

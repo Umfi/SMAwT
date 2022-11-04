@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
         <ul>
-            <li v-for="message in messages" :key="message.id" :class="message.sender">{{ message.text }}</li>
+            <li v-for="message in messages" :key="message.id" :class="message.sender" v-html="linkify(message.text)"></li>
         </ul> 
     </div>
 </div>
@@ -14,7 +14,18 @@
 <script>
 export default {
   name: 'SimpleChat',
-  props: ['messages']
+  props: ['messages'],
+  methods: {
+    linkify(inputText) {
+    var replacedText, replacePattern1;
+
+    //URLs starting with http://, https://, or ftp://
+    replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gim;
+    replacedText = inputText.replace(replacePattern1, '<span class="text-primary">$1</span>');
+
+    return replacedText;
+}
+  }
 }
 </script>
 <style scoped>

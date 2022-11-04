@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <level-progress :step="step" :max="7"></level-progress>
-    <div class="container mt-5">
+    <base-level :level_id="level_id" :level_name="level_name" :max_points="max_points" :max_steps="max_steps" ref="base">
+    <template v-slot="{step}">
       
       <div v-if="step == 1">
           <h1 class="text-center">Password Security</h1>
@@ -34,7 +33,7 @@
       </div>
 
       <div v-if="step == 4">
-        <quiz-game key="quiz1" ref="quiz1" :question="'Is ' + this.user.name +'123 a secure passwort?'" :answers="quiz1.answers"></quiz-game>
+        <quiz-game key="quiz1" ref="quiz1" :question="'Is ' + user.name +'123 a secure passwort?'" :answers="quiz1.answers"></quiz-game>
       </div>
 
       <div v-if="step == 5">
@@ -45,37 +44,26 @@
         <container-game ref="game2" :items="secondGame"></container-game>
       </div>
 
-      <div v-if="step == 7">
-          <level-complete :level_id="1" :level_name="'Password Security'" :score="points" :max_score="max_points" @play-again="playAgain" @finish="next"></level-complete>
-      </div>
-
-      <user-guide
-      ref="assistant"
-      :msg="'Hello ' + user.name + '. Nice to meet you.\n\nNow we need to choose a password for your account. \nIn the next step we will show you how to create a secure password.'"
-      actionA="Continue"
-      :actionAFunc="showVideo"
-      ></user-guide>
-
-    </div>
-  </div>
+    </template>
+  </base-level>
 </template>
 
 <script>
-import UserGuide from '../../components/UserGuide.vue';
+import BaseLevel from '../../components/BaseLevel.vue'
 import {mapGetters} from 'vuex';
 import ContainerGame from '../../components/Games/ContainerGame.vue';
-import LevelComplete from '../../components/LevelComplete.vue';
-import LevelProgress from '../../components/LevelProgress.vue';
 import QuizGame from '../../components/Games/QuizGame.vue';
 
 export default {
-  components: { UserGuide, ContainerGame, LevelComplete, LevelProgress, QuizGame },
+  components: {BaseLevel, ContainerGame, QuizGame },
   name: 'PasswordSecurityView',
   data() {
     return {
-      step: 0,
-      points: 0,
+      level_id: 1,
+      level_name: "Password Security",
       max_points: 14,
+      max_steps: 7,
+      //----------------
       firstGame: [
          { name: "Use at least eight characters.", type: 'good'},
          { name: "Make it memorable, but avoid using personal information like names or birthdays.", type: 'good' },
@@ -121,96 +109,90 @@ export default {
         'user'
     ]),
   },
+  mounted() {
+    this.$refs.base.$refs.assistant.updateMessage('Hello ' + this.user.name + '. Nice to meet you.\n\nNow we need to choose a password for your account. \nIn the next step we will show you how to create a secure password.');
+    this.$refs.base.$refs.assistant.updateActions('Continue', this.showVideo);
+  },
   methods: {
     showVideo() {
-      this.step = 1;
-      this.$refs.assistant.updateMessage("Just tell me, whenever you have finished watching the video.");
-      this.$refs.assistant.updateActions('I am done.', this.showTask1Pre);
+      this.$refs.base.step = 1;
+      this.$refs.base.$refs.assistant.updateMessage("Just tell me, whenever you have finished watching the video.");
+      this.$refs.base.$refs.assistant.updateActions('I am done.', this.showTask1Pre);
     },
     showTask1Pre() {
-      this.step = 2;
-      this.$refs.assistant.updateMessage("It's not that hard right? Let's practice it a bit.");
-      this.$refs.assistant.updateActions('Yeah, good idea.', this.showTask1);
+      this.$refs.base.step = 2;
+      this.$refs.base.$refs.assistant.updateMessage("It's not that hard right? Let's practice it a bit.");
+      this.$refs.base.$refs.assistant.updateActions('Yeah, good idea.', this.showTask1);
     },
     showTask1() {
-      this.step = 3;
-      this.$refs.assistant.updateMessage("Just tell me, when ever I should check your work.");
-      this.$refs.assistant.updateActions('I think I am done.', this.task1Check);
+      this.$refs.base.step = 3;
+      this.$refs.base.$refs.assistant.updateMessage("Just tell me, when ever I should check your work.");
+      this.$refs.base.$refs.assistant.updateActions('I think I am done.', this.task1Check);
     },
     task1Check() {
       const result = this.$refs.game1.check();
 
       if (result == -1) {
-        this.$refs.assistant.updateMessage("There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.");
+        this.$refs.base.$refs.assistant.updateMessage("There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.");
       } else if (result == 0) {
-        this.points--;
-        this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
       } else {
-        this.points += 5;
-        this.$refs.assistant.updateMessage('You are right. Everything was correct.');
-        this.$refs.assistant.updateActions('Continue', this.showTask2);
+        this.$refs.base.points += 5;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. Everything was correct.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask2);
       }
     },
     showTask2() {
-      this.step = 4;
-      this.$refs.assistant.updateMessage('What do you think about this question?');
-      this.$refs.assistant.updateActions('Check my answer.', this.task2Check);
+      this.$refs.base.step = 4;
+      this.$refs.base.$refs.assistant.updateMessage('What do you think about this question?');
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task2Check);
     },
     task2Check() {
        if (this.$refs.quiz1.check() == 1) {
-        this.points += 2;
-        this.$refs.assistant.updateMessage('You are right. That is a really bad password because it contains your name.');
-        this.$refs.assistant.updateActions('Continue', this.showTask3);
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. That is a really bad password because it contains your name.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask3);
       } else {
-        this.points--;
-        this.$refs.assistant.updateMessage('Nope. Your password should never include your name.');
-        this.$refs.assistant.updateActions('Continue', this.showTask3);
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('Nope. Your password should never include your name.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask3);
       }
     },
     showTask3() {
-      this.step = 5;
-      this.$refs.assistant.updateMessage('What do you think about this question?');
-      this.$refs.assistant.updateActions('Check my answer.', this.task3Check);
+      this.$refs.base.step = 5;
+      this.$refs.base.$refs.assistant.updateMessage('What do you think about this question?');
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task3Check);
     },
     task3Check() {
        if (this.$refs.quiz2.check() == 1) {
-        this.points += 2;
-        this.$refs.assistant.updateMessage('You are right. That is a really bad password because its just a date. Never use your birthday or any other date that is related to you as a password.');
-        this.$refs.assistant.updateActions('Continue', this.showTask4);
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. That is a really bad password because its just a date. Never use your birthday or any other date that is related to you as a password.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask4);
       } else {
-        this.points--;
-        this.$refs.assistant.updateMessage('Nope. Your password should never be date.');
-        this.$refs.assistant.updateActions('Continue', this.showTask4);
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('Nope. Your password should never be date.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask4);
       }
     },
     showTask4() {
-      this.step = 6;
-      this.$refs.assistant.updateMessage("I have found a list of passwords. Can you tell me which of that is a good and which is a bad password? Tell me again when i should check your result.");
-      this.$refs.assistant.updateActions('I think I am done.', this.task4Check);
+      this.$refs.base.step = 6;
+      this.$refs.base.$refs.assistant.updateMessage("I have found a list of passwords. Can you tell me which of that is a good and which is a bad password? Tell me again when i should check your result.");
+      this.$refs.base.$refs.assistant.updateActions('I think I am done.', this.task4Check);
     },
     task4Check() {
       const result = this.$refs.game2.check();
 
       if (result == -1) {
-        this.$refs.assistant.updateMessage("There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.");
+        this.$refs.base.$refs.assistant.updateMessage("There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.");
       } else if (result == 0) {
-        this.points--;
-        this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
       } else {
-        this.points += 5;
-        this.$refs.assistant.updateMessage('You are right. Everything was correct. Lets continue with the next topic.');
-        this.$refs.assistant.updateActions('Continue', this.finishLevel);
+        this.$refs.base.points += 5;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. Everything was correct. Lets continue with the next topic.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.$refs.base.finishLevel);
       }
-    },
-    finishLevel() {
-      this.$refs.assistant.hide();
-      this.step = 7;
-    },
-    playAgain() {
-      this.$router.go();
-    },
-    next() {
-      this.$router.replace('/levels');
     }
   }
 }

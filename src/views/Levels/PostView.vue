@@ -1,5 +1,7 @@
 <template>
-  <div class="container mt-5">
+  <base-level :level_id="level_id" :level_name="level_name" :max_points="max_points" :max_steps="max_steps" ref="base">
+    <template v-slot="{step}">
+
     <div v-if="step == 1">
       
         <h1 class="text-center">Digital Footprint</h1>
@@ -72,35 +74,28 @@
       </div>
     </div>
 
-    <div v-if="step == 7">
-        <level-complete :level="'Digital Footprint'" :score="5353" :stars="2" @play-again="playAgain" @finish="next"></level-complete>
-    </div>
-
-
-    <user-guide
-      ref="assistant"
-      :msg="'Great. Now you know how to set a secure password and what data is personal information and should kept private.\nBut before you post something, lets learn what we can and post and what we better do not post.'"
-      actionA="Continue"
-      :actionAFunc="showTask1Pre"
-    ></user-guide>
-  </div>
+    </template>
+  </base-level>
 </template>
 
 <script>
 
-import UserGuide from '../../components/UserGuide.vue';
+import BaseLevel from '../../components/BaseLevel.vue';
 import ContainerGame from '../../components/Games/ContainerGame.vue';
 import QuizGame from '../../components/Games/QuizGame.vue';
 import SimplePost from '../../components/SimplePost.vue';
-import LevelComplete from '../../components/LevelComplete.vue';
 import {mapGetters} from 'vuex';
 
 export default {
   name: "PostView",
-  components: {UserGuide, SimplePost, ContainerGame, QuizGame, LevelComplete},
+  components: {BaseLevel, SimplePost, ContainerGame, QuizGame},
   data() {
     return {
-      step: 0,
+      level_id: 3,
+      level_name: "Digital Footprint",
+      max_points: 10,
+      max_steps: 7,
+      // ---------------
       firstGame: [
          { name: "Think before posting.", type: 'good'},
          { name: "Consider choice of words.", type: 'good' },
@@ -141,6 +136,12 @@ export default {
           {id: 3, text: "People think I am stupid.", correct: false},
         ]
       },
+      secondGame: [
+         { name: "Your digital footprint is permanent.", type: 'good'},
+         { name: "Your actions online contribute to your digital footprint.", type: 'good' },
+         { name: "What other people post online does not affect your digital footprint.", type: 'bad' },
+         { name: "You hvae full controll over who sees your digital footprint.", type: 'bad' },
+      ]
     };
   },
   computed: {
@@ -148,109 +149,96 @@ export default {
         'user'
     ]),
   },
+  mounted() {
+    this.$refs.base.$refs.assistant.updateMessage("Great. Now you know how to set a secure password and what data is personal information and should kept private.\nBut before you post something, lets learn what we can and post and what we better do not post.");
+    this.$refs.base.$refs.assistant.updateActions('Continue?', this.showTask1Pre);
+  },
   methods: {
     showTask1Pre() {
-      this.step = 1;
-      this.$refs.assistant.updateMessage("All this should be common sense anyway, right?\n\nBut it doesn't hurt to learn about it.");
-      this.$refs.assistant.updateActions('Sure, good idea.', this.showTask1);
+      this.$refs.base.step = 1;
+      this.$refs.base.$refs.assistant.updateMessage("All this should be common sense anyway, right?\n\nBut it doesn't hurt to learn about it.");
+      this.$refs.base.$refs.assistant.updateActions('Sure, good idea.', this.showTask1);
     },
     showTask1() {
-      this.step = 2;
-      this.$refs.assistant.updateMessage("Just tell me, when every i should check your work.");
-      this.$refs.assistant.updateActions('I think I am done.', this.task1Check);
+      this.$refs.base.step = 2;
+      this.$refs.base.$refs.assistant.updateMessage("Just tell me, when every i should check your work.");
+      this.$refs.base.$refs.assistant.updateActions('I think I am done.', this.task1Check);
     },
     task1Check() {
       const result = this.$refs.game1.check();
 
       if (result == -1) {
-        this.$refs.assistant.updateMessage("There are still some items in the 'all' column. Move all items to the according colum and i will check it again.");
+        this.$refs.base.$refs.assistant.updateMessage("There are still some items in the 'all' column. Move all items to the according colum and i will check it again.");
         return;
       } else if (result == 0) {
-        this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
+        this.$refs.base.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
         return;
       } else {
-        this.step = -1;
-        this.$refs.assistant.updateMessage('You are right. Everything was correct.');
-        this.$refs.assistant.updateActions('Continue', this.showTask2);
+        this.$refs.base.$refs.assistant.updateMessage('You are right. Everything was correct.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask2);
       }
     },
     showTask2() {
-      this.step = 3;
-      this.$refs.assistant.updateMessage("What do you think about this post?");
-      this.$refs.assistant.updateActions('Check my answer.', this.task2Check);
+      this.$refs.base.step = 3;
+      this.$refs.base.$refs.assistant.updateMessage("What do you think about this post?");
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task2Check);
     },
     task2Check() {
        if (this.$refs.quiz1.check() == 1) {
-        this.points += 2;
-        this.$refs.assistant.updateMessage('You are right. You should not post this.');
-        this.$refs.assistant.updateActions('Continue', this.showTask3);
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. You should not post this.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask3);
       } else {
-        this.points--;
-        this.$refs.assistant.updateMessage('Nope. You should not post this. This post will be not good for your digital footprint.');
-        this.$refs.assistant.updateActions('Continue', this.showTask3);
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('Nope. You should not post this. This post will be not good for your digital footprint.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask3);
       }
     },
     showTask3() {
-      this.step = 4;
-      this.$refs.assistant.updateMessage("What do you think about this post? Can we post it without any problem?");
-      this.$refs.assistant.updateActions('This post is fine!', this.task3Fail, 'No, we should not post this!', this.task3Pass);
+      this.$refs.base.step = 4;
+      this.$refs.base.$refs.assistant.updateMessage("What do you think about this post? Can we post it without any problem?");
+      this.$refs.base.$refs.assistant.updateActions('This post is fine!', this.task3Fail, 'No, we should not post this!', this.task3Pass);
     },
     task3Fail() {
-      this.$refs.assistant.updateMessage('Nope. You should never post your adress online.');
-      this.$refs.assistant.updateActions('Continue', this.showTask4);
+      this.$refs.base.$refs.assistant.updateMessage('Nope. You should never post your adress online.');
+      this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask4);
     },
     task3Pass() {
-      this.$refs.assistant.updateMessage('You are right. The adress is private information and should not be shared online.');
-      this.$refs.assistant.updateActions('Continue', this.showTask4);
+      this.$refs.base.$refs.assistant.updateMessage('You are right. The adress is private information and should not be shared online.');
+      this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask4);
     },
     showTask4() {
-      this.step = 5;
-      this.$refs.assistant.updateMessage("What do you think about this post?");
-      this.$refs.assistant.updateActions('Check my answer.', this.task4Check);
+      this.$refs.base.step = 5;
+      this.$refs.base.$refs.assistant.updateMessage("What do you think about this post?");
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task4Check);
     },
     task4Check() {
        if (this.$refs.quiz2.check() == 1) {
-        this.points += 2;
-        this.$refs.assistant.updateMessage('You are right. You should not post this.');
-        this.$refs.assistant.updateActions('Continue', this.showTask5);
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. You should not post this.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask5);
       } else {
-        this.points--;
-        this.$refs.assistant.updateMessage('Nope. You should not post this. This post will be not good for your digital footprint.');
-        this.$refs.assistant.updateActions('Continue', this.showTask5);
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('Nope. You should not post this. This post will be not good for your digital footprint.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask5);
       }
     },
     showTask5() {
-      this.step = 6;
-      this.$refs.assistant.updateMessage("What do you think about this post?");
-      this.$refs.assistant.updateActions('Check my answer.', this.task5Check);
+      this.$refs.base.step = 6;
+      this.$refs.base.$refs.assistant.updateMessage("What do you think about this post?");
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task5Check);
     },
     task5Check() {
        if (this.$refs.quiz3.check() == 1) {
-        this.points += 2;
-        this.$refs.assistant.updateMessage('You are right. These posts are fine and will not have a negative inpact on your digital footprint.');
-        this.$refs.assistant.updateActions('Continue', this.finishLevel);
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. These posts are fine and will not have a negative inpact on your digital footprint.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.$refs.base.finishLevel);
       } else {
-        this.points--;
-        this.$refs.assistant.updateMessage('Nope. This posts are fine.');
-        this.$refs.assistant.updateActions('Continue', this.finishLevel);
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('Nope. This posts are fine.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.$refs.base.finishLevel);
       }
     },
-    finishLevel() {
-      this.$refs.assistant.hide();
-
-      //calculate score and stars
-      const points = 3;
-      this.$store.dispatch('updateLevel', { id: 3, stars: points });
-
-      //show level finished dialog
-      this.step = 7;
-    },
-    playAgain() {
-      this.$router.go();
-    },
-    next() {
-      this.$router.replace('/levels');
-    }
   },
 };
 </script>

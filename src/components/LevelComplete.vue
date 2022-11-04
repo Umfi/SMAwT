@@ -70,8 +70,9 @@ export default {
             
             let stars = 0;
             if (this.$props.score <= 0) {
-                stars = 0;
+                return 0;
             }
+
             if (this.$props.score < this.$props.max_score / 2) {
                 stars = 1;
             }

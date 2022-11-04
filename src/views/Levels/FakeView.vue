@@ -1,5 +1,7 @@
 <template>
-  <div class="container mt-5">
+  <base-level :level_id="level_id" :level_name="level_name" :max_points="max_points" :max_steps="max_steps" ref="base">
+    <template v-slot="{step}">
+
     <div v-if="step == 1">
       
         <h1 class="text-center">Fake or Real?</h1>
@@ -35,37 +37,28 @@
       </div>
     </div>
 
-    <div v-if="step == 4">
-        <level-complete :level_id="8" :level_name="'Fake or Real?'" :score="points" :max_score="max_points" @play-again="playAgain" @finish="next"></level-complete>    
-    </div>
-
-
-    <user-guide
-      ref="assistant"
-      :msg="'Not everything you see on the internet is true. You should always check the source of the information before you share it.'"
-      actionA="Continue"
-      :actionAFunc="showTask1Pre"
-    ></user-guide>
-  </div>
+    </template>
+  </base-level>
 </template>
 
 <script>
 
-import UserGuide from '../../components/UserGuide.vue';
+import BaseLevel from '../../components/BaseLevel.vue';
 import ContainerGame from '../../components/Games/ContainerGame.vue';
 import QuizGame from '../../components/Games/QuizGame.vue';
 import SimplePost from '../../components/SimplePost.vue';
-import LevelComplete from '../../components/LevelComplete.vue';
 import {mapGetters} from 'vuex';
 
 export default {
   name: "FakeView",
-  components: {UserGuide, SimplePost, ContainerGame, QuizGame, LevelComplete},
+  components: {BaseLevel, SimplePost, ContainerGame, QuizGame},
   data() {
     return {
-      step: 0,
-      points: 0,
-      max_points: 0,
+      level_id: 8,
+      level_name: "Fake or Real?",
+      max_points: 10,
+      max_steps: 4,
+      // ------------
       author: {
         name: 'Markus',
         avatar: 'https://avatars.dicebear.com/api/avataaars/fafada.png'
@@ -99,58 +92,51 @@ export default {
         'user'
     ]),
   },
+  mounted() {
+    this.$refs.base.$refs.assistant.updateMessage("Not everything you see on the internet is true. You should always check the source of the information before you share it.");
+    this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask1Pre);
+  },
   methods: {
     showTask1Pre() {
-      this.step = 1;
-      this.$refs.assistant.updateMessage("All this should be common sense anyway, right?\n\nBut it doesn't hurt to learn about it.");
-      this.$refs.assistant.updateActions('Sure, good idea.', this.showTask1);
+      this.$refs.base.step = 1;
+      this.$refs.base.$refs.assistant.updateMessage("All this should be common sense anyway, right?\n\nBut it doesn't hurt to learn about it.");
+      this.$refs.base.$refs.assistant.updateActions('Sure, good idea.', this.showTask1);
     },
     showTask1() {
-      this.step = 2;
-      this.$refs.assistant.updateMessage("Just tell me, when every i should check your work.");
-      this.$refs.assistant.updateActions('I think I am done.', this.task1Check);
+      this.$refs.base.step = 2;
+      this.$refs.base.$refs.assistant.updateMessage("Just tell me, when every i should check your work.");
+      this.$refs.base.$refs.assistant.updateActions('I think I am done.', this.task1Check);
     },
     task1Check() {
       const result = this.$refs.game1.check();
 
       if (result == -1) {
-        this.$refs.assistant.updateMessage("There are still some items in the 'all' column. Move all items to the according colum and i will check it again.");
+        this.$refs.base.$refs.assistant.updateMessage("There are still some items in the 'all' column. Move all items to the according colum and i will check it again.");
         return;
       } else if (result == 0) {
-        this.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
+        this.$refs.base.$refs.assistant.updateMessage("There are still some mistakes. Try again. I am sure you will manage it now.");
         return;
       } else {
-        this.step = -1;
-        this.$refs.assistant.updateMessage('You are right. Everything was correct.');
-        this.$refs.assistant.updateActions('Continue', this.showTask2);
+        this.$refs.base.$refs.assistant.updateMessage('You are right. Everything was correct.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask2);
       }
     },
     showTask2() {
-      this.step = 3;
-      this.$refs.assistant.updateMessage("What do you think about this post?");
-      this.$refs.assistant.updateActions('Check my answer.', this.task2Check);
+      this.$refs.base.step = 3;
+      this.$refs.base.$refs.assistant.updateMessage("What do you think about this post?");
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task2Check);
     },
     task2Check() {
        if (this.$refs.quiz1.check() == 1) {
-        this.points += 2;
-        this.$refs.assistant.updateMessage('You are right. This is probaly fake news. To be absolutly sure you have to check the source.');
-        this.$refs.assistant.updateActions('Continue', this.finishLevel);
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. This is probaly fake news. To be absolutly sure you have to check the source.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.$refs.base.finishLevel);
       } else {
-        this.points--;
-        this.$refs.assistant.updateMessage('You are wrong. This is probaly fake news. To be absolutly sure you have to check the source');
-        this.$refs.assistant.updateActions('Continue', this.finishLevel);
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('You are wrong. This is probaly fake news. To be absolutly sure you have to check the source');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.$refs.base.finishLevel);
       }
     },
-    finishLevel() {
-      this.$refs.assistant.hide();
-      this.step = 4;
-    },
-    playAgain() {
-      this.$router.go();
-    },
-    next() {
-      this.$router.replace('/levels');
-    }
   },
 };
 </script>
