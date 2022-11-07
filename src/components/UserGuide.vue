@@ -16,7 +16,7 @@
           ></vue-typer>
         </div>
     </div>
-    <div class="row border-top">
+    <div class="row border-top" v-show="visibleOptions">
         <div class="col p-0">
             <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction">{{ actionAText }}</button>
         </div>
@@ -58,6 +58,7 @@ export default {
   data() {
     return {
       visible: true,
+      visibleOptions: true,
       message: '',
       actionAText: '',
       actionBText: '',
@@ -87,6 +88,12 @@ export default {
     },
     show() {
       this.visible = true;
+    },
+    hideOptions() {
+      this.visibleOptions = false;
+    },
+    showOptions() {
+      this.visibleOptions = true;
     }
   }
 }

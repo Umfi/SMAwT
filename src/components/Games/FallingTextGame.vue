@@ -17,6 +17,7 @@ export default {
       elements: 50,
       winSound: null,
       loseSound: null,
+      timer: null
     };
   },
   mounted() {
@@ -24,19 +25,22 @@ export default {
     this.winSound = new Audio('/sounds/correct.wav');
     this.loseSound = new Audio('/sounds/error.wav');
   },
+  destroyed() {
+      clearInterval(this.timer);
+      this.elements = 0;
+  },
   methods: {
     startGame() {
-      var timer = setInterval(() => {
+      this.timer = setInterval(() => {
         this.elements--;
         this.makeFruit();
 
         if (this.elements == 0) {
-          clearInterval(timer);
+          clearInterval(this.timer);
           this.$emit('game-over', this.points);
         }
       }, 1000);
     },
-
     makeFruit() {
       var target = document.querySelector("#falling-text-game-container");
 
@@ -149,6 +153,7 @@ export default {
     border-bottom: 1px solid rgb(109, 107, 107);
     border-left: 2px solid rgb(109, 107, 107);
     user-select: none;
+    text-align: right;
 }
 
 #falling-text-game-container .points {
