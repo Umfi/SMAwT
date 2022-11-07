@@ -4,26 +4,37 @@
 
     <div v-if="step == 1">
       
-        <h1 class="text-center">Digital Footprint</h1>
+        <div v-show="subStep == 1">
+          <h1 class="text-center">Digital Footprint</h1>
 
-        <p class="lead bg-success shadow border p-3 text-white">
-        Social media is a great way to communicate with others and express yourself. You can also use it to show others, including colleges or future employers, who you are as a person.
-        However, social media use can also have drawbacks. What you and others share is permanent, and it's easy to get caught in sharing things you may later regret.<br>
-        <br>
-        Your digital footprint can affect your reputation online and offline. 
-        <b>It's important to manage it as much as you can!</b>
-        </p>
-        <br>
-        <h3 class="text-center">Keep following rules in mind and you should be safe!</h3>
-        <ul class="list-group">
-            <li class="list-group-item">Think before you post.</li>
-            <li class="list-group-item">Be empathetic and consider your choice of words.</li>
-            <li class="list-group-item">Be respectful of differences.</li>
-            <li class="list-group-item">Do not be rude even if you don't agree with their views.</li>
-            <li class="list-group-item">Do not spread false information or rumours.</li>
-            <li class="list-group-item" >Do not post private information.</li>
-            <li class="list-group-item" >Do not post negative thoughts and opinions about your school or workplace.</li>
-        </ul>
+          <p class="lead bg-success shadow border p-3 text-white">
+          Social media is a great way to communicate with others and express yourself. You can also use it to show others, including colleges or future employers, who you are as a person.
+          However, social media use can also have drawbacks. What you and others share is permanent, and it's easy to get caught in sharing things you may later regret.<br>
+          <br>
+          Your digital footprint can affect your reputation online and offline. 
+          <b>It's important to manage it as much as you can!</b>
+          </p>
+        </div>
+
+        <div v-show="subStep == 2">
+          <quiz-game key="quiz0" ref="quiz0" :question="quiz0.question" :answers="quiz0.answers"></quiz-game>
+        </div>
+
+        <div v-show="subStep == 3">
+          <h3 class="text-center">Keep following rules in mind and you should be safe!</h3>
+          <ul class="list-group">
+              <li class="list-group-item">Think before you post. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(1)"><i class="fas fa-question"></i></button></li>
+              <li class="list-group-item">Be empathetic and consider your choice of words. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(2)"><i class="fas fa-question"></i></button></li>
+              <li class="list-group-item">Be respectful of differences. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(3)"><i class="fas fa-question"></i></button></li>
+              <li class="list-group-item">Do not be rude even if you don't agree with their views. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(4)"><i class="fas fa-question"></i></button></li>
+              <li class="list-group-item">Do not spread false information or rumours. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(5)"><i class="fas fa-question"></i></button></li>
+              <li class="list-group-item" >Do not post private information. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(6)"><i class="fas fa-question"></i></button></li>
+              <li class="list-group-item" >Do not post negative thoughts and opinions about your school or workplace. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(7)"><i class="fas fa-question"></i></button></li>
+          </ul>
+
+           <button type="button" class="btn btn-primary btn-lg btn-block mt-5 w-100" @click="showTask1Pre3()">Continue</button>
+     
+        </div>
     </div>
 
     <div v-if="step == 2">
@@ -96,6 +107,20 @@ export default {
       max_points: 10,
       max_steps: 7,
       // ---------------
+      subStep: 1,
+      quiz0: {
+        question: "Which of the following facts about 'DIGITAL FOOTPRINT' is true?",
+        answers: [
+          {id: 0, text: "My digital footprint can be seen only by me.", correct: false},
+          {id: 1, text: "I can influence my digital footprint.", correct: true},
+          {id: 2, text: "I can not influence the digital footprint of others.", correct: false},
+          {id: 3, text: "Others can influence my digital footprint.", correct: true},
+          {id: 4, text: "Only photos of me can influence my digital footprint.", correct: false},
+          {id: 5, text: "My digital footprint can be good for me.", correct: true},
+          {id: 6, text: "My digital footprint can be bad for me.", correct: true},
+          {id: 7, text: "I can easily get rid of my digital footprint.", correct: false},
+        ]
+      },
       firstGame: [
          { name: "Think before posting.", type: 'good'},
          { name: "Consider choice of words.", type: 'good' },
@@ -150,14 +175,64 @@ export default {
     ]),
   },
   mounted() {
-    this.$refs.base.$refs.assistant.updateMessage("Great. Now you know how to set a secure password and what data is personal information and should kept private.\nBut before you post something, lets learn what we can and post and what we better do not post.");
-    this.$refs.base.$refs.assistant.updateActions('Continue?', this.showTask1Pre);
+    this.$refs.base.$refs.assistant.updateMessage("You have already learned how to create an account and what data you should kept private.\n\nNow you will learn how to protect your digital footprint.");
+    this.$refs.base.$refs.assistant.updateActions('Digital what?', this.showTask1Pre);
   },
   methods: {
     showTask1Pre() {
       this.$refs.base.step = 1;
-      this.$refs.base.$refs.assistant.updateMessage("All this should be common sense anyway, right?\n\nBut it doesn't hurt to learn about it.");
-      this.$refs.base.$refs.assistant.updateActions('Sure, good idea.', this.showTask1);
+      this.$refs.base.$refs.assistant.updateMessage("Everything you post online will be part of your digital footprint. This includes your posts, comments, pictures, videos, and more.\n\nYour digital footprint is permanent and can be seen by anyone. It can be used to judge you and your character.");
+      this.$refs.base.$refs.assistant.updateActions('I see, how can i shape my digital footprint?', this.showTask1Pre1);
+    },
+    showTask1Pre1() {
+      this.subStep = 0;
+      this.$refs.base.$refs.assistant.updateMessage("It is important to think about what you post online. You should always think about the consequences of your actions.\nAsk yourself if you would be okay with your parents, teachers, or future employers seeing your post.\n\nYou should also think about how your post will affect others.\nWould you be okay with your post being shared with your friends, family, or classmates?");
+      this.$refs.base.$refs.assistant.updateActions('I get it.', this.showQuiz0);
+    },
+    showQuiz0() {
+      this.subStep = 2;
+      this.$refs.base.$refs.assistant.updateMessage("Let's test your knowledge about digital footprint. Can you answer the question above?");
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.quiz0Check);
+    },
+    quiz0Check() {
+       if (this.$refs.quiz0.check() == 1) {
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. Good job!');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask1Pre2);
+      } else {
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('Ups. Not everything was right.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask1Pre2);
+      }
+    },
+    showTask1Pre2() {
+      this.subStep = 3;
+      this.$refs.base.$refs.assistant.updateMessage("Have a look at the text above.\nThat are some general easy to follow rules for keeping your digital footprint clean.\n\nIf something is not clear, just ask me by clicking the button with the questionmark for the according item.");
+      this.$refs.base.$refs.assistant.hideOptions();
+    },
+    explain(id) {
+      if (id == 1) {
+        this.$refs.base.$refs.assistant.updateMessage("Always think before you post something online. Ask yourself if you would be okay with your parents, teachers, or future employers seeing your post.");
+      }
+      else if (id == 2) {
+        this.$refs.base.$refs.assistant.updateMessage("Consider the choice of words. It could be possible that your post is misinterpreted.");
+      } else if (id == 3) {
+        this.$refs.base.$refs.assistant.updateMessage("Be respectful of differences. Not everybody thinks the same way as you do. Respect other people's opinions.");
+      } else if (id == 4) {
+        this.$refs.base.$refs.assistant.updateMessage("Do not be rude. You should not post anything that could be offensive to others.");
+      } else if (id == 5) {
+        this.$refs.base.$refs.assistant.updateMessage("Don't spread false information. If you are not sure if something is true, don't post it.");
+      } else if (id == 6) {
+        this.$refs.base.$refs.assistant.updateMessage("Never post private information. This includes your address, phone number, or other personal information.");
+      } else if (id == 7) {
+        this.$refs.base.$refs.assistant.updateMessage("Do not post negative thoughts and opinions about school or workplace. This could affect your reputation.");
+      }
+    },
+    showTask1Pre3() {
+      this.subStep = 0;
+      this.$refs.base.$refs.assistant.updateMessage("It is really not that hard. Am I right?\n\nI have prepared a small task for you, where you can practice what you have learned.");
+      this.$refs.base.$refs.assistant.updateActions('Continue.', this.showTask1);
+      this.$refs.base.$refs.assistant.showOptions();
     },
     showTask1() {
       this.$refs.base.step = 2;
@@ -180,7 +255,7 @@ export default {
     },
     showTask2() {
       this.$refs.base.step = 3;
-      this.$refs.base.$refs.assistant.updateMessage("What do you think about this post?");
+      this.$refs.base.$refs.assistant.updateMessage("Have a look at the post above. What do you think about this post?");
       this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task2Check);
     },
     task2Check() {
