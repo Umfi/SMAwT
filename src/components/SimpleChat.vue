@@ -1,7 +1,7 @@
 <template>
 <div class="card w-50 m-auto">
     <div class="card-header">
-        <h5 class="card-title">New Unread Message</h5>
+        <h5 class="card-title">{{ $t('New Unread Message') }}</h5>
     </div>
     <div class="card-body">
         <ul>
@@ -21,7 +21,7 @@ export default {
 
     //URLs starting with http://, https://, or ftp://
     replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gim;
-    replacedText = inputText.replace(replacePattern1, '<span class="text-primary">$1</span>');
+    replacedText = this.$t(inputText).replace(replacePattern1, '<span class="text-primary">$1</span>');
 
     return replacedText;
 }

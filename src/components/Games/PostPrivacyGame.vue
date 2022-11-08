@@ -12,20 +12,20 @@
       </div>
 
       <div class="post__bottom">
-        <p>{{ message }}</p>
+        <p>{{ $t(message) }}</p>
       </div>
 
       <div class="post__options">
         <div class="post__option public" @click="changePrivacy('public')">
-          <i class="fas fa-earth-europe me-2"></i> Public
+          <i class="fas fa-earth-europe me-2"></i> {{ $t('Public') }}
         </div>
 
         <div class="post__option friends" @click="changePrivacy('friends')">
-          <i class="fas fa-user-group me-2"></i> Friends
+          <i class="fas fa-user-group me-2"></i> {{ $t('Friends') }}
         </div>
 
         <div class="post__option selected-friends" @click="changePrivacy('selected-friends')">
-          <i class="fas fa-user me-2"></i> Selected Friends
+          <i class="fas fa-user me-2"></i> {{ $t('Selected Friends') }} 
         </div>
       </div>
     </div>

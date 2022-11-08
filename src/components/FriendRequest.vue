@@ -1,7 +1,7 @@
 <template>
   <div class="card w-50 m-auto">
     <div class="card-header">
-      <h5 class="card-title">Friend Request</h5>
+      <h5 class="card-title">{{ $t('Friend Request') }} </h5>
     </div>
     <div class="card-body">
       <div class="row">
@@ -21,13 +21,13 @@
           </div>
           <div class="row" v-if="mutalFriends > 0">
             <div class="col">
-              <p class="card-text">{{ mutalFriends }} mutal friends</p>
+              <p class="card-text">{{ mutalFriends }} {{ $t('mutal friends') }} </p>
             </div>
           </div>
           <div class="row mt-2">
             <div class="col">
-              <button type="button" class="btn btn-primary me-2" style="width: 45%">Confirm</button>
-              <button type="button" class="btn btn-light btn-outline-secondary" style="width: 45%">Delete</button>
+              <button type="button" class="btn btn-primary me-2" style="width: 45%">{{ $t('Confirm') }}</button>
+              <button type="button" class="btn btn-light btn-outline-secondary" style="width: 45%">{{ $t('Delete') }}</button>
             </div>
           </div>
         </div>

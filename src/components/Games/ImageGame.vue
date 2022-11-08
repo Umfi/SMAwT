@@ -1,7 +1,7 @@
 <template>
     <div>
       <div class="alert alert-primary" role="alert">
-          If there is something bad on the picture, click on it!
+          {{ $t("Can you spot something on this picture that is problematic? If yes, click on it.") }}
       </div>
 
       <div class="img-container">

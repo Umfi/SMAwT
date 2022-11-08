@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center mt-5">
-    <h1>Welcome to the the Social Media Training Tool!</h1>
+    <h1>{{ $t("Welcome to the the Social Media Training Tool!")}}</h1>
 
     <div class="row justify-content-center mt-3">
       <div class="col-8">
@@ -22,8 +22,6 @@
 
     <user-guide 
     ref="assistant"
-    msg="Hey. I am Mike your social media expert. I will help you to become an expert too." 
-    actionA="Sounds good!" 
     :actionAFunc="restart"></user-guide>
 
   </div>
@@ -44,8 +42,11 @@ export default {
   },
   mounted() {
     if (this.user && this.user.name.length > 0) {
-      this.$refs.assistant.updateMessage("Hey " + this.user.name + ". Do you want to continue your training?");
+      this.$refs.assistant.updateMessage("Do you want to continue your training?");
       this.$refs.assistant.updateActions('I want to start from the beginning!', this.restart, 'Yeah, lets continue!', this.start);
+    } else {
+      this.$refs.assistant.updateMessage("Hey. I am Mike your personal social media expert. I will help you to become an expert too.");
+      this.$refs.assistant.updateActions('Sounds good!', this.restart);
     }
   },
   methods: {

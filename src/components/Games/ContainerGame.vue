@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="alert alert-primary" role="alert">
-          Drag each item and move it into the "{{ titleLeft }}" or "{{ titleRight }}" box.
+          {{ $t('Drag each item into the correct box. Either into the left or right box until the box in the middle is empty.') }}
         </div>
         
         <div class="row">
           <div class="col">
-            <h3 class="text-center">{{ titleLeft }}</h3>
+            <h3 class="text-center">{{ $t(titleLeft) }}</h3>
             <draggable class="list-group good shadow" :list="goodList" group="items" @add="sound.play()">
               <div
                 class="list-group-item"
@@ -18,7 +18,7 @@
             </draggable>
           </div>
           <div class="col">
-            <h3 class="text-center">All</h3>
+            <h3 class="text-center">{{ $t('All') }}</h3>
             <draggable class="list-group all shadow" :list="allList" group="items">
               <div
                 class="list-group-item"
@@ -30,7 +30,7 @@
             </draggable>
           </div>
           <div class="col">
-            <h3 class="text-center">{{ titleRight }}</h3>
+            <h3 class="text-center">{{ $t(titleRight) }}</h3>
             <draggable class="list-group bad shadow" :list="badList" group="items" @add="sound.play()">
               <div
                 class="list-group-item"

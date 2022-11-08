@@ -19,13 +19,13 @@
                 </div>
                 <div class="row" v-if="mutal > 0">
                     <div class="col">
-                    <p class="card-text">{{ mutal }} mutal friends</p>
+                    <p class="card-text">{{ mutal }} {{ $t('mutal friends') }}</p>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col">
-                    <button type="button" class="btn btn-primary mb-2 w-100" @click="confirm">Confirm</button>
-                    <button type="button" class="btn btn-light btn-outline-secondary w-100" @click="reject">Delete</button>
+                    <button type="button" class="btn btn-primary mb-2 w-100" @click="confirm">{{ $t('Confirm') }}</button>
+                    <button type="button" class="btn btn-light btn-outline-secondary w-100" @click="reject">{{ $t('Delete') }}</button>
                     </div>
                 </div>
             </div>

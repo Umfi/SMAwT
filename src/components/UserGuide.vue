@@ -6,7 +6,7 @@
         </div>
         <div class="col-10 align-self-center" v-if="this.message.length > 0">
             <vue-typer
-            :text="message"
+            :text="$t(message)"
             :repeat='0'
             :type-delay='20'
             :pre-erase-delay='0'
@@ -18,10 +18,10 @@
     </div>
     <div class="row border-top" v-show="visibleOptions">
         <div class="col p-0">
-            <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction">{{ actionAText }}</button>
+            <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction">{{ $t(actionAText) }}</button>
         </div>
         <div class="col p-0" v-if="actionBText.length > 0">
-            <button type="button" class="btn btn-outline-primary btn-block w-100 text-uppercase" @click="actionBFunction">{{ actionBText }}</button>
+            <button type="button" class="btn btn-outline-primary btn-block w-100 text-uppercase" @click="actionBFunction">{{ $t(actionBText) }}</button>
         </div>
     </div>
   </div>

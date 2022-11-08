@@ -14,19 +14,19 @@
            <i class="fas fa-ellipsis"></i>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" @click="report"><i class="far fa-flag me-1"></i> Beitrag melden</a></li>
+            <li><a class="dropdown-item" href="#" @click="report"><i class="far fa-flag me-1"></i> {{ $t('Report post')}}</a></li>
           </ul>
         </div>
       </div>
 
       <div class="post__bottom">
-        <p class="m-0 px-3 pb-2">{{ message }}</p>
+        <p class="m-0 px-3 pb-2">{{ $t(message) }}</p>
         <img v-if="image.length > 0" :src="image" class="img-fluid pb-2 w-100 post_img" />
       </div>
     <div class="px-3 py-1 news-container" v-if="link.length > 0 && headline.length > 0">
       <span class="news-url">{{ link }}</span>
       <br>
-      <b class="news-titel">{{ headline}}</b>
+      <b class="news-titel">{{ $t(headline) }}</b>
     </div>
 
       <div class="row mb-2">
@@ -34,21 +34,21 @@
           <i class="bg-primary fs-6 fas fa-thumbs-up p-2 rounded-5 text-white ms-3"></i> {{ likes}}
         </div>
         <div class="col-6 align-self-center text-end text-black-50" v-show="comments.length > 0 || shares > 0">
-          <span class="me-2">{{ comments.length }} Kommentare</span> 
-          <span class="me-3">{{ shares }} Mal geteilt</span>
+          <span class="me-2">{{ comments.length }} {{ $t('comments') }}</span> 
+          <span class="me-3">{{ shares }} {{ $t('shares') }}</span>
         </div>
       </div>
       <div class="post__options">
         <div :class="isLiked ? 'post__option like active' : 'post__option like'" @click="like">
-          <i class="far fa-thumbs-up me-2"></i> Gefällt mir
+          <i class="far fa-thumbs-up me-2"></i> {{ $t('Like') }}
         </div>
 
         <div class="post__option comment" @click="showCommentBox">
-          <i class="far fa-comment me-2"></i> Kommentieren
+          <i class="far fa-comment me-2"></i> {{ $t('Comment') }}
         </div>
 
         <div class="post__option share">
-          <i class="far fa-paper-plane me-2"></i> Teilen
+          <i class="far fa-paper-plane me-2"></i> {{ $t('Share') }}
         </div>
       </div>
       <div class="post__comments" v-show="showComments">
@@ -61,14 +61,14 @@
             />
             <div class="w-100 bg-light rounded-3">
               <b class="mx-2">{{ comment.user.name }}</b>
-              <p class="mx-2">{{ comment.text }}</p>
+              <p class="mx-2">{{ $t(comment.text) }}</p>
             </div>
             <div>
               <button type="button" class="btn btn-outline border-0 float-end dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-ellipsis"></i>
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" @click="reportComment(comment.id)"><i class="far fa-flag me-1"></i> Kommentar melden</a></li>
+                <li><a class="dropdown-item" href="#" @click="reportComment(comment.id)"><i class="far fa-flag me-1"></i> {{ $t('Report comment') }}</a></li>
               </ul>
             </div>
           </div>
@@ -80,7 +80,7 @@
             width="30"
             :src="user.avatar"
           />
-          <textarea class="form-control" placeholder="Schreibe einen Kommentar..." rows="1" v-model="commentText" @keydown.enter.prevent="comment"></textarea>
+          <textarea class="form-control" :placeholder="$t('Write a comment...')" rows="1" v-model="commentText" @keydown.enter.prevent="comment"></textarea>
         </div>
       </div>
     </div>

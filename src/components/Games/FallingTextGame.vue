@@ -1,7 +1,7 @@
 <template>
      <div id="falling-text-game-container">
-        <div class="points">Points: {{ points}} </div>
-        <div class="time">Time left: {{ elements }}</div>
+        <div class="points">{{ $t('Points') }}: {{ points}} </div>
+        <div class="time">{{ $t('Time left') }}: {{ elements }}</div>
     </div>
 </template>
 

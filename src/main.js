@@ -13,9 +13,22 @@ import 'shepherd.js/dist/css/shepherd.css';
 
 Vue.config.productionTip = false
 
+
+import VueI18n from 'vue-i18n'
+import messages from './lang/messages.js'
+
+Vue.use(VueI18n);
+
+const i18n = new VueI18n({
+  locale: 'de',
+  fallbackLocale: 'en', 
+  messages, 
+})
+
 new Vue({
   store,
   router,
+  i18n,
   beforeCreate() { 
     this.$store.commit('GET_USER');
     this.$store.commit('GET_LEVELS');

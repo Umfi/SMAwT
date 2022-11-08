@@ -6,20 +6,28 @@
             
             <div class="card">
               <div class="card-header">
-                <h1>Create your user</h1>
+                <h1>{{ $t('Create your user') }}</h1>
               </div>
               <div class="card-body">
                 <div class="avatar">
-                  <avataaars :isCircle="isCircle" :facialHairType="'blank'" v-if="refreshAvatar" ref="avatar"></avataaars>
+                  <avataaars 
+                    :isCircle="isCircle" 
+                    :facialHairType="'blank'" 
+                    :mouthType="mouths[Math.floor(Math.random()* mouths.length)]" 
+                    eyebrowType="DefaultNatural"
+                    accessoriesType="Blank"
+                    v-if="refreshAvatar" 
+                    ref="avatar"
+                  ></avataaars>
                   <button type="button" class="btn btn-secondary" @click="changeAvatar">
                     <i class="fas fa-random"></i>
                   </button>
                 </div>
 
-                <input type="text" class="form-control mt-4 w-50 m-auto" id="name" placeholder="Enter your name" v-model="username">
+                <input type="text" class="form-control mt-4 w-50 m-auto" id="name" :placeholder="$t('Enter your name')" v-model="username">
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-primary btn-lg mt-4" @click="start" :disabled="username.length == 0">Start</button>
+                <button type="button" class="btn btn-primary btn-lg mt-4" @click="start" :disabled="username.length == 0"> {{ $t('Start') }}</button>
               </div>
             </div>  
       </div>
@@ -39,7 +47,8 @@ export default {
     return {
       refreshAvatar: true,
       isCircle: true,
-      username: ''
+      username: '',
+      mouths: ['Default', 'Eating', 'Grimace', 'Serious', 'Smile', 'Tongue', 'Twinkle'],
     }
   },
   methods: {

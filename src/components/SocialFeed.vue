@@ -9,14 +9,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Search" :disabled="!interactive">
+                <input type="text" class="form-control" :placeholder="$t('Search')" aria-label="Search" :disabled="!interactive">
                 </li>
                 <li class="nav-item dropdown ms-4">
                 <button type="button" :class="interactive ? 'btn btn-light dropdown-toggle position-relative fr-btn' : 'disabled btn btn-light dropdown-toggle position-relative fr-btn'" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user-plus"></i>
                     <span v-show="friendRequests.length > 0" class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger">
                         {{friendRequests.length }}
-                        <span class="visually-hidden">unread messages</span>
                     </span>
                 </button>
                 <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
@@ -24,7 +23,7 @@
                         <simple-friend-request :user="fr.user" :mutal="fr.mutal" @confirm="confirmFriendRequest(fr.id)" @reject="rejectFriendRequest(fr.id)"></simple-friend-request>
                     </li>
 
-                    <li v-if="friendRequests.length == 0"><span class="p-2">Keine Anfragen</span></li>
+                    <li v-if="friendRequests.length == 0"><span class="p-2">{{ $t('No friend requests') }}</span></li>
                 </ul>
                 </li>
                 <li class="nav-item ms-4">
@@ -39,18 +38,18 @@
                 <div class="col-8 m-auto">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <textarea class="form-control create-post-content" rows="3" placeholder="What's on your mind?" v-model="text" :disabled="!interactive"></textarea>
+                            <textarea class="form-control create-post-content" rows="3" :placeholder="$t('What\'s on your mind?')" v-model="text" :disabled="!interactive"></textarea>
                             
                             <button :class="interactive ? 'btn btn-outline border-0 dropdown-toggle float-start create-post-visibility' : 'disabled create-post-visibility btn btn-outline border-0 dropdown-toggle float-start'" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i :class="'fas ' + visibilityOfPostStyle"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" @click="changeVisibility('public')"><i class="fas fas fa-earth-europe me-1"></i> Öffentlich</a></li>
-                                <li><a class="dropdown-item" href="#" @click="changeVisibility('friends')"><i class="fas fas fa-user-group me-1"></i> Freunde</a></li>
-                                <li><a class="dropdown-item" href="#" @click="changeVisibility('selected_friends')"><i class="fas fas fa-user me-1"></i> Ausgewählte Freunde</a></li>
+                                <li><a class="dropdown-item" href="#" @click="changeVisibility('public')"><i class="fas fas fa-earth-europe me-1"></i> {{ $t('Public') }}</a></li>
+                                <li><a class="dropdown-item" href="#" @click="changeVisibility('friends')"><i class="fas fas fa-user-group me-1"></i> {{ $t('Friends') }}</a></li>
+                                <li><a class="dropdown-item" href="#" @click="changeVisibility('selected_friends')"><i class="fas fas fa-user me-1"></i> {{ $t('Selected Friends') }}</a></li>
                             </ul>
 
-                            <button type="button" class="btn btn-primary mt-2 float-end create-post-btn" @click="createPost" :disabled="!interactive">Post</button>
+                            <button type="button" class="btn btn-primary mt-2 float-end create-post-btn" @click="createPost" :disabled="!interactive">{{ $t('Create post') }}</button>
                         </div>
                     </div>
                 </div>

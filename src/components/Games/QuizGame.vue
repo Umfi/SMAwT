@@ -1,18 +1,18 @@
 <template>
 <div>
     <div class="alert alert-primary" role="alert">
-        None or multiple answers could be true.
+        {{ $t('Select the correct answer. Note that none or several answers can be correct.') }}
     </div>
 
     <div class="card">
         <div class="card-header">
-            <h2 class="text-center">{{ question }}</h2>
+            <h2 class="text-center">{{ $t(question) }}</h2>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-6 mb-3" v-for="answer in mixedAnswers" :key="answer.id">
                     <input type="checkbox" class="btn-check" :id="answer.id" :value="answer.id" autocomplete="off" v-model="checkedItems">
-                    <label :class="answer.correct ? 'btn btn-outline-primary w-100 h-100 answer c' : 'btn btn-outline-primary w-100 h-100 answer w'" :for="answer.id">{{ answer.text }}</label>
+                    <label :class="answer.correct ? 'btn btn-outline-primary w-100 h-100 answer c' : 'btn btn-outline-primary w-100 h-100 answer w'" :for="answer.id">{{ $t(answer.text) }}</label>
                 </div>
             </div>
         </div>

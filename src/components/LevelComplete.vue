@@ -1,12 +1,12 @@
 <template>
   <div class="game-done-card shadow card w-50 m-auto">
     <div class="card-header">
-        <h1 class="text-center text-uppercase text-white">{{ (stars == 0) ? 'Failed' : 'Complete' }}</h1>
+        <h1 class="text-center text-uppercase text-white">{{ (stars == 0) ? $t('Failed') : $t('Completed') }}</h1>
     </div>
     <div class="card-body">
-                <div class="row">
+        <div class="row">
             <div class="col-12 text-center">
-                <h2>{{ level_name }}</h2>
+                <h2>{{ $t(level_name) }}</h2>
             </div>
         </div>
         <div class="row">
@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <h3>Your Score</h3>
+                <h3>{{ $t('Your Score') }}</h3>
             </div>
             <div class="col-12 text-center">
                 <h2>{{ score }}</h2>
@@ -27,8 +27,8 @@
         </div>
     </div>
     <div class="card-footer">
-        <button type="button" class="btn btn-secondary btn-lg mt-4 float-start" @click="playAgain">Play Again</button>
-        <button v-if="stars > 0" type="button" class="btn btn-primary btn-lg mt-4 float-end" @click="finish">Continue</button>
+        <button type="button" class="btn btn-secondary btn-lg mt-4 float-start" @click="playAgain">{{ $t('Play Again') }}</button>
+        <button v-if="stars > 0" type="button" class="btn btn-primary btn-lg mt-4 float-end" @click="finish">{{ $t('Continue') }}</button>
     </div>
 </div>
 </template>
