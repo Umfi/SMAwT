@@ -22,8 +22,8 @@ export default {
   },
   mounted() {
     this.startGame();
-    this.winSound = new Audio('/sounds/correct.wav');
-    this.loseSound = new Audio('/sounds/error.wav');
+    this.winSound = new Audio(require('../../assets/sounds/correct.wav'));
+    this.loseSound = new Audio(require('../../assets/sounds/error.wav'));
   },
   destroyed() {
       clearInterval(this.timer);

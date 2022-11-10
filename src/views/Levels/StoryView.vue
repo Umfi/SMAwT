@@ -182,7 +182,7 @@ export default {
       this.storyStep = 2;
       // https://openclipart.org/detail/324161/deserted-beach
       mergeImages([
-          { src: '/story/3.png', x: 0, y: 0 },
+          { src: require('../../assets/story/3.png'), x: 0, y: 0 },
           { src: this.friends[0].avatar, x: 1113, y: 735 },
           { src: this.friends[2].avatar, x: 1373, y: 735 }
       ], { crossOrigin: "Anonymous"}).then(b64 => {
@@ -213,7 +213,7 @@ export default {
         )
         .then(data => {
           mergeImages([
-              { src: '/story/4.png', x: 0, y: 0 },
+              { src: require('../../assets/story/4.png'), x: 0, y: 0 },
               { src: this.friends[1].avatar, x: 413, y: 700 },
               { src: data, x: 813, y: 700 },
           ], { crossOrigin: "Anonymous"}).then(b64 => {

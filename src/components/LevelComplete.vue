@@ -99,7 +99,7 @@ export default {
 
         
         if (this.stars > 0) {
-            this.sound = new Audio('/sounds/win.mp3'); 
+            this.sound = new Audio(require('../assets/sounds/win.mp3')); 
             this.$confetti.start({
                 particles: [
                     {
@@ -108,7 +108,7 @@ export default {
                 ],
             });
         } else {
-            this.sound = new Audio('/sounds/lose.wav'); 
+            this.sound = new Audio(require('../assets/sounds/lose.wav')); 
         }
 
         this.sound.play();

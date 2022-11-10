@@ -72,7 +72,7 @@ export default {
     };
   },
   mounted() {
-    this.sound = new Audio('/sounds/stick.wav');
+    this.sound = new Audio(require('../../assets/sounds/stick.wav'));
     this.allList = this.$props.items;
     this.allList.sort(() => Math.random() - 0.5);
   },
