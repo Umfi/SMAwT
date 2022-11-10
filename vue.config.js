@@ -1,3 +1,4 @@
 module.exports = {
-  transpileDependencies: true
+  transpileDependencies: true,
+  publicPath: process.env.NODE_ENV === 'production' ? '/social-media-learning' : '/'
 }

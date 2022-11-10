@@ -199,6 +199,22 @@ export default {
        if (this.$refs.quiz2.check() == 1) {
         this.$refs.base.points += 2;
         this.$refs.base.$refs.assistant.updateMessage('You are right. This is a dangerous message. We should report it.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask4);
+      } else {
+        this.$refs.base.points--;
+        this.$refs.base.$refs.assistant.updateMessage('You are wrong. This is a dangerous message. We should report it.');
+        this.$refs.base.$refs.assistant.updateActions('Continue', this.showTask4);
+      }
+    },
+    showTask4() {
+      this.$refs.base.step = 5;
+      this.$refs.base.$refs.assistant.updateMessage("What do you think about this message. What should we do?");
+      this.$refs.base.$refs.assistant.updateActions('Check my answer.', this.task4Check);
+    },
+    task4Check() {
+       if (this.$refs.quiz3.check() == 1) {
+        this.$refs.base.points += 2;
+        this.$refs.base.$refs.assistant.updateMessage('You are right. This is a dangerous message. We should report it.');
         this.$refs.base.$refs.assistant.updateActions('Continue', this.$refs.base.finishLevel);
       } else {
         this.$refs.base.points--;
