@@ -5,16 +5,13 @@ import LandingView from '../views/LandingView.vue'
 import SetupView from '../views/SetupView.vue'
 import LevelSelectionView from '../views/LevelSelectionView.vue'
 
-import PostView from '../views/Levels/PostView.vue'
-import ImageView from '../views/Levels/ImageView.vue'
-import PrivacyView from '../views/Levels/PrivacyView.vue'
 import FriendRequestsView from '../views/Levels/FriendRequestsView.vue'
 import MessagesView from '../views/Levels/MessagesView.vue'
 import FakeView from '../views/Levels/FakeView.vue'
 import StoryView from '../views/Levels/StoryView.vue'
 
 import Level1View from '../views/Levels/Level1/Level1View.vue'
-import Level2View from '../views/Levels/Level2View.vue'
+import Level2View from '../views/Levels/Level2/Level2View.vue'
 import Level3View from '../views/Levels/Level3View.vue'
 import ExamView from '../views/ExamView.vue'
 
@@ -57,22 +54,6 @@ const routes = [
     component: ExamView
   },
 
-
-  {
-    path: '/levels/posts',
-    name: 'level-posts',
-    component: PostView
-  },
-  {
-    path: '/levels/images',
-    name: 'level-images',
-    component: ImageView
-  },
-  {
-    path: '/levels/privacy',
-    name: 'level-privacy',
-    component: PrivacyView
-  },
   {
     path: '/levels/friends',
     name: 'level-friends',

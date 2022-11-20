@@ -1,188 +1,23 @@
 <template>
-    <base-level :level_id="level_id" :level_name="level_name" :max_points="max_points" :max_steps="max_steps" ref="base">
-    <template v-slot="{step}">
-      <div v-if="step == 1">
-          <h1 class="text-center">Digital Footprint</h1>
-
-          <p class="lead bg-success shadow border p-3 text-white">
-          Social media is a great way to communicate with others and express yourself. You can also use it to show others, including colleges or future employers, who you are as a person.
-          However, social media use can also have drawbacks. What you and others share is permanent, and it's easy to get caught in sharing things you may later regret.<br>
-          <br>
-          Your digital footprint can affect your reputation online and offline. 
-          <b>It's important to manage it as much as you can!</b>
-          </p>
-      </div>
-
-      <div v-if="step == 2">
-          <quiz-game key="quiz0" ref="quiz0" :question="quiz0.question" :answers="quiz0.answers"></quiz-game>
-      </div>
-
-      <div v-if="step == 3">
-        <h3 class="text-center">Keep following rules in mind and you should be safe!</h3>
-        <ul class="list-group">
-            <li class="list-group-item">Think before you post. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(1)"><i class="fas fa-question"></i></button></li>
-            <li class="list-group-item">Be empathetic and consider your choice of words. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(2)"><i class="fas fa-question"></i></button></li>
-            <li class="list-group-item">Be respectful of differences. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(3)"><i class="fas fa-question"></i></button></li>
-            <li class="list-group-item">Do not be rude even if you don't agree with their views. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(4)"><i class="fas fa-question"></i></button></li>
-            <li class="list-group-item">Do not spread false information or rumours. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(5)"><i class="fas fa-question"></i></button></li>
-            <li class="list-group-item" >Do not post private information. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(6)"><i class="fas fa-question"></i></button></li>
-            <li class="list-group-item" >Do not post negative thoughts and opinions about your school or workplace. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(7)"><i class="fas fa-question"></i></button></li>
-        </ul>
-      </div>
-
-      <div v-if="step == 4">
-          <container-game ref="game1" :items="firstGame"></container-game>
-      </div>
-
-
-      <div v-if="step == 5">
-        <div class="row">
-          <div class="col">
-            <simple-post id="1" :author="user" message="Yesterday was a crazy party. I can't wait for the next one." :image="'https://live.staticflickr.com/3035/3053053815_2aafbba224_b.jpg'"></simple-post>
-          </div>
-          <div class="col m-auto">
-            <quiz-game key="quiz1" ref="quiz1" :question="quiz1.question" :answers="quiz1.answers"></quiz-game>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="step == 6">
-        <div class="row">
-          <div class="col">
-            <simple-post id="1" :author="user" message="I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm."></simple-post>
-          </div>
-          <div class="col m-auto">
-            <quiz-game key="quiz1_1" ref="quiz1_1" :question="quiz1_1.question" :answers="quiz1_1.answers"></quiz-game>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="step == 7">
-        <div class="row">
-          <div class="col">
-            <simple-post id="1" :author="user" message="Hahaha I just found out that Max can't count till 100. LOL he is so stupid."></simple-post>
-          </div>
-          <div class="col m-auto">
-            <quiz-game key="quiz2" ref="quiz2" :question="quiz2.question" :answers="quiz2.answers"></quiz-game>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="step == 8">
-        <div class="row">
-          <div class="col">
-            <div class="feed border shadow">
-              <h3 class="text-white text-center">My Posts</h3>
-              <simple-post id="1" :author="user" message="Thanks mum for this awesome cake." :image="'https://upload.wikimedia.org/wikipedia/commons/b/b3/HK_food_%E7%BE%8E%E5%BF%83%E8%A5%BF%E9%A4%85_Maxim%27s_Cakes_%E7%B2%9F%E5%AD%90%E8%9B%8B%E7%B3%95_Chestnut_cream_birthday_cake_party_December_2021_SS2_12.jpg'"></simple-post>
-              <simple-post id="2" :author="user" message="I hope the test tomorrow won't be that hard. Got luck everyone. "></simple-post>
-              <simple-post id="3" :author="user" message="Kitty is so cute today." :image="'https://www.publicdomainpictures.net/pictures/40000/nahled/calico-cat-on-chair.jpg'"></simple-post>
-              <simple-post id="4" :author="user" message="Today is such a wonderful day. Can it even gets better?"></simple-post>
-            </div>
-          </div>
-          <div class="col m-auto">
-            <quiz-game key="quiz3" ref="quiz3" :question="quiz3.question" :answers="quiz3.answers"></quiz-game>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="step == 9" class="text-center">
-        <image-game key="imagegame1" ref="imagegame1" image="1.png" :bb="{ x: 160, y: 215, width: 25, height: 20 }" @game-over="imageGameOver"/>
-      </div>
-
-      <div v-if="step == 10" class="text-center">
-        <image-game key="imagegame2" ref="imagegame2" image="2.png" :bb="{ x: 328, y: 118, width: 30, height: 20 }" @game-over="imageGameOver"/>
-      </div>
-
-    </template>
+  <base-level 
+  :level_id="level_id" 
+  :level_name="level_name" 
+  :level_data="gameData"
+  ref="base">
   </base-level>
 </template>
 
 <script>
-import BaseLevel from '../../components/BaseLevel.vue';
-import ContainerGame from '../../components/Games/ContainerGame.vue';
-import QuizGame from '../../components/Games/QuizGame.vue';
-import SimplePost from '../../components/SimplePost.vue';
-import ImageGame from '../../components/Games/ImageGame.vue';
-import {mapGetters} from 'vuex';
+import BaseLevel from '../../../components/BaseLevel.vue'
 
 export default {
-  components: {BaseLevel, SimplePost, ContainerGame, QuizGame, ImageGame},
+  components: {BaseLevel },
   name: 'Level2View',
   data() {
     return {
       level_id: 2,
       level_name: "Social Media and You",
-      max_points: 14,
-      max_steps: 11,
-      //----------------
-      quiz0: {
-        question: "Which of the following facts about 'DIGITAL FOOTPRINT' is true?",
-        answers: [
-          {id: 0, text: "My digital footprint can be seen only by me.", correct: false},
-          {id: 1, text: "I can influence my digital footprint.", correct: true},
-          {id: 2, text: "I can not influence the digital footprint of others.", correct: false},
-          {id: 3, text: "Others can influence my digital footprint.", correct: true},
-          {id: 4, text: "Only photos of me can influence my digital footprint.", correct: false},
-          {id: 5, text: "My digital footprint can be good for me.", correct: true},
-          {id: 6, text: "My digital footprint can be bad for me.", correct: true},
-          {id: 7, text: "I can easily get rid of my digital footprint.", correct: false},
-        ]
-      },
-      firstGame: [
-         { name: "Think before posting.", type: 'good'},
-         { name: "Consider choice of words.", type: 'good' },
-         { name: "Be respectful of differences.", type: 'good' },
-         { name: "Do not be rude.", type: 'good' },
-         { name: "Be rude if you don't agree with something.", type: 'bad' },
-         { name: "Spread false information.", type: 'bad' },
-         { name: "Post something that is not true.", type: 'bad'},
-         { name: "Post private information.", type: 'bad' },
-         { name: "Post negative thoughts and opinions about school or workplace.", type: 'bad'},
-         { name: "Check grammar of the post.", type: 'good' },
-         { name: "Share secrets with others.", type: 'bad' },
-      ],
-      quiz1: {
-        question: "How would this post influence your digital footprints?",
-        answers: [
-          {id: 0, text: "I would probably regret it oneday.", correct: true},
-          {id: 1, text: "This was a responsible post.", correct: false},
-          {id: 2, text: "This post will have an impact on my digital footprint.", correct: true},
-          {id: 3, text: "People think I am trustworthy.", correct: false},
-        ]
-      },
-      quiz1_1: {
-        question: "Would you post something like that?",
-        answers: [
-          {id: 0, text: "Yes sure.", correct: false},
-          {id: 1, text: "Not really.", correct: true},
-        ]
-      },
-      quiz2: {
-        question: "How would this post influence your digital footprints?",
-        answers: [
-          {id: 1, text: "This was a responsible post.", correct: false},
-          {id: 2, text: "This post will have an impact on my digital footprint.", correct: true},
-          {id: 3, text: "People think I am funny.", correct: false},
-          {id: 4, text: "This post will have an impact on Maxs digital footprint.", correct: true},
-        ]
-      },
-      quiz3: {
-        question: "How would this posts influence your digital footprints?",
-        answers: [
-          {id: 1, text: "This are responsible posts.", correct: true},
-          {id: 2, text: "This posts will have an negative impact on my digital footprint.", correct: false},
-          {id: 3, text: "People think I am rude.", correct: false},
-          {id: 4, text: "People think I am stupid.", correct: false},
-        ]
-      },
-      secondGame: [
-         { name: "Your digital footprint is permanent.", type: 'good'},
-         { name: "Your actions online contribute to your digital footprint.", type: 'good' },
-         { name: "What other people post online does not affect your digital footprint.", type: 'bad' },
-         { name: "You hvae full controll over who sees your digital footprint.", type: 'bad' },
-      ],
-      // ----------------
-      game: {
+      gameData: {
         steps: [
             {
                 id: 1,
@@ -196,7 +31,6 @@ export default {
             },
             {
                 id: 2,
-                step: 1,
                 assistant: {
                     text: "Everything you post online will be part of your digital footprint. This includes your posts, comments, pictures, videos, and more.\n\nYour digital footprint is permanent and can be seen by anyone. It can be used to judge you and your character.",
                     action:{
@@ -204,6 +38,12 @@ export default {
                         func: 3
                     },
                 }, 
+                mode: 'html',
+                  modeDetails: {
+                      data: {
+                        path: 'views/Levels/Level2/data1.html'
+                      }
+                }
             },
             {
                 id: 3,
@@ -217,7 +57,6 @@ export default {
             },
             {
                 id: 4,
-                step: 2,
                 assistant: {
                     text: "Let's test your knowledge about digital footprint. Can you answer the question above?",
                         action: {
@@ -227,6 +66,19 @@ export default {
                 mode: 'quiz',
                 modeDetails: {
                     ref: 'quiz0',
+                    data: {
+                        question: "Which of the following facts about 'DIGITAL FOOTPRINT' is true?",
+                        answers: [
+                        {id: 0, text: "My digital footprint can be seen only by me.", correct: false},
+                        {id: 1, text: "I can influence my digital footprint.", correct: true},
+                        {id: 2, text: "I can not influence the digital footprint of others.", correct: false},
+                        {id: 3, text: "Others can influence my digital footprint.", correct: true},
+                        {id: 4, text: "Only photos of me can influence my digital footprint.", correct: false},
+                        {id: 5, text: "My digital footprint can be good for me.", correct: true},
+                        {id: 6, text: "My digital footprint can be bad for me.", correct: true},
+                        {id: 7, text: "I can easily get rid of my digital footprint.", correct: false},
+                        ]
+                    },
                     error: {
                         points: -1,
                         assistant: {
@@ -251,7 +103,6 @@ export default {
             },
             {
                 id: 5,
-                step: 3,
                 assistant: {
                     text: "Have a look at the text above.\nThat are some general easy to follow rules for keeping your digital footprint clean.\n\nIf something is not clear, just ask me by clicking the button with the questionmark for the according item.",
                     action: {
@@ -259,6 +110,43 @@ export default {
                         func: 6
                     },
                 },
+                mode: 'explain',
+                  modeDetails: {
+                    data: {
+                        title: 'Digital Footprint',
+                        description: "Keep following rules in mind and you should be safe!",
+                        items: [
+                            {
+                                text: "Think before you post",
+                                explanation: "Always think before you post something online. Ask yourself if you would be okay with your parents, teachers, or future employers seeing your post.",
+                            },
+                            {
+                                text: "Be empathetic and consider your choice of words.",
+                                explanation: "Consider the choice of words. It could be possible that your post is misinterpreted.",
+                            },
+                            {
+                                text: "Be respectful of differences.",
+                                explanation: "Be respectful of differences. Not everybody thinks the same way as you do. Respect other people's opinions.",
+                            },
+                            {
+                                text: "Do not be rude even if you don't agree with their views.",
+                                explanation: "Do not be rude. You should not post anything that could be offensive to others.",
+                            },
+                            {
+                                text: "Do not spread false information or rumours.",
+                                explanation: "Don't spread false information. If you are not sure if something is true, don't post it.",
+                            },
+                            {
+                                text: "Do not post private information.",
+                                explanation: "Never post private information. This includes your address, phone number, or other personal information.",
+                            },
+                            {
+                                text: 'Do not post negative thoughts and opinions about your school or workplace.',
+                                explanation: "Do not post negative thoughts and opinions about school or workplace. This could affect your reputation.",
+                            },
+                        ]
+                    } 
+                  }
             },
             {
                 id: 6,
@@ -272,7 +160,6 @@ export default {
             },
             {
                 id: 7,
-                step: 4,
                 assistant: {
                     text: "Just tell me, when ever I should check your work.",
                     action: {
@@ -282,6 +169,19 @@ export default {
                 mode: 'containergame',
                 modeDetails: {
                     ref: 'game1',
+                    data: [
+                        { name: "Think before posting.", type: 'good'},
+                        { name: "Consider choice of words.", type: 'good' },
+                        { name: "Be respectful of differences.", type: 'good' },
+                        { name: "Do not be rude.", type: 'good' },
+                        { name: "Be rude if you don't agree with something.", type: 'bad' },
+                        { name: "Spread false information.", type: 'bad' },
+                        { name: "Post something that is not true.", type: 'bad'},
+                        { name: "Post private information.", type: 'bad' },
+                        { name: "Post negative thoughts and opinions about school or workplace.", type: 'bad'},
+                        { name: "Check grammar of the post.", type: 'good' },
+                        { name: "Share secrets with others.", type: 'bad' },
+                    ],
                     unfinished: {
                         assistant: {
                             text: "There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.",
@@ -307,7 +207,6 @@ export default {
             },
             {
                 id: 8,
-                step: 5,
                 assistant: {
                     text: "Have a look at the post above. What do you think about this post?",
                     action: {
@@ -317,6 +216,20 @@ export default {
                 mode: 'quiz',
                 modeDetails: {
                     ref: 'quiz1',
+                    data: {
+                        question: "How would this post influence your digital footprints?",
+                        answers: [
+                        {id: 0, text: "I would probably regret it oneday.", correct: true},
+                        {id: 1, text: "This was a responsible post.", correct: false},
+                        {id: 2, text: "This post will have an impact on my digital footprint.", correct: true},
+                        {id: 3, text: "People think I am trustworthy.", correct: false},
+                        ]
+                    },
+                    content: {
+                        component: 'fb-post',
+                        message: "Yesterday was a crazy party. I can't wait for the next one.",
+                        image: "https://live.staticflickr.com/3035/3053053815_2aafbba224_b.jpg"
+                    },
                     error: {
                         points: -1,
                         assistant: {
@@ -341,7 +254,6 @@ export default {
             },
             {
                 id: 9,
-                step: 6,
                 assistant: {
                     text: "What do you think about this post? Can we post it without any problem?",
                     action: {
@@ -351,6 +263,18 @@ export default {
                 mode: 'quiz',
                 modeDetails: {
                     ref: 'quiz1_1',
+                    data: {
+                        question: "Would you post something like that?",
+                        answers: [
+                        {id: 0, text: "Yes sure.", correct: false},
+                        {id: 1, text: "Not really.", correct: true},
+                        ]
+                    },
+                    content: {
+                        component: 'insta-post',
+                        message: "I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm.",
+                        image: "https://media.istockphoto.com/id/936276840/photo/people-enjoying-house-party.jpg?s=612x612&w=0&k=20&c=_qsxezbgS3x0BNmt0O9znK7iKLAm4wGPwiZ4jVMwCPE="
+                    },
                     error: {
                         points: -1,
                         assistant: {
@@ -375,7 +299,6 @@ export default {
             },
             {
                 id: 10,
-                step: 7,
                 assistant: {
                     text: "What do you think about this post?",
                     action: {
@@ -385,6 +308,21 @@ export default {
                 mode: 'quiz',
                 modeDetails: {
                     ref: 'quiz2',
+                    data: {
+                        question: "How would this post influence your digital footprints?",
+                        answers: [
+                        {id: 1, text: "This was a responsible post.", correct: false},
+                        {id: 2, text: "This post will have an impact on my digital footprint.", correct: true},
+                        {id: 3, text: "People think I am funny.", correct: false},
+                        {id: 4, text: "This post will have an impact on Maxs digital footprint.", correct: true},
+                        ]
+                    },
+                    content: {
+                        component: 'snap-post',
+                        message: "Hahaha I just found out that Max can't count till 100. LOL he is so stupid.",
+                        image: "https://media.glamour.com/photos/5695f36316d0dc3747eec5bd/master/w_1600%2Cc_limit/sex-love-life-blogs-smitten-2012-01-18-0118-confused-guy-sitting-on-floor_sm.jpg",
+                        position: 300
+                    },
                     error: {
                         points: -1,
                         assistant: {
@@ -409,7 +347,6 @@ export default {
             },
             {
                 id: 11,
-                step: 8,
                 assistant: {
                     text: "What do you think about this post?",
                     action: {
@@ -419,6 +356,20 @@ export default {
                 mode: 'quiz',
                 modeDetails: {
                     ref: 'quiz3',
+                    data: {
+                        question: "How would this post influence your digital footprints?",
+                        answers: [
+                        {id: 1, text: "This is a responsible posts.", correct: true},
+                        {id: 2, text: "This posts will have an negative impact on my digital footprint.", correct: false},
+                        {id: 3, text: "People think I am rude.", correct: false},
+                        {id: 4, text: "People think I am stupid.", correct: false},
+                        ]
+                    },
+                    content: {
+                        component: 'fb-post',
+                        message: "Kitty is so cute today.",
+                        image: "https://www.publicdomainpictures.net/pictures/40000/nahled/calico-cat-on-chair.jpg"
+                    },
                     error: {
                         points: -1,
                         assistant: {
@@ -443,7 +394,6 @@ export default {
             },
             {
                 id: 12,
-                hide: true,
                 assistant: {
                     text: "Great. Now you know what you can post and what not. But watch out this also count for photos.\nI will show you what I mean.",
                     action: {
@@ -454,7 +404,6 @@ export default {
             },
             {
                 id: 13,
-                step: 9,
                 assistant: {
                      text: "What do you think about this picture? Should we post it?",
                     action: {
@@ -464,6 +413,10 @@ export default {
                 mode: 'imagegame',
                 modeDetails: {
                     ref: 'imagegame1',
+                    data: {
+                        image: "1.png",
+                        bb: { x: 160, y: 215, width: 25, height: 20 }
+                    },
                     unfinished: {
                         points: -1,
                         assistant: {
@@ -494,7 +447,6 @@ export default {
             },
             {
                 id: 14,
-                step: 10,
                 assistant: {
                     text: "What do you think about this picture? Should we post it?",
                     action: {
@@ -504,6 +456,10 @@ export default {
                 mode: 'imagegame',
                 modeDetails: {
                     ref: 'imagegame2',
+                    data: {
+                        image: "2.png",
+                        bb: { x: 328, y: 118, width: 30, height: 20 }
+                    },
                     unfinished: {
                         points: -1,
                         assistant: {
@@ -516,7 +472,7 @@ export default {
                             text: "Watch out. On this picture personal information like a password is leaked.",
                             action: {
                                 text: "Continue",
-                                func: "COMPLETE"
+                                func: 15
                             },
                         },
                     },
@@ -526,53 +482,86 @@ export default {
                             text: "You are right. On this picture we leak a password. We do not want this information on the internet.",
                             action: {
                                 text: "Continue",
-                                func: "COMPLETE"
+                                func: 15
                             },
                         },
                     }
                 }
             },
+            {
+                id: 15,
+                assistant: {
+                    text: "Wow you have already learned alot today. You know what you can post and what you better do not post.\nBut there is still one thing we need to talk about. And that is your privacy.",
+                    action: {
+                        text: "Whats that?",
+                        func: 16
+                    }, 
+                },
+            },
+            {
+                id: 16,
+                assistant: {
+                    text: "I'm pretty sure you understood everything.\nI will show you now some examples and you will tell me what privacy setting we should choose.",
+                    action: {
+                        text: "Continue",
+                        func: 17
+                    }, 
+                },
+                mode: 'html',
+                  modeDetails: {
+                      data: {
+                        path: 'views/Levels/Level2/data2.html'
+                      }
+                }
+            },
+            {
+                id: 17,
+                assistant: {
+                    text: "What do you think about this post?",
+                    action: {
+                        text: "Check my answer.",
+                    }, 
+                },
+                mode: 'privacygame',
+                modeDetails: {
+                    ref: 'pg1',
+                    data: {
+                        message: "I saw a really cool movie yesterday. It was called 'The Matrix'. It is a 10/10.",
+                        answers: "public"
+                    },
+                     unfinished: {
+                        assistant: {
+                            text: "Please choose an answer.",
+                        },
+                    },
+                    error: {
+                        points: -1,
+                        assistant: {
+                            text: "You are wrong. There is nothing harmful in this post and it could be posted publicly.",
+                            action: {
+                                text: "Continue",
+                                func: "COMPLETE"
+                            },
+                        },
+                    },
+                    correct: {
+                        points: 2,
+                        assistant: {
+                            text: "You are right. There is nothing harmful in this post and it could be posted publicly.",
+                            action: {
+                                text: "Continue",
+                                func: "COMPLETE"
+                            },
+                        },
+                    }
+                }
+            }
         ]
       }
     }
   },
-  computed: {
-    ...mapGetters([
-        'user'
-    ]),
-  },
   mounted() {
-    this.$refs.base.nextMove(this.game, this);
+    this.$refs.base.nextMove();
   },
-  methods: {
-    imageGameOver() {
-        this.$refs.base.nextMove(this.game, this);
-    },
-    explain(id) {
-      if (id == 1) {
-        this.$refs.base.$refs.assistant.updateMessage("Always think before you post something online. Ask yourself if you would be okay with your parents, teachers, or future employers seeing your post.");
-      } else if (id == 2) {
-        this.$refs.base.$refs.assistant.updateMessage("Consider the choice of words. It could be possible that your post is misinterpreted.");
-      } else if (id == 3) {
-        this.$refs.base.$refs.assistant.updateMessage("Be respectful of differences. Not everybody thinks the same way as you do. Respect other people's opinions.");
-      } else if (id == 4) {
-        this.$refs.base.$refs.assistant.updateMessage("Do not be rude. You should not post anything that could be offensive to others.");
-      } else if (id == 5) {
-        this.$refs.base.$refs.assistant.updateMessage("Don't spread false information. If you are not sure if something is true, don't post it.");
-      } else if (id == 6) {
-        this.$refs.base.$refs.assistant.updateMessage("Never post private information. This includes your address, phone number, or other personal information.");
-      } else if (id == 7) {
-        this.$refs.base.$refs.assistant.updateMessage("Do not post negative thoughts and opinions about school or workplace. This could affect your reputation.");
-      }
-    },
-  }
 }
 </script>
-<style scoped>
-.feed {
-  background-color: rgb(151, 182, 223);
-  padding: 10px;
-  max-height: 60vh;
-  overflow-y: scroll;
-}
-</style>
