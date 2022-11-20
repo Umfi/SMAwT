@@ -1,7 +1,13 @@
 <template>
-     <div id="falling-text-game-container">
-        <div class="points">{{ $t('Points') }}: {{ points}} </div>
-        <div class="time">{{ $t('Time left') }}: {{ elements }}</div>
+    <div>
+      <div class="alert alert-primary" role="alert">
+        {{ description }}
+      </div>
+
+      <div id="falling-text-game-container">
+          <div class="points">{{ $t('Points') }}: {{ points}} </div>
+          <div class="time">{{ $t('Time left') }}: {{ elements }}</div>
+      </div>
     </div>
 </template>
 
@@ -9,7 +15,14 @@
 export default {
   name: "FallingTextGame",
   props: {
-    items: [],
+    items: {
+      type: Array,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -30,6 +43,17 @@ export default {
       this.elements = 0;
   },
   methods: {
+    check() {
+      if (this.elements > 0) {
+        return -1;
+      } else {
+        if (this.points >= 10) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+    },
     startGame() {
       this.timer = setInterval(() => {
         this.elements--;

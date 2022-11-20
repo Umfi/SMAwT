@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col">
             <h3 class="text-center">{{ $t(titleLeft) }}</h3>
-            <draggable class="list-group good shadow" :list="goodList" group="items" @add="sound.play()">
+            <draggable class="list-group good shadow" :list="goodList" group="items">
               <div
                 class="list-group-item"
                 v-for="(element) in goodList"
@@ -31,7 +31,7 @@
           </div>
           <div class="col">
             <h3 class="text-center">{{ $t(titleRight) }}</h3>
-            <draggable class="list-group bad shadow" :list="badList" group="items" @add="sound.play()">
+            <draggable class="list-group bad shadow" :list="badList" group="items">
               <div
                 class="list-group-item"
                 v-for="(element) in badList"
@@ -65,14 +65,12 @@ export default {
   },
   data() {
     return {
-      sound: null,
       allList: [],
       goodList: [],
       badList: [],
     };
   },
   mounted() {
-    this.sound = new Audio(require('../../assets/sounds/stick.wav'));
     this.allList = this.$props.items;
     this.allList.sort(() => Math.random() - 0.5);
   },

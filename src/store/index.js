@@ -7,64 +7,22 @@ Vue.use(Vuex)
 const initalLevels = [
   {
     id: 1,
-    name: 'Password Security',
-    url: '/levels/password-security',
+    name: 'Into The World of Social Media',
+    url: '/levels/1',
     stars: 0,
     locked: false
   },
   {
       id: 2,
-      name: 'Personal Information',
-      url: '/levels/personal-information',
+      name: 'Social Media and You',
+      url: '/levels/2',
       stars: 0,
       locked: false
   },
   {
       id: 3,
-      name: 'Digital Footprint',
-      url: '/levels/posts',
-      stars: 0,
-      locked: false
-  },
-  {
-      id: 4,
-      name: 'Images',
-      url: '/levels/images',
-      stars: 0,
-      locked: false
-  },
-  {
-      id: 5,
-      name: 'Privacy',
-      url: '/levels/privacy',
-      stars: 0,
-      locked: false
-  },
-  {
-      id: 6,
-      name: 'Friends',
-      url: '/levels/friends',
-      stars: 0,
-      locked: false
-  },
-  {
-      id: 7,
-      name: 'Messages',
-      url: '/levels/messages',
-      stars: 0,
-      locked: false
-  },
-  { 
-      id: 8,
-      name: 'Fake or Real?',
-      url: '/levels/fake-or-real',
-      stars: 0,
-      locked: false
-  },
-  {
-      id: 9,
-      name: 'Story',
-      url: '/levels/story',
+      name: 'The Dark Side of Social Media',
+      url: '/levels/3',
       stars: 0,
       locked: false
   }
@@ -77,7 +35,8 @@ export default new Vuex.Store({
       avatar: '',
       image: ''
     },
-    levels: []
+    levels: [],
+    examUnlocked: false,
   },
   getters: {
     user: state => {
@@ -86,6 +45,9 @@ export default new Vuex.Store({
     levels: state => {
       return state.levels
     },
+    examUnlocked: state => {
+      return state.examUnlocked
+    }
   },
   mutations: {
     GET_USER(state) {
@@ -100,6 +62,9 @@ export default new Vuex.Store({
       localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
 
       localStorage.setItem('sometra_user', JSON.stringify(user));
+
+      state.examUnlocked = false;
+      localStorage.removeItem('sometra_exam');
       return state.user = user
     },
     GET_LEVELS(state) {
@@ -109,16 +74,26 @@ export default new Vuex.Store({
         localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
       }
 
+      if (localStorage.getItem('sometra_exam')) {
+        state.examUnlocked = true;
+      } else {
+        state.examUnlocked = false;
+      }
+
       return state.levels
     },
     UPDATE_LEVEL(state, level) {
       const index = state.levels.findIndex(item => item.id === level.id)
       state.levels[index].stars = level.stars
       if (state.levels.length > index + 1) {
-        state.levels[index+1].locked = false
+        state.levels[index+1].locked = false;
+      } else {
+        state.examUnlocked = true;
+        localStorage.setItem('sometra_exam', true);
       }
+
       localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
-    }
+    },
   },
   actions: {
     startGame({commit}, user) {

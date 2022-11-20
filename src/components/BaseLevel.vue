@@ -1,9 +1,21 @@
 <template>
 <div>
-  <level-progress :step="step" :max="max_steps"></level-progress>
+  <level-progress :step="gameStep" :max="level_data.steps.length"></level-progress>
   <div id="container" class="container mt-5">
 
-    <slot v-if="!complete" :step="step"></slot>
+    <div v-if="!complete">
+      <html-viewer v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'html'"  :path="currentGameStep.modeDetails.data.path"></html-viewer>
+      
+      <explain-component v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'explain'"  :title="currentGameStep.modeDetails.data.title" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" @explain="explain"></explain-component>
+      
+      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'containergame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data"></container-game>
+
+      <quiz-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'quiz'" :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers"></quiz-game>
+    
+      <falling-text-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'fallinggame'" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" :ref="currentGameStep.modeDetails.ref"></falling-text-game>
+
+      <profile-setup v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'profilesetup'" :ref="currentGameStep.modeDetails.ref"></profile-setup>
+    </div>
 
     <level-complete
       v-if="complete"
@@ -25,9 +37,16 @@ import UserGuide from "./UserGuide.vue";
 import LevelComplete from "./LevelComplete.vue";
 import LevelProgress from "./LevelProgress.vue";
 
+import HtmlViewer from "./HtmlViewer.vue";
+import ExplainComponent from "./ExplainComponent.vue";
+import ContainerGame from "./Games/ContainerGame.vue";
+import QuizGame from "./Games/QuizGame.vue";
+import FallingTextGame from "./Games/FallingTextGame.vue";
+import ProfileSetup from "./ProfileSetup.vue";
+
 export default {
   name: "BaseLevel",
-  components: { UserGuide, LevelComplete, LevelProgress },
+  components: { UserGuide, LevelComplete, LevelProgress, HtmlViewer, ExplainComponent, ContainerGame, QuizGame, FallingTextGame, ProfileSetup },
   props: {
     level_id: {
       type: Number,
@@ -37,25 +56,190 @@ export default {
       type: String,
       required: true,
     },
-    max_points: {
-      type: Number,
-      required: true,
-    },
-    max_steps: {
-      type: Number,
+    level_data: {
+      type: Object,
       required: true,
     },
   },
   data() {
     return {
       complete: false,
-      step: 0,
       points: 0,
+      gameStep: 1,
+      currentGameStep: null,
     };
   },
+  computed: {
+    max_points() {
+      let max = 0;
+      for (let step of this.level_data.steps) {
+        if (step.modeDetails && step.modeDetails.correct && step.modeDetails.correct.points) {
+          max += step.modeDetails.correct.points;
+        }
+      }
+      return max;
+    },
+  },
   methods: {
+    nextMove() {
+
+      if (this.gameStep === "COMPLETE") {
+        this.finishLevel();
+        return;
+      }
+
+      this.currentGameStep = this.level_data.steps.find(step => step.id === this.gameStep);
+
+      this.$refs.assistant.updateMessage(this.currentGameStep.assistant.text);
+      if ((this.currentGameStep.mode === undefined || this.currentGameStep.mode === 'html')  && this.currentGameStep.assistant.action.func) {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { this.gameStep = this.currentGameStep.assistant.action.func; this.nextMove(); });
+      }
+
+      if (this.currentGameStep.mode == "containergame") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+
+          const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
+          if (result == -1) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
+          } else if (result == 0) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
+
+            if (this.currentGameStep.modeDetails.error.points) {
+               this.points += this.currentGameStep.modeDetails.error.points;
+            }
+          } else if (result == 1) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
+
+            if (this.currentGameStep.modeDetails.correct.points) {
+               this.points += this.currentGameStep.modeDetails.correct.points;
+            }
+
+            if (this.currentGameStep.modeDetails.correct.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+            }
+          }
+        });
+      }
+
+      if (this.currentGameStep.mode == "quiz") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+          const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
+          
+          if (result == 1) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
+
+            if (this.currentGameStep.modeDetails.correct.points) {
+               this.points += this.currentGameStep.modeDetails.correct.points;
+            }
+
+            if (this.currentGameStep.modeDetails.correct.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+            }
+          } else {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
+
+            if (this.currentGameStep.modeDetails.error.points) {
+               this.points += this.currentGameStep.modeDetails.error.points;
+            }
+
+            if (this.currentGameStep.modeDetails.error.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.error.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.error.assistant.action.func; this.nextMove(); });
+            }
+          } 
+        });
+      }
+
+      if (this.currentGameStep.mode == "fallinggame") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+          const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
+          if (result == -1) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
+          } else if (result == 0) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
+
+            if (this.currentGameStep.modeDetails.error.points) {
+               this.points += this.currentGameStep.modeDetails.error.points;
+            }
+
+            if (this.currentGameStep.modeDetails.error.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.error.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.error.assistant.action.func; this.nextMove(); });
+            }
+          } else if (result == 1) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
+
+            if (this.currentGameStep.modeDetails.correct.points) {
+               this.points += this.currentGameStep.modeDetails.correct.points;
+            }
+
+            if (this.currentGameStep.modeDetails.correct.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+            }
+          }
+        });
+      }
+
+      if (this.currentGameStep.mode == "imagegame") {
+
+        const result = this.$refs[this.currentGameStep.modeDetails.ref].currentState();
+        
+          
+        if (result == -1) {
+          this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
+
+            if (this.currentGameStep.modeDetails.unfinished.points) {
+              this.points += this.currentGameStep.modeDetails.unfinished.points;
+            }
+        } else if (result == 0) {
+          this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
+
+          if (this.currentGameStep.modeDetails.error.points) {
+              this.points += this.currentGameStep.modeDetails.error.points;
+          }
+
+          if (this.currentGameStep.modeDetails.error.assistant.action) {
+            this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.error.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.error.assistant.action.func; this.nextMove(); });
+          }
+        } else if (result == 1) {
+          this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
+
+          if (this.currentGameStep.modeDetails.correct.points) {
+              this.points += this.currentGameStep.modeDetails.correct.points;
+          }
+
+          if (this.currentGameStep.modeDetails.correct.assistant.action) {
+            this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+          }
+        }
+  
+      }
+
+      if (this.currentGameStep.mode == "profilesetup") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+
+          const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
+
+          if (result.status == 1) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
+
+            if (this.currentGameStep.modeDetails.correct.points) {
+               this.points += this.currentGameStep.modeDetails.correct.points;
+            }
+
+            if (this.currentGameStep.modeDetails.correct.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+            }
+          } else {
+            this.$refs.assistant.updateMessage(result.message);
+
+            if (this.currentGameStep.modeDetails.error.points) {
+               this.points += this.currentGameStep.modeDetails.error.points;
+            }
+          }
+        });
+      }
+
+    },
     finishLevel() {
-      this.step = this.$props.max_steps;
       this.$refs.assistant.hide();
       this.complete = true;
     },
@@ -64,6 +248,10 @@ export default {
     },
     next() {
       this.$router.replace("/levels");
+    },
+    //////////////////////////////
+    explain(msg) {
+      this.$refs.assistant.updateMessage(msg);
     },
   },
 };

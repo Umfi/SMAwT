@@ -1,6 +1,8 @@
 const messages = {
+    en: {
+        'likes': '{x} likes',
+    },
     de: {
-        'Welcome to the the Social Media Training Tool!': 'Willkommen beim Social Media Training Tool!',
         
         'Hey. I am Mike your personal social media expert. I will help you to become an expert too.': 'Hallo. Ich bin Mike, dein persönlicher Social Media Experte. Ich werde dir helfen, auch ein Experte zu werden.',
         'Sounds good!': 'Klingt gut!',
@@ -42,21 +44,19 @@ const messages = {
         'No friend requests': 'Keine Freundschaftsanfragen',
         "What's on your mind?": 'Was möchtest du schreiben?',
         'Create post': 'Beitrag erstellen',
+        'likes': 'Gefällt {x} Mal',
 
         'Create your user': 'Erstelle deinen Benutzer',
         'Enter your name': 'Gib deinen Namen ein',
         'Start': 'Start',
 
         'Select a Level': 'Wähle ein Level',
-        'Password Security': 'Passwort Sicherheit',
-        'Personal Information': 'Persönliche Informationen',
-        'Digital Footprint': 'Digitaler Fußabdruck',
-        'Images': 'Bilder',
-        'Privacy': 'Privatsphäre',
-        'Messages': 'Nachrichten',
-        'Fake or Real?': 'Fake oder echt?',
-        'Story': 'Geschichte',
+        'Into The World of Social Media': 'Tauche ein in die Welt der sozialen Medien',
+        'Social Media and You': 'Soziale Medien und Du',
+        'The Dark Side of Social Media': 'Die dunkle Seite sozialer Medien',
+        'Exam': 'Prüfung',
 
+        'How to create strong rememberable passwords?': 'Wie erstellt man starke, merkbare Passwörter?',
         'Great. Now you know what you can post and what not. But watch out this also count for photos.\nI will show you what I mean.': 'Super. Jetzt weißt du, was du posten darfst und was nicht.\nAber Achtung, das gilt auch für Fotos gilt.\nIch zeige dir, was ich meine.',
     }
 }

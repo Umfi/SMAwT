@@ -13,7 +13,7 @@
                   <avataaars 
                     :isCircle="isCircle" 
                     :facialHairType="'blank'" 
-                    :mouthType="mouths[Math.floor(Math.random()* mouths.length)]" 
+                    :mouthType="'Smile'" 
                     eyebrowType="DefaultNatural"
                     accessoriesType="Blank"
                     v-if="refreshAvatar" 
@@ -48,7 +48,11 @@ export default {
       refreshAvatar: true,
       isCircle: true,
       username: '',
-      mouths: ['Default', 'Eating', 'Grimace', 'Serious', 'Smile', 'Tongue', 'Twinkle'],
+    }
+  },
+  computed: {
+    randomMouth() {
+      return this.mouths[Math.floor(Math.random() * this.mouths.length)]
     }
   },
   methods: {

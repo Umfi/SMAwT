@@ -1,5 +1,5 @@
 <template>
-<div id="level-wrapper">
+<div id="level-wrapper" class="d-flex flex-grow-1 justify-content-center align-items-center">
   <div class="container h-100">
     <div class="row mt-5 mb-5">
         <h1 class="text-center text-white">{{ $t('Select a Level') }}</h1>
@@ -21,6 +21,11 @@
                 </div>
             </div>
         </div>
+        <div class="col-12 mb-4" v-if="examUnlocked">
+            <div class="btn btn-primary level-exam shadow-lg w-100 d-flex h-100 justify-content-center" @click="openExam()">
+                <h2>{{ $t("Exam") }}</h2>
+            </div>
+        </div>
     </div>
   </div>
 </div>
@@ -37,7 +42,8 @@ export default {
  },
  computed: {
     ...mapGetters([
-        'levels'
+        'levels',
+        'examUnlocked'
     ])
  },
  methods: {
@@ -46,6 +52,9 @@ export default {
             return;
         }
         this.$router.push(level.url);
+    },
+    openExam() {
+        this.$router.push('exam');
     }
  }
 }
@@ -68,7 +77,17 @@ h1 {
     margin: 0;
 }
 
+.level h3 {
+    min-height: 80px;
+}
+
+
 .stars .filled {
     color: #ffd700;
+}
+
+.level-exam {
+    color: white;
+    border: solid 3px white;
 }
 </style>

@@ -21,6 +21,7 @@ export default {
   },
   data() {
     return {
+      state: 0,
       failCount: 0,
       winSound: null,
       loseSound: null,
@@ -32,6 +33,9 @@ export default {
     this.loseSound = new Audio(require('../../assets/sounds/error.wav'));
   },
   methods: {
+    currentState() {
+      return this.state;
+    },
     check(event) {
       const rect = document.getElementById("image-game-image").getBoundingClientRect()
       const x = event.clientX - rect.left
@@ -40,14 +44,17 @@ export default {
       if (this._checkIfInRectangle(x, y)) {
         this.winSound.play();
         this.showHint();
+        this.state = 1;
         this.$emit('game-over', 1);
       } else {
         this.loseSound.play();
         this.failCount++;
         if (this.failCount < 3) {
+          this.state = -1;
           this.$emit('game-over', -1);
         } else {
           this.showHint();
+          this.state = 0;
           this.$emit('game-over', 0);
         }
       }

@@ -3,46 +3,40 @@
     <template v-slot="{step}">
 
     <div v-if="step == 1">
-      
-        <div v-show="subStep == 1">
-          <h1 class="text-center">Digital Footprint</h1>
+        <h1 class="text-center">Digital Footprint</h1>
 
-          <p class="lead bg-success shadow border p-3 text-white">
-          Social media is a great way to communicate with others and express yourself. You can also use it to show others, including colleges or future employers, who you are as a person.
-          However, social media use can also have drawbacks. What you and others share is permanent, and it's easy to get caught in sharing things you may later regret.<br>
-          <br>
-          Your digital footprint can affect your reputation online and offline. 
-          <b>It's important to manage it as much as you can!</b>
-          </p>
-        </div>
-
-        <div v-show="subStep == 2">
-          <quiz-game key="quiz0" ref="quiz0" :question="quiz0.question" :answers="quiz0.answers"></quiz-game>
-        </div>
-
-        <div v-show="subStep == 3">
-          <h3 class="text-center">Keep following rules in mind and you should be safe!</h3>
-          <ul class="list-group">
-              <li class="list-group-item">Think before you post. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(1)"><i class="fas fa-question"></i></button></li>
-              <li class="list-group-item">Be empathetic and consider your choice of words. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(2)"><i class="fas fa-question"></i></button></li>
-              <li class="list-group-item">Be respectful of differences. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(3)"><i class="fas fa-question"></i></button></li>
-              <li class="list-group-item">Do not be rude even if you don't agree with their views. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(4)"><i class="fas fa-question"></i></button></li>
-              <li class="list-group-item">Do not spread false information or rumours. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(5)"><i class="fas fa-question"></i></button></li>
-              <li class="list-group-item" >Do not post private information. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(6)"><i class="fas fa-question"></i></button></li>
-              <li class="list-group-item" >Do not post negative thoughts and opinions about your school or workplace. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(7)"><i class="fas fa-question"></i></button></li>
-          </ul>
-
-           <button type="button" class="btn btn-primary btn-lg btn-block mt-5 w-100" @click="showTask1Pre3()">Continue</button>
-     
-        </div>
+        <p class="lead bg-success shadow border p-3 text-white">
+        Social media is a great way to communicate with others and express yourself. You can also use it to show others, including colleges or future employers, who you are as a person.
+        However, social media use can also have drawbacks. What you and others share is permanent, and it's easy to get caught in sharing things you may later regret.<br>
+        <br>
+        Your digital footprint can affect your reputation online and offline. 
+        <b>It's important to manage it as much as you can!</b>
+        </p>
     </div>
 
     <div v-if="step == 2">
+        <quiz-game key="quiz0" ref="quiz0" :question="quiz0.question" :answers="quiz0.answers"></quiz-game>
+    </div>
+
+    <div v-if="step == 3">
+      <h3 class="text-center">Keep following rules in mind and you should be safe!</h3>
+      <ul class="list-group">
+          <li class="list-group-item">Think before you post. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(1)"><i class="fas fa-question"></i></button></li>
+          <li class="list-group-item">Be empathetic and consider your choice of words. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(2)"><i class="fas fa-question"></i></button></li>
+          <li class="list-group-item">Be respectful of differences. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(3)"><i class="fas fa-question"></i></button></li>
+          <li class="list-group-item">Do not be rude even if you don't agree with their views. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(4)"><i class="fas fa-question"></i></button></li>
+          <li class="list-group-item">Do not spread false information or rumours. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(5)"><i class="fas fa-question"></i></button></li>
+          <li class="list-group-item" >Do not post private information. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(6)"><i class="fas fa-question"></i></button></li>
+          <li class="list-group-item" >Do not post negative thoughts and opinions about your school or workplace. <button type="button" class="btn btn-primary btn-sm float-end" @click="explain(7)"><i class="fas fa-question"></i></button></li>
+      </ul>
+    </div>
+
+    <div v-if="step == 4">
         <container-game ref="game1" :items="firstGame"></container-game>
     </div>
 
 
-    <div v-if="step == 3">
+    <div v-if="step == 5">
       <div class="row">
         <div class="col">
           <simple-post id="1" :author="user" message="Yesterday was a crazy party. I can't wait for the next one." :image="'https://live.staticflickr.com/3035/3053053815_2aafbba224_b.jpg'"></simple-post>
@@ -53,11 +47,18 @@
       </div>
     </div>
 
-    <div v-if="step == 4">
-      <simple-post id="1" :author="user" message="I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm."></simple-post>
-    </div>
+    <div v-if="step == 6">
+      <div class="row">
+        <div class="col">
+          <simple-post id="1" :author="user" message="I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm."></simple-post>
+        </div>
+        <div class="col m-auto">
+          <quiz-game key="quiz1_1" ref="quiz1_1" :question="quiz1_1.question" :answers="quiz1_1.answers"></quiz-game>
+        </div>
+      </div>
+     </div>
 
-    <div v-if="step == 5">
+    <div v-if="step == 7">
       <div class="row">
         <div class="col">
           <simple-post id="1" :author="user" message="Hahaha I just found out that Max can't count till 100. LOL he is so stupid."></simple-post>
@@ -68,7 +69,7 @@
       </div>
     </div>
 
-    <div v-if="step == 6">
+    <div v-if="step == 8">
       <div class="row">
         <div class="col">
           <div class="feed border shadow">
@@ -107,7 +108,6 @@ export default {
       max_points: 10,
       max_steps: 7,
       // ---------------
-      subStep: 1,
       quiz0: {
         question: "Which of the following facts about 'DIGITAL FOOTPRINT' is true?",
         answers: [
@@ -143,6 +143,13 @@ export default {
           {id: 3, text: "People think I am trustworthy.", correct: false},
         ]
       },
+      quiz1_1: {
+        question: "Would you post something like that?",
+        answers: [
+          {id: 0, text: "Yes sure.", correct: false},
+          {id: 1, text: "Not really.", correct: true},
+        ]
+      },
       quiz2: {
         question: "How would this post influence your digital footprints?",
         answers: [
@@ -175,7 +182,7 @@ export default {
     ]),
   },
   mounted() {
-    this.$refs.base.$refs.assistant.updateMessage("You have already learned how to create an account and what data you should kept private.\n\nNow you will learn how to protect your digital footprint.");
+    this.$refs.base.$refs.assistant.updateMessage("");
     this.$refs.base.$refs.assistant.updateActions('Digital what?', this.showTask1Pre);
   },
   methods: {
@@ -213,8 +220,7 @@ export default {
     explain(id) {
       if (id == 1) {
         this.$refs.base.$refs.assistant.updateMessage("Always think before you post something online. Ask yourself if you would be okay with your parents, teachers, or future employers seeing your post.");
-      }
-      else if (id == 2) {
+      } else if (id == 2) {
         this.$refs.base.$refs.assistant.updateMessage("Consider the choice of words. It could be possible that your post is misinterpreted.");
       } else if (id == 3) {
         this.$refs.base.$refs.assistant.updateMessage("Be respectful of differences. Not everybody thinks the same way as you do. Respect other people's opinions.");

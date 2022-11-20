@@ -1,8 +1,9 @@
 <template>
-  <div class="container text-center mt-5">
-    <h1>{{ $t("Welcome to the the Social Media Training Tool!")}}</h1>
+<div class="d-flex flex-grow-1 justify-content-center align-items-center">
+  <div class="container text-center">
+    <h1>{{ $t("Social Media Awareness Tool")}}</h1>
 
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-3 mb-5">
       <div class="col-8">
             <p class="lead">
               The Internet makes it so easy to communicate with family, friends—everybody. We send
@@ -25,6 +26,7 @@
     :actionAFunc="restart"></user-guide>
 
   </div>
+</div>
 </template>
 
 <script>
