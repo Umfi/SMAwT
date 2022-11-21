@@ -7,9 +7,7 @@ import LevelSelectionView from '../views/LevelSelectionView.vue'
 
 import StoryView from '../views/Levels/StoryView.vue'
 
-import Level1View from '../views/Levels/Level1/Level1View.vue'
-import Level2View from '../views/Levels/Level2/Level2View.vue'
-import Level3View from '../views/Levels/Level3/Level3View.vue'
+import LevelView from '../views/LevelView.vue'
 import ExamView from '../views/ExamView.vue'
 
 Vue.use(VueRouter)
@@ -27,23 +25,13 @@ const routes = [
   },
   {
     path: '/levels',
-    name: 'level',
+    name: 'level-selection',
     component: LevelSelectionView
   },
   {
-    path: '/levels/1',
-    name: 'level-1',
-    component: Level1View
-  },
-  {
-    path: '/levels/2',
-    name: 'level-2',
-    component: Level2View
-  },
-  {
-    path: '/levels/3',
-    name: 'level-3',
-    component: Level3View
+    path: '/levels/:id',
+    name: 'level',
+    component: LevelView
   },
   {
     path: '/exam',

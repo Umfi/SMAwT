@@ -34,7 +34,6 @@
 <script>
 import {mapGetters} from 'vuex';
 
-
 export default {
  name: "LevelSelectionView",
  mounted() {
@@ -51,7 +50,7 @@ export default {
         if (level.locked) {
             return;
         }
-        this.$router.push(level.url);
+        this.$router.push("/levels/" + level.id);
     },
     openExam() {
         this.$router.push('exam');

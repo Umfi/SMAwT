@@ -3,30 +3,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const levelData = require('../assets/levels/levels.json');
 
-const initalLevels = [
-  {
-    id: 1,
-    name: 'Into The World of Social Media',
-    url: '/levels/1',
-    stars: 0,
-    locked: false
-  },
-  {
-      id: 2,
-      name: 'Social Media and You',
-      url: '/levels/2',
-      stars: 0,
-      locked: false
-  },
-  {
-      id: 3,
-      name: 'The Dark Side of Social Media',
-      url: '/levels/3',
-      stars: 0,
-      locked: false
-  }
-];
+if (!levelData) {
+  console.error('No level data found!');
+}
+
 
 export default new Vuex.Store({
   state: {
@@ -58,7 +40,7 @@ export default new Vuex.Store({
       return state.user
     },
     START_GAME(state, user) {
-      state.levels = [...initalLevels];
+      state.levels = [...levelData.levels];
       localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
 
       localStorage.setItem('sometra_user', JSON.stringify(user));

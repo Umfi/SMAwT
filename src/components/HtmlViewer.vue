@@ -24,7 +24,7 @@ export default {
         }
     },
     mounted() {
-        this.html = require('../' + this.$props.path);
+        this.html = require('../assets/' + this.$props.path);
 
         setTimeout(() => {
             const res = Vue.compile(this.html.default);

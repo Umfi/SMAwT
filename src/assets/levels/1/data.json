@@ -1,0 +1,594 @@
+{
+    "level_id": 1,
+    "level_name": "Into The World of Social Media",
+    "steps":[
+       {
+          "id":1,
+          "assistant":{
+             "text":"Hello! I'm your personal assistant. And I will introduce you into the world of social media!",
+             "action":{
+                "text":"Continue",
+                "func":2
+             }
+          }
+       },
+       {
+          "id":2,
+          "assistant":{
+             "text":"Before you can do anything on social media, you need to create an account.\n\nFor that you need a username and a password.",
+             "action":{
+                "text":"Whats that?",
+                "func":3
+             }
+          }
+       },
+       {
+          "id":3,
+          "assistant":{
+             "text":"Don't worry. That is why I am here.\n\nA username is the name you choose for your account. It can be your real name or a nickname.\nIt is public and everyone can see it. Have that in mind when you choose a username.",
+             "action":{
+                "text":"Ok, I got it.",
+                "func":4
+             }
+          }
+       },
+       {
+          "id":4,
+          "assistant":{
+             "text":"Next is the password. It is a secret code that you need to enter to log in to your account.\n\nIt is important that you choose a strong password.\nI will show you how a strong password should look like.",
+             "action":{
+                "text":"Continue.",
+                "func":5
+             }
+          }
+       },
+       {
+          "id":5,
+          "assistant":{
+             "text":"Have a look at the text above.\nThat are some general easy to follow rules for strong and save password.\n\nIf something is not clear, just ask me by clicking the button with the questionmark for the according item.",
+             "action":{
+                "text":"Continue",
+                "func":6
+             }
+          },
+          "mode":"explain",
+          "modeDetails":{
+             "data":{
+                "title":"Password Security",
+                "description":"That's how a password should look like",
+                "items":[
+                   {
+                      "text":"Use at least eight characters. The longer the better (as long as you can remember it!).",
+                      "explanation":"A strong password should be at least eight characters long.\n\nThat is because it is harder to guess a longer password."
+                   },
+                   {
+                      "text":"Make it memorable, but avoid using personal information like names or birthdays.",
+                      "explanation":"A strong password should be memorable, so that you don't have to write it somewhere.\n\nBut if you include personal information like your name in it it is easier to guess.\nAnd we definalty don't want that."
+                   },
+                   {
+                      "text":"Use a mix of uppercase letters, lowercase letters, symbols and numbers.",
+                      "explanation":"Use a mix of upper and lower case letters, numbers and special characters.\n\nThat is because it is harder to guess such passwords."
+                   },
+                   {
+                      "text":"R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.",
+                      "explanation":"You can replace letters with numbers or special characters that look the same.\n\nFor example: 'e' can be replaced with '3' and 'a' can be replaced with '@'.\n\nWith that you can easily add hard to guess symbols to you password, but they are still easy to remeber for you."
+                   },
+                   {
+                      "text":"Do not use the same password on multiple sites.",
+                      "explanation":"Don't use the same password for multiple accounts.\n\nIf someone gets access to one of your accounts, he can use the same password to get access to all your accounts."
+                   },
+                   {
+                      "text":"Do not use personal information (name, address, birth dates or even a pet's name, etc.) in your password.",
+                      "explanation":"Dont include personal information like your name, birthday or address in your password.\n\nThat is because it is easier to guess such passwords."
+                   },
+                   {
+                      "text":"Do not use a password that is easy to guess (like \"password\", \"123456\", \"qwerty\", etc.).",
+                      "explanation":"Don't use easy and commonly used passwords.\n\nAttackers use programs that try to guess passwords by using common words and numbers."
+                   },
+                   {
+                      "text":"Do not use a password that can be found in a dictionary.",
+                      "explanation":"Try to avoid using passwords that can be found in a dictionary.\n\nAttackers use programs that try to guess passwords by using words from dictionaries."
+                   },
+                   {
+                      "text":"Do not share your password with anyone.",
+                      "explanation":"Never share your password with anyone.\n\nIf you do that, they can use your account and do whatever they want. Even if you trust them, you should never share your password with anyone."
+                   },
+                   {
+                      "text":"Do not write your password down.",
+                      "explanation":"Never write your password down.\n\nIf you do that, someone else can find it and use your account.\n\nIf your password is really hard to remember, you can use a password manager to save it."
+                   }
+                ]
+             }
+          }
+       },
+       {
+          "id":6,
+          "assistant":{
+             "text":"If you follow this rules, you should be able to create a strong password.\n\nNow it is your turn. I have prepared a small task where you can show me what you have learnt so far.",
+             "action":{
+                "text":"Show me what you have got.",
+                "func":7
+             }
+          }
+       },
+       {
+          "id":7,
+          "assistant":{
+             "text":"Just tell me, when ever I should check your work.",
+             "action":{
+                "text":"Check my answers."
+             }
+          },
+          "mode":"containergame",
+          "modeDetails":{
+             "ref":"game1",
+             "data":{
+                "items":[
+                   {
+                      "name":"Use at least eight characters.",
+                      "type":"good"
+                   },
+                   {
+                      "name":"Make it memorable, but avoid using personal information like names or birthdays.",
+                      "type":"good"
+                   },
+                   {
+                      "name":"Use a mix of uppercase letters, lowercase letters, symbols and numbers.",
+                      "type":"good"
+                   },
+                   {
+                      "name":"R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.",
+                      "type":"good"
+                   },
+                   {
+                      "name":"Use the same password on multiple sites.",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"Use personal information (name, address, birth dates etc.) in your password.",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"Use a password that is easy to guess.",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"Use a password that can be found in a dictionary.",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"Share your password with a close friend in case you forget it.",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"Write your password down if it is hard to remember.",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"Change your password if you think someone else knows it.",
+                      "type":"good"
+                   }
+                ],
+                "left":"Good",
+                "right":"Bad"
+             },
+             "unfinished":{
+                "assistant":{
+                   "text":"There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again."
+                }
+             },
+             "error":{
+                "points":-1,
+                "assistant":{
+                   "text":"There are still some mistakes. Try again. I am sure you will manage it now."
+                }
+             },
+             "correct":{
+                "points":2,
+                "assistant":{
+                   "text":"You are right. Everything was correct. Well done.",
+                   "action":{
+                      "text":"Continue.",
+                      "func":8
+                   }
+                }
+             }
+          }
+       },
+       {
+          "id":8,
+          "assistant":{
+             "text":"What do you think about this question?",
+             "action":{
+                "text":"Check my answers."
+             }
+          },
+          "mode":"quiz",
+          "modeDetails":{
+             "ref":"quiz1",
+             "data":{
+                "question":"Is 'maxi' a strong password?",
+                "answers":[
+                   {
+                      "id":0,
+                      "text":"Not really",
+                      "correct":true
+                   },
+                   {
+                      "id":1,
+                      "text":"Yes, it is safe",
+                      "correct":false
+                   }
+                ]
+             },
+             "error":{
+                "points":-1,
+                "assistant":{
+                   "text":"Nope. Your password should never be a name.",
+                   "action":{
+                      "text":"Continue.",
+                      "func":9
+                   }
+                }
+             },
+             "correct":{
+                "points":2,
+                "assistant":{
+                   "text":"You are right. That is a really bad password because it contains your name.",
+                   "action":{
+                      "text":"Continue.",
+                      "func":9
+                   }
+                }
+             }
+          }
+       },
+       {
+          "id":9,
+          "assistant":{
+             "text":"What do you think about this question?",
+             "action":{
+                "text":"Check my answers."
+             }
+          },
+          "mode":"quiz",
+          "modeDetails":{
+             "ref":"quiz2",
+             "data":{
+                "question":"Is '01.12.2000' a secure password?",
+                "answers":[
+                   {
+                      "id":0,
+                      "text":"Yes",
+                      "correct":false
+                   },
+                   {
+                      "id":1,
+                      "text":"No",
+                      "correct":true
+                   }
+                ]
+             },
+             "error":{
+                "points":-1,
+                "assistant":{
+                   "text":"Nope. Your password should never be date.",
+                   "action":{
+                      "text":"Continue.",
+                      "func":10
+                   }
+                }
+             },
+             "correct":{
+                "points":2,
+                "assistant":{
+                   "text":"You are right. That is a really bad password because its just a date. Never use your birthday or any other date that is related to you as a password.",
+                   "action":{
+                      "text":"Continue.",
+                      "func":10
+                   }
+                }
+             }
+          }
+       },
+       {
+          "id":10,
+          "assistant":{
+             "text":"Well done so far. Now you should know how a strong password looks like.\n\nIn the next section I will show you how you can create a strong password which is easy to remember.",
+             "action":{
+                "text":"Yes, I am really currious.",
+                "func":11
+             }
+          }
+       },
+       {
+          "id":11,
+          "assistant":{
+             "text":"Use donkey bridges. Above you can find an example.\n\nIt is a sentence that you can use to create a strong password.\nYou can use any sentence you like. Just make sure that it is easy to remember.",
+             "action":{
+                "text":"Continue.",
+                "func":12
+             }
+          },
+          "mode":"html",
+          "modeDetails":{
+             "data":{
+                "path":"levels/1/data1.html"
+             }
+          }
+       },
+       {
+          "id":12,
+          "assistant":{
+             "text":"Look, I have found a list of passwords.\n\nCan you tell me which of that is a good and which is a bad password? Tell me again when i should check your result.",
+             "action":{
+                "text":"Check my answers."
+             }
+          },
+          "mode":"containergame",
+          "modeDetails":{
+             "ref":"game2",
+             "data":{
+                "items":[
+                   {
+                      "name":"L3t$_Pl@y",
+                      "type":"good"
+                   },
+                   {
+                      "name":"Rucksack",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"rose2002",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"1ch_l1€b3-b3rg€!",
+                      "type":"good"
+                   },
+                   {
+                      "name":"S@ub3reEn3rg1€",
+                      "type":"good"
+                   },
+                   {
+                      "name":"bello",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"passwort",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"g3he1m",
+                      "type":"bad"
+                   },
+                   {
+                      "name":"G3#3Im!1",
+                      "type":"good"
+                   },
+                   {
+                      "name":"sportistmord",
+                      "type":"bad"
+                   }
+                ],
+                "left":"Good",
+                "right":"Bad"
+             },
+             "unfinished":{
+                "assistant":{
+                   "text":"There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again."
+                }
+             },
+             "error":{
+                "points":-1,
+                "assistant":{
+                   "text":"There are still some mistakes. Try again. I am sure you will manage it now."
+                }
+             },
+             "correct":{
+                "points":2,
+                "assistant":{
+                   "text":"You are right. Everything was correct. Well done.",
+                   "action":{
+                      "text":"Continue.",
+                      "func":13
+                   }
+                }
+             }
+          }
+       },
+       {
+          "id":13,
+          "assistant":{
+             "text":"Good job!\n\nYou have learned a lot about passwords.\n\nNow you know how to create a secure password for an account in a social network.",
+             "action":{
+                "text":"Continue.",
+                "func":14
+             }
+          }
+       },
+       {
+          "id":14,
+          "assistant":{
+             "text":"We have talked a bit about private information.\nWe know that we should not share this information and tread it like secrets.\n\nLets have a look what the difference between personal and private information actually is.",
+             "action":{
+                "text":"Sure, tell me about it!",
+                "func":15
+             }
+          }
+       },
+       {
+          "id":15,
+          "assistant":{
+             "text":"Make sense, right?\n\nLet's practice it a bit with a small game.",
+             "action":{
+                "text":"Yes, lets play.",
+                "func":16
+             }
+          },
+          "mode":"html",
+          "modeDetails":{
+             "data":{
+                "path":"levels/1/data2.html"
+             }
+          }
+       },
+       {
+          "id":16,
+          "assistant":{
+             "text":"Have fun, playing the game. Click on all personal information items. Ignore the rest.",
+             "action":{
+                "text":"Continue."
+             }
+          },
+          "mode":"fallinggame",
+          "modeDetails":{
+             "ref":"fallinggame",
+             "data":{
+                "description":"Click on all private information items. Ignore the persoanl information that could be shared.",
+                "items":[
+                   {
+                      "text":"Full Name",
+                      "value":1
+                   },
+                   {
+                      "text":"Address",
+                      "value":1
+                   },
+                   {
+                      "text":"Phone Number",
+                      "value":1
+                   },
+                   {
+                      "text":"E-Mail Address",
+                      "value":1
+                   },
+                   {
+                      "text":"Date of birth",
+                      "value":1
+                   },
+                   {
+                      "text":"Social Security Number",
+                      "value":1
+                   },
+                   {
+                      "text":"Favorite color",
+                      "value":0
+                   },
+                   {
+                      "text":"Hair color",
+                      "value":0
+                   },
+                   {
+                      "text":"City",
+                      "value":0
+                   },
+                   {
+                      "text":"Favorite meal",
+                      "value":0
+                   },
+                   {
+                      "text":"Favorite music",
+                      "value":0
+                   },
+                   {
+                      "text":"Password",
+                      "value":1
+                   },
+                   {
+                      "text":"Height",
+                      "value":0
+                   },
+                   {
+                      "text":"Weight",
+                      "value":0
+                   },
+                   {
+                      "text":"First Name",
+                      "value":0
+                   },
+                   {
+                      "text":"Credit Card Information",
+                      "value":1
+                   },
+                   {
+                      "text":"Name of pet",
+                      "value":0
+                   }
+                ]
+             },
+             "unfinished":{
+                "assistant":{
+                   "text":"The game is not over yet."
+                }
+             },
+             "error":{
+                "points":-1,
+                "assistant":{
+                   "text":"Hm, better try one more time. This time you will manage it.",
+                   "action":{
+                      "text":"Let me try again.",
+                      "func":15
+                   }
+                }
+             },
+             "correct":{
+                "points":2,
+                "assistant":{
+                   "text":"You did a great job. You are now an expert in personal information.\n\nNow you are ready to fill out your own profile.",
+                   "action":{
+                      "text":"Continue.",
+                      "func":17
+                   }
+                }
+             }
+          }
+       },
+       {
+          "id":17,
+          "assistant":{
+             "text":"Social media platforms want to get as much information from you as they could.\nThis is because they want to show you ads that are interesting for you.\nThey also want to sell your information to other companies.\n\nSo, be careful what you share on social media.",
+             "action":{
+                "text":"Can I do something about it?",
+                "func":18
+             }
+          }
+       },
+       {
+          "id":18,
+          "assistant":{
+             "text":"Sure, it is possible to limit the information that you share on social media.\n\nLet's have a look at your profile. There are lots of fields that you can fill out. But you don't have to fill out all of them.\n\nLet's see what you can do.",
+             "action":{
+                "text":"Yeah, lets fill out my profile.",
+                "func":19
+             }
+          }
+       },
+       {
+          "id":19,
+          "assistant":{
+             "text":"Fill out your profile. You can skip the fields that you don't want to fill out.",
+             "action":{
+                "text":"I have completed my profile."
+             }
+          },
+          "mode":"profilesetup",
+          "modeDetails":{
+             "ref":"profilesetup",
+             "error":{
+                "points":-1
+             },
+             "correct":{
+                "points":2,
+                "assistant":{
+                   "text":"Well done. You now have your own profile. And no senstive data is available publicly.\n\nLet's continue with the next topic.",
+                   "action":{
+                      "text":"Finish lesson",
+                      "func":"COMPLETE"
+                   }
+                }
+             }
+          }
+       }
+    ]
+ }
