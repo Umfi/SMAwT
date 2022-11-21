@@ -8,7 +8,7 @@
       
       <explain-component v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'explain'"  :title="currentGameStep.modeDetails.data.title" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" @explain="explain"></explain-component>
       
-      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'containergame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data"></container-game>
+      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'containergame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right"></container-game>
 
       <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'quiz'">
         <div class="row" v-if="currentGameStep.modeDetails.content">
@@ -16,6 +16,9 @@
             <simple-post v-if="currentGameStep.modeDetails.content.component == 'fb-post'" :author="user" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image"></simple-post>
             <simple-insta-post v-if="currentGameStep.modeDetails.content.component == 'insta-post'" :author="user" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image"></simple-insta-post>
             <simple-snap-post v-if="currentGameStep.modeDetails.content.component == 'snap-post'" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image" :position="currentGameStep.modeDetails.content.position"></simple-snap-post>
+            <simple-friend-request v-if="currentGameStep.modeDetails.content.component == 'friend-request'" :name="currentGameStep.modeDetails.content.name" :avatar="currentGameStep.modeDetails.content.avatar" :mutal="currentGameStep.modeDetails.content.mutal"></simple-friend-request>
+            <simple-chat v-if="currentGameStep.modeDetails.content.component == 'chat'" :messages="currentGameStep.modeDetails.content.messages"></simple-chat>
+            <simple-post v-if="currentGameStep.modeDetails.content.component == 'news-post'" :author="currentGameStep.modeDetails.content.author" :image="currentGameStep.modeDetails.content.image" :message="currentGameStep.modeDetails.content.message" :link="currentGameStep.modeDetails.content.link" :headline="currentGameStep.modeDetails.content.headline"></simple-post>
           </div>
           <div class="col m-auto">
               <quiz-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers"></quiz-game>
@@ -71,6 +74,8 @@ import SimplePost from "./SimplePost.vue";
 import SimpleInstaPost from "./SimpleInstaPost.vue";
 import SimpleSnapPost from "./SimpleSnapPost.vue";
 import PostPrivacyGame from "./Games/PostPrivacyGame.vue";
+import SimpleFriendRequest from "./SimpleFriendRequest.vue";
+import SimpleChat from "./SimpleChat.vue";
 
 export default {
   name: "BaseLevel",
@@ -88,7 +93,9 @@ export default {
     SimplePost,
     SimpleInstaPost,
     SimpleSnapPost,
-    PostPrivacyGame
+    PostPrivacyGame,
+    SimpleFriendRequest,
+    SimpleChat
   },
   props: {
     level_id: {

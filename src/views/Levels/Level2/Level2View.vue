@@ -169,19 +169,23 @@ export default {
                 mode: 'containergame',
                 modeDetails: {
                     ref: 'game1',
-                    data: [
-                        { name: "Think before posting.", type: 'good'},
-                        { name: "Consider choice of words.", type: 'good' },
-                        { name: "Be respectful of differences.", type: 'good' },
-                        { name: "Do not be rude.", type: 'good' },
-                        { name: "Be rude if you don't agree with something.", type: 'bad' },
-                        { name: "Spread false information.", type: 'bad' },
-                        { name: "Post something that is not true.", type: 'bad'},
-                        { name: "Post private information.", type: 'bad' },
-                        { name: "Post negative thoughts and opinions about school or workplace.", type: 'bad'},
-                        { name: "Check grammar of the post.", type: 'good' },
-                        { name: "Share secrets with others.", type: 'bad' },
-                    ],
+                    data: {
+                        items: [
+                            { name: "Think before posting.", type: 'good'},
+                            { name: "Consider choice of words.", type: 'good' },
+                            { name: "Be respectful of differences.", type: 'good' },
+                            { name: "Do not be rude.", type: 'good' },
+                            { name: "Be rude if you don't agree with something.", type: 'bad' },
+                            { name: "Spread false information.", type: 'bad' },
+                            { name: "Post something that is not true.", type: 'bad'},
+                            { name: "Post private information.", type: 'bad' },
+                            { name: "Post negative thoughts and opinions about school or workplace.", type: 'bad'},
+                            { name: "Check grammar of the post.", type: 'good' },
+                            { name: "Share secrets with others.", type: 'bad' },
+                        ],
+                        left: "Good",
+                        right: "Bad",
+                    },
                     unfinished: {
                         assistant: {
                             text: "There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.",

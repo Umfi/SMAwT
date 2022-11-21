@@ -5,14 +5,11 @@ import LandingView from '../views/LandingView.vue'
 import SetupView from '../views/SetupView.vue'
 import LevelSelectionView from '../views/LevelSelectionView.vue'
 
-import FriendRequestsView from '../views/Levels/FriendRequestsView.vue'
-import MessagesView from '../views/Levels/MessagesView.vue'
-import FakeView from '../views/Levels/FakeView.vue'
 import StoryView from '../views/Levels/StoryView.vue'
 
 import Level1View from '../views/Levels/Level1/Level1View.vue'
 import Level2View from '../views/Levels/Level2/Level2View.vue'
-import Level3View from '../views/Levels/Level3View.vue'
+import Level3View from '../views/Levels/Level3/Level3View.vue'
 import ExamView from '../views/ExamView.vue'
 
 Vue.use(VueRouter)
@@ -54,21 +51,6 @@ const routes = [
     component: ExamView
   },
 
-  {
-    path: '/levels/friends',
-    name: 'level-friends',
-    component: FriendRequestsView
-  },
-  {
-    path: '/levels/messages',
-    name: 'level-messages',
-    component: MessagesView
-  },
-  {
-    path: '/levels/fake-or-real',
-    name: 'level-fake-or-real',
-    component: FakeView
-  },
   {
     path: '/levels/story',
     name: 'level-story',

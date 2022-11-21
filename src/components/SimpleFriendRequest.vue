@@ -2,8 +2,14 @@
     <div class="container text-center border pb-2">
         <div class="row">
             <div class="col">
-                <img
+                <img v-if="user"
                     :src="user.avatar"
+                    class="rounded-circle mt-2"
+                    width="50"
+                    height="50"
+                />
+                <img v-if="avatar"
+                    :src="avatar"
                     class="rounded-circle mt-2"
                     width="50"
                     height="50"
@@ -14,7 +20,8 @@
             <div class="col">
                 <div class="row">
                     <div class="col">
-                    <h5>{{ user.name }}</h5>
+                    <h5 v-if="user">{{ user.name }}</h5>
+                    <h5 v-if="name">{{ name }}</h5>
                     </div>
                 </div>
                 <div class="row" v-if="mutal > 0">
@@ -39,6 +46,12 @@ export default {
     props: {
         user: {
             type: Object,
+        },
+        name: {
+            type: String,
+        },
+        avatar: {
+            type: String,
         },
         mutal: {
             default: 0,

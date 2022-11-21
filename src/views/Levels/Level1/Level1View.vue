@@ -139,19 +139,23 @@ export default {
                   mode: 'containergame',
                   modeDetails: {
                       ref: 'game1',
-                      data: [
-                        { name: "Use at least eight characters.", type: 'good'},
-                        { name: "Make it memorable, but avoid using personal information like names or birthdays.", type: 'good' },
-                        { name: "Use a mix of uppercase letters, lowercase letters, symbols and numbers.", type: 'good' },
-                        { name: "R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.", type: 'good' },
-                        { name: "Use the same password on multiple sites.", type: 'bad' },
-                        { name: "Use personal information (name, address, birth dates etc.) in your password.", type: 'bad'},
-                        { name: "Use a password that is easy to guess.", type: 'bad' },
-                        { name: "Use a password that can be found in a dictionary.", type: 'bad'},
-                        { name: "Share your password with a close friend in case you forget it.", type: 'bad' },
-                        { name: "Write your password down if it is hard to remember.", type: 'bad' },
-                        { name: "Change your password if you think someone else knows it.", type: 'good' }
-                      ],
+                      data: {
+                        items: [
+                            { name: "Use at least eight characters.", type: 'good'},
+                            { name: "Make it memorable, but avoid using personal information like names or birthdays.", type: 'good' },
+                            { name: "Use a mix of uppercase letters, lowercase letters, symbols and numbers.", type: 'good' },
+                            { name: "R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.", type: 'good' },
+                            { name: "Use the same password on multiple sites.", type: 'bad' },
+                            { name: "Use personal information (name, address, birth dates etc.) in your password.", type: 'bad'},
+                            { name: "Use a password that is easy to guess.", type: 'bad' },
+                            { name: "Use a password that can be found in a dictionary.", type: 'bad'},
+                            { name: "Share your password with a close friend in case you forget it.", type: 'bad' },
+                            { name: "Write your password down if it is hard to remember.", type: 'bad' },
+                            { name: "Change your password if you think someone else knows it.", type: 'good' }
+                        ],
+                        left: "Good",
+                        right: "Bad",
+                      },
                       unfinished: {
                           assistant: {
                               text: "There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.",
@@ -292,18 +296,22 @@ export default {
                   mode: 'containergame',
                   modeDetails: {
                       ref: 'game2',
-                      data: [
-                        { name: "L3t$_Pl@y", type: 'good'},
-                        { name: "Rucksack", type: 'bad'},
-                        { name: "rose2002", type: 'bad'},
-                        { name: "1ch_l1€b3-b3rg€!", type: 'good'},
-                        { name: "S@ub3reEn3rg1€", type: 'good'},
-                        { name: "bello", type: 'bad'},
-                        { name: "passwort", type: 'bad'},
-                        { name: "g3he1m", type: 'bad'},
-                        { name: "G3#3Im!1", type: 'good'},
-                        { name: "sportistmord", type: 'bad'},
-                      ],
+                      data: {
+                        items: [
+                            { name: "L3t$_Pl@y", type: 'good'},
+                            { name: "Rucksack", type: 'bad'},
+                            { name: "rose2002", type: 'bad'},
+                            { name: "1ch_l1€b3-b3rg€!", type: 'good'},
+                            { name: "S@ub3reEn3rg1€", type: 'good'},
+                            { name: "bello", type: 'bad'},
+                            { name: "passwort", type: 'bad'},
+                            { name: "g3he1m", type: 'bad'},
+                            { name: "G3#3Im!1", type: 'good'},
+                            { name: "sportistmord", type: 'bad'},
+                        ],
+                        left: "Good",
+                        right: "Bad",
+                      },
                       unfinished: {
                           assistant: {
                               text: "There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again.",
