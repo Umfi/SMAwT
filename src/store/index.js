@@ -3,13 +3,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const levelData = require('../assets/levels/levels.json');
-
-if (!levelData) {
-  console.error('No level data found!');
-}
-
-
 export default new Vuex.Store({
   state: {
     user: {
@@ -22,59 +15,51 @@ export default new Vuex.Store({
   },
   getters: {
     user: state => {
-      return state.user
-    },
-    levels: state => {
-      return state.levels
-    },
-    examUnlocked: state => {
-      return state.examUnlocked
-    }
-  },
-  mutations: {
-    GET_USER(state) {
       if (localStorage.getItem('sometra_user')) {
         state.user = JSON.parse(localStorage.getItem('sometra_user'));
       }
-
       return state.user
     },
-    START_GAME(state, user) {
-      state.levels = [...levelData.levels];
-      localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
-
-      localStorage.setItem('sometra_user', JSON.stringify(user));
-
-      state.examUnlocked = false;
-      localStorage.removeItem('sometra_exam');
-      return state.user = user
-    },
-    GET_LEVELS(state) {
+    levels: state => {
       if (localStorage.getItem('sometra_levels')) {
         state.levels = JSON.parse(localStorage.getItem('sometra_levels'));
-      } else {
-        localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
       }
-
+      return state.levels
+    },
+    examUnlocked: state => {
       if (localStorage.getItem('sometra_exam')) {
         state.examUnlocked = true;
       } else {
         state.examUnlocked = false;
       }
+      return state.examUnlocked
+    }
+  },
+  mutations: {
+    START_GAME(state, user) {
+      const levelData = require('../assets/levels/levels.json');
 
-      return state.levels
+      state.levels = [...levelData.levels];
+      localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
+
+      state.user = user;
+      localStorage.setItem('sometra_user', JSON.stringify(user));
+
+      state.examUnlocked = false;
+      localStorage.removeItem('sometra_exam');
     },
     UPDATE_LEVEL(state, level) {
       const index = state.levels.findIndex(item => item.id === level.id)
       state.levels[index].stars = level.stars
-      if (state.levels.length > index + 1) {
-        state.levels[index+1].locked = false;
-      } else {
-        state.examUnlocked = true;
-        localStorage.setItem('sometra_exam', true);
+      if (level.stars > 0) {
+        if (state.levels.length > index + 1) {
+          state.levels[index+1].locked = false;
+        } else {
+          state.examUnlocked = true;
+          localStorage.setItem('sometra_exam', true);
+        }
+        localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
       }
-
-      localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
     },
   },
   actions: {
@@ -84,7 +69,5 @@ export default new Vuex.Store({
     updateLevel({commit}, level) {
       commit("UPDATE_LEVEL", level);
     }
-  },
-  modules: {
   }
 })

@@ -43,6 +43,10 @@ export default {
     ])
   },
   mounted() {
+
+    document.getElementById("app").classList.remove('level');
+    document.getElementById("app").classList.add('home');
+
     if (this.user && this.user.name.length > 0) {
       this.$refs.assistant.updateMessage("Do you want to continue your training?");
       this.$refs.assistant.updateActions('I want to start from the beginning!', this.restart, 'Yeah, lets continue!', this.start);

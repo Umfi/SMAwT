@@ -29,9 +29,5 @@ new Vue({
   store,
   router,
   i18n,
-  beforeCreate() { 
-    this.$store.commit('GET_USER');
-    this.$store.commit('GET_LEVELS');
-  },
   render: h => h(App)
 }).$mount('#app')

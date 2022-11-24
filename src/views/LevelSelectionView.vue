@@ -37,6 +37,7 @@ import {mapGetters} from 'vuex';
 export default {
  name: "LevelSelectionView",
  mounted() {
+  document.getElementById("app").classList.remove('home');
   document.getElementById("app").classList.add('level');
  },
  computed: {

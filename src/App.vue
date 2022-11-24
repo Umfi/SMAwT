@@ -1,13 +1,13 @@
 <template>
-  <div id="app" :class="'d-flex flex-column min-vh-100 min-vw-100 ' + currentRoute">
+  <div id="app" :class="'d-flex flex-column min-vh-100 min-vw-100 home'">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <router-link to="/" class="navbar-brand">Social Media Training</router-link> 
 
             <div class="float-end">
               <select class="form-select" v-model="language">
-                <option value="en">EN</option>
-                <option value="de">DE</option>
+                <option value="en">🇬🇧&emsp;EN</option>
+                <option value="de">🇩🇪&emsp;DE</option>
               </select>
             </div>
         </div>
@@ -25,14 +25,10 @@ export default {
   name: 'App',
   data() {
     return {
-      currentRoute: 'home',
       language: 'de'
     }
   },
   watch:{
-    $route (to){
-        this.currentRoute = to.name;
-    },
     language: function (val) {
       this.$i18n.locale = val;
     }
