@@ -8,7 +8,7 @@
       
       <explain-component v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'explain'"  :title="currentGameStep.modeDetails.data.title" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" @explain="explain"></explain-component>
       
-      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'containergame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right"></container-game>
+      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'sortinggame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right"></container-game>
 
       <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'quiz'">
         <div class="row" v-if="currentGameStep.modeDetails.content">
@@ -148,7 +148,7 @@ export default {
         this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { this.gameStep = this.currentGameStep.assistant.action.func; this.nextMove(); });
       }
 
-      if (this.currentGameStep.mode == "containergame") {
+      if (this.currentGameStep.mode == "sortinggame") {
         this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
 
           const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 

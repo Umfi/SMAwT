@@ -11,9 +11,9 @@
               <div
                 class="list-group-item"
                 v-for="(element) in goodList"
-                :key="element.name"
+                :key="element.text"
               >
-                {{ element.name }}
+                {{ element.text }}
               </div>
             </draggable>
           </div>
@@ -23,9 +23,9 @@
               <div
                 class="list-group-item"
                 v-for="(element) in allList"
-                :key="element.name"
+                :key="element.text"
               >
-                {{ element.name }}
+                {{ element.text }}
               </div>
             </draggable>
           </div>
@@ -35,9 +35,9 @@
               <div
                 class="list-group-item"
                 v-for="(element) in badList"
-                :key="element.name"
+                :key="element.text"
               >
-                {{ element.name }}
+                {{ element.text }}
               </div>
             </draggable>
           </div>
@@ -83,7 +83,7 @@ export default {
       let newAll = [];
 
       this.goodList.forEach((item, index, arr) => {
-        if (item.type === "bad") {
+        if (item.type === 1) {
           newAll.push(item);
           arr.splice(index, 1);
         }
@@ -91,7 +91,7 @@ export default {
 
 
       this.badList.forEach((item, index, arr) => {
-        if (item.type === "good") {
+        if (item.type === 0) {
           newAll.push(item);
           arr.splice(index, 1);
         }

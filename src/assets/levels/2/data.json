@@ -181,54 +181,54 @@
                 "text":"Check my answers."
              }
           },
-          "mode":"containergame",
+          "mode":"sortinggame",
           "modeDetails":{
              "ref":"game1",
              "data":{
                 "items":[
                    {
-                      "name":"Think before posting.",
-                      "type":"good"
+                      "text":"Think before posting.",
+                      "value": 0
                    },
                    {
-                      "name":"Consider choice of words.",
-                      "type":"good"
+                      "text":"Consider choice of words.",
+                      "value": 0
                    },
                    {
-                      "name":"Be respectful of differences.",
-                      "type":"good"
+                      "text":"Be respectful of differences.",
+                      "value": 0
                    },
                    {
-                      "name":"Do not be rude.",
-                      "type":"good"
+                      "text":"Do not be rude.",
+                      "value": 0
                    },
                    {
-                      "name":"Be rude if you don't agree with something.",
-                      "type":"bad"
+                      "text":"Be rude if you don't agree with something.",
+                      "value": 1
                    },
                    {
-                      "name":"Spread false information.",
-                      "type":"bad"
+                      "text":"Spread false information.",
+                      "value": 1
                    },
                    {
-                      "name":"Post something that is not true.",
-                      "type":"bad"
+                      "text":"Post something that is not true.",
+                      "value": 1
                    },
                    {
-                      "name":"Post private information.",
-                      "type":"bad"
+                      "text":"Post private information.",
+                      "value": 1
                    },
                    {
-                      "name":"Post negative thoughts and opinions about school or workplace.",
-                      "type":"bad"
+                      "text":"Post negative thoughts and opinions about school or workplace.",
+                      "value": 1
                    },
                    {
-                      "name":"Check grammar of the post.",
-                      "type":"good"
+                      "text":"Check grammar of the post.",
+                      "value": 0
                    },
                    {
-                      "name":"Share secrets with others.",
-                      "type":"bad"
+                      "text":"Share secrets with others.",
+                      "value": 1
                    }
                 ],
                 "left":"Good",
@@ -645,7 +645,7 @@
              "ref":"pg1",
              "data":{
                 "message":"I saw a really cool movie yesterday. It was called 'The Matrix'. It is a 10/10.",
-                "answers":"public"
+                "answer":"public"
              },
              "unfinished":{
                 "assistant":{

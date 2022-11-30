@@ -10,13 +10,13 @@
           "id":2,
           "name":"Social Media and You",
           "stars":0,
-          "locked":true
+          "locked":false
        },
        {
           "id":3,
           "name":"The Dark Side of Social Media",
           "stars":0,
-          "locked":true
+          "locked":false
        }
     ]
  }

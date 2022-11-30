@@ -119,54 +119,54 @@
                 "text":"Check my answers."
              }
           },
-          "mode":"containergame",
+          "mode":"sortinggame",
           "modeDetails":{
              "ref":"game1",
              "data":{
                 "items":[
                    {
-                      "name":"Use at least eight characters.",
-                      "type":"good"
+                      "text":"Use at least eight characters.",
+                      "value": 0
                    },
                    {
-                      "name":"Make it memorable, but avoid using personal information like names or birthdays.",
-                      "type":"good"
+                      "text":"Make it memorable, but avoid using personal information like names or birthdays.",
+                      "value": 0
                    },
                    {
-                      "name":"Use a mix of uppercase letters, lowercase letters, symbols and numbers.",
-                      "type":"good"
+                      "text":"Use a mix of uppercase letters, lowercase letters, symbols and numbers.",
+                      "value": 0
                    },
                    {
-                      "name":"R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.",
-                      "type":"good"
+                      "text":"R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.",
+                      "value": 0
                    },
                    {
-                      "name":"Use the same password on multiple sites.",
-                      "type":"bad"
+                      "text":"Use the same password on multiple sites.",
+                      "value": 1
                    },
                    {
-                      "name":"Use personal information (name, address, birth dates etc.) in your password.",
-                      "type":"bad"
+                      "text":"Use personal information (name, address, birth dates etc.) in your password.",
+                      "value": 1
                    },
                    {
-                      "name":"Use a password that is easy to guess.",
-                      "type":"bad"
+                      "text":"Use a password that is easy to guess.",
+                      "value": 1
                    },
                    {
-                      "name":"Use a password that can be found in a dictionary.",
-                      "type":"bad"
+                      "text":"Use a password that can be found in a dictionary.",
+                      "value": 1
                    },
                    {
-                      "name":"Share your password with a close friend in case you forget it.",
-                      "type":"bad"
+                      "text":"Share your password with a close friend in case you forget it.",
+                      "value": 1
                    },
                    {
-                      "name":"Write your password down if it is hard to remember.",
-                      "type":"bad"
+                      "text":"Write your password down if it is hard to remember.",
+                      "value": 1
                    },
                    {
-                      "name":"Change your password if you think someone else knows it.",
-                      "type":"good"
+                      "text":"Change your password if you think someone else knows it.",
+                      "value": 0
                    }
                 ],
                 "left":"Good",
@@ -325,50 +325,50 @@
                 "text":"Check my answers."
              }
           },
-          "mode":"containergame",
+          "mode":"sortinggame",
           "modeDetails":{
              "ref":"game2",
              "data":{
                 "items":[
                    {
-                      "name":"L3t$_Pl@y",
-                      "type":"good"
+                      "text":"L3t$_Pl@y",
+                      "value": 0
                    },
                    {
-                      "name":"Rucksack",
-                      "type":"bad"
+                      "text":"Rucksack",
+                      "value": 1
                    },
                    {
-                      "name":"rose2002",
-                      "type":"bad"
+                      "text":"rose2002",
+                      "value": 1
                    },
                    {
-                      "name":"1ch_l1€b3-b3rg€!",
-                      "type":"good"
+                      "text":"1ch_l1€b3-b3rg€!",
+                      "value": 0
                    },
                    {
-                      "name":"S@ub3reEn3rg1€",
-                      "type":"good"
+                      "text":"S@ub3reEn3rg1€",
+                      "value": 0
                    },
                    {
-                      "name":"bello",
-                      "type":"bad"
+                      "text":"bello",
+                      "value": 1
                    },
                    {
-                      "name":"passwort",
-                      "type":"bad"
+                      "text":"passwort",
+                      "value": 1
                    },
                    {
-                      "name":"g3he1m",
-                      "type":"bad"
+                      "text":"g3he1m",
+                      "value": 1
                    },
                    {
-                      "name":"G3#3Im!1",
-                      "type":"good"
+                      "text":"G3#3Im!1",
+                      "value": 0
                    },
                    {
-                      "name":"sportistmord",
-                      "type":"bad"
+                      "text":"sportistmord",
+                      "value": 1
                    }
                 ],
                 "left":"Good",

@@ -229,42 +229,42 @@
                 "text":"Check my answers."
              }
           },
-          "mode":"containergame",
+          "mode":"sortinggame",
           "modeDetails":{
              "ref":"game1",
              "data":{
                 "items":[
                    {
-                      "name":"I can trust links in messages.",
-                      "type":"bad"
+                      "text":"I can trust links in messages.",
+                      "value": 1
                    },
                    {
-                      "name":"I can trust every message.",
-                      "type":"bad"
+                      "text":"I can trust every message.",
+                      "value": 1
                    },
                    {
-                      "name":"Speling mistakes are an indicator for spam messages.",
-                      "type":"good"
+                      "text":"Speling mistakes are an indicator for spam messages.",
+                      "value": 0
                    },
                    {
-                      "name":"I should report suspious messages.",
-                      "type":"good"
+                      "text":"I should report suspious messages.",
+                      "value": 0
                    },
                    {
-                      "name":"I should send personal information to everyone.",
-                      "type":"bad"
+                      "text":"I should send personal information to everyone.",
+                      "value": 1
                    },
                    {
-                      "name":"If somebody asks for my phone number, I will send it to him.",
-                      "type":"bad"
+                      "text":"If somebody asks for my phone number, I will send it to him.",
+                      "value": 1
                    },
                    {
-                      "name":"I should check if I know the sender of the message",
-                      "type":"good"
+                      "text":"I should check if I know the sender of the message",
+                      "value": 0
                    },
                    {
-                      "name":"I should reply to every message",
-                      "type":"bad"
+                      "text":"I should reply to every message",
+                      "value": 1
                    }
                 ],
                 "left":"Good",
@@ -546,46 +546,46 @@
                 "text":"Check my answers."
              }
           },
-          "mode":"containergame",
+          "mode":"sortinggame",
           "modeDetails":{
              "ref":"game2",
              "data":{
                 "items":[
                    {
-                      "name":"The web adress or site name can help to indicate fake news.",
-                      "type":"good"
+                      "text":"The web adress or site name can help to indicate fake news.",
+                      "value": 0
                    },
                    {
-                      "name":"Shocking headlines are an indicator for trustworthy news.",
-                      "type":"bad"
+                      "text":"Shocking headlines are an indicator for trustworthy news.",
+                      "value": 1
                    },
                    {
-                      "name":"Words in ALL CAPS is an indicator for trustworthy news.",
-                      "type":"bad"
+                      "text":"Words in ALL CAPS is an indicator for trustworthy news.",
+                      "value": 1
                    },
                    {
-                      "name":"Grammatical errors are an indicator for fake news.",
-                      "type":"good"
+                      "text":"Grammatical errors are an indicator for fake news.",
+                      "value": 0
                    },
                    {
-                      "name":"Sensational images are often used for serious news.",
-                      "type":"bad"
+                      "text":"Sensational images are often used for serious news.",
+                      "value": 1
                    },
                    {
-                      "name":"The use of many punctuation character is an indicator for fake news.",
-                      "type":"good"
+                      "text":"The use of many punctuation character is an indicator for fake news.",
+                      "value": 0
                    },
                    {
-                      "name":"Unusual web adresses are a sign of fake news.",
-                      "type":"good"
+                      "text":"Unusual web adresses are a sign of fake news.",
+                      "value": 0
                    },
                    {
-                      "name":"Websites ending with .gov.at are always trustworthy.",
-                      "type":"good"
+                      "text":"Websites ending with .gov.at are always trustworthy.",
+                      "value": 0
                    },
                    {
-                      "name":"Websites ending with .at are always trustworthy.",
-                      "type":"bad"
+                      "text":"Websites ending with .at are always trustworthy.",
+                      "value": 1
                    }
                 ],
                 "left":"True",

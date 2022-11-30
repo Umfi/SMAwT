@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h1>Exam</h1>
-
     <div v-if="examUnlocked">
-        <p>TODO</p>
+        <div v-if="!examDone">
+            TODO
+        </div>
+        <div v-else>
+            <exam-certificate :points="55"></exam-certificate>
+        </div>
     </div>
     <div v-else>
         <p>Exam is not unlocked yet.</p>
@@ -12,10 +15,17 @@
 </template>
 
 <script>
+import ExamCertificate from '@/components/ExamCertificate.vue';
 import {mapGetters} from 'vuex';
 
 export default {
+    components: { ExamCertificate },
     name: 'ExamView',
+    data() {
+        return {
+            examDone: false,
+        };
+    },
     computed: {
         ...mapGetters([
             'examUnlocked'

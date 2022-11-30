@@ -56,6 +56,13 @@ const messages = {
         'The Dark Side of Social Media': 'Die dunkle Seite sozialer Medien',
         'Exam': 'Prüfung',
 
+        'Certificate of Completion': 'Abschlusszertifikat',
+        'This is to certify that': 'Hiermit wird bescheinigt, dass',
+        'has completed the course': 'den Kurs',
+        'with a score of': 'abgeschlossen hat, mit einer Punktzahl von',
+        'on': 'am',
+        'Save as PDF': 'Als PDF speichern',
+        
         'How to create strong rememberable passwords?': 'Wie erstellt man starke, merkbare Passwörter?',
         'Great. Now you know what you can post and what not. But watch out this also count for photos.\nI will show you what I mean.': 'Super. Jetzt weißt du, was du posten darfst und was nicht.\nAber Achtung, das gilt auch für Fotos gilt.\nIch zeige dir, was ich meine.',
     }
