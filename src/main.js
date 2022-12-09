@@ -11,6 +11,8 @@ import '@fortawesome/fontawesome-free/scss/solid.scss';
 
 import 'shepherd.js/dist/css/shepherd.css';
 
+import 'animate.css';
+
 Vue.config.productionTip = false
 
 

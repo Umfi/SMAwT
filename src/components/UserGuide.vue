@@ -1,29 +1,40 @@
 <template>
-  <div id="assistant" class="border container fixed-bottom mb-3 shadow bg-white" v-show="visible">
-    <div class="row p-2">
-        <div class="col-2">
-            <img src="../assets/assistant.png" class="img-fluid rounded-circle assistant" alt="User Image">
+  <div id="assistant" v-show="visible">
+
+    <div class="border container fixed-bottom mb-3 shadow bg-white" v-show="!isMinimized">
+        <div class="row p-2">
+            <div class="col-2">
+                <img src="../assets/assistant_right.png" class="img-fluid rounded-circle assistant" alt="User Image">
+            </div>
+            <div class="col-9 align-self-center" v-if="this.message.length > 0">
+                <vue-typer
+                :text="$t(message)"
+                :repeat='0'
+                :type-delay='20'
+                :pre-erase-delay='0'
+                :erase-delay='0'
+                erase-style='clear'
+                caret-animation='blink'
+              ></vue-typer>
+            </div>
+            <div class="col-1" v-if="this.message.length > 0">
+                <button type="button" class="btn btn-outline-primary btn-block float-end" @click="minimize"><i class="fa-solid fa-window-minimize"></i></button>
+            </div>
         </div>
-        <div class="col-10 align-self-center" v-if="this.message.length > 0">
-            <vue-typer
-            :text="$t(message)"
-            :repeat='0'
-            :type-delay='20'
-            :pre-erase-delay='0'
-            :erase-delay='0'
-            erase-style='clear'
-            caret-animation='blink'
-          ></vue-typer>
+        <div class="row border-top" v-show="visibleOptions">
+            <div class="col p-0">
+                <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction">{{ $t(actionAText) }}</button>
+            </div>
+            <div class="col p-0" v-if="actionBText.length > 0">
+                <button type="button" class="btn btn-outline-primary btn-block w-100 text-uppercase" @click="actionBFunction">{{ $t(actionBText) }}</button>
+            </div>
         </div>
     </div>
-    <div class="row border-top" v-show="visibleOptions">
-        <div class="col p-0">
-            <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction">{{ $t(actionAText) }}</button>
-        </div>
-        <div class="col p-0" v-if="actionBText.length > 0">
-            <button type="button" class="btn btn-outline-primary btn-block w-100 text-uppercase" @click="actionBFunction">{{ $t(actionBText) }}</button>
-        </div>
+
+    <div class="border mb-3 bg-white rounded-circle miniassiatant animate__animated animate__pulse animate__slower animate__infinite" v-show="isMinimized" @click="maximize">
+        <img src="../assets/assistant_left.png" class="bg-opacity-75 bg-primary img-fluid rounded-circle" alt="User Image" width="150">
     </div>
+
   </div>
 </template>
 
@@ -57,6 +68,7 @@ export default {
   },
   data() {
     return {
+      isMinimized: false,
       visible: true,
       visibleOptions: true,
       message: '',
@@ -76,24 +88,33 @@ export default {
   methods: {
     updateMessage(newMsg) {
       this.message = newMsg;
+      this.maximize();
     },
     updateActions(actionA = '', actionAFunc = () => { return -1; }, actionB = '', actionBFunc = () => { return -1; }) {
       this.actionAText = actionA;
       this.actionAFunction = actionAFunc;
       this.actionBText = actionB;
       this.actionBFunction = actionBFunc;
+      this.maximize();
     },
     hide() {
       this.visible = false;
     },
     show() {
       this.visible = true;
+      this.maximize();
     },
     hideOptions() {
       this.visibleOptions = false;
     },
     showOptions() {
       this.visibleOptions = true;
+    },
+    minimize() {
+      this.isMinimized = true;
+    },
+    maximize() {
+      this.isMinimized = false;
     }
   }
 }
@@ -106,5 +127,13 @@ export default {
 #assistant {
   user-select: none;
   z-index: 9999;
+}
+
+.miniassiatant {
+  width: 150px;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  cursor: pointer;
 }
 </style>
