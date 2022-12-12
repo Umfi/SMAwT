@@ -63,7 +63,14 @@ export default {
                 return 0;
             }
         },
-    }
+    },
+    watch: {
+        checkedItems: function (newVal) {
+            if (newVal.length > 0) {
+                this.$emit('ready');
+            }
+        },
+    },
 }
 </script>
 

@@ -31,9 +31,9 @@
         </div>
     </div>
 
-    <div class="border mb-3 bg-white rounded-circle miniassiatant animate__animated animate__pulse animate__slower animate__infinite" v-show="isMinimized" @click="maximize">
-        <img src="../assets/assistant_left.png" class="bg-opacity-75 bg-primary img-fluid rounded-circle" alt="User Image" width="150">
-    </div>
+    <div :class="'border mb-3 bg-white rounded-circle miniassiatant ' + animationcss" v-show="isMinimized" @click="maximize">
+        <img src="../assets/assistant_right.png" class="bg-opacity-75 bg-primary img-fluid rounded-circle" alt="User Image" width="100">
+   </div>
 
   </div>
 </template>
@@ -74,6 +74,7 @@ export default {
       message: '',
       actionAText: '',
       actionBText: '',
+      animationcss: '',
       actionAFunction: () => { return -1; },
       actionBFunction: () => { return -1; }
     }
@@ -112,9 +113,15 @@ export default {
     },
     minimize() {
       this.isMinimized = true;
+      this.animationcss = 'animate__animated animate__pulse animate__slower animate__infinite';
     },
     maximize() {
       this.isMinimized = false;
+    },
+    getAttention() {
+      if (this.isMinimized) {
+        this.animationcss = 'animate__animated animate__bounce animate__infinite';
+      }
     }
   }
 }
@@ -130,10 +137,13 @@ export default {
 }
 
 .miniassiatant {
-  width: 150px;
+  width: 100px;
   position: absolute;
-  right: 2%;
-  bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
   cursor: pointer;
 }
 </style>

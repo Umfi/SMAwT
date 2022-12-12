@@ -83,7 +83,7 @@ export default {
       let newAll = [];
 
       this.goodList.forEach((item, index, arr) => {
-        if (item.type === 1) {
+        if (item.value === 1) {
           newAll.push(item);
           arr.splice(index, 1);
         }
@@ -91,7 +91,7 @@ export default {
 
 
       this.badList.forEach((item, index, arr) => {
-        if (item.type === 0) {
+        if (item.value === 0) {
           newAll.push(item);
           arr.splice(index, 1);
         }
@@ -103,6 +103,13 @@ export default {
         return 0;
       } else {
         return 1;
+      }
+    },
+  },
+  watch: {
+    allList: function (newVal) {
+      if (newVal.length === 0) {
+        this.$emit('ready');
       }
     },
   },

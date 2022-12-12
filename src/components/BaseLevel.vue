@@ -3,12 +3,12 @@
   <level-progress :step="gameStep" :max="level_data.steps.length"></level-progress>
   <div id="container" class="container mt-5">
 
-    <div v-if="!complete">
+    <div v-if="!complete" class="content">
       <html-viewer v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'html'"  :path="currentGameStep.modeDetails.data.path"></html-viewer>
       
       <explain-component v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'explain'"  :title="currentGameStep.modeDetails.data.title" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" @explain="explain"></explain-component>
       
-      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'sortinggame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right"></container-game>
+      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'sortinggame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right" @ready="activateAssistant"></container-game>
 
       <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'quiz'">
         <div class="row" v-if="currentGameStep.modeDetails.content">
@@ -21,11 +21,11 @@
             <simple-post v-if="currentGameStep.modeDetails.content.component == 'news-post'" :author="currentGameStep.modeDetails.content.author" :image="currentGameStep.modeDetails.content.image" :message="currentGameStep.modeDetails.content.message" :link="currentGameStep.modeDetails.content.link" :headline="currentGameStep.modeDetails.content.headline"></simple-post>
           </div>
           <div class="col m-auto">
-              <quiz-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers"></quiz-game>
+              <quiz-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers" @ready="activateAssistant"></quiz-game>
           </div>
         </div>
         <div v-else>
-          <quiz-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers"></quiz-game>
+          <quiz-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers" @ready="activateAssistant"></quiz-game>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
         <image-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :image="currentGameStep.modeDetails.data.image" :bb="currentGameStep.modeDetails.data.bb" @game-over="nextMove"></image-game>
       </div>
 
-      <post-privacy-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'privacygame'" :ref="currentGameStep.modeDetails.ref" :message="currentGameStep.modeDetails.data.message" :answer="currentGameStep.modeDetails.data.answer"></post-privacy-game>
+      <post-privacy-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'privacygame'" :ref="currentGameStep.modeDetails.ref" :message="currentGameStep.modeDetails.data.message" :answer="currentGameStep.modeDetails.data.answer" @ready="activateAssistant"></post-privacy-game>
 
     </div>
 
@@ -333,9 +333,19 @@ export default {
       this.$router.replace("/levels");
     },
     //////////////////////////////
+    activateAssistant() {
+      this.$refs.assistant.getAttention();
+    },
     explain(msg) {
       this.$refs.assistant.updateMessage(msg);
     },
   },
 };
 </script>
+<style scoped>
+.content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 80vh;
+}
+</style>

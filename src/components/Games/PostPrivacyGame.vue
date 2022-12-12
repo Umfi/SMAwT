@@ -74,6 +74,13 @@ export default {
       }
     }
   },
+  watch: {
+    privacy: function (newVal) {
+      if (newVal !== "") {
+        this.$emit('ready');
+      }
+    },
+  },
 }
 </script>
 <style scoped>

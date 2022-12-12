@@ -445,7 +445,7 @@
           "modeDetails":{
              "ref":"fallinggame",
              "data":{
-                "description":"Click on all private information items. Ignore the persoanl information that could be shared.",
+                "description":"Click on everything that should not be shared on the internet.",
                 "items":[
                    {
                       "text":"Full Name",
