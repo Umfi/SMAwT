@@ -65,6 +65,16 @@ const messages = {
         
         'How to create strong rememberable passwords?': 'Wie erstellt man starke, merkbare Passwörter?',
         'Great. Now you know what you can post and what not. But watch out this also count for photos.\nI will show you what I mean.': 'Super. Jetzt weißt du, was du posten darfst und was nicht.\nAber Achtung, das gilt auch für Fotos gilt.\nIch zeige dir, was ich meine.',
+
+        'Skin color': 'Hautfarbe',
+        'Hairstyle': 'Frisur',
+        'Headgear color': 'Kopfbedeckungsfarbe',
+        'Hair color': 'Haarfarbe',
+        'Mouth': 'Mund',
+        'Clothes': 'Kleidung',
+        'Clothes color': 'Kleidungsfarbe',
+        'Glasses': 'Brille',
+
     }
 }
 
