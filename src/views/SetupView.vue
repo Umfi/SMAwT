@@ -34,83 +34,66 @@
 
             <div class="row">
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeSkinColor"
-                >
-                  {{ $t("Skin color") }}
-                </button>
+                <div class="btn-group w-100" role="group">
+                  <button type="button" class="btn btn-primary" @click="changeSkinColor('prev')">«</button>
+                  <button type="button" class="btn btn-secondary disabled">{{ $t("Skin color") }}</button>
+                  <button type="button" class="btn btn-primary" @click="changeSkinColor('next')">»</button>
+                </div>
               </div>
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeTopType"
-                >
-                  {{ $t("Hairstyle") }}
-                </button>
+                  <div class="btn-group w-100" role="group">
+                    <button type="button" class="btn btn-primary" @click="changeTopType('prev')">«</button>
+                    <button type="button" class="btn btn-secondary disabled">{{ $t("Hairstyle") }}</button>
+                    <button type="button" class="btn btn-primary" @click="changeTopType('next')">»</button>
+                  </div>
               </div>
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeTopColor"
-                  v-show="showTopColorOption"
-                >
-                  {{ $t("Headgear color") }}
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeHairColor"
-                  v-show="!showTopColorOption && topType != 'NoHair'"
-                >
-                  {{ $t("Hair color") }}
-                </button>
+                <div class="btn-group w-100" role="group" v-show="showTopColorOption">
+                  <button type="button" class="btn btn-primary" @click="changeTopColor('prev')">«</button>
+                  <button type="button" class="btn btn-secondary disabled">{{ $t("Headgear color") }}</button>
+                  <button type="button" class="btn btn-primary" @click="changeTopColor('next')">»</button>
+                </div>
+
+                <div class="btn-group w-100" role="group" v-show="!showTopColorOption && topType != 'NoHair'">
+                    <button type="button" class="btn btn-primary" @click="changeHairColor('prev')">«</button>
+                    <button type="button" class="btn btn-secondary disabled">{{ $t("Hair color") }}</button>
+                    <button type="button" class="btn btn-primary" @click="changeHairColor('next')">»</button>
+                </div>
               </div>
             </div>
 
             <div class="row mt-3">
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeMouthType"
-                >
-                  {{ $t("Mouth") }}
-                </button>
+                <div class="btn-group w-100" role="group">
+                  <button type="button" class="btn btn-primary" @click="changeMouthType('prev')">«</button>
+                  <button type="button" class="btn btn-secondary disabled">{{ $t("Mouth") }}</button>
+                  <button type="button" class="btn btn-primary" @click="changeMouthType('next')">»</button>
+                </div>
               </div>
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeClotheType"
-                >
-                  {{ $t("Clothes") }}
-                </button>
+                <div class="btn-group w-100" role="group">
+                  <button type="button" class="btn btn-primary" @click="changeClotheType('prev')">«</button>
+                  <button type="button" class="btn btn-secondary disabled">{{ $t("Clothes") }}</button>
+                  <button type="button" class="btn btn-primary" @click="changeClotheType('next')">»</button>
+                </div>
               </div>
 
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeClotheColor"
-                >
-                  {{ $t("Clothes color") }}
-                </button>
+                <div class="btn-group w-100" role="group">
+                  <button type="button" class="btn btn-primary" @click="changeClotheColor('prev')">«</button>
+                  <button type="button" class="btn btn-secondary disabled">{{ $t("Clothes color") }}</button>
+                  <button type="button" class="btn btn-primary" @click="changeClotheColor('next')">»</button>
+                </div>
               </div>
             </div>
 
             <div class="row mt-3">
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-secondary w-100"
-                  @click="changeAccessoriesType"
-                >
-                  {{ $t("Glasses") }}
-                </button>
+                <div class="btn-group w-100" role="group">
+                  <button type="button" class="btn btn-primary" @click="changeAccessoriesType('prev')">«</button>
+                  <button type="button" class="btn btn-secondary disabled">{{ $t("Glasses") }}</button>
+                  <button type="button" class="btn btn-primary" @click="changeAccessoriesType('next')">»</button>
+                </div>
               </div>
             </div>
 
@@ -316,9 +299,18 @@ export default {
       this.changeStyle("clotheColor", this.clotheColors, true);
       this.changeStyle("accessoriesType", this.accessoriesTypes, true);
     },
-    changeStyle(field, fields, random = false) {
+    changeStyle(field, fields, random = false, direction = 'next') {
       const index = fields.indexOf(this[field]);
-      let nextIndex = index + 1;
+
+      let nextIndex;
+      if (direction == 'next') {
+        nextIndex = index + 1;
+      } else {
+        nextIndex = index - 1;
+        if (nextIndex < 0) {
+          nextIndex = fields.length - 1;
+        }
+      }
 
       if (random) {
         nextIndex = Math.floor(Math.random() * fields.length);
@@ -330,29 +322,29 @@ export default {
         this[field] = fields[nextIndex];
       }
     },
-    changeSkinColor() {
-      this.changeStyle("skinColor", this.skinColors, false);
+    changeSkinColor(dir) {
+      this.changeStyle("skinColor", this.skinColors, false, dir);
     },
-    changeTopType() {
-      this.changeStyle("topType", this.topTypes, false);
+    changeTopType(dir) {
+      this.changeStyle("topType", this.topTypes, false, dir);
     },
-    changeHairColor() {
-      this.changeStyle("hairColor", this.hairColors, false);
+    changeHairColor(dir) {
+      this.changeStyle("hairColor", this.hairColors, false, dir);
     },
-    changeTopColor() {
-      this.changeStyle("topColor", this.topColors, false);
+    changeTopColor(dir) {
+      this.changeStyle("topColor", this.topColors, false, dir);
     },
-    changeMouthType() {
-      this.changeStyle("mouthType", this.mouthTypes, false);
+    changeMouthType(dir) {
+      this.changeStyle("mouthType", this.mouthTypes, false, dir);
     },
-    changeClotheType() {
-      this.changeStyle("clotheType", this.clotheTypes, false);
+    changeClotheType(dir) {
+      this.changeStyle("clotheType", this.clotheTypes, false, dir);
     },
-    changeClotheColor() {
-      this.changeStyle("clotheColor", this.clotheColors, false);
+    changeClotheColor(dir) {
+      this.changeStyle("clotheColor", this.clotheColors, false, dir);
     },
-    changeAccessoriesType() {
-      this.changeStyle("accessoriesType", this.accessoriesTypes, false);
+    changeAccessoriesType(dir) {
+      this.changeStyle("accessoriesType", this.accessoriesTypes, false, dir);
     },
     start() {
       const user = {
