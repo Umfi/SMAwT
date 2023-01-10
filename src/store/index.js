@@ -8,8 +8,9 @@ export default new Vuex.Store({
     user: {
       name: '',
       avatar: '',
-      image: ''
+      image: '',
     },
+    points: 0,
     levels: [],
     examUnlocked: false,
   },
@@ -33,7 +34,13 @@ export default new Vuex.Store({
         state.examUnlocked = false;
       }
       return state.examUnlocked
-    }
+    },
+    points: state => {
+      if (localStorage.getItem('sometra_points')) {
+        state.points = parseInt(localStorage.getItem('sometra_points'));
+      }
+      return state.points
+    },
   },
   mutations: {
     START_GAME(state, user) {
@@ -47,6 +54,9 @@ export default new Vuex.Store({
 
       state.examUnlocked = false;
       localStorage.removeItem('sometra_exam');
+
+      state.points = 0;
+      localStorage.setItem('sometra_points', state.points);
     },
     UPDATE_LEVEL(state, level) {
       const index = state.levels.findIndex(item => item.id === level.id)
@@ -61,6 +71,10 @@ export default new Vuex.Store({
         localStorage.setItem('sometra_levels', JSON.stringify(state.levels));
       }
     },
+    UPDATE_POINTS(state, points) {
+      state.points += (points * 10);
+      localStorage.setItem('sometra_points', state.points);
+    }
   },
   actions: {
     startGame({commit}, user) {
@@ -68,6 +82,9 @@ export default new Vuex.Store({
     },
     updateLevel({commit}, level) {
       commit("UPDATE_LEVEL", level);
-    }
+    },
+    updatePoints({commit}, points) {
+      commit("UPDATE_POINTS", points);
+    },
   }
 })

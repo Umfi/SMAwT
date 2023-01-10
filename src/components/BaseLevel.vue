@@ -133,6 +133,16 @@ export default {
       return max;
     },
   },
+  watch: {
+    points(newVal, oldVal) {
+      console.log(newVal, oldVal);
+      if (newVal > oldVal) {
+        this.updateGlobalPoints(parseInt(newVal - oldVal));
+      } else if (newVal < oldVal) {
+        this.updateGlobalPoints(parseInt((oldVal - newVal)) * -1);
+      }
+    },
+  },
   methods: {
     nextMove() {
 
@@ -321,6 +331,9 @@ export default {
         });
       }
 
+    },
+    updateGlobalPoints(points) {
+      this.$store.dispatch("updatePoints", points);
     },
     finishLevel() {
       this.$refs.assistant.hide();

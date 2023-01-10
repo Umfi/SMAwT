@@ -4,6 +4,10 @@
         <div class="container">
             <router-link to="/" class="navbar-brand">SMAwT</router-link> 
 
+            <div class="text-center text-dark badge bg-warning fs-6" v-if="points > 0">
+            <b>{{ points }} {{ $t('Points')}}</b>
+            </div>
+
             <div class="float-end">
               <select class="form-select" v-model="language">
                 <option value="en">🇬🇧&emsp;EN</option>
@@ -20,6 +24,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 
 export default {
   name: 'App',
@@ -27,6 +32,11 @@ export default {
     return {
       language: 'de'
     }
+  },
+  computed: {
+    ...mapGetters([
+        'points'
+    ])
   },
   watch:{
     language: function (val) {
