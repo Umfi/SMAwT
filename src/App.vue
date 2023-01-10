@@ -38,18 +38,15 @@ export default {
 <style>
 
 #app {
-  min-height: 100vh;
+    background: url('~@/assets/bg1.jpg') no-repeat center center fixed; 
+    min-height: 100vh;
+    background-size: cover
 }
 
 #app.level {
     background: url('~@/assets/bg.jpg') no-repeat center center fixed; 
     min-height: 100vh;
     background-size: cover;
-}
-
-#app.home {
-  background: #fff !important;
-  min-height: 100vh;
 }
 
 .fade-enter-active,
