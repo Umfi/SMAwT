@@ -9,6 +9,7 @@ export default new Vuex.Store({
       name: '',
       avatar: '',
       image: '',
+      data: {}
     },
     points: 0,
     levels: [],

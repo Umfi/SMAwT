@@ -23,98 +23,165 @@
                 :clotheColor="clotheColor"
                 ref="avatar"
               ></avataaars>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                @click="changeAvatar"
-              >
-                <i class="fas fa-random"></i>
-              </button>
             </div>
 
-            <div class="row">
-              <div class="col">
-                <div class="btn-group w-100" role="group">
-                  <button type="button" class="btn btn-primary" @click="changeSkinColor('prev')">«</button>
-                  <button type="button" class="btn btn-secondary disabled">{{ $t("Skin color") }}</button>
-                  <button type="button" class="btn btn-primary" @click="changeSkinColor('next')">»</button>
-                </div>
-              </div>
-              <div class="col">
+            <ul class="nav nav-tabs nav-fill bg-grey">
+              <li class="nav-item">
+                <a :class="step == 1 ? 'nav-link active' : 'nav-link'" href="#" @click="step = 1">{{ $t("Look") }}</a>
+              </li>
+              <li class="nav-item">
+                <a :class="step == 2 ? 'nav-link active' : 'nav-link'" href="#" @click="step = 2">{{ $t("Data") }}</a>
+              </li>
+              <li class="nav-item">
+                <a :class="step == 3 ? 'nav-link active' : 'nav-link'" href="#" @click="step = 3">{{ $t("Interests") }}</a>
+              </li>
+            </ul>
+
+
+            <div v-show="step == 1" class="border border-1 border-top-0 p-2">
+              <div class="row">
+                <div class="col mt-1">
                   <div class="btn-group w-100" role="group">
-                    <button type="button" class="btn btn-primary" @click="changeTopType('prev')">«</button>
-                    <button type="button" class="btn btn-secondary disabled">{{ $t("Hairstyle") }}</button>
-                    <button type="button" class="btn btn-primary" @click="changeTopType('next')">»</button>
+                    <button type="button" class="btn btn-outline-primary" @click="changeSkinColor('prev')">«</button>
+                    <button type="button" class="btn btn-primary disabled">{{ $t("Skin color") }}</button>
+                    <button type="button" class="btn btn-outline-primary" @click="changeSkinColor('next')">»</button>
                   </div>
+                </div>
+                <div class="col mt-1">
+                    <div class="btn-group w-100" role="group">
+                      <button type="button" class="btn btn-outline-primary" @click="changeTopType('prev')">«</button>
+                      <button type="button" class="btn btn-primary disabled">{{ $t("Hairstyle") }}</button>
+                      <button type="button" class="btn btn-outline-primary" @click="changeTopType('next')">»</button>
+                    </div>
+                </div>
+                <div class="col mt-1">
+                  <div class="btn-group w-100" role="group" v-show="showTopColorOption">
+                    <button type="button" class="btn btn-outline-primary" @click="changeTopColor('prev')">«</button>
+                    <button type="button" class="btn btn-primary disabled">{{ $t("Headgear color") }}</button>
+                    <button type="button" class="btn btn-outline-primary" @click="changeTopColor('next')">»</button>
+                  </div>
+
+                  <div class="btn-group w-100" role="group" v-show="!showTopColorOption && topType != 'NoHair'">
+                      <button type="button" class="btn btn-outline-primary" @click="changeHairColor('prev')">«</button>
+                      <button type="button" class="btn btn-primary disabled">{{ $t("Hair color") }}</button>
+                      <button type="button" class="btn btn-outline-primary" @click="changeHairColor('next')">»</button>
+                  </div>
+                </div>
               </div>
-              <div class="col">
-                <div class="btn-group w-100" role="group" v-show="showTopColorOption">
-                  <button type="button" class="btn btn-primary" @click="changeTopColor('prev')">«</button>
-                  <button type="button" class="btn btn-secondary disabled">{{ $t("Headgear color") }}</button>
-                  <button type="button" class="btn btn-primary" @click="changeTopColor('next')">»</button>
+
+              <div class="row mt-3">
+                <div class="col mt-1">
+                  <div class="btn-group w-100" role="group">
+                    <button type="button" class="btn btn-outline-primary" @click="changeMouthType('prev')">«</button>
+                    <button type="button" class="btn btn-primary disabled">{{ $t("Mouth") }}</button>
+                    <button type="button" class="btn btn-outline-primary" @click="changeMouthType('next')">»</button>
+                  </div>
+                </div>
+                <div class="col mt-1">
+                  <div class="btn-group w-100" role="group">
+                    <button type="button" class="btn btn-outline-primary" @click="changeClotheType('prev')">«</button>
+                    <button type="button" class="btn btn-primary disabled">{{ $t("Clothes") }}</button>
+                    <button type="button" class="btn btn-outline-primary" @click="changeClotheType('next')">»</button>
+                  </div>
                 </div>
 
-                <div class="btn-group w-100" role="group" v-show="!showTopColorOption && topType != 'NoHair'">
-                    <button type="button" class="btn btn-primary" @click="changeHairColor('prev')">«</button>
-                    <button type="button" class="btn btn-secondary disabled">{{ $t("Hair color") }}</button>
-                    <button type="button" class="btn btn-primary" @click="changeHairColor('next')">»</button>
+                <div class="col mt-1">
+                  <div class="btn-group w-100" role="group">
+                    <button type="button" class="btn btn-outline-primary" @click="changeClotheColor('prev')">«</button>
+                    <button type="button" class="btn btn-primary disabled">{{ $t("Clothes color") }}</button>
+                    <button type="button" class="btn btn-outline-primary" @click="changeClotheColor('next')">»</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col mt-1">
+                  <div class="btn-group w-100" role="group">
+                    <button type="button" class="btn btn-outline-primary" @click="changeAccessoriesType('prev')">«</button>
+                    <button type="button" class="btn btn-primary disabled w-75">{{ $t("Glasses") }}</button>
+                    <button type="button" class="btn btn-outline-primary" @click="changeAccessoriesType('next')">»</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div v-show="step == 2" class="border border-1 border-top-0 p-2">
+              <div class="mb-3">
+                <label for="name" class="form-label">{{ $t("What is your name?") }}</label>
+                <input type="text" class="form-control" id="name" v-model="username" />
+              </div>
+              <div class="mb-3">
+                <label for="age" class="form-label">{{ $t("What is your age?") }}</label>
+                <input type="number" class="form-control" id="age" v-model="age" />
+              </div>
+            </div>
+
+            <div v-show="step == 3" class="border border-1 border-top-0 p-2">
+              <div class="mb-3">
+                <label class="form-label">{{ $t("What are your interests?") }}</label>
+                <br>
+
+                <div class="row mt-1">
+                  <div class="col mt-1">
+                    <input type="checkbox" class="btn-check" id="btn-interest-1" autocomplete="off" :value="$t('Music')" v-model="interests">
+                    <label class="btn btn-outline-primary w-100" for="btn-interest-1">{{ $t("Music") }}</label>
+                  </div>
+                  <div class="col mt-1">
+                    <input type="checkbox" class="btn-check" id="btn-interest-2" autocomplete="off" :value="$t('Sports')" v-model="interests">
+                    <label class="btn btn-outline-primary w-100" for="btn-interest-2">{{ $t("Sports") }}</label>
+                  </div>
+                  <div class="col mt-1">
+                    <input type="checkbox" class="btn-check" id="btn-interest-3" autocomplete="off" :value="$t('Movies')" v-model="interests">
+                    <label class="btn btn-outline-primary w-100" for="btn-interest-3">{{ $t("Movies") }}</label>
+                  </div>
+                </div>
+                <div class="row mt-1">
+                  <div class="col mt-1">
+                    <input type="checkbox" class="btn-check" id="btn-interest-4" autocomplete="off" :value="$t('Games')" v-model="interests">
+                    <label class="btn btn-outline-primary w-100" for="btn-interest-4">{{ $t("Games") }}</label>
+                  </div>
+                  <div class="col mt-1">
+                    <input type="checkbox" class="btn-check" id="btn-interest-5" autocomplete="off" :value="$t('Technology')" v-model="interests">
+                    <label class="btn btn-outline-primary w-100" for="btn-interest-5">{{ $t("Technology") }}</label>
+                  </div>
+                  <div class="col mt-1">
+                    <input type="checkbox" class="btn-check" id="btn-interest-6" autocomplete="off" :value="$t('Pets')"  v-model="interests">
+                    <label class="btn btn-outline-primary w-100" for="btn-interest-6">{{ $t("Pets") }}</label>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="row mt-3">
-              <div class="col">
-                <div class="btn-group w-100" role="group">
-                  <button type="button" class="btn btn-primary" @click="changeMouthType('prev')">«</button>
-                  <button type="button" class="btn btn-secondary disabled">{{ $t("Mouth") }}</button>
-                  <button type="button" class="btn btn-primary" @click="changeMouthType('next')">»</button>
-                </div>
-              </div>
-              <div class="col">
-                <div class="btn-group w-100" role="group">
-                  <button type="button" class="btn btn-primary" @click="changeClotheType('prev')">«</button>
-                  <button type="button" class="btn btn-secondary disabled">{{ $t("Clothes") }}</button>
-                  <button type="button" class="btn btn-primary" @click="changeClotheType('next')">»</button>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="btn-group w-100" role="group">
-                  <button type="button" class="btn btn-primary" @click="changeClotheColor('prev')">«</button>
-                  <button type="button" class="btn btn-secondary disabled">{{ $t("Clothes color") }}</button>
-                  <button type="button" class="btn btn-primary" @click="changeClotheColor('next')">»</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3">
-              <div class="col">
-                <div class="btn-group w-100" role="group">
-                  <button type="button" class="btn btn-primary" @click="changeAccessoriesType('prev')">«</button>
-                  <button type="button" class="btn btn-secondary disabled">{{ $t("Glasses") }}</button>
-                  <button type="button" class="btn btn-primary" @click="changeAccessoriesType('next')">»</button>
-                </div>
-              </div>
-            </div>
-
-            <hr>
-            <input
-              type="text"
-              class="form-control mt-4 w-50 m-auto"
-              id="name"
-              :placeholder="$t('Enter your name')"
-              v-model="username"
-            />
           </div>
           <div class="card-footer">
-            <button
+             <button
+              v-show="step > 1"
               type="button"
-              class="btn btn-primary btn-lg mt-4"
+              class="btn btn-primary btn-lg mt-4 float-start"
+              @click="step--"
+            >
+              {{ $t("Back") }}
+            </button>
+
+            <button
+              v-show="step != 3"
+              type="button"
+              class="btn btn-primary btn-lg mt-4 float-end"
+              @click="step++"
+            >
+              {{ $t("Continue") }}
+            </button>
+
+            <button
+              v-show="step == 3"
+              type="button"
+              class="btn btn-primary btn-lg mt-4 float-end"
               @click="start"
               :disabled="username.length == 0"
             >
               {{ $t("Start") }}
             </button>
+
           </div>
         </div>
       </div>
@@ -132,8 +199,11 @@ export default {
   },
   data() {
     return {
+      step: 1,
       isCircle: true,
       username: "",
+      age: "",
+      interests: [],
       /////////////
       skinColors: [
         "Tanned",
@@ -347,11 +417,21 @@ export default {
       this.changeStyle("accessoriesType", this.accessoriesTypes, false, dir);
     },
     start() {
+
+      const interests = [];
+      for (var key in this.interests) {
+         interests.push(this.interests[key]); 
+      }
+
       const user = {
         name: this.username,
         avatar: `data:image/svg+xml;base64,${btoa(
           unescape(encodeURIComponent(this.$refs.avatar.$el.outerHTML))
         )}`,
+        data: {
+          age: this.age,
+          interests: interests
+        }
       };
 
       this.isCircle = false;
@@ -374,6 +454,6 @@ export default {
   margin: 0 auto;
   width: 200px;
   height: 200px;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 </style>

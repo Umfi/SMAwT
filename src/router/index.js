@@ -40,7 +40,7 @@ const routes = [
   },
 
   {
-    path: '/levels/story',
+    path: '/story',
     name: 'level-story',
     component: StoryView
   },

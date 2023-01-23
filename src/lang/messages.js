@@ -31,6 +31,7 @@ const messages = {
         'Your Score': 'Deine Punktzahl',
         'Play Again': 'Nochmal spielen',
         'Continue': 'Weiter',
+        'Back': 'Zurück',
         'New Unread Message': 'Neue ungelesene Nachricht',
         'Report post': 'Beitrag melden',
         'comments': 'Kommentare',
@@ -74,6 +75,20 @@ const messages = {
         'Clothes': 'Kleidung',
         'Clothes color': 'Kleidungsfarbe',
         'Glasses': 'Brille',
+        'Interests': 'Interessen',
+        'Look': 'Aussehen',
+        'Data': 'Daten',
+
+        'What is your name?': 'Wie heißt du?',
+        'What is your age?': 'Wie alt bist du?',
+        'What are your interests?': 'Was sind deine Interessen?',
+
+        'Music': 'Musik',
+        'Movies': 'Filme',
+        'Technology': 'Technik',
+        'Sports': 'Sport',
+        'Games': 'Spiele',
+        'Pets': 'Haustiere',
 
     }
 }
