@@ -80,6 +80,8 @@ export default {
     }
   },
   mounted() {
+
+    // split the message after 100 characters if the word is in the middle split the word
     this.message = this.msg;
     this.actionAText = this.actionA;
     this.actionAFunction = this.actionAFunc;
@@ -87,8 +89,24 @@ export default {
     this.actionBFunction = this.actionBFunc;
   },
   methods: {
+    _addLinebreaks(text, maxCharsPerLine) {
+      let newText = "";
+      let currentLine = "";
+      let words = text.split(" ");
+      for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+        if (currentLine.length + word.length <= maxCharsPerLine) {
+          currentLine += word + " ";
+        } else {
+          newText += currentLine.trim() + "\n";
+          currentLine = word + " ";
+        }
+      }
+      newText += currentLine.trim();
+      return newText;
+    },
     updateMessage(newMsg) {
-      this.message = newMsg;
+      this.message = this._addLinebreaks(newMsg, 100);
       this.maximize();
     },
     updateActions(actionA = '', actionAFunc = () => { return -1; }, actionB = '', actionBFunc = () => { return -1; }) {
