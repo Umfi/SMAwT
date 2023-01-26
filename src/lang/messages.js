@@ -90,6 +90,8 @@ const messages = {
         'Games': 'Spiele',
         'Pets': 'Haustiere',
 
+        'Friendship networks': 'Freundschaftsnetzwerke',
+        'Show friendship network': 'Freundschaftsnetzwerk anzeigen',
     }
 }
 

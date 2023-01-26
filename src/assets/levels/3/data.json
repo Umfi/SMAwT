@@ -56,9 +56,10 @@
              },
              "content":{
                 "component":"friend-request",
-                "name":"Josh Maier",
-                "avatar":"https://i.pinimg.com/originals/05/c9/d0/05c9d08e8b49371122b9d8d9a450b096.jpg",
-                "mutal":24
+                "name":"Bert Huber",
+                "avatar":"levels/3/friend1.png",
+                "mutal":24,
+                "network": "levels/3/friends.png"
              },
              "error":{
                 "points":-1,
@@ -111,8 +112,9 @@
              "content":{
                 "component":"friend-request",
                 "name":"Maria Müller",
-                "avatar":"https://media.istockphoto.com/photos/crazy-senior-woman-kissing-picture-id155282054?k=20&m=155282054&s=612x612&w=0&h=9tpmIu5GfsKZm5iZorQ4w5khJlK9DMpOoubkPPO8yA4=",
-                "mutal":0
+                "avatar":"levels/3/friend-placeholder.jpg",
+                "mutal":0,
+                "network": "levels/3/friends.png"
              },
              "error":{
                 "points":-1,
@@ -170,8 +172,9 @@
              "content":{
                 "component":"friend-request",
                 "name":"Markus Pokefan",
-                "avatar":"https://www.bravo.de/assets/field/image/pikachu_bts.jpg",
-                "mutal":1
+                "avatar":"levels/3/friend-placeholder.jpg",
+                "mutal":1,
+                "network": "levels/3/friends.png"
              },
              "error":{
                 "points":-1,
