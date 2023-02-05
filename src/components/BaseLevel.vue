@@ -10,6 +10,8 @@
       
       <explain-component v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'explain'"  :title="currentGameStep.modeDetails.data.title" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" @explain="explain"></explain-component>
       
+      <passwort-strength-checker v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'password-strength-checker'" :ref="currentGameStep.modeDetails.ref"></passwort-strength-checker>
+      
       <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'sortinggame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right" @ready="activateAssistant"></container-game>
 
       <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'quiz'">
@@ -79,6 +81,7 @@ import SimpleSnapPost from "./SimpleSnapPost.vue";
 import PostPrivacyGame from "./Games/PostPrivacyGame.vue";
 import SimpleFriendRequest from "./SimpleFriendRequest.vue";
 import SimpleChat from "./SimpleChat.vue";
+import PasswortStrengthChecker from "./PasswortStrengthChecker.vue";
 
 export default {
   name: "BaseLevel",
@@ -99,7 +102,8 @@ export default {
     SimpleSnapPost,
     PostPrivacyGame,
     SimpleFriendRequest,
-    SimpleChat
+    SimpleChat,
+    PasswortStrengthChecker
   },
   props: {
     level_id: {
@@ -278,6 +282,29 @@ export default {
           }
         }
   
+      }
+
+      if (this.currentGameStep.mode == "password-strength-checker") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+
+          const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
+
+          this.$refs.assistant.updateMessage(result.message);
+          if (result.status >= 3) {
+            
+            if (this.currentGameStep.modeDetails.correct.points) {
+               this.points += this.currentGameStep.modeDetails.correct.points;
+            }
+
+            if (this.currentGameStep.modeDetails.correct.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+            }
+          } else {
+            if (this.currentGameStep.modeDetails.error.points) {
+               this.points += this.currentGameStep.modeDetails.error.points;
+            }
+          }
+        });
       }
 
       if (this.currentGameStep.mode == "profilesetup") {

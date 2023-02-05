@@ -32,9 +32,6 @@
               <li class="nav-item">
                 <a :class="step == 2 ? 'nav-link active' : 'nav-link'" href="#" @click="step = 2">{{ $t("Data") }}</a>
               </li>
-              <li class="nav-item">
-                <a :class="step == 3 ? 'nav-link active' : 'nav-link'" href="#" @click="step = 3">{{ $t("Interests") }}</a>
-              </li>
             </ul>
 
 
@@ -111,44 +108,25 @@
                 <input type="text" class="form-control" id="name" v-model="username" />
               </div>
               <div class="mb-3">
+                <label for="gender" class="form-label">{{ $t("What is your gender?") }}</label>
+                <select class="form-select form-select-lg mb-3" id="gender" v-model="gender">
+                  <option value="" selected>{{ $t("---") }}</option>
+                  <option :value="$t('Male')">{{ $t("Male") }}</option>
+                  <option :value="$t('Female')">{{ $t("Female") }}</option>
+                  <option :value="$t('Other')">{{ $t("Other") }}</option>
+                </select>
+              </div>
+              <div class="mb-3">
                 <label for="age" class="form-label">{{ $t("What is your age?") }}</label>
                 <input type="number" class="form-control" id="age" v-model="age" />
               </div>
-            </div>
-
-            <div v-show="step == 3" class="border border-1 border-top-0 p-2">
               <div class="mb-3">
-                <label class="form-label">{{ $t("What are your interests?") }}</label>
-                <br>
-
-                <div class="row mt-1">
-                  <div class="col mt-1">
-                    <input type="checkbox" class="btn-check" id="btn-interest-1" autocomplete="off" :value="$t('Music')" v-model="interests">
-                    <label class="btn btn-outline-primary w-100" for="btn-interest-1">{{ $t("Music") }}</label>
-                  </div>
-                  <div class="col mt-1">
-                    <input type="checkbox" class="btn-check" id="btn-interest-2" autocomplete="off" :value="$t('Sports')" v-model="interests">
-                    <label class="btn btn-outline-primary w-100" for="btn-interest-2">{{ $t("Sports") }}</label>
-                  </div>
-                  <div class="col mt-1">
-                    <input type="checkbox" class="btn-check" id="btn-interest-3" autocomplete="off" :value="$t('Movies')" v-model="interests">
-                    <label class="btn btn-outline-primary w-100" for="btn-interest-3">{{ $t("Movies") }}</label>
-                  </div>
-                </div>
-                <div class="row mt-1">
-                  <div class="col mt-1">
-                    <input type="checkbox" class="btn-check" id="btn-interest-4" autocomplete="off" :value="$t('Games')" v-model="interests">
-                    <label class="btn btn-outline-primary w-100" for="btn-interest-4">{{ $t("Games") }}</label>
-                  </div>
-                  <div class="col mt-1">
-                    <input type="checkbox" class="btn-check" id="btn-interest-5" autocomplete="off" :value="$t('Technology')" v-model="interests">
-                    <label class="btn btn-outline-primary w-100" for="btn-interest-5">{{ $t("Technology") }}</label>
-                  </div>
-                  <div class="col mt-1">
-                    <input type="checkbox" class="btn-check" id="btn-interest-6" autocomplete="off" :value="$t('Pets')"  v-model="interests">
-                    <label class="btn btn-outline-primary w-100" for="btn-interest-6">{{ $t("Pets") }}</label>
-                  </div>
-                </div>
+                <label for="address" class="form-label">{{ $t("Where do you live?") }}</label>
+                <input type="text" class="form-control" id="address" v-model="address" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">{{ $t("What is your e-mail address?") }}</label>
+                <input type="email" class="form-control" id="email" v-model="email" />
               </div>
             </div>
 
@@ -164,7 +142,7 @@
             </button>
 
             <button
-              v-show="step != 3"
+              v-show="step != 2"
               type="button"
               class="btn btn-primary btn-lg mt-4 float-end"
               @click="step++"
@@ -173,7 +151,7 @@
             </button>
 
             <button
-              v-show="step == 3"
+              v-show="step == 2"
               type="button"
               class="btn btn-primary btn-lg mt-4 float-end"
               @click="start"
@@ -203,7 +181,9 @@ export default {
       isCircle: true,
       username: "",
       age: "",
-      interests: [],
+      gender: "",
+      address: "",
+      email: "",
       /////////////
       skinColors: [
         "Tanned",
@@ -418,11 +398,6 @@ export default {
     },
     start() {
 
-      const interests = [];
-      for (var key in this.interests) {
-         interests.push(this.interests[key]); 
-      }
-
       const user = {
         name: this.username,
         avatar: `data:image/svg+xml;base64,${btoa(
@@ -430,7 +405,9 @@ export default {
         )}`,
         data: {
           age: this.age,
-          interests: interests
+          gender: this.gender,
+          address: this.address,
+          email: this.email,
         }
       };
 

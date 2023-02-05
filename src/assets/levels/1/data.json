@@ -13,7 +13,33 @@
           }
        },
        {
-          "id":2,
+         "id":2,
+         "assistant":{
+            "text":"Create a secure password",
+            "action":{
+               "text":"Check my password"
+            }
+         },
+         "mode":"password-strength-checker",
+         "modeDetails":{
+            "ref":"passwordStrengthCheck1",
+            "error":{
+               "points":-1
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Well done. You have a secure password.",
+                  "action":{
+                     "text":"Continue",
+                     "func":3
+                  }
+               }
+            }
+         }
+      },
+       {
+          "id":2414,
           "assistant":{
              "text":"Before you can do anything on social media, you need to create an account.\n\nFor that you need a username and a password.",
              "action":{

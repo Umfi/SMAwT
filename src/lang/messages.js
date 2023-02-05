@@ -82,6 +82,12 @@ const messages = {
         'What is your name?': 'Wie heißt du?',
         'What is your age?': 'Wie alt bist du?',
         'What are your interests?': 'Was sind deine Interessen?',
+        'What is your gender?': 'Was ist dein Geschlecht?',
+        'Male': 'Männlich',
+        'Female': 'Weiblich',
+        'Other': 'Andere',
+        'Where do you live?': 'Wo wohnst du?',
+        'What is your e-mail address?': 'Was ist deine E-Mail-Adresse?',
 
         'Music': 'Musik',
         'Movies': 'Filme',
@@ -92,6 +98,17 @@ const messages = {
 
         'Friendship networks': 'Freundschaftsnetzwerke',
         'Show friendship network': 'Freundschaftsnetzwerk anzeigen',
+
+        'Create your own passwords! Remember spelling, numbers and special characters! The passwords should be different from each other.': 'Erschaffe eigene Passwörter! Denke dabei and die Rechtschreibung, Zahlen und Sonderzeichen! Die Passwörter sollen sich voneinander unterscheiden.',
+        'Enter a secure password': 'Gib ein sicheres Passwort ein',
+        'Your password is very weak. It is too guessable.': 'Dein Passwort ist sehr schwach. Es ist sehr einfach zu erraten.',
+        'Your password is weak. It is very guessable.': 'Dein Passwort ist schwach. Es ist einfach zu erraten.',
+        'Your password is okay. But it is somewhat guessable.': 'Dein Passwort ist okay. Es ist aber etwas einfach zu erraten.',
+        'Your password is strong. It is safely unguessable.': 'Dein Passwort ist stark. Es ist schwer zu erraten.',
+        'Your password is very strong. It is very unguessable.': 'Dein Passwort ist sehr stark. Es ist sehr schwer zu erraten.',
+
+
+
     }
 }
 
