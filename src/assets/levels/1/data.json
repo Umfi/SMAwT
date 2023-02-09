@@ -4,20 +4,128 @@
     "steps":[
        {
           "id":1,
+          "mode":"video",
+          "modeDetails":{
+            "data":{
+               "path":"levels/1/video1.mp4",
+               "type":"video/mp4"
+            }
+          },
           "assistant":{
-             "text":"Hello! I'm your personal assistant. And I will introduce you into the world of social media!",
+             "text":"Hallo! Ich bin Simon. Schau dir mal an was mir passiert ist.",
              "action":{
-                "text":"Continue",
+                "text":"Weiter",
                 "func":2
              }
           }
        },
        {
-         "id":2,
+         "id": 2,
          "assistant":{
-            "text":"Create a secure password",
+            "text":"Wow! Danke! Nach 4 Jahren auf Pointer ist es so weit... Du bist mein 300.000 Follower! Es läuft richtig gut für mich, leider war das nicht immer so. Ich sage nur, anscheinend ist duweiler2002 kein wirklich sicheres Passwort, aber mir war lang nicht klar weshalb?",
             "action":{
-               "text":"Check my password"
+               "text":"Weiter",
+               "func":3
+            }
+         }
+       },
+       {
+         "id":3,
+         "assistant":{
+            "text":"Welche Passwörter würdest du als sicher einschätzen?",
+            "action":{
+               "text":"Antwort überprüfen"
+            }
+         },
+         "mode":"sortinggame",
+         "modeDetails":{
+            "ref":"sortinggame1",
+            "data":{
+               "items":[
+                  {
+                     "text":"L3t$_Pl@y",
+                     "value": 0
+                  },
+                  {
+                     "text":"Rucksack",
+                     "value": 1
+                  },
+                  {
+                     "text":"Rose2015",
+                     "value": 1
+                  },
+                  {
+                     "text":"1ch_l1€b3-b3rg€!",
+                     "value": 0
+                  },
+                  {
+                     "text":"S@ub3reEn3rg1€",
+                     "value": 0
+                  },
+                  {
+                     "text":"bello",
+                     "value": 1
+                  },
+                  {
+                     "text":"passwort",
+                     "value": 1
+                  },
+                  {
+                     "text":"g3he1m",
+                     "value": 1
+                  },
+                  {
+                     "text":"G3#3Im!1",
+                     "value": 0
+                  },
+                  {
+                     "text":"sportistmord",
+                     "value": 1
+                  }
+               ],
+               "left":"Good",
+               "right":"Bad",
+               "explanation": "Verschiebe die einzelnen Blöcke in die Spalte 'Gut' oder 'Schlecht'. Zum Schluss sollte die Spalte 'Beispiele' leer sein. Danach kannst du Simon fragen, ob er dir zustimmt, oder nicht."
+            },
+            "unfinished":{
+               "assistant":{
+                  "text":"Verschiebe die einzelnen Blöcke in die Spalte 'Gut' oder 'Schlecht'. Zum Schluss sollte die Spalte 'Beispiele' leer sein."
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Leider haben sich ein paar Fehler eingeschlichen. Denk noch einmal über die Begriffe nach, die ich zurücksortiere."
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Super. Du weißt schon ganz gut, welche Passwörter gut und schlecht sind!",
+                  "action":{
+                     "text":"Weiter",
+                     "func":4
+                  }
+               }
+            }
+         }
+       },
+       {
+         "id": 4,
+         "assistant":{
+            "text":"Wie du richtig erkannt hast, gibt es ein paar Sachen zu bedenken, wenn man ein eigenes Passwort erstellt. Man sollte darauf achten sowohl Groß- als auch Kleinbuchstaben zu verwenden. Zahlen und Sonderzeichen sollen ebenfalls dabei sein. Jetzt bist du dran kreativ zu werden.",
+            "action":{
+               "text":"Weiter",
+               "func":5
+            }
+         }
+       },
+       {
+         "id":5,
+         "assistant":{
+            "text":"Welches Passwort würdest du benutzen und wie sicher ist es tatsächlich?",
+            "action":{
+               "text":"Überprüfe das Passwort"
             }
          },
          "mode":"password-strength-checker",
@@ -29,592 +137,504 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Well done. You have a secure password.",
                   "action":{
-                     "text":"Continue",
-                     "func":3
+                     "text":"Weiter",
+                     "func":6
                   }
                }
             }
          }
       },
-       {
-          "id":2414,
-          "assistant":{
-             "text":"Before you can do anything on social media, you need to create an account.\n\nFor that you need a username and a password.",
-             "action":{
-                "text":"Whats that?",
-                "func":3
-             }
-          }
+      {
+         "id": 6,
+         "assistant":{
+            "text":"Wie du weißt, war der Hacker so schlau und hat meine Daten auf anderen Plattformen gesucht, um mein Passwort zu knacken. Deswegen möchte ich darauf achten, wo und wen ich meine persönlichen Daten in Zukunft schreiben kann. Aber was fällt alles unter persönliche Daten?",
+            "action":{
+               "text":"Weiter",
+               "func":7
+            }
+         }
        },
        {
-          "id":3,
-          "assistant":{
-             "text":"Don't worry. That is why I am here.\n\nA username is the name you choose for your account. It can be your real name or a nickname.\nIt is public and everyone can see it. Have that in mind when you choose a username.",
-             "action":{
-                "text":"Ok, I got it.",
-                "func":4
-             }
-          }
-       },
-       {
-          "id":4,
-          "assistant":{
-             "text":"Next is the password. It is a secret code that you need to enter to log in to your account.\n\nIt is important that you choose a strong password.\nI will show you how a strong password should look like.",
-             "action":{
-                "text":"Continue.",
-                "func":5
-             }
-          }
-       },
-       {
-          "id":5,
-          "assistant":{
-             "text":"Have a look at the text above.\nThat are some general easy to follow rules for strong and save password.\n\nIf something is not clear, just ask me by clicking the button with the questionmark for the according item.",
-             "action":{
-                "text":"Continue",
-                "func":6
-             }
-          },
-          "mode":"explain",
-          "modeDetails":{
-             "data":{
-                "title":"Password Security",
-                "description":"That's how a password should look like",
-                "items":[
-                   {
-                      "text":"Use at least eight characters. The longer the better (as long as you can remember it!).",
-                      "explanation":"A strong password should be at least eight characters long.\n\nThat is because it is harder to guess a longer password."
-                   },
-                   {
-                      "text":"Make it memorable, but avoid using personal information like names or birthdays.",
-                      "explanation":"A strong password should be memorable, so that you don't have to write it somewhere.\n\nBut if you include personal information like your name in it it is easier to guess.\nAnd we definalty don't want that."
-                   },
-                   {
-                      "text":"Use a mix of uppercase letters, lowercase letters, symbols and numbers.",
-                      "explanation":"Use a mix of upper and lower case letters, numbers and special characters.\n\nThat is because it is harder to guess such passwords."
-                   },
-                   {
-                      "text":"R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.",
-                      "explanation":"You can replace letters with numbers or special characters that look the same.\n\nFor example: 'e' can be replaced with '3' and 'a' can be replaced with '@'.\n\nWith that you can easily add hard to guess symbols to you password, but they are still easy to remeber for you."
-                   },
-                   {
-                      "text":"Do not use the same password on multiple sites.",
-                      "explanation":"Don't use the same password for multiple accounts.\n\nIf someone gets access to one of your accounts, he can use the same password to get access to all your accounts."
-                   },
-                   {
-                      "text":"Do not use personal information (name, address, birth dates or even a pet's name, etc.) in your password.",
-                      "explanation":"Dont include personal information like your name, birthday or address in your password.\n\nThat is because it is easier to guess such passwords."
-                   },
-                   {
-                      "text":"Do not use a password that is easy to guess (like \"password\", \"123456\", \"qwerty\", etc.).",
-                      "explanation":"Don't use easy and commonly used passwords.\n\nAttackers use programs that try to guess passwords by using common words and numbers."
-                   },
-                   {
-                      "text":"Do not use a password that can be found in a dictionary.",
-                      "explanation":"Try to avoid using passwords that can be found in a dictionary.\n\nAttackers use programs that try to guess passwords by using words from dictionaries."
-                   },
-                   {
-                      "text":"Do not share your password with anyone.",
-                      "explanation":"Never share your password with anyone.\n\nIf you do that, they can use your account and do whatever they want. Even if you trust them, you should never share your password with anyone."
-                   },
-                   {
-                      "text":"Do not write your password down.",
-                      "explanation":"Never write your password down.\n\nIf you do that, someone else can find it and use your account.\n\nIf your password is really hard to remember, you can use a password manager to save it."
-                   }
-                ]
-             }
-          }
-       },
-       {
-          "id":6,
-          "assistant":{
-             "text":"If you follow this rules, you should be able to create a strong password.\n\nNow it is your turn. I have prepared a small task where you can show me what you have learnt so far.",
-             "action":{
-                "text":"Show me what you have got.",
-                "func":7
-             }
-          }
-       },
-       {
-          "id":7,
-          "assistant":{
-             "text":"Just tell me, when ever I should check your work.",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"sortinggame",
-          "modeDetails":{
-             "ref":"game1",
-             "data":{
-                "items":[
-                   {
-                      "text":"Use at least eight characters.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Make it memorable, but avoid using personal information like names or birthdays.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Use a mix of uppercase letters, lowercase letters, symbols and numbers.",
-                      "value": 0
-                   },
-                   {
-                      "text":"R3pl@ce le++ers wit# sYmb0ls and n^mb3rs 1ike thi$.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Use the same password on multiple sites.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Use personal information (name, address, birth dates etc.) in your password.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Use a password that is easy to guess.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Use a password that can be found in a dictionary.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Share your password with a close friend in case you forget it.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Write your password down if it is hard to remember.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Change your password if you think someone else knows it.",
-                      "value": 0
-                   }
-                ],
-                "left":"Good",
-                "right":"Bad"
-             },
-             "unfinished":{
-                "assistant":{
-                   "text":"There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again."
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"There are still some mistakes. Try again. I am sure you will manage it now."
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. Everything was correct. Well done.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":8
-                   }
-                }
-             }
-          }
-       },
-       {
+         "id":7,
+         "assistant":{
+            "text":"Welche Begriffe fallen, unter 'persönliche Daten'? Schieße diese Wörter ab.",
+            "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"fallinggame",
+         "modeDetails":{
+            "ref":"fallinggame1",
+            "data":{
+               "description":"Welche Begriffe fallen, unter 'persönliche Daten'? Schieße diese Wörter ab. Wenn du teilbare Daten triffst, gibt es aber Minuspunkte! Du hast 15 Sekunden Zeit, um einen neuen Highscore aufzustellen. Simon gibt dir zum Schluss deine Punkte bekannt.",
+               "items":[
+                  {
+                     "text":"Vor- und Nachname",
+                     "value":1
+                  },
+                  {
+                     "text":"Adresse",
+                     "value":1
+                  },
+                  {
+                     "text":"Geburtstag",
+                     "value":1
+                  },
+                  {
+                     "text":"E-Mail Addresse",
+                     "value":1
+                  },
+                  {
+                     "text":"Handynummer",
+                     "value":1
+                  },
+                  {
+                     "text":"Sozialversicherungsnummer",
+                     "value":1
+                  },
+                  {
+                     "text":"Bankdaten",
+                     "value":1
+                  },
+                  {
+                     "text":"Lieblingsfarbe",
+                     "value":0
+                  },
+                  {
+                     "text":"Stadt",
+                     "value":0
+                  },
+                  {
+                     "text":"Lieblingsessen",
+                     "value":0
+                  },
+                  {
+                     "text":"Lieblinglied",
+                     "value":0
+                  },
+                  {
+                     "text":"Größe",
+                     "value":0
+                  },
+                  {
+                     "text":"Vorname",
+                     "value":0
+                  },
+                  {
+                     "text":"Name des Haustier",
+                     "value":0
+                  }
+               ]
+            },
+            "unfinished":{
+               "assistant":{
+                  "text":"Das Spiel ist noch nich vorbei. Welche Begriffe fallen, unter 'persönliche Daten'? Schieße diese Wörter ab."
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Urgh! Leider musst du noch einmal überlegen, welche Daten am besten nicht geteilt werden. Du willst doch nicht, dass dir das Gleiche passiert wie mir, oder?",
+                  "action":{
+                     "text":"Noch einmal versuchen",
+                     "func":6
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Super! Du weißt genau, welche Daten besser geheim bleiben! Du hast den Highscore geknackt!",
+                  "action":{
+                     "text":"Weiter",
+                     "func":8
+                  }
+               }
+            }
+         }
+      },
+      {
           "id":8,
           "assistant":{
-             "text":"What do you think about this question?",
+             "text":"Es gibt Social Media Seiten, auf denen du Anfragen annehmen kannst und welche, wo man jemandes Follower werden kann, ohne Nachfrage. Auf Pointer ist beides möglich, je nach Einstellung. Wenn ich meinen Account zurückbekomme, werde ich ihn neu aufsetzen und nur noch Anfragen von meinen Freunden und Bekannten annehmen.",
              "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz1",
-             "data":{
-                "question":"Is 'maxi' a strong password?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"Not really",
-                      "correct":true
-                   },
-                   {
-                      "id":1,
-                      "text":"Yes, it is safe",
-                      "correct":false
-                   }
-                ]
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Nope. Your password should never be a name.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":9
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. That is a really bad password because it contains your name.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":9
-                   }
-                }
+                "text":"Weiter",
+                "func":9
              }
           }
-       },
-       {
-          "id":9,
-          "assistant":{
-             "text":"What do you think about this question?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz2",
-             "data":{
-                "question":"Is '01.12.2000' a secure password?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"Yes",
-                      "correct":false
-                   },
-                   {
-                      "id":1,
-                      "text":"No",
-                      "correct":true
-                   }
-                ]
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Nope. Your password should never be date.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":10
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. That is a really bad password because its just a date. Never use your birthday or any other date that is related to you as a password.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":10
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":10,
-          "assistant":{
-             "text":"Well done so far. Now you should know how a strong password looks like.\n\nIn the next section I will show you how you can create a strong password which is easy to remember.",
-             "action":{
-                "text":"Yes, I am really currious.",
-                "func":11
-             }
-          }
-       },
-       {
-          "id":11,
-          "assistant":{
-             "text":"Use donkey bridges. Above you can find an example.\n\nIt is a sentence that you can use to create a strong password.\nYou can use any sentence you like. Just make sure that it is easy to remember.",
-             "action":{
-                "text":"Continue.",
-                "func":12
-             }
-          },
-          "mode":"html",
-          "modeDetails":{
-             "data":{
-                "path":"levels/1/data1.html"
-             }
-          }
-       },
-       {
-          "id":12,
-          "assistant":{
-             "text":"Look, I have found a list of passwords.\n\nCan you tell me which of that is a good and which is a bad password? Tell me again when i should check your result.",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"sortinggame",
-          "modeDetails":{
-             "ref":"game2",
-             "data":{
-                "items":[
-                   {
-                      "text":"L3t$_Pl@y",
-                      "value": 0
-                   },
-                   {
-                      "text":"Rucksack",
-                      "value": 1
-                   },
-                   {
-                      "text":"rose2002",
-                      "value": 1
-                   },
-                   {
-                      "text":"1ch_l1€b3-b3rg€!",
-                      "value": 0
-                   },
-                   {
-                      "text":"S@ub3reEn3rg1€",
-                      "value": 0
-                   },
-                   {
-                      "text":"bello",
-                      "value": 1
-                   },
-                   {
-                      "text":"passwort",
-                      "value": 1
-                   },
-                   {
-                      "text":"g3he1m",
-                      "value": 1
-                   },
-                   {
-                      "text":"G3#3Im!1",
-                      "value": 0
-                   },
-                   {
-                      "text":"sportistmord",
-                      "value": 1
-                   }
-                ],
-                "left":"Good",
-                "right":"Bad"
-             },
-             "unfinished":{
-                "assistant":{
-                   "text":"There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again."
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"There are still some mistakes. Try again. I am sure you will manage it now."
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. Everything was correct. Well done.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":13
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":13,
-          "assistant":{
-             "text":"Good job!\n\nYou have learned a lot about passwords.\n\nNow you know how to create a secure password for an account in a social network.",
-             "action":{
-                "text":"Continue.",
-                "func":14
-             }
-          }
-       },
-       {
-          "id":14,
-          "assistant":{
-             "text":"We have talked a bit about private information.\nWe know that we should not share this information and tread it like secrets.\n\nLets have a look what the difference between personal and private information actually is.",
-             "action":{
-                "text":"Sure, tell me about it!",
-                "func":15
-             }
-          }
-       },
-       {
-          "id":15,
-          "assistant":{
-             "text":"Make sense, right?\n\nLet's practice it a bit with a small game.",
-             "action":{
-                "text":"Yes, lets play.",
-                "func":16
-             }
-          },
-          "mode":"html",
-          "modeDetails":{
-             "data":{
-                "path":"levels/1/data2.html"
-             }
-          }
-       },
-       {
-          "id":16,
-          "assistant":{
-             "text":"Have fun, playing the game. Click on all personal information items. Ignore the rest.",
-             "action":{
-                "text":"Continue."
-             }
-          },
-          "mode":"fallinggame",
-          "modeDetails":{
-             "ref":"fallinggame",
-             "data":{
-                "description":"Click on everything that should not be shared on the internet.",
-                "items":[
-                   {
-                      "text":"Full Name",
-                      "value":1
-                   },
-                   {
-                      "text":"Address",
-                      "value":1
-                   },
-                   {
-                      "text":"Phone Number",
-                      "value":1
-                   },
-                   {
-                      "text":"E-Mail Address",
-                      "value":1
-                   },
-                   {
-                      "text":"Date of birth",
-                      "value":1
-                   },
-                   {
-                      "text":"Social Security Number",
-                      "value":1
-                   },
-                   {
-                      "text":"Favorite color",
-                      "value":0
-                   },
-                   {
-                      "text":"Hair color",
-                      "value":0
-                   },
-                   {
-                      "text":"City",
-                      "value":0
-                   },
-                   {
-                      "text":"Favorite meal",
-                      "value":0
-                   },
-                   {
-                      "text":"Favorite music",
-                      "value":0
-                   },
-                   {
-                      "text":"Password",
-                      "value":1
-                   },
-                   {
-                      "text":"Height",
-                      "value":0
-                   },
-                   {
-                      "text":"Weight",
-                      "value":0
-                   },
-                   {
-                      "text":"First Name",
-                      "value":0
-                   },
-                   {
-                      "text":"Credit Card Information",
-                      "value":1
-                   },
-                   {
-                      "text":"Name of pet",
-                      "value":0
-                   }
-                ]
-             },
-             "unfinished":{
-                "assistant":{
-                   "text":"The game is not over yet."
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Hm, better try one more time. This time you will manage it.",
-                   "action":{
-                      "text":"Let me try again.",
-                      "func":15
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You did a great job. You are now an expert in personal information.\n\nNow you are ready to fill out your own profile.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":17
-                   }
-                }
-             }
-          }
-       },
-       {
+      },
+      {
+         "id":9,
+         "assistant":{
+            "text":"Ich habe ein paar von meinen Freunden mitgebracht. Das sind meine besten Freunde von meiner damaligen Schule, von der Nachbarschule und vom Sportverein!",
+            "action":{
+               "text":"Weiter.",
+               "func":10
+            }
+         },
+         "mode":"html",
+         "modeDetails":{
+            "data":{
+               "path":"levels/1/data1.html"
+            }
+         }
+      },
+      {
+         "id":10,
+         "assistant":{
+            "text":"Schau dir diese Anfragen an. Sollte ich diese Anfragen annehmen?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz1",
+            "data":{
+               "question":"Sollte ich diese Anfrage annehmen?",
+               "answers":[
+                  {
+                     "id":0,
+                     "text":"Ja",
+                     "correct":true
+                  },
+                  {
+                     "id":1,
+                     "text":"Nein",
+                     "correct":false
+                  }
+               ]
+            },
+            "content":{
+               "component":"friend-request",
+               "name":"Bert Huber",
+               "avatar":"levels/1/friend1.png",
+               "mutal":6,
+               "network": "levels/1/friends.png"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist mein Kumpel Bert. Wir kennen uns schon ewig. Diese Anfrage kannst du problemlos annehmen.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":11
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Ja, das ist mein Kumpel Bert. Wir kennen uns schon ewig, also weiß er eh schon fast alles über mich.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":11
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":11,
+         "assistant":{
+            "text":"Schau dir diese Anfragen an. Sollte ich diese Anfragen annehmen?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz2",
+            "data":{
+               "question":"Sollte ich diese Anfrage annehmen?",
+               "answers":[
+                  {
+                     "id":0,
+                     "text":"Ja",
+                     "correct":true
+                  },
+                  {
+                     "id":1,
+                     "text":"Nein",
+                     "correct":false
+                  }
+               ]
+            },
+            "content":{
+               "component":"friend-request",
+               "name":"Evie Maier",
+               "avatar":"levels/1/friend2.png",
+               "mutal":3,
+               "network": "levels/1/friends.png"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist mein Freundin Evie. Wir kennen uns vom Sportverein. Diese Anfrage kannst du problemlos annehmen.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":12
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Ja, das ist mein Freundin Evie. Wir kennen uns vom Sportverein.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":12
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":12,
+         "assistant":{
+            "text":"Schau dir diese Anfragen an. Sollte ich diese Anfragen annehmen?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz3",
+            "data":{
+               "question":"Sollte ich diese Anfrage annehmen?",
+               "answers":[
+                  {
+                     "id":0,
+                     "text":"Ja",
+                     "correct":false
+                  },
+                  {
+                     "id":1,
+                     "text":"Nein",
+                     "correct":true
+                  }
+               ]
+            },
+            "content":{
+               "component":"friend-request",
+               "name":"Markus Sommer",
+               "avatar":"levels/1/stranger1.png",
+               "mutal":0,
+               "network": "levels/1/friends.png"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Weißt du, wer das ist? Ich habe leider keine Ahnung. Könnte es vielleicht jemand sein, der wieder hinter meinen Daten her ist?",
+                  "action":{
+                     "text":"Weiter",
+                     "func":13
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht, ich kenne diese Person nicht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":13
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":13,
+         "assistant":{
+            "text":"Schau dir diese Anfragen an. Sollte ich diese Anfragen annehmen?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz4",
+            "data":{
+               "question":"Sollte ich diese Anfrage annehmen?",
+               "answers":[
+                  {
+                     "id":0,
+                     "text":"Ja",
+                     "correct":false
+                  },
+                  {
+                     "id":1,
+                     "text":"Nein",
+                     "correct":true
+                  }
+               ]
+            },
+            "content":{
+               "component":"friend-request",
+               "name":"Herbert Laune",
+               "avatar":"levels/1/teacher.png",
+               "mutal":1,
+               "network": "levels/1/friends.png"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist mein Lehrer. Ich kenne ihn zwar, aber ich weiß nicht so recht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":15
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht, das ist mein Lehrer. Ich kenne ihn zwar, aber ich muss mich jetzt nicht unbedingt mit ihm vernetzen.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":15
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":15,
+         "assistant":{
+            "text":"Schau dir diese Anfragen an. Sollte ich diese Anfragen annehmen?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz5",
+            "data":{
+               "question":"Sollte ich diese Anfrage annehmen?",
+               "answers":[
+                  {
+                     "id":0,
+                     "text":"Ja",
+                     "correct":true
+                  },
+                  {
+                     "id":1,
+                     "text":"Nein",
+                     "correct":false
+                  }
+               ]
+            },
+            "content":{
+               "component":"friend-request",
+               "name":"Merim S.",
+               "avatar":"levels/1/friend3.png",
+               "mutal":6,
+               "network": "levels/1/friends.png"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist mein Freund Merim. Wir kennen uns aus der Schule. Diese Anfrage kannst du problemlos annehmen.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":16
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Ja, das ist mein Freund Merim. Wir kennen uns aus der Schule.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":16
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":16,
+         "assistant":{
+            "text":"Schau dir diese Anfragen an. Sollte ich diese Anfragen annehmen?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz6",
+            "data":{
+               "question":"Sollte ich diese Anfrage annehmen?",
+               "answers":[
+                  {
+                     "id":0,
+                     "text":"Ja",
+                     "correct":false
+                  },
+                  {
+                     "id":1,
+                     "text":"Nein",
+                     "correct":true
+                  }
+               ]
+            },
+            "content":{
+               "component":"friend-request",
+               "name":"Lilly K.",
+               "avatar":"levels/1/stranger2.png",
+               "mutal":0,
+               "network": "levels/1/friends.png"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Weißt du, wer das ist? Ich habe leider keine Ahnung. Könnte es vielleicht jemand sein, der wieder hinter meinen Daten her ist?",
+                  "action":{
+                     "text":"Weiter",
+                     "func":17
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht, ich kenne diese Person nicht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":17
+                  }
+               }
+            }
+         }
+      },
+      {
           "id":17,
           "assistant":{
-             "text":"Social media platforms want to get as much information from you as they could.\nThis is because they want to show you ads that are interesting for you.\nThey also want to sell your information to other companies.\n\nSo, be careful what you share on social media.",
+             "text":"Den Account gestohlen zu bekommen ist ganz schön hart. Ich bin relativ viel vor dem Computer, ist ja auch mein Job. Dennoch hat es lange gedauert, bis ich es bemerkt habe. Dann will man sich neu einloggen und kann es nicht, weil irgendjemand anderes dein Passwort geändert hat...",
              "action":{
-                "text":"Can I do something about it?",
+                "text":"Weiter",
                 "func":18
              }
           }
        },
        {
-          "id":18,
-          "assistant":{
-             "text":"Sure, it is possible to limit the information that you share on social media.\n\nLet's have a look at your profile. There are lots of fields that you can fill out. But you don't have to fill out all of them.\n\nLet's see what you can do.",
-             "action":{
-                "text":"Yeah, lets fill out my profile.",
-                "func":19
-             }
-          }
-       },
-       {
-          "id":19,
-          "assistant":{
-             "text":"Fill out your profile. You can skip the fields that you don't want to fill out.",
-             "action":{
-                "text":"I have completed my profile."
-             }
-          },
-          "mode":"profilesetup",
-          "modeDetails":{
-             "ref":"profilesetup",
-             "error":{
-                "points":-1
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"Well done. You now have your own profile. And no senstive data is available publicly.\n\nLet's continue with the next topic.",
-                   "action":{
-                      "text":"Finish lesson",
-                      "func":"COMPLETE"
-                   }
-                }
-             }
-          }
-       }
+         "id":18,
+         "assistant":{
+            "text":"Deswegen will ich dir noch 5 Tipps mitgeben, wie man einen Hackerangriff bemerken kann!",
+            "action":{
+               "text":"Lektion abschließen",
+               "func":"COMPLETE"
+            }
+         },
+         "mode":"html",
+         "modeDetails":{
+            "data":{
+               "path":"levels/1/data2.html"
+            }
+         }
+      }
     ]
  }

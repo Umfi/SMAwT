@@ -15,7 +15,7 @@ const messages = {
         'Drag each item into the correct box. Either into the left or right box until the box in the middle is empty.': 'Ziehe jedes Element in die richtige Box. Entweder in die linke oder rechte Box, bis die Box in der Mitte leer ist.',
         'Good': 'Gut',
         'Bad': 'Schlecht',
-        'All': 'Alle',
+        'Examples': 'Beispiele',
         'Points': 'Punkte',
         'Time left': 'Verbleibende Zeit',
         'Public': 'Öffentlich',
@@ -101,9 +101,9 @@ const messages = {
 
         'Create your own passwords! Remember spelling, numbers and special characters! The passwords should be different from each other.': 'Erschaffe eigene Passwörter! Denke dabei and die Rechtschreibung, Zahlen und Sonderzeichen! Die Passwörter sollen sich voneinander unterscheiden.',
         'Enter a secure password': 'Gib ein sicheres Passwort ein',
-        'Your password is very weak. It is too guessable.': 'Dein Passwort ist sehr schwach. Es ist sehr einfach zu erraten.',
-        'Your password is weak. It is very guessable.': 'Dein Passwort ist schwach. Es ist einfach zu erraten.',
-        'Your password is okay. But it is somewhat guessable.': 'Dein Passwort ist okay. Es ist aber etwas einfach zu erraten.',
+        'Your password is very weak. It is too guessable. Try another password.': 'Dein Passwort ist sehr schwach. Es ist sehr einfach zu erraten. Versuche ein anderes Passwort.',
+        'Your password is weak. It is very guessable. Try another password.': 'Dein Passwort ist schwach. Es ist einfach zu erraten. Versuche ein anderes Passwort.',
+        'Your password is okay. But it is somewhat guessable. Try another password.': 'Dein Passwort ist okay. Es ist aber etwas einfach zu erraten. Versuche ein anderes Passwort.',
         'Your password is strong. It is safely unguessable.': 'Dein Passwort ist stark. Es ist schwer zu erraten.',
         'Your password is very strong. It is very unguessable.': 'Dein Passwort ist sehr stark. Es ist sehr schwer zu erraten.',
 

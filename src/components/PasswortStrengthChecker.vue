@@ -30,17 +30,17 @@ export default {
             if (score === 0) {
                  return  {
                     status: 0,
-                    message: "Your password is very weak. It is too guessable."
+                    message: "Your password is very weak. It is too guessable. Try another password."
                 }
             } else if (score === 1) {
                 return  {
                     status: 1,
-                    message: "Your password is weak. It is very guessable."
+                    message: "Your password is weak. It is very guessable. Try another password."
                 }
             } else if (score === 2) {
                 return  {
                     status: 2,
-                    message: "Your password is okay. But it is somewhat guessable."
+                    message: "Your password is okay. But it is somewhat guessable. Try another password."
                 }
             } else if (score === 3) {
                 return  {

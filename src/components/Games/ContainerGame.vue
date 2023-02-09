@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="alert alert-primary" role="alert">
-          {{ $t('Drag each item into the correct box. Either into the left or right box until the box in the middle is empty.') }}
+          {{ $t(explanation) }}
         </div>
         
         <div class="row">
@@ -18,7 +18,7 @@
             </draggable>
           </div>
           <div class="col">
-            <h3 class="text-center">{{ $t('All') }}</h3>
+            <h3 class="text-center">{{ $t('Examples') }}</h3>
             <draggable class="list-group all shadow" :list="allList" group="items">
               <div
                 class="list-group-item"
@@ -60,6 +60,10 @@ export default {
     titleRight: {
       type: String,
       default: "Bad"
+    },
+    explanation: {
+      type: String,
+      default: "'Drag each item into the correct box. Either into the left or right box until the box in the middle is empty.'"
     },
     items: [],
   },

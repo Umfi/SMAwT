@@ -12,7 +12,7 @@
       
       <passwort-strength-checker v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'password-strength-checker'" :ref="currentGameStep.modeDetails.ref"></passwort-strength-checker>
       
-      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'sortinggame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right" @ready="activateAssistant"></container-game>
+      <container-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'sortinggame'" :ref="currentGameStep.modeDetails.ref" :items="currentGameStep.modeDetails.data.items"  :explanation="currentGameStep.modeDetails.data.explanation" :titleLeft="currentGameStep.modeDetails.data.left" :titleRight="currentGameStep.modeDetails.data.right" @ready="activateAssistant"></container-game>
 
       <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'quiz'">
         <div class="row" v-if="currentGameStep.modeDetails.content">
@@ -143,7 +143,6 @@ export default {
   },
   watch: {
     points(newVal, oldVal) {
-      console.log(newVal, oldVal);
       if (newVal > oldVal) {
         this.updateGlobalPoints(parseInt(newVal - oldVal));
       } else if (newVal < oldVal) {

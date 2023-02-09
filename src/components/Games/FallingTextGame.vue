@@ -5,8 +5,10 @@
       </div>
 
       <div id="falling-text-game-container">
-          <div class="points">{{ $t('Points') }}: {{ points}} </div>
-          <div class="time">{{ $t('Time left') }}: {{ elements }}</div>
+          <div class="points"><span class="badge bg-light text-dark">{{ $t('Points') }}: {{ points}}</span></div>
+          <div class="time"><span class="badge bg-light text-dark">{{ $t('Time left') }}: {{ time }}</span></div>
+
+          <button type="button" class="btn btn-danger startbtn btn-lg" @click="startGame()" v-if="!start">{{ $t('Start') }}</button>
       </div>
     </div>
 </template>
@@ -26,25 +28,29 @@ export default {
   },
   data() {
     return {
+      start: false,
       points: 0,
-      elements: 50,
       winSound: null,
       loseSound: null,
-      timer: null
+      spawnTimer: null,
+      gameTimer: null,
+      time: 5,
     };
   },
   mounted() {
-    this.startGame();
     this.winSound = new Audio(require('../../assets/sounds/correct.wav'));
     this.loseSound = new Audio(require('../../assets/sounds/error.wav'));
+    this.start = false;
+    this.points = 0;
+    this.time = 5;
   },
   destroyed() {
-      clearInterval(this.timer);
-      this.elements = 0;
+      clearInterval(this.spawnTimer);
+      clearInterval(this.gameTimer);
   },
   methods: {
     check() {
-      if (this.elements > 0) {
+      if (this.time > 0) {
         return -1;
       } else {
         if (this.points >= 10) {
@@ -55,15 +61,30 @@ export default {
       }
     },
     startGame() {
-      this.timer = setInterval(() => {
-        this.elements--;
-        this.makeFruit();
+      this.start = true;
 
-        if (this.elements == 0) {
-          clearInterval(this.timer);
-          this.$emit('game-over', this.points);
+      this.gameTimer = setInterval(() => {
+        this.time--;
+
+        if (this.time == 0) {
+          clearInterval(this.spawnTimer);
+          clearInterval(this.gameTimer);
+          this.$emit('game-over');
         }
       }, 1000);
+
+      this.spawnTimer = setInterval(() => {
+        if (this.time > 30) {
+          this.makeFruit();
+        } else if (this.time > 20 && this.time <= 30) {
+          this.makeFruit();
+          this.makeFruit();
+        } else if (this.time > 5 && this.time <= 20) {
+          this.makeFruit();
+          this.makeFruit();
+          this.makeFruit();
+        }  
+      }, 2000);
     },
     makeFruit() {
       var target = document.querySelector("#falling-text-game-container");
@@ -155,7 +176,7 @@ export default {
     width: 600px;
     height: 400px;
     margin: 0 auto;
-    border: 1px solid rgb(109, 107, 107);
+    border: 3px solid rgb(177, 44, 44);
     position: relative;
     background-color: rgb(128, 169, 169);
     overflow: hidden;
@@ -174,8 +195,8 @@ export default {
     width: 50%;
     right: 0;
     background-color: #99c5c96b;
-    border-bottom: 1px solid rgb(109, 107, 107);
-    border-left: 2px solid rgb(109, 107, 107);
+    border-bottom: 3px solid rgb(177, 44, 44);
+    border-left: 3px solid rgb(177, 44, 44);
     user-select: none;
     text-align: right;
 }
@@ -186,7 +207,13 @@ export default {
     width: 50%;
     left: 0;
     background-color: #99c5c96b;
-    border-bottom: 1px solid rgb(109, 107, 107);
+    border-bottom: 3px solid rgb(177, 44, 44);
     user-select: none;
+}
+
+.startbtn {
+  position: absolute;
+  left: 45%;
+  top: 50%;
 }
 </style>
