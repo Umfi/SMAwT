@@ -43,6 +43,10 @@
 
       <post-privacy-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'privacygame'" :ref="currentGameStep.modeDetails.ref" :message="currentGameStep.modeDetails.data.message" :answer="currentGameStep.modeDetails.data.answer" @ready="activateAssistant"></post-privacy-game>
 
+      <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'information-chat'">
+        <information-chat :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers" :mode="currentGameStep.modeDetails.data.mode"  @ready="activateAssistant"></information-chat>
+      </div>
+
     </div>
 
     <level-complete
@@ -82,6 +86,7 @@ import PostPrivacyGame from "./Games/PostPrivacyGame.vue";
 import SimpleFriendRequest from "./SimpleFriendRequest.vue";
 import SimpleChat from "./SimpleChat.vue";
 import PasswortStrengthChecker from "./PasswortStrengthChecker.vue";
+import InformationChat from "./InformationChat.vue";
 
 export default {
   name: "BaseLevel",
@@ -103,7 +108,8 @@ export default {
     PostPrivacyGame,
     SimpleFriendRequest,
     SimpleChat,
-    PasswortStrengthChecker
+    PasswortStrengthChecker,
+    InformationChat
   },
   props: {
     level_id: {
@@ -357,6 +363,16 @@ export default {
             if (this.currentGameStep.modeDetails.correct.assistant.action) {
               this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
             }
+          }
+        });
+      }
+
+      if (this.currentGameStep.mode == "information-chat") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+          const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
+          if (result > 0) {
+            this.gameStep = result; 
+            this.nextMove(); 
           }
         });
       }

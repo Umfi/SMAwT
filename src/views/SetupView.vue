@@ -408,6 +408,7 @@ export default {
           gender: this.gender,
           address: this.address,
           email: this.email,
+          interviewData: []
         }
       };
 

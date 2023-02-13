@@ -75,6 +75,10 @@ export default new Vuex.Store({
     UPDATE_POINTS(state, points) {
       state.points += (points * 10);
       localStorage.setItem('sometra_points', state.points);
+    },
+    UPDATE_USER_DATA(state, answer) {
+      state.user.data.interviewData.push(answer);
+      localStorage.setItem('sometra_user', JSON.stringify(state.user));
     }
   },
   actions: {
@@ -87,5 +91,8 @@ export default new Vuex.Store({
     updatePoints({commit}, points) {
       commit("UPDATE_POINTS", points);
     },
+    updateUserData({commit}, answer) {
+      commit("UPDATE_USER_DATA", answer);
+    }
   }
 })
