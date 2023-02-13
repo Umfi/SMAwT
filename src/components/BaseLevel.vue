@@ -47,6 +47,8 @@
         <information-chat :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers" :mode="currentGameStep.modeDetails.data.mode"  @ready="activateAssistant"></information-chat>
       </div>
 
+      <puzzle-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'puzzlegame'" :ref="currentGameStep.modeDetails.ref" :image="currentGameStep.modeDetails.data.image" :description="currentGameStep.modeDetails.data.description" @ready="activateAssistant"></puzzle-game>
+
     </div>
 
     <level-complete
@@ -87,6 +89,7 @@ import SimpleFriendRequest from "./SimpleFriendRequest.vue";
 import SimpleChat from "./SimpleChat.vue";
 import PasswortStrengthChecker from "./PasswortStrengthChecker.vue";
 import InformationChat from "./InformationChat.vue";
+import PuzzleGame from "./Games/PuzzleGame.vue";
 
 export default {
   name: "BaseLevel",
@@ -109,7 +112,8 @@ export default {
     SimpleFriendRequest,
     SimpleChat,
     PasswortStrengthChecker,
-    InformationChat
+    InformationChat,
+    PuzzleGame
   },
   props: {
     level_id: {
@@ -375,6 +379,32 @@ export default {
             this.nextMove(); 
           }
         });
+      }
+
+      if (this.currentGameStep.mode == "puzzlegame") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+          const result = this.$refs[this.currentGameStep.modeDetails.ref].currentState();
+          
+            
+          if (result == 0) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
+
+            if (this.currentGameStep.modeDetails.error.points) {
+               this.points += this.currentGameStep.modeDetails.error.points;
+            }
+          } else if (result == 1) {
+            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
+
+            if (this.currentGameStep.modeDetails.correct.points) {
+                this.points += this.currentGameStep.modeDetails.correct.points;
+            }
+
+            if (this.currentGameStep.modeDetails.correct.assistant.action) {
+              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+            }
+          }
+        });
+  
       }
 
     },

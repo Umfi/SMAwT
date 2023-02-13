@@ -77,8 +77,10 @@ export default new Vuex.Store({
       localStorage.setItem('sometra_points', state.points);
     },
     UPDATE_USER_DATA(state, answer) {
-      state.user.data.interviewData.push(answer);
-      localStorage.setItem('sometra_user', JSON.stringify(state.user));
+      if (state.user.data.interviewData) {
+        state.user.data.interviewData.push(answer);
+        localStorage.setItem('sometra_user', JSON.stringify(state.user));
+      }
     }
   },
   actions: {
