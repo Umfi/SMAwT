@@ -396,7 +396,7 @@
           "assistant":{
              "text":"Würdest du diesen Beitrag melden oder nicht?",
              "action":{
-                "text":"Check my answers."
+                "text":"Antwort überprüfen"
              }
           },
           "mode":"quiz",

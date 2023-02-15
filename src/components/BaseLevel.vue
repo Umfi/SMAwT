@@ -350,12 +350,16 @@ export default {
       this.$refs.assistant.updateMessage(msg);
     },
     gameCallback(result) {
+      this.$refs.assistant.showOptions();
+
       if (result == -1) {
         this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
 
           if (this.currentGameStep.modeDetails.unfinished.points) {
             this.points += this.currentGameStep.modeDetails.unfinished.points;
           }
+
+          this.$refs.assistant.hideOptions();
       } else if (result == 0) {
         this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
 

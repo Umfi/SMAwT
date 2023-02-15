@@ -15,6 +15,7 @@
                 :erase-delay='0'
                 erase-style='clear'
                 caret-animation='blink'
+                @completed='finishSpeech'
               ></vue-typer>
             </div>
             <div class="col-1" v-if="this.message.length > 0">
@@ -23,10 +24,10 @@
         </div>
         <div class="row border-top" v-show="visibleOptions">
             <div class="col p-0">
-                <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction">{{ $t(actionAText) }}</button>
+                <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction" :disabled="!enabledOptions">{{ $t(actionAText) }}</button>
             </div>
             <div class="col p-0" v-if="actionBText.length > 0">
-                <button type="button" class="btn btn-outline-primary btn-block w-100 text-uppercase" @click="actionBFunction">{{ $t(actionBText) }}</button>
+                <button type="button" class="btn btn-outline-primary btn-block w-100 text-uppercase" @click="actionBFunction" :disabled="!enabledOptions">{{ $t(actionBText) }}</button>
             </div>
         </div>
     </div>
@@ -71,6 +72,7 @@ export default {
       isMinimized: false,
       visible: true,
       visibleOptions: true,
+      enabledOptions: false,
       message: '',
       actionAText: '',
       actionBText: '',
@@ -105,9 +107,19 @@ export default {
       newText += currentLine.trim();
       return newText;
     },
+    finishSpeech() {
+      setTimeout(() => {
+        this.enableOptions();
+        this.getAttention();
+      }, 250);
+    },
     updateMessage(newMsg) {
-      this.message = this._addLinebreaks(newMsg, 100);
-      this.maximize();
+      this.message = "";
+      setTimeout(() => {
+        this.message = this._addLinebreaks(newMsg, 100);
+        this.maximize();
+        this.disableOptions();
+      }, 100);
     },
     updateActions(actionA = '', actionAFunc = () => { return -1; }, actionB = '', actionBFunc = () => { return -1; }) {
       this.actionAText = actionA;
@@ -115,7 +127,6 @@ export default {
       this.actionBText = actionB;
       this.actionBFunction = actionBFunc;
       this.maximize();
-      this.showOptions();
     },
     hide() {
       this.visible = false;
@@ -129,6 +140,12 @@ export default {
     },
     showOptions() {
       this.visibleOptions = true;
+    },
+    enableOptions() {
+      this.enabledOptions = true;
+    },
+    disableOptions() {
+      this.enabledOptions = false;
     },
     minimize() {
       this.isMinimized = true;
