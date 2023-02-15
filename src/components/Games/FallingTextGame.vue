@@ -34,32 +34,18 @@ export default {
       loseSound: null,
       spawnTimer: null,
       gameTimer: null,
-      time: 5,
+      time: 30,
     };
   },
   mounted() {
     this.winSound = new Audio(require('../../assets/sounds/correct.wav'));
     this.loseSound = new Audio(require('../../assets/sounds/error.wav'));
-    this.start = false;
-    this.points = 0;
-    this.time = 5;
   },
   destroyed() {
       clearInterval(this.spawnTimer);
       clearInterval(this.gameTimer);
   },
   methods: {
-    check() {
-      if (this.time > 0) {
-        return -1;
-      } else {
-        if (this.points >= 10) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
-    },
     startGame() {
       this.start = true;
 
@@ -69,7 +55,13 @@ export default {
         if (this.time == 0) {
           clearInterval(this.spawnTimer);
           clearInterval(this.gameTimer);
-          this.$emit('game-over');
+
+          if (this.points >= 10) {
+              this.$emit('game-over', 1);
+          } else {
+              this.$emit('game-over', 0);
+          }
+          
         }
       }, 1000);
 

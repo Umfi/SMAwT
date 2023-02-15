@@ -239,123 +239,180 @@
             }
          }
       },
-
-       {
-          "id":7,
-          "assistant":{
-             "text":"Just tell me, when ever I should check your work.",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"sortinggame",
-          "modeDetails":{
-             "ref":"game1",
-             "data":{
-                "items":[
-                   {
-                      "text":"Think before posting.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Consider choice of words.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Be respectful of differences.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Do not be rude.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Be rude if you don't agree with something.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Spread false information.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Post something that is not true.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Post private information.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Post negative thoughts and opinions about school or workplace.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Check grammar of the post.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Share secrets with others.",
-                      "value": 1
-                   }
-                ],
-                "left":"Good",
-                "right":"Bad"
-             },
-             "unfinished":{
-                "assistant":{
-                   "text":"There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again."
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"There are still some mistakes. Try again. I am sure you will manage it now."
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. Everything was correct. Well done.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":8
-                   }
-                }
-             }
-          }
+      {
+         "id":11,
+         "assistant":{
+            "text":"Damit hätte sich einmal geklärt, warum alle auf mich so böse sind! Die Posts vom Hacker waren für all meine Follower sichtbar und wurden auch noch weiter geshared! Im Video hast du schon eine Möglichkeit kennengelernt, was man tun kann, wenn etwas im Internet passiert. Das war aber nicht die einzige Möglichkeit!",
+            "action":{
+               "text":"Weiter",
+               "func": 12
+            }
+         }
+      },
+      {
+         "id":12,
+         "assistant":{
+            "text":"Was glaubst du kann man noch machen?",
+            "action":{
+               "text":"Antwort überprüfen"
+            }
+         },
+         "mode":"sortinggame",
+         "modeDetails":{
+            "ref":"sortinggame2",
+            "data":{
+               "items":[
+                  {
+                     "text":"Ruhig bleiben",
+                     "value": 0
+                  },
+                  {
+                     "text":"An den Support wenden",
+                     "value": 0
+                  },
+                  {
+                     "text":"Polizei benachrichtigen",
+                     "value": 0
+                  },
+                  {
+                     "text":"Überprüfen, ob man über die E-Mail in den Account einsteigen kann",
+                     "value": 0
+                  },
+                  {
+                     "text":"Erziehungsberechtigte um Hilfe bitten",
+                     "value": 0
+                  },
+                  {
+                     "text":"Der Panik verfallen",
+                     "value": 1
+                  },
+                  {
+                     "text":"Der Hacker findet sowieso nichts Wichtiges, also brauche ich nichts tun",
+                     "value": 1
+                  },
+                  {
+                     "text":"Die Social Media Webseite verklagen",
+                     "value": 1
+                  }
+               ],
+               "left":"Gut",
+               "right":"Schlecht",
+               "explanation": "Verschiebe die einzelnen Blöcke in die Spalte 'Gut' oder 'Schlecht'. Zum Schluss sollte die Spalte 'Beispiele' leer sein. Danach kannst du Simon fragen, ob er dir zustimmt, oder nicht."
+            },
+            "unfinished":{
+               "assistant":{
+                  "text":"Verschiebe die einzelnen Blöcke in die Spalte 'Gut' oder 'Schlecht'. Zum Schluss sollte die Spalte 'Beispiele' leer sein."
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Leider haben sich ein paar Fehler eingeschlichen. Denk noch einmal über die Umstände nach, die ich zurücksortiere."
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Super. Du weißt schon ganz gut, was du im Notfall machen musst und was nicht!",
+                  "action":{
+                     "text":"Weiter",
+                     "func":13
+                  }
+               }
+            }
+         }
        },
+      {
+         "id":13,
+         "assistant":{
+            "text":"Persönliche Daten können schneller auf Plattformen hochgeladen werden als man denkt. Wie oft habt ihr schon ein Foto von euch gemacht und nicht auf den Hintergrund geachtet? Vielen wird das zum Verhängnis, denn es schadet ebenfalls der eigenen digitalen Identität.",
+            "action":{
+               "text":"Weiter",
+               "func": 14
+            }
+         }
+      },
+      {
+         "id":14,
+         "assistant":{
+            "text":"Was denkst du über dieses Bild?",
+            "action":{
+               "text":""
+            }
+         },
+         "mode":"imagegame",
+         "modeDetails":{
+            "ref":"imagegame1",
+            "data":{
+               "image":"levels/2/imagegame1.png",
+               "bb":{
+                  "x":160,
+                  "y":215,
+                  "width":25,
+                  "height":20
+               },
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf die richtige Stelle im Bild."
+            },
+            "unfinished":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist unproblematisch. Sonst noch etwas?"
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"TODO: Explain why this is wrong.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":15
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "action":{
+                     "text":"Weiter",
+                     "func":15
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":15,
+         "assistant":{
+            "text":"Ist dir schon einmal aufgefallen, dass es auf Social Media immer wieder vorkommt, dass man Posts von Personen oder Organisationen sieht, denen man nicht folgt? Das können zum einen Werbeeinschaltungen sein zum anderen aber auch öffentliche Beiträge, die vorgeschlagen werden. Leider sind nicht alle angebracht. Teilweise können diese auch sehr verletzend sein. Teilweise sind sie auch rechtlich nicht in Ordnung.",
+            "action":{
+               "text":"Weiter",
+               "func": 16
+            }
+         }
+      },
        {
-          "id":8,
+          "id":16,
           "assistant":{
-             "text":"Have a look at the post above. What do you think about this post?",
+             "text":"Würdest du diesen Beitrag melden oder nicht?",
              "action":{
                 "text":"Check my answers."
              }
           },
           "mode":"quiz",
           "modeDetails":{
-             "ref":"quiz1",
+             "ref":"quiz2",
              "data":{
-                "question":"How would this post influence your digital footprints?",
+                "question":"Sollte dieser Beitrag gemeldet melden?",
                 "answers":[
                    {
-                      "id":0,
-                      "text":"I would probably regret it oneday.",
-                      "correct":true
-                   },
-                   {
                       "id":1,
-                      "text":"This was a responsible post.",
-                      "correct":false
+                      "text":"Ja",
+                      "correct":true
                    },
                    {
                       "id":2,
-                      "text":"This post will have an impact on my digital footprint.",
-                      "correct":true
-                   },
-                   {
-                      "id":3,
-                      "text":"People think I am trustworthy.",
+                      "text":"Nein",
                       "correct":false
                    }
                 ]
@@ -368,378 +425,34 @@
              "error":{
                 "points":-1,
                 "assistant":{
-                   "text":"Nope. You should not post this. This post will be not good for your digital footprint.",
+                   "text":"Findest du diesen Beitrag wirklich unproblematisch? Durch die Wortwahl / unangebrachte Posts können das betroffene Schaden zugefügt werden.",
                    "action":{
-                      "text":"Continue.",
-                      "func":9
+                      "text":"Weiter",
+                      "func":17
                    }
                 }
              },
              "correct":{
                 "points":2,
                 "assistant":{
-                   "text":"You are right. You should not post this.",
+                   "text":"Ja, dieser Post kann niemanden Schaden. Zudem ist es super, dass du keine Scheu hast Beiträge zu melden. Das ist wichtig.",
                    "action":{
-                      "text":"Continue.",
-                      "func":9
+                      "text":"Weiter",
+                      "func":17
                    }
                 }
              }
           }
        },
        {
-          "id":9,
-          "assistant":{
-             "text":"What do you think about this post? Can we post it without any problem?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz1_1",
-             "data":{
-                "question":"Would you post something like that?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"Yes sure.",
-                      "correct":false
-                   },
-                   {
-                      "id":1,
-                      "text":"Not really.",
-                      "correct":true
-                   }
-                ]
-             },
-             "content":{
-                "component":"insta-post",
-                "message":"I will make a party next weekend. Come all to my place in the Dancer Street 12 at 8pm.",
-                "image":"https://media.istockphoto.com/id/936276840/photo/people-enjoying-house-party.jpg?s=612x612&w=0&k=20&c=_qsxezbgS3x0BNmt0O9znK7iKLAm4wGPwiZ4jVMwCPE="
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Nope. You should never post your adress online.",
-                   "action":{
-                      "text":"Continue",
-                      "func":10
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. The adress is private information and should not be shared online.",
-                   "action":{
-                      "text":"Continue",
-                      "func":10
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":10,
-          "assistant":{
-             "text":"What do you think about this post?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz2",
-             "data":{
-                "question":"How would this post influence your digital footprints?",
-                "answers":[
-                   {
-                      "id":1,
-                      "text":"This was a responsible post.",
-                      "correct":false
-                   },
-                   {
-                      "id":2,
-                      "text":"This post will have an impact on my digital footprint.",
-                      "correct":true
-                   },
-                   {
-                      "id":3,
-                      "text":"People think I am funny.",
-                      "correct":false
-                   },
-                   {
-                      "id":4,
-                      "text":"This post will have an impact on Maxs digital footprint.",
-                      "correct":true
-                   }
-                ]
-             },
-             "content":{
-                "component":"snap-post",
-                "message":"Hahaha I just found out that Max can't count till 100. LOL he is so stupid.",
-                "image":"https://media.glamour.com/photos/5695f36316d0dc3747eec5bd/master/w_1600%2Cc_limit/sex-love-life-blogs-smitten-2012-01-18-0118-confused-guy-sitting-on-floor_sm.jpg",
-                "position":300
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Nope. You should not post this. This post will be not good for your digital footprint.",
-                   "action":{
-                      "text":"Continue",
-                      "func":11
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. You should not post this.",
-                   "action":{
-                      "text":"Continue",
-                      "func":11
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":11,
-          "assistant":{
-             "text":"What do you think about this post?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz3",
-             "data":{
-                "question":"How would this post influence your digital footprints?",
-                "answers":[
-                   {
-                      "id":1,
-                      "text":"This is a responsible posts.",
-                      "correct":true
-                   },
-                   {
-                      "id":2,
-                      "text":"This posts will have an negative impact on my digital footprint.",
-                      "correct":false
-                   },
-                   {
-                      "id":3,
-                      "text":"People think I am rude.",
-                      "correct":false
-                   },
-                   {
-                      "id":4,
-                      "text":"People think I am stupid.",
-                      "correct":false
-                   }
-                ]
-             },
-             "content":{
-                "component":"fb-post",
-                "message":"Kitty is so cute today.",
-                "image":"https://www.publicdomainpictures.net/pictures/40000/nahled/calico-cat-on-chair.jpg"
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Nope. This posts are fine.",
-                   "action":{
-                      "text":"Continue",
-                      "func":12
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. These posts are fine and will not have a negative inpact on your digital footprint.",
-                   "action":{
-                      "text":"Continue",
-                      "func":12
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":12,
-          "assistant":{
-             "text":"Great. Now you know what you can post and what not. But watch out this also count for photos.\nI will show you what I mean.",
-             "action":{
-                "text":"Continue",
-                "func":13
-             }
-          }
-       },
-       {
-          "id":13,
-          "assistant":{
-             "text":"What do you think about this picture? Should we post it?",
-             "action":{
-                "text":"There is nothing problematic with this picture."
-             }
-          },
-          "mode":"imagegame",
-          "modeDetails":{
-             "ref":"imagegame1",
-             "data":{
-                "image":"1.png",
-                "bb":{
-                   "x":160,
-                   "y":215,
-                   "width":25,
-                   "height":20
-                }
-             },
-             "unfinished":{
-                "points":-1,
-                "assistant":{
-                   "text":"Nothing problematic with that. Anything else?"
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Watch out. On this picture personal information like the house number is leaked.",
-                   "action":{
-                      "text":"Continue",
-                      "func":14
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. On this picture we leak the house number. We do not want this information on the internet.",
-                   "action":{
-                      "text":"Continue",
-                      "func":14
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":14,
-          "assistant":{
-             "text":"What do you think about this picture? Should we post it?",
-             "action":{
-                "text":"There is nothing problematic with this picture."
-             }
-          },
-          "mode":"imagegame",
-          "modeDetails":{
-             "ref":"imagegame2",
-             "data":{
-                "image":"2.png",
-                "bb":{
-                   "x":328,
-                   "y":118,
-                   "width":30,
-                   "height":20
-                }
-             },
-             "unfinished":{
-                "points":-1,
-                "assistant":{
-                   "text":"Nothing problematic with that. Anything else?"
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"Watch out. On this picture personal information like a password is leaked.",
-                   "action":{
-                      "text":"Continue",
-                      "func":15
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. On this picture we leak a password. We do not want this information on the internet.",
-                   "action":{
-                      "text":"Continue",
-                      "func":15
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":15,
-          "assistant":{
-             "text":"Wow you have already learned alot today. You know what you can post and what you better do not post.\nBut there is still one thing we need to talk about. And that is your privacy.",
-             "action":{
-                "text":"Whats that?",
-                "func":16
-             }
-          }
-       },
-       {
-          "id":16,
-          "assistant":{
-             "text":"I'm pretty sure you understood everything.\nI will show you now some examples and you will tell me what privacy setting we should choose.",
-             "action":{
-                "text":"Continue",
-                "func":17
-             }
-          },
-          "mode":"html",
-          "modeDetails":{
-             "data":{
-                "path":"levels/2/data2.html"
-             }
-          }
-       },
-       {
-          "id":17,
-          "assistant":{
-             "text":"What do you think about this post?",
-             "action":{
-                "text":"Check my answer."
-             }
-          },
-          "mode":"privacygame",
-          "modeDetails":{
-             "ref":"pg1",
-             "data":{
-                "message":"I saw a really cool movie yesterday. It was called 'The Matrix'. It is a 10/10.",
-                "answer":"public"
-             },
-             "unfinished":{
-                "assistant":{
-                   "text":"Please choose an answer."
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. There is nothing harmful in this post and it could be posted publicly.",
-                   "action":{
-                      "text":"Continue",
-                      "func":"COMPLETE"
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. There is nothing harmful in this post and it could be posted publicly.",
-                   "action":{
-                      "text":"Continue",
-                      "func":"COMPLETE"
-                   }
-                }
-             }
-          }
-       }
+         "id":17,
+         "assistant":{
+            "text":"Ich habe vorher bereits die digitale Identität angesprochen. Man hört immer wieder 'Ich habe doch nichts zu verbergen?'. Jedoch hinterlässt es dennoch Spuren. Denke an das Beispiel mit dem Urlauber im Krankenstand zurück. Seine digitale Identität hatte dabei einen großen Einfluss auf sein Leben, weswegen es der Person auch den Job gekostet hatte. Ähnlich ist es nun auch bei mir. Ich habe mich zwar öffentlich entschuldigt, aber viele mein ehemaliger Follower wollen nichts mehr von mir hören.",
+            "action":{
+               "text":"Weiter",
+               "func": "COMPLETE"
+            }
+         }
+      }
     ]
  }

@@ -4,7 +4,7 @@
           {{ $t(description) }}
       </div>
 
-        <div v-if="img" style="width: 400px;height: 400px;">
+        <div v-if="img" style="width: 400px;height: 400px;" class="mx-auto overflow-hidden">
         <vue-slide-puzzle
             ref="puzzle"
             :ratio=3
@@ -53,7 +53,7 @@ export default {
     gameover() {
         if (this.$refs.puzzle.$state.gameSuccess) {
             this.done = 1;
-            this.$emit('ready');
+            this.$emit('game-over', 1);
         }
     }
   },

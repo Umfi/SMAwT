@@ -1,11 +1,11 @@
 <template>
     <div>
       <div class="alert alert-primary" role="alert">
-          {{ $t("Can you spot something on this picture that is problematic? If yes, click on it.") }}
+          {{ explanation }}
       </div>
 
       <div class="img-container">
-        <img id="image-game-image" :src="require(`@/assets/tasks/images/${image}`)" width="500" @click="check"/>
+        <img id="image-game-image" :src="require('@/assets/' + image)" width="500" @click="check"/>
         <div class="hint" v-show="show"></div>
       </div>
 
@@ -18,10 +18,11 @@ export default {
   props: {
     image: String,
     bb: Object,
+    explanation: String,
   },
   data() {
     return {
-      state: 0,
+      state: -1,
       failCount: 0,
       winSound: null,
       loseSound: null,

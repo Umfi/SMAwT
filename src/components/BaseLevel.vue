@@ -33,12 +33,12 @@
         </div>
       </div>
 
-      <falling-text-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'fallinggame'" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" :ref="currentGameStep.modeDetails.ref" @game-over="nextMove"></falling-text-game>
+      <falling-text-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'fallinggame'" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" :ref="currentGameStep.modeDetails.ref" @game-over="gameCallback"></falling-text-game>
 
       <profile-setup v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'profilesetup'" :ref="currentGameStep.modeDetails.ref"></profile-setup>
 
       <div class="text-center" v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'imagegame'">
-        <image-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :image="currentGameStep.modeDetails.data.image" :bb="currentGameStep.modeDetails.data.bb" @game-over="nextMove"></image-game>
+        <image-game :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :image="currentGameStep.modeDetails.data.image" :bb="currentGameStep.modeDetails.data.bb" :explanation="currentGameStep.modeDetails.data.explanation" @game-over="gameCallback"></image-game>
       </div>
 
       <post-privacy-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'privacygame'" :ref="currentGameStep.modeDetails.ref" :message="currentGameStep.modeDetails.data.message" :answer="currentGameStep.modeDetails.data.answer" @ready="activateAssistant"></post-privacy-game>
@@ -47,7 +47,7 @@
         <information-chat :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers" :mode="currentGameStep.modeDetails.data.mode"  @ready="activateAssistant"></information-chat>
       </div>
 
-      <puzzle-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'puzzlegame'" :ref="currentGameStep.modeDetails.ref" :image="currentGameStep.modeDetails.data.image" :description="currentGameStep.modeDetails.data.description" @ready="activateAssistant"></puzzle-game>
+      <puzzle-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'puzzlegame'" :ref="currentGameStep.modeDetails.ref" :image="currentGameStep.modeDetails.data.image" :description="currentGameStep.modeDetails.data.description" @game-over="gameCallback"></puzzle-game>
 
     </div>
 
@@ -161,8 +161,7 @@ export default {
     },
   },
   methods: {
-    nextMove() {
-
+    async nextMove() {
       if (this.gameStep === "COMPLETE") {
         this.finishLevel();
         return;
@@ -230,67 +229,15 @@ export default {
       }
 
       if (this.currentGameStep.mode == "fallinggame") {
-        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
-          const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
-          if (result == -1) {
-            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
-          } else if (result == 0) {
-            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
-
-            if (this.currentGameStep.modeDetails.error.points) {
-               this.points += this.currentGameStep.modeDetails.error.points;
-            }
-
-            if (this.currentGameStep.modeDetails.error.assistant.action) {
-              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.error.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.error.assistant.action.func; this.nextMove(); });
-            }
-          } else if (result == 1) {
-            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
-
-            if (this.currentGameStep.modeDetails.correct.points) {
-               this.points += this.currentGameStep.modeDetails.correct.points;
-            }
-
-            if (this.currentGameStep.modeDetails.correct.assistant.action) {
-              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
-            }
-          }
-        });
+        this.$refs.assistant.hideOptions();
       }
 
       if (this.currentGameStep.mode == "imagegame") {
+        this.$refs.assistant.hideOptions();
+      }
 
-        const result = this.$refs[this.currentGameStep.modeDetails.ref].currentState();
-        
-          
-        if (result == -1) {
-          this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
-
-            if (this.currentGameStep.modeDetails.unfinished.points) {
-              this.points += this.currentGameStep.modeDetails.unfinished.points;
-            }
-        } else if (result == 0) {
-          this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
-
-          if (this.currentGameStep.modeDetails.error.points) {
-              this.points += this.currentGameStep.modeDetails.error.points;
-          }
-
-          if (this.currentGameStep.modeDetails.error.assistant.action) {
-            this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.error.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.error.assistant.action.func; this.nextMove(); });
-          }
-        } else if (result == 1) {
-          this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
-
-          if (this.currentGameStep.modeDetails.correct.points) {
-              this.points += this.currentGameStep.modeDetails.correct.points;
-          }
-
-          if (this.currentGameStep.modeDetails.correct.assistant.action) {
-            this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
-          }
-        }
-  
+      if (this.currentGameStep.mode == "puzzlegame") {
+        this.$refs.assistant.hideOptions();
       }
 
       if (this.currentGameStep.mode == "password-strength-checker") {
@@ -381,32 +328,6 @@ export default {
         });
       }
 
-      if (this.currentGameStep.mode == "puzzlegame") {
-        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
-          const result = this.$refs[this.currentGameStep.modeDetails.ref].currentState();
-          
-            
-          if (result == 0) {
-            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
-
-            if (this.currentGameStep.modeDetails.error.points) {
-               this.points += this.currentGameStep.modeDetails.error.points;
-            }
-          } else if (result == 1) {
-            this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
-
-            if (this.currentGameStep.modeDetails.correct.points) {
-                this.points += this.currentGameStep.modeDetails.correct.points;
-            }
-
-            if (this.currentGameStep.modeDetails.correct.assistant.action) {
-              this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
-            }
-          }
-        });
-  
-      }
-
     },
     updateGlobalPoints(points) {
       this.$store.dispatch("updatePoints", points);
@@ -427,6 +348,35 @@ export default {
     },
     explain(msg) {
       this.$refs.assistant.updateMessage(msg);
+    },
+    gameCallback(result) {
+      if (result == -1) {
+        this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
+
+          if (this.currentGameStep.modeDetails.unfinished.points) {
+            this.points += this.currentGameStep.modeDetails.unfinished.points;
+          }
+      } else if (result == 0) {
+        this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.error.assistant.text);
+
+        if (this.currentGameStep.modeDetails.error.points) {
+            this.points += this.currentGameStep.modeDetails.error.points;
+        }
+
+        if (this.currentGameStep.modeDetails.error.assistant.action) {
+          this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.error.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.error.assistant.action.func; this.nextMove(); });
+        }
+      } else if (result == 1) {
+        this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
+
+        if (this.currentGameStep.modeDetails.correct.points) {
+            this.points += this.currentGameStep.modeDetails.correct.points;
+        }
+
+        if (this.currentGameStep.modeDetails.correct.assistant.action) {
+          this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.correct.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.correct.assistant.action.func; this.nextMove(); });
+        }
+      }
     },
   },
 };

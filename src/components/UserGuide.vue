@@ -115,6 +115,7 @@ export default {
       this.actionBText = actionB;
       this.actionBFunction = actionBFunc;
       this.maximize();
+      this.showOptions();
     },
     hide() {
       this.visible = false;
