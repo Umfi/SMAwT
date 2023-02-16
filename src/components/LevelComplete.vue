@@ -1,6 +1,6 @@
 <template>
   <div class="game-done-card shadow card w-50 m-auto">
-    <div class="card-header">
+    <div class="card-header bg-transparent">
         <h1 class="text-center text-uppercase text-white">{{ (stars == 0) ? $t('Failed') : $t('Completed') }}</h1>
     </div>
     <div class="card-body">
