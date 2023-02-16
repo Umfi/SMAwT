@@ -408,19 +408,19 @@
                    {
                       "id":1,
                       "text":"Ja",
-                      "correct":true
+                      "correct":false
                    },
                    {
                       "id":2,
                       "text":"Nein",
-                      "correct":false
+                      "correct":true
                    }
                 ]
              },
              "content":{
-                "component":"fb-post",
-                "message":"Yesterday was a crazy party. I can't wait for the next one.",
-                "image":"https://live.staticflickr.com/3035/3053053815_2aafbba224_b.jpg"
+                "component":"snap-post",
+                "message":"Hey mein Freund, wann kann ich dir das Spiel vorbeibringen, die ich von dir geborgt habe?",
+                "image":"levels/2/report1.jpg"
              },
              "error":{
                 "points":-1,

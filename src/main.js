@@ -4,7 +4,7 @@ import store from './store'
 import router from './router';
 
 import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../scss/main.scss';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@fortawesome/fontawesome-free/scss/solid.scss';

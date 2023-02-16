@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        <img :src="image" class="img" />
+        <img :src="require('@/assets/' + image)" class="img" />
         <div class="clock-coutdown">
           <span>{{ time }}</span>
           </div>

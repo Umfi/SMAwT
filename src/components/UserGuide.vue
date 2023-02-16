@@ -8,6 +8,7 @@
             </div>
             <div class="col-9 align-self-center" v-if="this.message.length > 0">
                 <vue-typer
+                class="guide-font-size"
                 :text="$t(message)"
                 :repeat='0'
                 :type-delay='20'
@@ -24,16 +25,16 @@
         </div>
         <div class="row border-top" v-show="visibleOptions">
             <div class="col p-0">
-                <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-outline-dark' : 'btn btn-block w-100 text-uppercase btn-outline-primary'" @click="actionAFunction" :disabled="!enabledOptions">{{ $t(actionAText) }}</button>
+                <button type="button" :class="actionBText ? 'btn btn-block w-100 text-uppercase btn-dark' : 'btn btn-block w-100 text-uppercase btn-primary'" @click="actionAFunction" :disabled="!enabledOptions">{{ $t(actionAText) }}</button>
             </div>
             <div class="col p-0" v-if="actionBText.length > 0">
-                <button type="button" class="btn btn-outline-primary btn-block w-100 text-uppercase" @click="actionBFunction" :disabled="!enabledOptions">{{ $t(actionBText) }}</button>
+                <button type="button" class="btn btn-primary btn-block w-100 text-uppercase" @click="actionBFunction" :disabled="!enabledOptions">{{ $t(actionBText) }}</button>
             </div>
         </div>
     </div>
 
     <div :class="'border mb-3 bg-white rounded-circle miniassiatant ' + animationcss" v-show="isMinimized" @click="maximize">
-        <img src="../assets/assistant_right.png" class="bg-opacity-75 bg-primary img-fluid rounded-circle" alt="User Image" width="100">
+        <img src="../assets/assistant_right.png" class="bg-opacity-50 border border-2 border-primary bg-primary img-fluid rounded-circle" alt="User Image" width="100">
    </div>
 
   </div>
@@ -181,5 +182,9 @@ export default {
   right: 0;
   bottom: 0;
   cursor: pointer;
+}
+
+.guide-font-size {
+  font-size: 18px;
 }
 </style>
