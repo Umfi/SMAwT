@@ -20,7 +20,7 @@
       </div>
 
       <div class="post__bottom">
-        <img :src="image" class="img-fluid w-100 post_img" />
+        <img :src="require('@/assets/' + image)" class="img-fluid w-100 post_img" />
       </div>
       <div class="post__options pb-2">
         <div class="post__option like" @click="like">

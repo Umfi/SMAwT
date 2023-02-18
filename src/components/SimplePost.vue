@@ -21,7 +21,7 @@
 
       <div class="post__bottom">
         <p class="m-0 px-3 pb-2">{{ $t(message) }}</p>
-        <img v-if="image.length > 0" :src="image" class="img-fluid pb-2 w-100 post_img" />
+        <img v-if="image.length > 0" :src="require('@/assets/' + image)" class="img-fluid pb-2 w-100 post_img" />
       </div>
     <div class="px-3 py-1 news-container" v-if="link.length > 0 && headline.length > 0">
       <span class="news-url">{{ link }}</span>

@@ -17,8 +17,8 @@
       <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'quiz'">
         <div class="row" v-if="currentGameStep.modeDetails.content">
           <div class="col align-self-center">
-            <simple-post v-if="currentGameStep.modeDetails.content.component == 'fb-post'" :author="user" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image"></simple-post>
-            <simple-insta-post v-if="currentGameStep.modeDetails.content.component == 'insta-post'" :author="user" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image"></simple-insta-post>
+            <simple-post v-if="currentGameStep.modeDetails.content.component == 'fb-post'" :author="currentGameStep.modeDetails.content.author" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image"></simple-post>
+            <simple-insta-post v-if="currentGameStep.modeDetails.content.component == 'insta-post'" :author="currentGameStep.modeDetails.content.author" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image"></simple-insta-post>
             <simple-snap-post v-if="currentGameStep.modeDetails.content.component == 'snap-post'" :message="currentGameStep.modeDetails.content.message" :image="currentGameStep.modeDetails.content.image" :position="currentGameStep.modeDetails.content.position"></simple-snap-post>
             <simple-friend-request v-if="currentGameStep.modeDetails.content.component == 'friend-request'" :name="currentGameStep.modeDetails.content.name" :avatar="currentGameStep.modeDetails.content.avatar" :mutal="currentGameStep.modeDetails.content.mutal" :network="currentGameStep.modeDetails.content.network"></simple-friend-request>
             <simple-chat v-if="currentGameStep.modeDetails.content.component == 'chat'" :messages="currentGameStep.modeDetails.content.messages"></simple-chat>

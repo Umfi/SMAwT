@@ -184,7 +184,7 @@
          "mode":"video",
          "modeDetails":{
            "data":{
-              "path":"levels/1/video1.mp4",
+              "path":"levels/2/video2.mp4",
               "type":"video/mp4"
            }
          },
@@ -425,7 +425,7 @@
              "error":{
                 "points":-1,
                 "assistant":{
-                   "text":"Findest du diesen Beitrag wirklich unproblematisch? Durch die Wortwahl / unangebrachte Posts können das betroffene Schaden zugefügt werden.",
+                   "text":"Findest du diesen Beitrag wirklich problematisch?",
                    "action":{
                       "text":"Weiter",
                       "func":17
@@ -446,6 +446,261 @@
        },
        {
          "id":17,
+         "assistant":{
+            "text":"Würdest du diesen Beitrag melden oder nicht?",
+            "action":{
+               "text":"Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz3",
+            "data":{
+               "question":"Sollte dieser Beitrag gemeldet melden?",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Ja",
+                     "correct":true
+                  },
+                  {
+                     "id":2,
+                     "text":"Nein",
+                     "correct":false
+                  }
+               ]
+            },
+            "content":{
+               "component":"chat",
+               "messages":[
+                  {
+                     "id":1,
+                     "sender":"other",
+                     "text":"Hey!"
+                  },
+                  {
+                     "id":2,
+                     "sender":"me",
+                     "text":"Hallo?"
+                  },
+                  {
+                     "id":3,
+                     "sender":"other",
+                     "text":"Hey Sweety! Ich habe gesehen du bist unter 18. Willst du mich nicht einmal treffen?"
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Findest du diesen Beitrag wirklich unproblematisch? Bei solchen Nachrichten ist es wichtig, dass du sie meldest.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":18
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":18
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":18,
+         "assistant":{
+            "text":"Würdest du diesen Beitrag melden oder nicht?",
+            "action":{
+               "text":"Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz4",
+            "data":{
+               "question":"Sollte dieser Beitrag gemeldet melden?",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Ja",
+                     "correct":true
+                  },
+                  {
+                     "id":2,
+                     "text":"Nein",
+                     "correct":false
+                  }
+               ]
+            },
+            "content":{
+               "component":"insta-post",
+               "message":"Kinderarbeit in Korea! Let's gooooo!",
+               "image":"levels/2/report2.jpg",
+               "author": {
+                  "name": "Andrew",
+                  "avatar": "https://avatars.dicebear.com/api/avataaars/linda.png"
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Findest du diesen Beitrag wirklich unproblematisch? Bei solchen Nachrichten ist es wichtig, dass du sie meldest.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":19
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":19
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":19,
+         "assistant":{
+            "text":"Würdest du diesen Beitrag melden oder nicht?",
+            "action":{
+               "text":"Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz5",
+            "data":{
+               "question":"Sollte dieser Beitrag gemeldet melden?",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Ja",
+                     "correct":false
+                  },
+                  {
+                     "id":2,
+                     "text":"Nein",
+                     "correct":true
+                  }
+               ]
+            },
+            "content":{
+               "component":"chat",
+               "messages":[
+                  {
+                     "id":1,
+                     "sender":"me",
+                     "text":"Kommst du morgen zu meiner Party?"
+                  },
+                  {
+                     "id":2,
+                     "sender":"other",
+                     "text":"Hab leider keine Zeit..."
+                  },
+                  {
+                     "id":3,
+                     "sender":"me",
+                     "text":"Oh nooo. :("
+                  },
+                  {
+                     "id":4,
+                     "sender":"other",
+                     "text":"Duuuude! Habe gestern das Bild von deiner Party auf Pointer gesehen. Wünschte ich wäre da gewesen!"
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Findest du diesen Beitrag wirklich problematisch?",
+                  "action":{
+                     "text":"Weiter",
+                     "func":20
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Ja, dieser Post kann niemanden Schaden. Zudem ist es super, dass du keine Scheu hast Beiträge zu melden. Das ist wichtig.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":20
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":20,
+         "assistant":{
+            "text":"Würdest du diesen Beitrag melden oder nicht?",
+            "action":{
+               "text":"Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz6",
+            "data":{
+               "question":"Sollte dieser Beitrag gemeldet melden?",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Ja",
+                     "correct":true
+                  },
+                  {
+                     "id":2,
+                     "text":"Nein",
+                     "correct":false
+                  }
+               ]
+            },
+            "content":{
+               "component":"fb-post",
+               "message":"Herzlichen Glückwunsch du hast eine PS5 gewonnen! Klicke einfach auf diesen Link: https://win.cc/ps5",
+               "image":"levels/2/report3.jpg",
+               "author": {
+                  "name": "Elan",
+                  "avatar": "https://avatars.dicebear.com/api/avataaars/elan.png"
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Findest du diesen Beitrag wirklich unproblematisch? Bei solchen Nachrichten ist es wichtig, dass du sie meldest.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":21
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":21
+                  }
+               }
+            }
+         }
+      },
+       {
+         "id":21,
          "assistant":{
             "text":"Ich habe vorher bereits die digitale Identität angesprochen. Man hört immer wieder 'Ich habe doch nichts zu verbergen?'. Jedoch hinterlässt es dennoch Spuren. Denke an das Beispiel mit dem Urlauber im Krankenstand zurück. Seine digitale Identität hatte dabei einen großen Einfluss auf sein Leben, weswegen es der Person auch den Job gekostet hatte. Ähnlich ist es nun auch bei mir. Ich habe mich zwar öffentlich entschuldigt, aber viele mein ehemaliger Follower wollen nichts mehr von mir hören.",
             "action":{
