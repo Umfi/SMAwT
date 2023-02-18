@@ -167,7 +167,7 @@
          "modeDetails":{
             "ref":"fallinggame1",
             "data":{
-               "description":"Welche Begriffe fallen, unter 'persönliche Daten'? Schieße diese Wörter ab. Wenn du teilbare Daten triffst, gibt es aber Minuspunkte! Du hast 15 Sekunden Zeit, um einen neuen Highscore aufzustellen. Simon gibt dir zum Schluss deine Punkte bekannt.",
+               "description":"Welche Begriffe fallen, unter 'persönliche Daten'? Schieße diese Wörter ab. Wenn du teilbare Daten triffst, gibt es aber Minuspunkte! Du hast 45 Sekunden Zeit, um einen neuen Highscore aufzustellen. Simon gibt dir zum Schluss deine Punkte bekannt.",
                "items":[
                   {
                      "text":"Vor- und Nachname",

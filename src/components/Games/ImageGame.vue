@@ -22,6 +22,7 @@ export default {
   },
   data() {
     return {
+      gameOver: false,
       state: -1,
       failCount: 0,
       winSound: null,
@@ -38,6 +39,10 @@ export default {
       return this.state;
     },
     check(event) {
+      if (this.gameOver) {
+        return;
+      }
+      
       const rect = document.getElementById("image-game-image").getBoundingClientRect()
       const x = event.clientX - rect.left
       const y = event.clientY - rect.top
@@ -46,16 +51,19 @@ export default {
         this.winSound.play();
         this.showHint();
         this.state = 1;
+        this.gameOver = true;
         this.$emit('game-over', 1);
       } else {
         this.loseSound.play();
         this.failCount++;
         if (this.failCount < 3) {
           this.state = -1;
+          this.gameOver = true;
           this.$emit('game-over', -1);
         } else {
           this.showHint();
           this.state = 0;
+          this.gameOver = true;
           this.$emit('game-over', 0);
         }
       }

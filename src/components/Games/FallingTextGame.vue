@@ -34,7 +34,8 @@ export default {
       loseSound: null,
       spawnTimer: null,
       gameTimer: null,
-      time: 30,
+      time: 45,
+      minPoints: 0,
     };
   },
   mounted() {
@@ -56,7 +57,7 @@ export default {
           clearInterval(this.spawnTimer);
           clearInterval(this.gameTimer);
 
-          if (this.points >= 10) {
+          if (this.points >= (this.minPoints / 2)) {
               this.$emit('game-over', 1);
           } else {
               this.$emit('game-over', 0);
@@ -66,13 +67,9 @@ export default {
       }, 1000);
 
       this.spawnTimer = setInterval(() => {
-        if (this.time > 30) {
-          this.makeFruit();
-        } else if (this.time > 20 && this.time <= 30) {
-          this.makeFruit();
+        if (this.time > 20) {
           this.makeFruit();
         } else if (this.time > 5 && this.time <= 20) {
-          this.makeFruit();
           this.makeFruit();
           this.makeFruit();
         }  
@@ -90,6 +87,10 @@ export default {
 
       fruitElement.innerHTML = randomItem.text;
       fruitElement.setAttribute('data-result', randomItem.value);
+
+      if (randomItem.value == 1) {
+        this.minPoints++;
+      }
 
       // Add fruit element to the screen
       target.append(fruitElement);
@@ -129,7 +130,18 @@ export default {
 
       fruitElement.style.top = "-100px";
       // Get random animation interval
-      var speed = this.getRandomInt(5000, 10000);
+      var speed = 0;
+      
+       if (this.time > 30) {
+          speed = this.getRandomInt(5000, 7000);
+       } else if (this.time > 20 && this.time <= 30) {
+          speed = this.getRandomInt(7000, 8000);  
+       } else if (this.time > 10 && this.time <= 20) {
+          speed = this.getRandomInt(8000, 9000);
+       } else if (this.time <= 10) {
+          speed = this.getRandomInt(9000, 10000);
+       } 
+
 
       // Start animation
       const animation = fruitElement.animate(

@@ -9,7 +9,7 @@
             ref="puzzle"
             :ratio=3
             :steps=10
-            mode="free"
+            mode="far"
             :src="img"
             @card-drop="gameover"
         />
