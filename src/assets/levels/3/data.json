@@ -2,699 +2,801 @@
     "level_id": 3,
     "level_name": "The Dark Side of Social Media",
     "steps":[
-       {
-          "id":1,
-          "assistant":{
-             "text":"Social media would not be social if there would not been any other humans.\nIn many social media platttforms you can connect with other people and become friends.\n\nBut be careful, not everybody is your friend. Some people just want to get your personal information.",
-             "action":{
-                "text":"Tell me something about it.",
-                "func":2
-             }
-          }
-       },
-       {
-          "id":2,
-          "assistant":{
-             "text":"As always, I have prepared a little task for you where you can practice what you have learned.",
-             "action":{
-                "text":"Continue",
-                "func":3
-             }
-          },
-          "mode":"html",
-          "modeDetails":{
-             "data":{
-                "path":"levels/3/data1.html"
-             }
-          }
-       },
-       {
-          "id":3,
-          "assistant":{
-             "text":"Ah look. You have got a friend request from your pal Josh. What do you think? Should we acceot it?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz1",
-             "data":{
-                "question":"Should you accept this friend request?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"Yes.",
-                      "correct":true
-                   },
-                   {
-                      "id":1,
-                      "text":"No.",
-                      "correct":false
-                   }
-                ]
-             },
-             "content":{
-                "component":"friend-request",
-                "name":"Bert Huber",
-                "avatar":"levels/3/friend1.png",
-                "mutal":24,
-                "network": "levels/3/friends.png"
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. Josh is a good friend. And you have lots of mutal friends. We should accept his friend request.",
-                   "action":{
-                      "text":"Continue",
-                      "func":4
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. Josh is a good friend. And you have lots of mutal friends. We should accept his friend request.",
-                   "action":{
-                      "text":"Continue",
-                      "func":4
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":4,
-          "assistant":{
-             "text":"You have got a friend request from your a woman called Maria. What do you think? Should we acceot it?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz2",
-             "data":{
-                "question":"Should you accept this friend request?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"Yes.",
-                      "correct":false
-                   },
-                   {
-                      "id":1,
-                      "text":"No.",
-                      "correct":true
-                   }
-                ]
-             },
-             "content":{
-                "component":"friend-request",
-                "name":"Maria Müller",
-                "avatar":"levels/3/friend-placeholder.jpg",
-                "mutal":0,
-                "network": "levels/3/friends.png"
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. This is very strange. You don't have any common friends. You probably don't know her. We should delete this friend request.",
-                   "action":{
-                      "text":"Continue",
-                      "func":5
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. This is very strange. You don't have any common friends. You probably don't know her. We should delete this friend request.",
-                   "action":{
-                      "text":"Continue",
-                      "func":5
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":5,
-          "assistant":{
-             "text":"You have got a friend request from your a guy with a picture of a cartoon. What do you think? Should we accept it?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz3",
-             "data":{
-                "question":"What should you do?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"Accept it.",
-                      "correct":false
-                   },
-                   {
-                      "id":1,
-                      "text":"Better delete this request.",
-                      "correct":true
-                   },
-                   {
-                      "id":2,
-                      "text":"Ask your mutal friend who this is.",
-                      "correct":true
-                   }
-                ]
-             },
-             "content":{
-                "component":"friend-request",
-                "name":"Markus Pokefan",
-                "avatar":"levels/3/friend-placeholder.jpg",
-                "mutal":1,
-                "network": "levels/3/friends.png"
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. You only have one common friend, but the fact that he is using a photo of a cartoon is strage. Before accepting this friend requests, you should check the profile of the person in detail.",
-                   "action":{
-                      "text":"Continue",
-                      "func":6
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. You only have one common friend, but the fact that he is using a photo of a cartoon is strage. Before accepting this friend requests, you should check the profile of the person in detail.",
-                   "action":{
-                      "text":"Continue",
-                      "func":6
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":6,
-          "assistant":{
-             "text":"On social media everyone can send you messages.\nBut be careful with messages, because they could be dangerous.",
-             "action":{
-                "text":"Continue",
-                "func":7
-             }
-          }
-       },
-       {
-          "id":7,
-          "assistant":{
-             "text":"As always, I have prepared a little task for you where you can practice what you have learned.",
-             "action":{
-                "text":"Continue",
-                "func":8
-             }
-          },
-          "mode":"html",
-          "modeDetails":{
-             "data":{
-                "path":"levels/3/data2.html"
-             }
-          }
-       },
-       {
-          "id":8,
-          "assistant":{
-             "text":"Just tell me, when ever I should check your work.",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"sortinggame",
-          "modeDetails":{
-             "ref":"game1",
-             "data":{
-                "items":[
-                   {
-                      "text":"I can trust links in messages.",
-                      "value": 1
-                   },
-                   {
-                      "text":"I can trust every message.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Speling mistakes are an indicator for spam messages.",
-                      "value": 0
-                   },
-                   {
-                      "text":"I should report suspious messages.",
-                      "value": 0
-                   },
-                   {
-                      "text":"I should send personal information to everyone.",
-                      "value": 1
-                   },
-                   {
-                      "text":"If somebody asks for my phone number, I will send it to him.",
-                      "value": 1
-                   },
-                   {
-                      "text":"I should check if I know the sender of the message",
-                      "value": 0
-                   },
-                   {
-                      "text":"I should reply to every message",
-                      "value": 1
-                   }
-                ],
-                "left":"Good",
-                "right":"Bad"
-             },
-             "unfinished":{
-                "assistant":{
-                   "text":"There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again."
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"There are still some mistakes. Try again. I am sure you will manage it now."
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. Everything was correct. Well done.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":9
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":9,
-          "assistant":{
-             "text":"What do you think about this message. What should we do?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz4",
-             "data":{
-                "question":"What do you think about this message?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"This is a safe message. I can reply.",
-                      "correct":false
-                   },
-                   {
-                      "id":1,
-                      "text":"This is probably a scam.",
-                      "correct":true
-                   },
-                   {
-                      "id":2,
-                      "text":"I should reply.",
-                      "correct":false
-                   },
-                   {
-                      "id":3,
-                      "text":"I should report the sender and block him.",
-                      "correct":true
-                   }
-                ]
-             },
-             "content":{
-                "component":"chat",
-                "messages":[
-                   {
-                      "id":1,
-                      "sender":"other",
-                      "text":"Hey, I am your new friend. I am from Nigeria and I want to send you some money. Can you give me your bank account number?"
-                   }
-                ]
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. This is a dangerous message. We should report it.",
-                   "action":{
-                      "text":"Continue",
-                      "func":10
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. This is a dangerous message. We should report it.",
-                   "action":{
-                      "text":"Continue",
-                      "func":10
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":10,
-          "assistant":{
-             "text":"What do you think about this message. What should we do?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz5",
-             "data":{
-                "question":"What do you think about this message?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"This is a safe message. I can reply.",
-                      "correct":false
-                   },
-                   {
-                      "id":1,
-                      "text":"This is probably a scam.",
-                      "correct":true
-                   },
-                   {
-                      "id":2,
-                      "text":"I should reply.",
-                      "correct":false
-                   },
-                   {
-                      "id":3,
-                      "text":"I should report the sender and block him.",
-                      "correct":true
-                   }
-                ]
-             },
-             "content":{
-                "component":"chat",
-                "messages":[
-                   {
-                      "id":1,
-                      "sender":"other",
-                      "text":"Hey!"
-                   },
-                   {
-                      "id":2,
-                      "sender":"me",
-                      "text":"Hello! Who are you?"
-                   },
-                   {
-                      "id":3,
-                      "sender":"other",
-                      "text":"I am Max. One of your friends told me you like dogs."
-                   },
-                   {
-                      "id":4,
-                      "sender":"other",
-                      "text":"Lets meet in the park and I will show you my dog."
-                   }
-                ]
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. This is a dangerous message. We should report it.",
-                   "action":{
-                      "text":"Continue",
-                      "func":11
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. This is a dangerous message. We should report it.",
-                   "action":{
-                      "text":"Continue",
-                      "func":11
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":11,
-          "assistant":{
-             "text":"What do you think about this message. What should we do?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quiz6",
-             "data":{
-                "question":"What do you think about this message?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"This is a safe message. I can reply.",
-                      "correct":false
-                   },
-                   {
-                      "id":1,
-                      "text":"This is probably a scam.",
-                      "correct":true
-                   },
-                   {
-                      "id":2,
-                      "text":"I should reply.",
-                      "correct":false
-                   },
-                   {
-                      "id":3,
-                      "text":"I should report the sender and block him.",
-                      "correct":true
-                   }
-                ]
-             },
-             "content":{
-                "component":"chat",
-                "messages":[
-                   {
-                      "id":1,
-                      "sender":"other",
-                      "text":"Congratulazion! You have won a PS5. Click this link to claim your prize. http://win.cc/ps5"
-                   }
-                ]
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. This is a dangerous message. We should report it.",
-                   "action":{
-                      "text":"Continue",
-                      "func":12
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. This is a dangerous message. We should report it.",
-                   "action":{
-                      "text":"Continue",
-                      "func":12
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":12,
-          "assistant":{
-             "text":"Not everything you see on the internet is true. You should always check the source of the information before you share it.",
-             "action":{
-                "text":"Continue",
-                "func":13
-             }
-          }
-       },
-       {
-          "id":13,
-          "assistant":{
-             "text":"All this should be common sense anyway, right?\n\nBut it doesn't hurt to learn about it.",
-             "action":{
-                "text":"Continue",
-                "func":14
-             }
-          },
-          "mode":"html",
-          "modeDetails":{
-             "data":{
-                "path":"levels/3/data3.html"
-             }
-          }
-       },
-       {
-          "id":14,
-          "assistant":{
-             "text":"Just tell me, when ever I should check your work.",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"sortinggame",
-          "modeDetails":{
-             "ref":"game2",
-             "data":{
-                "items":[
-                   {
-                      "text":"The web adress or site name can help to indicate fake news.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Shocking headlines are an indicator for trustworthy news.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Words in ALL CAPS is an indicator for trustworthy news.",
-                      "value": 1
-                   },
-                   {
-                      "text":"Grammatical errors are an indicator for fake news.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Sensational images are often used for serious news.",
-                      "value": 1
-                   },
-                   {
-                      "text":"The use of many punctuation character is an indicator for fake news.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Unusual web adresses are a sign of fake news.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Websites ending with .gov.at are always trustworthy.",
-                      "value": 0
-                   },
-                   {
-                      "text":"Websites ending with .at are always trustworthy.",
-                      "value": 1
-                   }
-                ],
-                "left":"True",
-                "right":"False"
-             },
-             "unfinished":{
-                "assistant":{
-                   "text":"There are still some items in the 'ALL' column. Move all items to the according colum and i will check it again."
-                }
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"There are still some mistakes. Try again. I am sure you will manage it now."
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. Everything was correct. Well done.",
-                   "action":{
-                      "text":"Continue.",
-                      "func":15
-                   }
-                }
-             }
-          }
-       },
-       {
-          "id":15,
-          "assistant":{
-             "text":"What do you think about this post?",
-             "action":{
-                "text":"Check my answers."
-             }
-          },
-          "mode":"quiz",
-          "modeDetails":{
-             "ref":"quizfakenews1",
-             "data":{
-                "question":"Are there any signs of fake news?",
-                "answers":[
-                   {
-                      "id":0,
-                      "text":"Shocking and exaggerated headline.",
-                      "correct":true
-                   },
-                   {
-                      "id":1,
-                      "text":"Sensational image.",
-                      "correct":true
-                   },
-                   {
-                      "id":2,
-                      "text":"Strange web adress or site name.",
-                      "correct":true
-                   },
-                   {
-                      "id":3,
-                      "text":"Spelling errors, ALL CAPS or dramatic punctuation.",
-                      "correct":true
-                   },
-                   {
-                      "id":4,
-                      "text":"This article probably is fake.",
-                      "correct":true
-                   },
-                   {
-                      "id":5,
-                      "text":"This article probably is real.",
-                      "correct":false
-                   }
-                ]
-             },
-             "content":{
-                "component":"news-post",
-                "author":{
-                   "name":"Markus",
-                   "avatar":"https://avatars.dicebear.com/api/avataaars/fafada.png"
-                },
-                "image":"https://media.istockphoto.com/photos/unbelievable-shocking-news-portrait-of-stunned-brunette-man-keeping-picture-id1198137096?k=20&m=1198137096&s=612x612&w=0&h=yIlPYBxoqqLraJwvRKYMzSI_qbL1y7e4X6LMROZqsIs=",
-                "link":"NEWS-CENTR.COM",
-                "headline":"Eating BURGERS will KILL YOU!!!!",
-                "message":"OMG guys, check this out!!!"
-             },
-             "error":{
-                "points":-1,
-                "assistant":{
-                   "text":"You are wrong. This is probaly fake news. To be absolutly sure you have to check the source.",
-                   "action":{
-                      "text":"Finish",
-                      "func":"COMPLETE"
-                   }
-                }
-             },
-             "correct":{
-                "points":2,
-                "assistant":{
-                   "text":"You are right. This is probaly fake news. To be absolutly sure you have to check the source.",
-                   "action":{
-                      "text":"Finish",
-                      "func":"COMPLETE"
-                   }
-                }
-             }
-          }
-       }
+      {
+         "id":1,
+         "assistant":{
+           "text":"Da benutze ich täglich Social Media-Plattformen und erst wenn man direkt darüber nachdenkt, wird klar, was es da alles zu beachten gibt.",
+           "action":{
+               "text":"Weiter",
+               "func": 2
+            }
+         }
+      },
+      {
+         "id":2,
+         "assistant":{
+           "text":"ber du scheinst dich gut auszukennen. Als mein Passwort gehackt wurde, war das leider nicht der Fall. Ich bin damals zu meinen Eltern gegangen. An wen würdest du dich im Notfall wenden?",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"informationchat2",
+            "data":{
+               "question":"An wen würdest du dich im Notfall wenden?",
+               "mode": "multiple",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Eltern",
+                     "func":3
+                  },
+                  {
+                     "id":2,
+                     "text":"Großeltern",
+                     "func":3
+                  },
+                  {
+                     "id":3,
+                     "text":"Geschwister",
+                     "func":3
+                  },
+                  {
+                     "id":4,
+                     "text":"Freunde",
+                     "func":3
+                  },
+                  {
+                     "id":5,
+                     "text":"Lehrkräfte",
+                     "func":3
+                  },
+                  {
+                     "id":6,
+                     "text":"Niemanden",
+                     "func":3
+                  },
+                  {
+                     "id":7,
+                     "text":"Keine Angaben",
+                     "func":3
+                  }
+               ]
+            }
+         }
+      },
+      {
+         "id":3,
+         "assistant":{
+           "text":"Jemanden um sich zu haben ist sehr wichtig. Ich denke aber, wenn ich Geschwister hätte, wäre ich zuerst zu denen gegangen. Mit den eigenen Eltern darüber zu reden ist mir eigentlich unangenehm, die kennen sich da auch nicht wirklich aus. Kannst du deine Geschwister fragen? Hast du welche?",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"informationchat3",
+            "data":{
+               "question":"Hast du Geschwister?",
+               "mode": "single",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Ja",
+                     "func":4
+                  },
+                  {
+                     "id":2,
+                     "text":"Nein",
+                     "func":4
+                  },
+                  {
+                     "id":3,
+                     "text":"Keine Angaben",
+                     "func":4
+                  }
+               ]
+            }
+         }
+      },
+      {
+         "id":4,
+         "assistant":{
+            "text":"Achja, sehr interessant, ich würde mich zwar gerne noch länger mit dir unterhalten, aber ich muss leider wieder weiter. Bis bald!",
+            "action":{
+               "text":"Weiter",
+               "func": 5
+            }
+         }
+      },
+      {
+         "id":5,
+         "mode":"video",
+         "modeDetails":{
+           "data":{
+              "path":"levels/3/video3.mp4",
+              "type":"video/mp4"
+           }
+         },
+         "assistant":{
+            "text":"Da bin ich wieder. Schau dir das mal an.",
+            "action":{
+               "text":"Weiter",
+               "func":7
+            }
+         }
+      },
+      {
+         "id":7,
+         "assistant":{
+            "text":"Die 'dunkle Seite des Netzes' ist leider präsenter, als man glaubt. Fake News sind allgegenwertig, von Cybermobbing oder  Cybergrooming sind nicht nur junge Frauen betroffen, sondern junge Männer ebenfalls. FOMO ist eine Krankheit, die leider erst zu spät bemerkt wird.",
+            "action":{
+               "text":"Weiter",
+               "func": 8
+            }
+         }
+      },
+      {
+         "id":8,
+         "assistant":{
+            "text":"Falsche Taten können verletzten, falsche Worte aber auch. Oftmals ist es schwer den Unterschied zwischen Hate Speech und Kritik zu erkennen.",
+            "action":{
+               "text":"Weiter",
+               "func": 9
+            }
+         }
+      },
+      {
+         "id":9,
+         "assistant":{
+            "text":"Diese Nachricht habe ich zu einem meiner Videos bekommen. Was glaubst du, ist es Hate Speech oder Kritik?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz1",
+            "data":{
+               "question":"Du ungebildeter Typ! Gehe mal lieber arbeiten, anstatt Videos zu machen.",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Das ist Hate Speech",
+                     "correct":true
+                  },
+                  {
+                     "id":2,
+                     "text":"Das ist Kritik",
+                     "correct":false
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Falsch, das ist Hate Speech. Diesen Kommentar habe ich direkt gemeldet.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":10
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":10
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":10,
+         "assistant":{
+            "text":"Was ist mit dieser Nachricht. Was glaubst du, ist es Hate Speech oder Kritik?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz2",
+            "data":{
+               "question":"Du kannst richtig schlecht mit Kritik umgehen.",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Das ist Hate Speech",
+                     "correct":false
+                  },
+                  {
+                     "id":2,
+                     "text":"Das ist Kritik",
+                     "correct":true
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Falsch, das ist Kritik. Daran ist nichts bedenklich.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":11
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":11
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":11,
+         "assistant":{
+            "text":"Was ist mit dieser Nachricht. Was glaubst du, ist es Hate Speech oder Kritik?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz3",
+            "data":{
+               "question":"Früher hat mir dein Content viel besser gefallen.",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Das ist Hate Speech",
+                     "correct":false
+                  },
+                  {
+                     "id":2,
+                     "text":"Das ist Kritik",
+                     "correct":true
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Falsch, das ist Kritik. Daran ist nichts bedenklich.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":12
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":12
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":12,
+         "assistant":{
+            "text":"Was ist mit dieser Nachricht. Was glaubst du, ist es Hate Speech oder Kritik?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz4",
+            "data":{
+               "question":"Danke für den sinnlosen Mist, den du von dir gibst! Jetzt kann ich dir ohne schlechten Gewissen entfolgen.",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Das ist Hate Speech",
+                     "correct":true
+                  },
+                  {
+                     "id":2,
+                     "text":"Das ist Kritik",
+                     "correct":false
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Falsch, das ist Hate Speech. Diesen Kommentar habe ich direkt gemeldet.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":13
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":13
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":13,
+         "assistant":{
+            "text":"Was ist mit dieser Nachricht. Was glaubst du, ist es Hate Speech oder Kritik?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz5",
+            "data":{
+               "question":"Schön, aber bei Minute 3:30 fehlt eine ordentliche Hintergrundbeleuchtung im Video. Das ist nicht professionell.",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Das ist Hate Speech",
+                     "correct":false
+                  },
+                  {
+                     "id":2,
+                     "text":"Das ist Kritik",
+                     "correct":true
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Falsch, das ist Kritik. Daran ist nichts bedenklich.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":14
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":14
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":14,
+         "assistant":{
+            "text":"Was ist mit dieser Nachricht. Was glaubst du, ist es Hate Speech oder Kritik?",
+            "action":{
+               "text":"Meine Antwort überprüfen"
+            }
+         },
+         "mode":"quiz",
+         "modeDetails":{
+            "ref":"quiz6",
+            "data":{
+               "question":"Hässlicher Drecksack. Wo bleibt das nächste Video?",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Das ist Hate Speech",
+                     "correct":true
+                  },
+                  {
+                     "id":2,
+                     "text":"Das ist Kritik",
+                     "correct":false
+                  }
+               ]
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Falsch, das ist Hate Speech. Diesen Kommentar habe ich direkt gemeldet.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":15
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Du hast recht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":15
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":15,
+         "assistant":{
+            "text":"Fake News sind ein sehr präsentes Thema. Meldungen im Internet werden oft als seriös angesehen und nicht weiter hinterfragt.  Durch die Leichtgläubigkeit von Menschen entstehen Diskussionen und Streitigkeiten, welche aber durch Recherche verhindert werden können. Fact - Check ist gerade bei Fake - News ein muss.“",
+            "action":{
+               "text":"Weiter",
+               "func": 16
+            }
+         }
+      },
+      {
+         "id":16,
+         "assistant":{
+            "text":"In diesem Bild wurde der AAARG-Test durcheinandergebracht. Bringe das Bild in die richtige Reihenfolge.",
+            "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"puzzlegame",
+         "modeDetails":{
+            "ref":"puzzlegame1",
+            "data":{
+               "description": "Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen.",
+               "image": "levels/3/craap.jpg"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Da passt noch etwas nicht. Versuche es weiter."
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Super gemacht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":17
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":17,
+         "assistant":{
+            "text":"Der AAARG-Test kann dir sicher auch in Zukunft eine Hilfe, um Informationen einzuschätzen.",
+            "action":{
+               "text":"Weiter",
+               "func": 19
+            }
+         }
+      },
+      {
+         "id":19,
+         "assistant":{
+            "text":"Für das nächste Thema habe ich ein Beispiel aus Pointer gewählt. Ein Kollege hat sich mir damals anvertraut. Angefangen hat es, weil er mit einem langjährigen Follower angefangen hat zu schreiben. Das Gespräch hat sich allerdings in eine falsche Richtung entwickelt.",
+            "action":{
+               "text":"Weiter",
+               "func": 20
+            }
+         }
+      },
+      {
+         "id":20,
+         "assistant":{
+           "text":"Du schreibst mit einen Pointer User namens Star Tracker, und du darfst antworten. Was willst du antworten?",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"grooming1",
+            "data":{
+               "question":"Hey! Schon ewig nichts mehr voneinander gehört? Alles klar bei dir?",
+               "mode": "single",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Hallo! Ja, alles gut.",
+                     "func":21
+                  },
+                  {
+                     "id":2,
+                     "text":"Hey!",
+                     "func":21
+                  },
+                  {
+                     "id":3,
+                     "text":"Urgh, du schon wieder?",
+                     "func":21
+                  }
+               ],
+               "store": false
+            }
+         }
+      },
+      {
+         "id":21,
+         "assistant":{
+           "text":"Was willst du antworten?",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"grooming2",
+            "data":{
+               "question":"Ich habe gerade in dein Profil geschaut und mir ist aufgefallen, dass du deine Hobbys nicht angegeben hast.",
+               "mode": "single",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Ich will sie nicht teilen.",
+                     "func":22
+                  },
+                  {
+                     "id":2,
+                     "text":"Ist mir peinlich!",
+                     "func":22
+                  },
+                  {
+                     "id":3,
+                     "text":"Verrate ich nur Freunden!",
+                     "func":22
+                  }
+               ],
+               "store": false
+            }
+         }
+      },
+      {
+         "id":22,
+         "assistant":{
+           "text":"Was willst du antworten?",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"grooming3",
+            "data":{
+               "question":"Sind wir nicht schon Freunde? Wir schreiben ja nicht das erste Mal miteinander, du kannst mir ja vertrauen.",
+               "mode": "single",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Tennis",
+                     "func":23
+                  },
+                  {
+                     "id":2,
+                     "text":"Fußball",
+                     "func":23
+                  },
+                  {
+                     "id":3,
+                     "text":"Reiten",
+                     "func":23
+                  },
+                  {
+                     "id":4,
+                     "text":"Schwimmen",
+                     "func":23
+                  },
+                  {
+                     "id":5,
+                     "text":"Zocken",
+                     "func":23
+                  },
+                  {
+                     "id":6,
+                     "text":"Filme schauen",
+                     "func":23
+                  },
+                  {
+                     "id":7,
+                     "text":"Shoppen",
+                     "func":23
+                  },
+                  {
+                     "id":8,
+                     "text":"Mit Freunden was unternehmen",
+                     "func":23
+                  }
+               ],
+               "store": false
+            }
+         }
+      },
+      {
+         "id":23,
+         "assistant":{
+           "text":"Hier ist das erste Warnsignal. Wenn sich jemand, den du nicht kennst, mit dir unbedingt treffen möchte. Natürlich ist das nicht automatisch jemand, der dir etwas Böses will, aber sei dennoch vorsichtig! Wenn du dich dennoch mit jemanden vom Internet treffen möchtest, gehe in Begleitung mit jemanden den du absolut vertraust und verheimliche diesen Fakt vor deinen Schreiber- Freund / Freundin. Zwei sind stärker als einer.",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"grooming4",
+            "data":{
+               "question":"Cool! Mache ich auch gerne. Wir sind doch im gleichen Alter und nach deinem Standort leben wir auch nicht so weit voneinander entfernt. Willst du dich nicht einmal treffen und was unternehmen?",
+               "mode": "single",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Cool können wir gerne machen.",
+                     "func":24
+                  },
+                  {
+                     "id":2,
+                     "text":"Habe Zeit!",
+                     "func":24
+                  },
+                  {
+                     "id":3,
+                     "text":"Wann?",
+                     "func":24
+                  }
+               ],
+               "store": false
+            }
+         }
+      },
+      {
+         "id":24,
+         "assistant":{
+           "text":"Was willst du antworten?",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"grooming5",
+            "data":{
+               "question":"Wie wäre es mit morgen Abend? Es sollte schön werden.",
+               "mode": "single",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Cool.",
+                     "func":25
+                  },
+                  {
+                     "id":2,
+                     "text":"Klar!",
+                     "func":25
+                  },
+                  {
+                     "id":3,
+                     "text":"Mölich.",
+                     "func":25
+                  }
+               ],
+               "store": false
+            }
+         }
+      },
+      {
+         "id":25,
+         "assistant":{
+           "text":"Hier ist das nächste Warnsignal. Schicke niemals einer unbekannten Person ein Foto von dir! Diese Version hört sich noch harmlos an, jedoch können die Fragen nach Fotos noch gruseliger sein. Fragen nach Schwimmbekleidung oder gar Nackt- bzw. Unterwäschefotos sind die Norm. Die meisten erschleichen sich jedoch so dein Vertrauen.",
+           "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"information-chat",
+         "modeDetails":{
+            "ref":"grooming6",
+            "data":{
+               "question":"Super! Schick mir dann bitte ein Bild von dir, damit ich dich gleich erkennen kann.",
+               "mode": "single",
+               "answers":[
+                  {
+                     "id":1,
+                     "text":"Chat beenden!",
+                     "func":26
+                  },
+                  {
+                     "id":2,
+                     "text":"Chat beenden!",
+                     "func":26
+                  }
+               ],
+               "store": false
+            }
+         }
+      },
+      {
+         "id":26,
+         "mode":"video",
+         "modeDetails":{
+           "data":{
+              "path":"levels/3/video4.mp4",
+              "type":"video/mp4"
+           }
+         },
+         "assistant":{
+            "text":"Schau dir das mal an.",
+            "action":{
+               "text":"Weiter",
+               "func":27
+            }
+         }
+      },
+      {
+         "id":27,
+         "assistant":{
+           "text":"Wir sind nun fast am Ende angelangt! Von den ganzen wichtigen Dingen, über die wir miteinander geredet haben, habe ich noch ein kleines Minispiel mitgebracht. Viel Spaß beim Puzzeln!",
+           "action":{
+               "text":"Weiter",
+               "func":28
+            }
+         }
+      },
+      {
+         "id":28,
+         "assistant":{
+            "text":"In diesem Bild hat sich das 1 x 1 der Internet Security versteckt! Bringe das Bild in die richtige Reihenfolge.",
+            "action":{
+               "text":"Weiter"
+            }
+         },
+         "mode":"puzzlegame",
+         "modeDetails":{
+            "ref":"puzzlegame2",
+            "data":{
+               "description": "Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen.",
+               "image": "levels/3/internetsecurity.png"
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Da passt noch etwas nicht. Versuche es weiter."
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Super gemacht.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":29
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":29,
+         "assistant":{
+           "text":"Unser Weg bis zum Ende war ganz schön lang. Ich habe einiges über dich gelernt. Im Hauptmenü kannst du sehen was ich über dich gelernt habe. Diese Daten werden gerne von den Computeralgorithmen hergenommen. Werbung, Kaufanzeigen, Push-up Nachrichten und vieles weitere wird nach deinem Profil angepasst. Das kann natürlich auch problematisch werden.",
+           "action":{
+               "text":"Lektion abschließen",
+               "func":"COMPLETE"
+            }
+         }
+      }
     ]
  }

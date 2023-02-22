@@ -44,7 +44,7 @@
       <post-privacy-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'privacygame'" :ref="currentGameStep.modeDetails.ref" :message="currentGameStep.modeDetails.data.message" :answer="currentGameStep.modeDetails.data.answer" @ready="activateAssistant"></post-privacy-game>
 
       <div v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'information-chat'">
-        <information-chat :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers" :mode="currentGameStep.modeDetails.data.mode"  @ready="activateAssistant"></information-chat>
+        <information-chat :key="currentGameStep.modeDetails.ref" :ref="currentGameStep.modeDetails.ref" :question="currentGameStep.modeDetails.data.question" :answers="currentGameStep.modeDetails.data.answers" :mode="currentGameStep.modeDetails.data.mode" :store="currentGameStep.modeDetails.data.store"  @ready="activateAssistant"></information-chat>
       </div>
 
       <puzzle-game v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'puzzlegame'" :ref="currentGameStep.modeDetails.ref" :image="currentGameStep.modeDetails.data.image" :description="currentGameStep.modeDetails.data.description" @game-over="gameCallback"></puzzle-game>

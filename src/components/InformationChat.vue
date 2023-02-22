@@ -32,6 +32,11 @@ export default {
             type: String,
             required: false,
             default: 'multiple'
+        },
+        store: {
+            type: Boolean,
+            required: false,
+            default: true
         }
     },
     data() {
@@ -60,8 +65,9 @@ export default {
                     value: ansTexts
                 }
 
-                this.$store.dispatch("updateUserData", payload);
-
+                if (this.$props.store) {
+                    this.$store.dispatch("updateUserData", payload);
+                }
                 return nextStep;
             } else {
                 if (this.checkedItems == 0) {
@@ -76,7 +82,9 @@ export default {
                     value: ansText
                 }
 
-                this.$store.dispatch("updateUserData", payload);
+                if (this.$props.store) {
+                    this.$store.dispatch("updateUserData", payload);
+                }
 
                 return nextStep;
             }

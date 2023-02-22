@@ -23,7 +23,7 @@
         </div>
         <div class="col-12 mb-4" v-if="examUnlocked">
             <div class="btn btn-primary level-exam shadow-lg w-100 d-flex h-100 justify-content-center" @click="openExam()">
-                <h2>{{ $t("Exam") }}</h2>
+                <h2>{{ $t("Ergebnis") }}</h2>
             </div>
         </div>
     </div>

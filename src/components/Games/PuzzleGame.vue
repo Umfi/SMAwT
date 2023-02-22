@@ -4,7 +4,7 @@
           {{ $t(description) }}
       </div>
 
-        <div v-if="img" style="width: 400px;height: 400px;" class="mx-auto overflow-hidden">
+        <div v-if="img" style="width: 55vh;height: 55vh;" class="mx-auto overflow-hidden">
         <vue-slide-puzzle
             ref="puzzle"
             :ratio=3

@@ -209,7 +209,7 @@
       {
          "id":10,
          "assistant":{
-            "text":"Vernetzungen sind abstrakte Gebilde. Dieses Bild sollte es eigentlich klarer darstellen, jedoch ist etwas schief gegangen. Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen..",
+            "text":"Vernetzungen sind abstrakte Gebilde. Dieses Bild sollte es eigentlich klarer darstellen, jedoch ist etwas schief gegangen. Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen.",
             "action":{
                "text":"Weiter"
             }
@@ -344,14 +344,14 @@
          "modeDetails":{
             "ref":"imagegame1",
             "data":{
-               "image":"levels/2/imagegame1.png",
+               "image":"levels/2/imagegame1.jpg",
                "bb":{
-                  "x":160,
-                  "y":215,
-                  "width":25,
-                  "height":20
+                  "x":243,
+                  "y":260,
+                  "width":100,
+                  "height":40
                },
-               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf die richtige Stelle im Bild."
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
             },
             "unfinished":{
                "points":-1,
@@ -362,7 +362,154 @@
             "error":{
                "points":-1,
                "assistant":{
-                  "text":"TODO: Explain why this is wrong.",
+                  "text":"Das Kfz Kennzeichen sollte nicht öffentlich geteilt werden.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":141
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "action":{
+                     "text":"Weiter",
+                     "func":141
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":141,
+         "assistant":{
+            "text":"Was denkst du über dieses Bild?",
+            "action":{
+               "text":""
+            }
+         },
+         "mode":"imagegame",
+         "modeDetails":{
+            "ref":"imagegame2",
+            "data":{
+               "image":"levels/2/imagegame4.png",
+               "bb":{
+                  "x":245,
+                  "y":229,
+                  "width":140,
+                  "height":35
+               },
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
+            },
+            "unfinished":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist unproblematisch. Sonst noch etwas?"
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Die Bankdaten sollten nicht öffentlich geteilt werden.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":142
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "action":{
+                     "text":"Weiter",
+                     "func":142
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":142,
+         "assistant":{
+            "text":"Was denkst du über dieses Bild?",
+            "action":{
+               "text":""
+            }
+         },
+         "mode":"imagegame",
+         "modeDetails":{
+            "ref":"imagegame3",
+            "data":{
+               "image":"levels/2/imagegame5.png",
+               "bb":{
+                  "x":435,
+                  "y":154,
+                  "width":20,
+                  "height":15
+               },
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
+            },
+            "unfinished":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist unproblematisch. Sonst noch etwas?"
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Die Addresse sollte nicht öffentlich geteilt werden.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":143
+                  }
+               }
+            },
+            "correct":{
+               "points":2,
+               "assistant":{
+                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "action":{
+                     "text":"Weiter",
+                     "func":143
+                  }
+               }
+            }
+         }
+      },
+      {
+         "id":143,
+         "assistant":{
+            "text":"Was denkst du über dieses Bild?",
+            "action":{
+               "text":""
+            }
+         },
+         "mode":"imagegame",
+         "modeDetails":{
+            "ref":"imagegame4",
+            "data":{
+               "image":"levels/2/imagegame3.jpg",
+               "bb":{
+                  "x":40,
+                  "y":170,
+                  "width":430,
+                  "height":65
+               },
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
+            },
+            "unfinished":{
+               "points":-1,
+               "assistant":{
+                  "text":"Das ist unproblematisch. Sonst noch etwas?"
+               }
+            },
+            "error":{
+               "points":-1,
+               "assistant":{
+                  "text":"Persönliche Daten wie Name, Geburtstag und deine Schule sollten nicht öffentlich geteilt werden.",
                   "action":{
                      "text":"Weiter",
                      "func":15

@@ -16,7 +16,7 @@
                 <b>Social Media Awareness</b>
                 <br><br>
                 <p>{{ $t("with a score of") }}</p>
-                <b>{{ points }}/100</b>
+                <b>{{ points }}</b>
                 <br><br>
                 <i>{{ $t("on") }}</i>
                 <br>

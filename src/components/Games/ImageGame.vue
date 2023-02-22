@@ -58,7 +58,6 @@ export default {
         this.failCount++;
         if (this.failCount < 3) {
           this.state = -1;
-          this.gameOver = true;
           this.$emit('game-over', -1);
         } else {
           this.showHint();
