@@ -45,7 +45,7 @@ export default {
       this.$refs.assistant.updateMessage("Do you want to continue your training?");
       this.$refs.assistant.updateActions('I want to start from the beginning!', this.restart, 'Yeah, lets continue!', this.start);
     } else {
-      this.$refs.assistant.updateMessage("Hey. I am Mike your personal social media expert. I will help you to become an expert too.");
+      this.$refs.assistant.updateMessage("Hey. I am Simon your personal social media expert. I will help you to become an expert too.");
       this.$refs.assistant.updateActions('Sounds good!', this.restart);
     }
   },

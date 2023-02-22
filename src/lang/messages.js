@@ -4,7 +4,7 @@ const messages = {
     },
     de: {
         
-        'Hey. I am Mike your personal social media expert. I will help you to become an expert too.': 'Hallo. Ich bin Mike, dein persönlicher Social Media Experte. Ich werde dir helfen, auch ein Experte zu werden.',
+        'Hey. I am Simon your personal social media expert. I will help you to become an expert too.': 'Hallo. Ich bin Simon, dein persönlicher Social Media Experte. Ich werde dir helfen, auch ein Experte zu werden.',
         'Sounds good!': 'Klingt gut!',
         'I want to start from the beginning!': 'Ich möchte von vorne beginnen!',
         'Yeah, lets continue!': 'Ja, lass uns weiter machen!',
