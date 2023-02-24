@@ -582,7 +582,7 @@
              "correct":{
                 "points":2,
                 "assistant":{
-                   "text":"Ja, dieser Post kann niemanden Schaden. Zudem ist es super, dass du keine Scheu hast Beiträge zu melden. Das ist wichtig.",
+                   "text":"Ja, dieser Post kann niemanden Schaden.",
                    "action":{
                       "text":"Weiter",
                       "func":17
@@ -650,7 +650,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden.",
+                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden. Zudem ist es super, dass du keine Scheu hast Beiträge zu melden. Das ist wichtig.",
                   "action":{
                      "text":"Weiter",
                      "func":18
@@ -707,7 +707,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden.",
+                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden. Zudem ist es super, dass du keine Scheu hast Beiträge zu melden. Das ist wichtig.",
                   "action":{
                      "text":"Weiter",
                      "func":19
@@ -780,7 +780,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Ja, dieser Post kann niemanden Schaden. Zudem ist es super, dass du keine Scheu hast Beiträge zu melden. Das ist wichtig.",
+                  "text":"Ja, dieser Post kann niemanden Schaden.",
                   "action":{
                      "text":"Weiter",
                      "func":20
@@ -837,7 +837,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden.",
+                  "text":"Ja, du hast recht. Solche Nachrichten müssen gemeldet werden. Zudem ist es super, dass du keine Scheu hast Beiträge zu melden. Das ist wichtig.",
                   "action":{
                      "text":"Weiter",
                      "func":21
@@ -849,7 +849,7 @@
        {
          "id":21,
          "assistant":{
-            "text":"Ich habe vorher bereits die digitale Identität angesprochen. Man hört immer wieder 'Ich habe doch nichts zu verbergen?'. Jedoch hinterlässt es dennoch Spuren. Denke an das Beispiel mit dem Urlauber im Krankenstand zurück. Seine digitale Identität hatte dabei einen großen Einfluss auf sein Leben, weswegen es der Person auch den Job gekostet hatte. Ähnlich ist es nun auch bei mir. Ich habe mich zwar öffentlich entschuldigt, aber viele mein ehemaliger Follower wollen nichts mehr von mir hören.",
+            "text":"Ich habe damals gepostet, dass ich auf Urlaub fliege und die nächsten paar Tage nicht erreichbar bin. Das hat ausgereicht, dass der Hacker diesen Zeitraum genutzt hat, um mein Passwort herauszufinden und Blödsinn in meinem Namen zu posten. Ich habe mich zwar öffentlich entschuldigt, aber viele mein ehemaliger Follower wollen nichts mehr von mir hören.",
             "action":{
                "text":"Weiter",
                "func": "COMPLETE"

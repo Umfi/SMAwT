@@ -14,6 +14,7 @@ export default new Vuex.Store({
     points: 0,
     levels: [],
     examUnlocked: false,
+    preTestDone: false,
   },
   getters: {
     user: state => {
@@ -36,6 +37,14 @@ export default new Vuex.Store({
       }
       return state.examUnlocked
     },
+    preTestDone: state => {
+      if (localStorage.getItem('sometra_preTest')) {
+        state.preTestDone = true;
+      } else {
+        state.preTestDone = false;
+      }
+      return state.preTestDone
+    },
     points: state => {
       if (localStorage.getItem('sometra_points')) {
         state.points = parseInt(localStorage.getItem('sometra_points'));
@@ -55,6 +64,9 @@ export default new Vuex.Store({
 
       state.examUnlocked = false;
       localStorage.removeItem('sometra_exam');
+
+      state.preTestDone = false;
+      localStorage.removeItem('sometra_preTest');
 
       state.points = 0;
       localStorage.setItem('sometra_points', state.points);
@@ -81,7 +93,11 @@ export default new Vuex.Store({
         state.user.data.interviewData.push(answer);
         localStorage.setItem('sometra_user', JSON.stringify(state.user));
       }
-    }
+    },
+    UPDATE_PRETEST(state) {
+      state.preTestDone = true;
+      localStorage.setItem('sometra_preTest', true);
+    },
   },
   actions: {
     startGame({commit}, user) {
@@ -95,6 +111,9 @@ export default new Vuex.Store({
     },
     updateUserData({commit}, answer) {
       commit("UPDATE_USER_DATA", answer);
-    }
+    },
+    updatePreTest({commit}) {
+      commit("UPDATE_PRETEST");
+    },
   }
 })

@@ -4,7 +4,14 @@
     <div class="row mt-5 mb-5">
         <h1 class="text-center text-white">{{ $t('Select a Level') }}</h1>
     </div>
-    <div class="row">
+    <div class="row" v-if="!preTestDone">
+        <div class="col-12 mb-4">
+            <div class="btn btn-success shadow-lg w-100 d-flex h-100 justify-content-center" @click="openPreTest()">
+                <h2>Pretest</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row" v-else>
         <div class="col-4 mb-4" v-for="level in levels" :key="level.id">
             <div :class="level.locked ? 'btn btn-secondary level shadow-lg w-100 d-flex h-100 justify-content-center' : 'btn btn-primary level shadow-lg w-100 d-flex h-100 justify-content-center'" @click="openLevel(level)">
                 <div v-if="!level.locked">
@@ -26,6 +33,11 @@
                 <h2>{{ $t("Ergebnis") }}</h2>
             </div>
         </div>
+        <div class="col-12 mb-4" v-if="examUnlocked">
+            <div class="btn btn-success shadow-lg w-100 d-flex h-100 justify-content-center" @click="openPostTest()">
+                <h2>Posttest</h2>
+            </div>
+        </div>
     </div>
   </div>
 </div>
@@ -43,8 +55,9 @@ export default {
  computed: {
     ...mapGetters([
         'levels',
-        'examUnlocked'
-    ])
+        'examUnlocked',
+        'preTestDone'
+    ]),
  },
  methods: {
     openLevel(level) {
@@ -55,8 +68,16 @@ export default {
     },
     openExam() {
         this.$router.push('exam');
+    },
+    openPreTest() {
+        this.$store.dispatch("updatePreTest").then(() => {
+          window.open("https://google.com", '_blank', 'noreferrer');
+        });
+    },
+    openPostTest() {
+        window.open("https://google.com", '_blank', 'noreferrer');
     }
- }
+ },
 }
 </script>
 
