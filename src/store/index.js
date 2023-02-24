@@ -89,10 +89,18 @@ export default new Vuex.Store({
       localStorage.setItem('sometra_points', state.points);
     },
     UPDATE_USER_DATA(state, answer) {
-      if (state.user.data.interviewData) {
-        state.user.data.interviewData.push(answer);
-        localStorage.setItem('sometra_user', JSON.stringify(state.user));
+      if (!state.user.data.interviewData) {
+        state.user.data.interviewData = [];
       }
+
+      // check if item with key exists
+      const index = state.user.data.interviewData.findIndex(item => item.key === answer.key);
+      if (index > -1) {
+        state.user.data.interviewData[index] = answer;
+      } else {
+        state.user.data.interviewData.push(answer);
+      }
+      localStorage.setItem('sometra_user', JSON.stringify(state.user));
     },
     UPDATE_PRETEST(state) {
       state.preTestDone = true;

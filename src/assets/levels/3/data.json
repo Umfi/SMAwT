@@ -438,7 +438,7 @@
       {
          "id":15,
          "assistant":{
-            "text":"Fake News sind ein sehr präsentes Thema. Meldungen im Internet werden oft als seriös angesehen und nicht weiter hinterfragt.  Durch die Leichtgläubigkeit von Menschen entstehen Diskussionen und Streitigkeiten, welche aber durch Recherche verhindert werden können. Fact - Check ist gerade bei Fake - News ein muss.“",
+            "text":"Fake News sind ein sehr präsentes Thema. Meldungen im Internet werden oft als seriös angesehen und nicht weiter hinterfragt.  Durch die Leichtgläubigkeit von Menschen entstehen Diskussionen und Streitigkeiten, welche aber durch Recherche verhindert werden können. Fact - Check ist gerade bei Fake - News ein muss.",
             "action":{
                "text":"Weiter",
                "func": 16
@@ -529,7 +529,8 @@
                      "func":21
                   }
                ],
-               "store": false
+               "store": false,
+               "chat": true
             }
          }
       },
@@ -564,7 +565,8 @@
                      "func":22
                   }
                ],
-               "store": false
+               "store": false,
+               "chat": true
             }
          }
       },
@@ -624,7 +626,8 @@
                      "func":23
                   }
                ],
-               "store": false
+               "store": false,
+               "chat": true
             }
          }
       },
@@ -659,7 +662,8 @@
                      "func":24
                   }
                ],
-               "store": false
+               "store": false,
+               "chat": true
             }
          }
       },
@@ -690,11 +694,12 @@
                   },
                   {
                      "id":3,
-                     "text":"Mölich.",
+                     "text":"Möglich.",
                      "func":25
                   }
                ],
-               "store": false
+               "store": false,
+               "chat": true
             }
          }
       },
@@ -724,7 +729,8 @@
                      "func":26
                   }
                ],
-               "store": false
+               "store": false,
+               "chat": true
             }
          }
       },

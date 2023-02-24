@@ -1,10 +1,29 @@
 <template>
 <div>
-    <div class="card">
+    <div class="card" v-if="!chat">
         <div class="card-header">
             <h2 class="text-center">{{ $t(question) }}</h2>
         </div>
         <div class="card-body">
+            <div class="row">
+                <div class="col-6 mb-3" v-for="answer in answers" :key="answer.id">
+                    <input :type="mode == 'multiple' ? 'checkbox' : 'radio'" class="btn-check" :id="answer.id" :value="answer.id" autocomplete="off" v-model="checkedItems">
+                    <label class="btn btn-outline-primary w-100 h-100 answer" :for="answer.id">{{ $t(answer.text) }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card" v-else>
+        <div class="card-header">
+            <h2 class="text-center">Chat mit Star Tracker</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-10 mb-3 chat-container m-auto">
+                    <img src="https://avatars.dicebear.com/api/avataaars/gsaga.png" alt="Avatar">
+                    <p class="lead">{{ $t(question) }}</p>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-6 mb-3" v-for="answer in answers" :key="answer.id">
                     <input :type="mode == 'multiple' ? 'checkbox' : 'radio'" class="btn-check" :id="answer.id" :value="answer.id" autocomplete="off" v-model="checkedItems">
@@ -37,6 +56,11 @@ export default {
             type: Boolean,
             required: false,
             default: true
+        },
+        chat: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data() {
@@ -103,3 +127,21 @@ export default {
     },
 }
 </script>
+<style scoped>
+.chat-container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+ .chat-container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+</style>
