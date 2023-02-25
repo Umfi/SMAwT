@@ -6,7 +6,7 @@
     <div v-if="!complete" class="content">
       <html-viewer v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'html'"  :path="currentGameStep.modeDetails.data.path"></html-viewer>
       
-      <video-viewer v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'video'"  :path="currentGameStep.modeDetails.data.path" :type="currentGameStep.modeDetails.data.type"></video-viewer>
+      <video-viewer v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'video'" :ref="currentGameStep.modeDetails.ref" :path="currentGameStep.modeDetails.data.path" :type="currentGameStep.modeDetails.data.type"></video-viewer>
       
       <explain-component v-if="currentGameStep && currentGameStep.mode && currentGameStep.mode == 'explain'"  :title="currentGameStep.modeDetails.data.title" :description="currentGameStep.modeDetails.data.description" :items="currentGameStep.modeDetails.data.items" @explain="explain"></explain-component>
       
@@ -170,8 +170,20 @@ export default {
       this.currentGameStep = this.level_data.steps.find(step => step.id === this.gameStep);
 
       this.$refs.assistant.updateMessage(this.currentGameStep.assistant.text);
-      if ((this.currentGameStep.mode === undefined || this.currentGameStep.mode === 'html' || this.currentGameStep.mode === 'video' || this.currentGameStep.mode === 'explain')  && this.currentGameStep.assistant.action.func) {
+      if ((this.currentGameStep.mode === undefined || this.currentGameStep.mode === 'html' || this.currentGameStep.mode === 'explain')  && this.currentGameStep.assistant.action.func) {
         this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { this.gameStep = this.currentGameStep.assistant.action.func; this.nextMove(); });
+      }
+
+       if (this.currentGameStep.mode == "video") {
+        this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
+          const canContinue = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
+          
+          if (canContinue) {
+            this.gameStep = this.currentGameStep.assistant.action.func; this.nextMove();
+          } else {
+            this.$refs.assistant.updateMessage("Das Video ist noch nicht zu Ende.");
+          } 
+        });
       }
 
       if (this.currentGameStep.mode == "sortinggame") {

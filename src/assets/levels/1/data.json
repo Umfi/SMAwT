@@ -6,6 +6,7 @@
           "id":1,
           "mode":"video",
           "modeDetails":{
+            "ref":"video1",
             "data":{
                "path":"levels/1/video1.mp4",
                "type":"video/mp4"

@@ -22,5 +22,21 @@ export default {
             required: true,
         },
     },
+    data() {
+        return {
+            videoDone: false
+        };
+    },
+    mounted() {
+        this.videoDone = false;
+        setTimeout(() => {
+            this.videoDone = true;
+        }, 1000 * 60);
+    },
+    methods: {
+        check() {
+            return this.videoDone;
+        },
+    },
 }
 </script>

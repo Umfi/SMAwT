@@ -114,6 +114,7 @@
          "id":5,
          "mode":"video",
          "modeDetails":{
+           "ref":"video3",
            "data":{
               "path":"levels/3/video3.mp4",
               "type":"video/mp4"
@@ -737,6 +738,7 @@
       {
          "id":26,
          "mode":"video",
+         "ref":"video4",
          "modeDetails":{
            "data":{
               "path":"levels/3/video4.mp4",

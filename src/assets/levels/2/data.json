@@ -183,6 +183,7 @@
          "id":8,
          "mode":"video",
          "modeDetails":{
+           "ref":"video2",
            "data":{
               "path":"levels/2/video2.mp4",
               "type":"video/mp4"
