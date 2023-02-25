@@ -103,7 +103,7 @@
       {
          "id":4,
          "assistant":{
-            "text":"Achja, sehr interessant, ich würde mich zwar gerne noch länger mit dir unterhalten, aber ich muss leider wieder weiter. Bis bald!",
+            "text":"Achja, sehr interessant.",
             "action":{
                "text":"Weiter",
                "func": 5
@@ -121,7 +121,7 @@
            }
          },
          "assistant":{
-            "text":"Da bin ich wieder. Schau dir das mal an.",
+            "text":"Schau dir das mal an.",
             "action":{
                "text":"Weiter",
                "func":7
@@ -131,7 +131,7 @@
       {
          "id":7,
          "assistant":{
-            "text":"Die 'dunkle Seite des Netzes' ist leider präsenter, als man glaubt. Fake News sind allgegenwertig, von Cybermobbing oder  Cybergrooming sind nicht nur junge Frauen betroffen, sondern junge Männer ebenfalls. FOMO ist eine Krankheit, die leider erst zu spät bemerkt wird.",
+            "text":"Die 'dunkle Seite des Netzes' ist leider präsenter, als man glaubt. Fake News sind allgegenwertig, von Cybermobbing oder Cybergrooming sind nicht nur junge Frauen betroffen, sondern junge Männer ebenfalls. FOMO ist eine Krankheit, die leider erst zu spät bemerkt wird.",
             "action":{
                "text":"Weiter",
                "func": 8

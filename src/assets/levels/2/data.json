@@ -172,7 +172,7 @@
       {
          "id":7,
          "assistant":{
-            "text":"Bei den Vorschlägen geht mein Kopf schon fast über vor Ideen! Sorry, aber ich bin jetzt mal weg alle Ideen aufzuschreiben. Bye bye.",
+            "text":"Bei den Vorschlägen geht mein Kopf schon fast über vor Ideen!",
             "action":{
                "text":"Weiter",
                "func":8
@@ -373,7 +373,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "text":"Uff,  das habe ich übersehen. Vielen Dank fürs Finden!",
                   "action":{
                      "text":"Weiter",
                      "func":141
@@ -422,7 +422,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "text":"Uff,  das habe ich übersehen. Vielen Dank fürs Finden!",
                   "action":{
                      "text":"Weiter",
                      "func":142
@@ -471,7 +471,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "text":"Uff,  das habe ich übersehen. Vielen Dank fürs Finden!",
                   "action":{
                      "text":"Weiter",
                      "func":143
@@ -520,7 +520,7 @@
             "correct":{
                "points":2,
                "assistant":{
-                  "text":"Buuh, das habe ich übersehen. Vielen Dank fürs Finden!",
+                  "text":"Uff,  das habe ich übersehen. Vielen Dank fürs Finden!",
                   "action":{
                      "text":"Weiter",
                      "func":15

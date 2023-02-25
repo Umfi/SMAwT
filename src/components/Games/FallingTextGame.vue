@@ -67,13 +67,8 @@ export default {
       }, 1000);
 
       this.spawnTimer = setInterval(() => {
-        if (this.time > 20) {
-          this.makeFruit();
-        } else if (this.time > 5 && this.time <= 20) {
-          this.makeFruit();
-          this.makeFruit();
-        }  
-      }, 2000);
+        this.makeFruit();
+      }, 1500);
     },
     makeFruit() {
       var target = document.querySelector("#falling-text-game-container");
@@ -133,13 +128,13 @@ export default {
       var speed = 0;
       
        if (this.time > 30) {
-          speed = this.getRandomInt(5000, 7000);
+          speed = this.getRandomInt(8000, 10000);
        } else if (this.time > 20 && this.time <= 30) {
           speed = this.getRandomInt(7000, 8000);  
        } else if (this.time > 10 && this.time <= 20) {
-          speed = this.getRandomInt(8000, 9000);
+          speed = this.getRandomInt(6000, 7000);
        } else if (this.time <= 10) {
-          speed = this.getRandomInt(9000, 10000);
+          speed = this.getRandomInt(4000, 6000);
        } 
 
 

@@ -96,7 +96,7 @@ const messages = {
         'Games': 'Spiele',
         'Pets': 'Haustiere',
 
-        'Friendship networks': 'Freundschaftsnetzwerke',
+        'Friendship network': 'Freundschaftsnetzwerk',
         'Show friendship network': 'Freundschaftsnetzwerk anzeigen',
 
         'Create your own passwords! Remember spelling, numbers and special characters! The passwords should be different from each other.': 'Erschaffe eigene Passwörter! Denke dabei an die Rechtschreibung, Zahlen und Sonderzeichen! Die Passwörter sollen sich voneinander unterscheiden.',
