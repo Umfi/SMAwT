@@ -99,7 +99,7 @@ const messages = {
         'Friendship networks': 'Freundschaftsnetzwerke',
         'Show friendship network': 'Freundschaftsnetzwerk anzeigen',
 
-        'Create your own passwords! Remember spelling, numbers and special characters! The passwords should be different from each other.': 'Erschaffe eigene Passwörter! Denke dabei and die Rechtschreibung, Zahlen und Sonderzeichen! Die Passwörter sollen sich voneinander unterscheiden.',
+        'Create your own passwords! Remember spelling, numbers and special characters! The passwords should be different from each other.': 'Erschaffe eigene Passwörter! Denke dabei an die Rechtschreibung, Zahlen und Sonderzeichen! Die Passwörter sollen sich voneinander unterscheiden.',
         'Enter a secure password': 'Gib ein sicheres Passwort ein',
         'Your password is very weak. It is too guessable. Try another password.': 'Dein Passwort ist sehr schwach. Es ist sehr einfach zu erraten. Versuche ein anderes Passwort.',
         'Your password is weak. It is very guessable. Try another password.': 'Dein Passwort ist schwach. Es ist einfach zu erraten. Versuche ein anderes Passwort.',

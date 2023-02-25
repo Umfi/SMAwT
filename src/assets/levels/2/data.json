@@ -219,7 +219,7 @@
          "modeDetails":{
             "ref":"puzzlegame1",
             "data":{
-               "description": "Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen.",
+               "description": "Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen. Achte darauf, dass die linke obere Ecke frei bleibt. Dieses Puzzleteil wird dann automatisch eingesetzt, wenn alle anderen Teile an der richtigen Stelle sind.",
                "image": "levels/2/netzwerk.gif"
             },
             "error":{
