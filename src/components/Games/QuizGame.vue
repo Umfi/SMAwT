@@ -1,9 +1,5 @@
 <template>
 <div>
-    <div class="alert alert-primary" role="alert">
-        {{ $t('Select the correct answer. Note that none or several answers can be correct.') }}
-    </div>
-
     <div class="card">
         <div class="card-header">
             <h2 class="text-center">{{ $t(question) }}</h2>
@@ -44,6 +40,10 @@ export default {
     },
     methods: {
         check() {
+            if (this.checkedItems.length == 0) {
+                return -1;
+            }
+
             const correctAnswers = this.$props.answers.filter(answer => answer.correct).map(answer => answer.id).sort();
             const checkAnswers = this.checkedItems.sort();
 

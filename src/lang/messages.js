@@ -21,7 +21,7 @@ const messages = {
         'Public': 'Öffentlich',
         'Friends': 'Freunde',
         'Selected Friends': 'Ausgewählte Freunde',
-        'Select the correct answer. Note that none or several answers can be correct.' : 'Wähle die richtige Antwort. Beachte, dass keine oder mehrere Antworten richtig sein können.',
+        'Select the correct answer.' : 'Wähle die richtige Antwort aus.',
         'Friend Request': 'Freundschaftsanfrage',
         'mutal friends': 'gemeinsame Freunde',
         'Confirm': 'Bestätigen',

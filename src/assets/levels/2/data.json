@@ -243,7 +243,7 @@
       {
          "id":11,
          "assistant":{
-            "text":"Damit hätte sich einmal geklärt, warum alle auf mich so böse sind! Die Posts vom Hacker waren für all meine Follower sichtbar und wurden auch noch weiter geshared! Im Video hast du schon eine Möglichkeit kennengelernt, was man tun kann, wenn etwas im Internet passiert. Das war aber nicht die einzige Möglichkeit!",
+            "text":"Damit hätte sich einmal geklärt, warum alle auf mich so böse sind! Die Posts vom Hacker waren für all meine Follower sichtbar und wurden auch noch weiter geshared (geteilt)! Im Video hast du schon eine Möglichkeit kennengelernt, was man tun kann, wenn etwas im Internet passiert. Das war aber nicht die einzige Möglichkeit!",
             "action":{
                "text":"Weiter",
                "func": 12
@@ -352,7 +352,7 @@
                   "width":100,
                   "height":40
                },
-               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf die problematische Stelle im Bild."
             },
             "unfinished":{
                "points":-1,
@@ -401,7 +401,7 @@
                   "width":140,
                   "height":35
                },
-               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf die problematische Stelle im Bild."
             },
             "unfinished":{
                "points":-1,
@@ -450,7 +450,7 @@
                   "width":20,
                   "height":15
                },
-               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf die problematische Stelle im Bild."
             },
             "unfinished":{
                "points":-1,
@@ -499,7 +499,7 @@
                   "width":430,
                   "height":65
                },
-               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf auf die problematische Stelle im Bild."
+               "explanation": "Auf dem Bild haben sich persönliche Daten eingeschlichen. Klicke auf die problematische Stelle im Bild."
             },
             "unfinished":{
                "points":-1,

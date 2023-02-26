@@ -20,7 +20,7 @@
               ></vue-typer>
             </div>
             <div class="col-1" v-if="this.message.length > 0">
-                <button type="button" class="btn btn-outline-primary btn-block float-end" @click="minimize"><i class="fa-solid fa-window-minimize"></i></button>
+                <button type="button" class="btn btn-outline-primary btn-block float-end" @click="minimize" title="Minimieren"><i class="fa-solid fa-window-minimize"></i></button>
             </div>
         </div>
         <div class="row border-top" v-show="visibleOptions">
@@ -74,6 +74,7 @@ export default {
       visible: true,
       visibleOptions: true,
       enabledOptions: false,
+      forceMinimizeAction: false,
       message: '',
       actionAText: '',
       actionBText: '',
@@ -112,6 +113,7 @@ export default {
       setTimeout(() => {
         this.enableOptions();
         this.getAttention();
+        this.forceMinimizeAction = false;
       }, 250);
     },
     updateMessage(newMsg) {
@@ -148,6 +150,10 @@ export default {
     disableOptions() {
       this.enabledOptions = false;
     },
+    forceMinimize() {
+      this.forceMinimizeAction = true;
+      this.minimize();
+    },
     minimize() {
       this.isMinimized = true;
       this.animationcss = 'animate__animated animate__pulse animate__slower animate__infinite';
@@ -156,7 +162,7 @@ export default {
       this.isMinimized = false;
     },
     getAttention() {
-      if (this.isMinimized) {
+      if (this.isMinimized && !this.forceMinimizeAction) {
         this.animationcss = 'animate__animated animate__bounce animate__infinite';
       }
     }

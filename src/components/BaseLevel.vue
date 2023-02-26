@@ -175,6 +175,11 @@ export default {
       }
 
        if (this.currentGameStep.mode == "video") {
+
+       setTimeout(() => {
+        this.$refs.assistant.forceMinimize();
+        }, 200);
+
         this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
           const canContinue = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
           
@@ -216,7 +221,9 @@ export default {
         this.$refs.assistant.updateActions(this.currentGameStep.assistant.action.text, () => { 
           const result = this.$refs[this.currentGameStep.modeDetails.ref].check(); 
           
-          if (result == 1) {
+           if (result == -1) {
+            this.$refs.assistant.updateMessage("Bitte wähle eine Antwort aus.");
+          } else if (result == 1) {
             this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.correct.assistant.text);
 
             if (this.currentGameStep.modeDetails.correct.points) {

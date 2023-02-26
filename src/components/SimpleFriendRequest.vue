@@ -3,7 +3,7 @@
     <div class="container pb-2 text-center" v-if="network">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#networkModal">
+                <button type="button" class="btn btn-dark animate__animated animate__pulse animate__delay-2s animate__repeat-3" data-bs-toggle="modal" data-bs-target="#networkModal">
                     {{ $t('Show friendship network')}}
                 </button>
             </div>

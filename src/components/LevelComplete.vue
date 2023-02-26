@@ -22,7 +22,7 @@
                 <h3>{{ $t('Your Score') }}</h3>
             </div>
             <div class="col-12 text-center">
-                <h2>{{ score }}</h2>
+                <h2>{{ score * 10 }}</h2>
             </div>
         </div>
     </div>
