@@ -723,11 +723,6 @@
                      "id":1,
                      "text":"Chat beenden!",
                      "func":26
-                  },
-                  {
-                     "id":2,
-                     "text":"Chat beenden!",
-                     "func":26
                   }
                ],
                "store": false,
