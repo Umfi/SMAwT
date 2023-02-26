@@ -46,13 +46,16 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary w-100 btn-lg" @click="showCertificate = true">{{ $t("Abschlusszertifikat anzeigen") }}</button>
+                        <button class="btn btn-secondary btn-lg me-2" @click="goToMenu()">{{ $t("Back") }}</button>
+                        <button class="btn btn-primary w-50 btn-lg float-end" @click="showCertificate = true">{{ $t("Abschlusszertifikat anzeigen") }}</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div v-else>
+        <div class="text-center" v-else>
             <exam-certificate :points="points"></exam-certificate>
+
+            <button class="btn btn-secondary btn-lg mt-2" @click="goToMenu()">{{ $t("Back") }}</button>
         </div>
     </div>
     <div v-else>
@@ -80,5 +83,10 @@ export default {
             'user'
         ])
     },
+    methods: {
+        goToMenu() {
+             this.$router.push('/levels');
+        }
+    }
 }
 </script>

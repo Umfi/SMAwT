@@ -71,11 +71,11 @@ export default {
     },
     openPreTest() {
         this.$store.dispatch("updatePreTest").then(() => {
-          window.open("https://google.com", '_blank', 'noreferrer');
+          window.open("https://forms.office.com/r/aYtEM2D9im", '_blank', 'noreferrer');
         });
     },
     openPostTest() {
-        window.open("https://google.com", '_blank', 'noreferrer');
+        window.open("https://forms.office.com/r/xxbk7j05tM", '_blank', 'noreferrer');
     }
  },
 }

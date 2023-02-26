@@ -15,7 +15,7 @@
       {
          "id":2,
          "assistant":{
-           "text":"ber du scheinst dich gut auszukennen. Als mein Passwort gehackt wurde, war das leider nicht der Fall. Ich bin damals zu meinen Eltern gegangen. An wen würdest du dich im Notfall wenden?",
+           "text":"Aber du scheinst dich gut auszukennen. Als mein Passwort gehackt wurde, war das leider nicht der Fall. Ich bin damals zu meinen Eltern gegangen. An wen würdest du dich im Notfall wenden?",
            "action":{
                "text":"Weiter"
             }
@@ -738,8 +738,8 @@
       {
          "id":26,
          "mode":"video",
-         "ref":"video4",
          "modeDetails":{
+           "ref":"video4",
            "data":{
               "path":"levels/3/video4.mp4",
               "type":"video/mp4"
