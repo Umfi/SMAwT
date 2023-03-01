@@ -40,21 +40,30 @@ export default {
   data() {
     return {
       done: 0,
-      img: ''
+      img: '',
+      timer: null
     }
   },
   mounted() {
     this.img = require(`@/assets/${this.$props.image}`);
+    this.startGame();
   },
   methods: {
+    startGame() {
+      this.timer = setTimeout(() => {
+          this.done = 1;
+          this.$emit('game-over', -2);
+      }, 60000); 
+    },
     currentState() {
      return this.done;
     },
     gameover() {
-        if (this.$refs.puzzle.$state.gameSuccess) {
-            this.done = 1;
-            this.$emit('game-over', 1);
-        }
+      if (this.$refs.puzzle.$state.gameSuccess) {
+          this.done = 1;
+          this.$emit('game-over', 1);
+          clearTimeout(this.timer);
+      }
     }
   },
 }

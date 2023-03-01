@@ -210,7 +210,7 @@
       {
          "id":10,
          "assistant":{
-            "text":"Vernetzungen sind abstrakte Gebilde. Dieses Bild sollte es eigentlich klarer darstellen, jedoch ist etwas schief gegangen. Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen.",
+            "text":"Vernetzungen sind abstrakte Gebilde. Dieses Bild sollte es eigentlich klarer darstellen, jedoch ist etwas schief gegangen. Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen. Achte darauf, dass die linke obere Ecke frei bleibt. Dieses Puzzleteil wird dann automatisch eingesetzt, wenn alle anderen Teile an der richtigen Stelle sind.",
             "action":{
                "text":"Weiter"
             }
@@ -221,6 +221,15 @@
             "data":{
                "description": "Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen. Achte darauf, dass die linke obere Ecke frei bleibt. Dieses Puzzleteil wird dann automatisch eingesetzt, wenn alle anderen Teile an der richtigen Stelle sind.",
                "image": "levels/2/netzwerk.gif"
+            },
+            "unfinished":{
+               "assistant":{
+                  "text":"Das ist garnicht so einfach wie es aussieht. Machen wir mit etwas anderem weiter.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":11
+                  }
+               }
             },
             "error":{
                "points":-1,

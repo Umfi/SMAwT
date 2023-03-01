@@ -449,7 +449,7 @@
       {
          "id":16,
          "assistant":{
-            "text":"In diesem Bild wurde der AAARG-Test durcheinandergebracht. Bringe das Bild in die richtige Reihenfolge.",
+            "text":"In diesem Bild wurde der AAARG-Test durcheinandergebracht. Bringe das Bild in die richtige Reihenfolge. Achte darauf, dass die linke obere Ecke frei bleibt. Dieses Puzzleteil wird dann automatisch eingesetzt, wenn alle anderen Teile an der richtigen Stelle sind.",
             "action":{
                "text":"Weiter"
             }
@@ -460,6 +460,15 @@
             "data":{
                "description": "Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen. Achte darauf, dass die linke obere Ecke frei bleibt. Dieses Puzzleteil wird dann automatisch eingesetzt, wenn alle anderen Teile an der richtigen Stelle sind.",
                "image": "levels/3/craap.jpg"
+            },
+            "unfinished":{
+               "assistant":{
+                  "text":"Das ist garnicht so einfach wie es aussieht. Machen wir mit etwas anderem weiter.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":17
+                  }
+               }
             },
             "error":{
                "points":-1,
@@ -761,7 +770,7 @@
       {
          "id":28,
          "assistant":{
-            "text":"In diesem Bild hat sich das 1 x 1 der Internet Security versteckt! Bringe das Bild in die richtige Reihenfolge.",
+            "text":"In diesem Bild hat sich das 1 x 1 der Internet Security versteckt! Bringe das Bild in die richtige Reihenfolge. Achte darauf, dass die linke obere Ecke frei bleibt. Dieses Puzzleteil wird dann automatisch eingesetzt, wenn alle anderen Teile an der richtigen Stelle sind.",
             "action":{
                "text":"Weiter"
             }
@@ -772,6 +781,15 @@
             "data":{
                "description": "Versuche die Bilderstücke in die richtige Reihenfolge zu bekommen. Achte darauf, dass die linke obere Ecke frei bleibt. Dieses Puzzleteil wird dann automatisch eingesetzt, wenn alle anderen Teile an der richtigen Stelle sind.",
                "image": "levels/3/internetsecurity.png"
+            },
+            "unfinished":{
+               "assistant":{
+                  "text":"Das ist garnicht so einfach wie es aussieht. Machen wir mit etwas anderem weiter.",
+                  "action":{
+                     "text":"Weiter",
+                     "func":29
+                  }
+               }
             },
             "error":{
                "points":-1,

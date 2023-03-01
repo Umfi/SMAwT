@@ -371,7 +371,12 @@ export default {
     gameCallback(result) {
       this.$refs.assistant.showOptions();
 
-      if (result == -1) {
+      if (result == -2) {
+        this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
+        if (this.currentGameStep.modeDetails.unfinished.assistant.action) {
+          this.$refs.assistant.updateActions(this.currentGameStep.modeDetails.unfinished.assistant.action.text, () => { this.gameStep = this.currentGameStep.modeDetails.unfinished.assistant.action.func; this.nextMove(); });
+        }
+      } else if (result == -1) {
         this.$refs.assistant.updateMessage(this.currentGameStep.modeDetails.unfinished.assistant.text);
 
           if (this.currentGameStep.modeDetails.unfinished.points) {
