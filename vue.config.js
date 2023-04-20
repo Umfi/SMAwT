@@ -1,6 +1,6 @@
 module.exports = {
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production' ? '/social-media-learning' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/SMAwT' : '/',
   chainWebpack: config => {
     config.module
       .rule('html')
