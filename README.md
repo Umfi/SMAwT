@@ -1,4 +1,6 @@
-# social-media-training-app
+# SMAwT - Social Media Awareness Tool
+
+An innovative learning tool designed to raise social media awareness among students in computer science education from an interdisciplinary approach combining technological, socio-cultural, and user-oriented perspectives on phenomena occurring in social networks.
 
 ## Project setup
 ```
@@ -14,11 +16,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
